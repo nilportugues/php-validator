@@ -66,13 +66,14 @@ abstract class AbstractValidator
      */
     public function validate($value)
     {
-        $isValid = true;
-
         foreach ($this->conditions as $condition) {
             $arguments = array_merge([$value], $condition['arguments']);
-            $isValid = $isValid && $this->functionMap->get($condition['key'], $arguments);
+
+            if (false === $this->functionMap->get($condition['key'], $arguments)) {
+                return false;
+            }
         }
 
-        return $isValid;
+        return true;
     }
 }
