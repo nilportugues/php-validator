@@ -1,5 +1,8 @@
-# Input Validator [Work in progress]
+ Input Validator [Work in progress]
+=========================================
 
+ [![Latest Stable Version](https://poser.pugx.org/nilportugues/validator/v/stable.svg)](https://packagist.org/packages/nilportugues/validator) [![Total Downloads](https://poser.pugx.org/nilportugues/validator/downloads.svg)](https://packagist.org/packages/nilportugues/validator) [![License](https://poser.pugx.org/nilportugues/validator/license.svg)](https://packagist.org/packages/nilportugues/validator)
+ 
 A simple, powerful and elegant stand-alone validation library with no dependencies.
 
 <a name="index_block"></a>
@@ -27,7 +30,7 @@ The recommended way to install SQL Query Builder is through [Composer](http://ge
 ```
 
 <a name="block2"></a>
-## 2. Usage
+## 2. Usage [↑](#index_block)
 
 The Validator interface is 100% human-friendly and readable. Here's how you would validate an input `age`.
 
@@ -47,19 +50,19 @@ var_dump($validator->getErrors()); // []
 Clean and easy, right?
 
 <a name="block3"></a>
-## 3. Methods
+## 3. Methods [↑](#index_block)
 
 <a name="block3.1"></a>
-### 3.1 String
+### 3.1 String [↑](#index_block)
 
 <a name="block3.2"></a>
-### 3.2 Numbers (Integers and Floats)
+### 3.2 Numbers (Integers and Floats) [↑](#index_block)
 
 <a name="block3.3"></a>
-### 3.3 Objects
+### 3.3 Objects [↑](#index_block)
 
 <a name="block3.4"></a>
-### 3.4 Collections (Arrays)
+### 3.4 Collections (Arrays) [↑](#index_block)
 
 <a name="block4"></a>
 ## 4. Quality Code [↑](#index_block)
