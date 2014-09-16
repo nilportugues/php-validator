@@ -1,0 +1,40 @@
+{
+    "name": "nilportugues/validator",
+    "description": "An efficient data validator for PHP",
+    "keywords": ["input", "data", "validation", "validator", "nil portugues", "nilportugues"],
+    "type": "library",
+    "homepage": "http://nilportugues.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nil Portugués",
+            "email": "contact@nilportugues.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "4.2.*@dev",
+        "phpunit/phpunit-mock-objects": "2.2.*@dev",
+        "phpunit/php-code-coverage": "2.0.x-dev",
+        "sebastian/comparator": "dev-master",
+        "sebastian/finder-facade": "dev-master",
+        "theseer/fdomdocument": "dev-master",
+        "fabpot/php-cs-fixer": "dev-master",
+        "pdepend/pdepend": "2.*",
+        "phpmd/phpmd": "dev-master",
+        "goatherd/phpcs_installer": "2.*@dev",
+        "squizlabs/php_codesniffer": "2.*@dev"
+    },
+    "suggest": {
+        "ext-mbstring": "Multibyte String Functions"
+    },
+    "autoload": {
+        "psr-4": {
+            "NilPortugues\\Validator\\": "src/NilPortugues/Validator"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\NilPortugues\\Validator\\": "tests/NilPortugues/Validator"
+        }
+    }
+}
