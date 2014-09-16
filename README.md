@@ -1,4 +1,5 @@
-# Input Validator
+# Input Validator [Work in progress]
+
 A simple, powerful and elegant stand-alone validation library with no dependencies.
 
 <a name="index_block"></a>
