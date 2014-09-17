@@ -86,4 +86,3 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('propertyName', $this->validator->getPropertyName());
     }
 }
- 

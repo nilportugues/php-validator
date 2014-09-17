@@ -31,7 +31,6 @@ trait CollectionTrait
      */
     public static function contains($value)
     {
-
     }
 
     /**
@@ -40,7 +39,6 @@ trait CollectionTrait
      */
     public static function each($value)
     {
-
     }
 
     /**
@@ -49,7 +47,6 @@ trait CollectionTrait
      */
     public static function endsWith($value)
     {
-
     }
 
     /**
@@ -58,7 +55,6 @@ trait CollectionTrait
      */
     public static function in($value)
     {
-
     }
 
     /**
@@ -67,7 +63,6 @@ trait CollectionTrait
      */
     public static function key($value)
     {
-
     }
 
     /**
@@ -76,7 +71,6 @@ trait CollectionTrait
      */
     public static function length($value)
     {
-
     }
 
     /**
@@ -85,7 +79,6 @@ trait CollectionTrait
      */
     public static function notEmpty($value)
     {
-
     }
 
     /**
@@ -94,6 +87,5 @@ trait CollectionTrait
      */
     public static function startsWith($value)
     {
-
     }
 }

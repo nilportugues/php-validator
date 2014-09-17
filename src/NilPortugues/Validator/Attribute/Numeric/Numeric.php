@@ -18,5 +18,4 @@ use NilPortugues\Validator\AbstractValidator;
  */
 abstract class Numeric extends AbstractValidator
 {
-
 }

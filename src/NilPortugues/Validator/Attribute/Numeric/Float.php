@@ -27,5 +27,4 @@ class Float extends Numeric
 
         $this->addCondition(__METHOD__);
     }
-
 }

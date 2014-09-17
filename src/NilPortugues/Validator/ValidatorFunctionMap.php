@@ -37,32 +37,32 @@ class ValidatorFunctionMap
         "Integer::isBetween"    => '\Integer\IntegerTrait::isBetween',
 
         //String
-        "String::__construct"  => '\String\StringTrait::isString',
-        'String::alnum' => '\String\StringTrait::alnum',
-        'String::alpha' => '\String\StringTrait::alpha',
+        'String::isString' => '\String\StringTrait::isString',
+        'String::isAlphanumeric' => '\String\StringTrait::isAlphanumeric',
+        'String::isAlpha' => '\String\StringTrait::isAlpha',
         'String::between' => '\String\StringTrait::between',
-        'String::charset' => '\String\StringTrait::charset',
-        'String::hasOnlyConsonants' => '\String\StringTrait::hasOnlyConsonants',
-        'String::equals' => '\String\StringTrait::equals',
+        'String::isCharset' => '\String\StringTrait::isCharset',
+        'String::isAllConsonants' => '\String\StringTrait::isAllConsonants',
         'String::contains' => '\String\StringTrait::contains',
-        'String::controlCharacters' => '\String\StringTrait::controlCharacters',
-        'String::digit' => '\String\StringTrait::digit',
+        'String::isControlCharacters' => '\String\StringTrait::isControlCharacters',
+        'String::isDigit' => '\String\StringTrait::isDigit',
         'String::endsWith' => '\String\StringTrait::endsWith',
+        'String::equals' => '\String\StringTrait::equals',
         'String::in' => '\String\StringTrait::in',
-        'String::isGraphical' => '\String\StringTrait::isGraphical',
+        'String::hasGraphicalCharsOnly' => '\String\StringTrait::hasGraphicalCharsOnly',
         'String::hasLength' => '\String\StringTrait::hasLength',
         'String::isLowercase' => '\String\StringTrait::isLowercase',
         'String::notEmpty' => '\String\StringTrait::notEmpty',
         'String::noWhitespace' => '\String\StringTrait::noWhitespace',
-        'String::printable' => '\String\StringTrait::printable',
+        'String::hasPrintableCharsOnly' => '\String\StringTrait::hasPrintableCharsOnly',
         'String::isPunctuation' => '\String\StringTrait::isPunctuation',
         'String::matchesRegex' => '\String\StringTrait::matchesRegex',
         'String::isSlug' => '\String\StringTrait::isSlug',
         'String::isSpace' => '\String\StringTrait::isSpace',
         'String::startsWith' => '\String\StringTrait::startsWith',
         'String::isUppercase' => '\String\StringTrait::isUppercase',
-        'String::version' => '\String\StringTrait::version',
-        'String::hasOnlyVowels' => '\String\StringTrait::hasOnlyVowels',
+        'String::isVersion' => '\String\StringTrait::isVersion',
+        'String::isVowel' => '\String\StringTrait::isVowel',
         'String::isHexDigit' => '\String\StringTrait::isHexDigit',
 
         //Object
@@ -94,7 +94,7 @@ class ValidatorFunctionMap
     public function get($funcName, array $arguments = [])
     {
         if (!array_key_exists($funcName, $this->functionMap)) {
-           throw new \InvalidArgumentException('Validator key not found');
+            throw new \InvalidArgumentException('Validator key not found');
         }
 
         $function = $this->baseNamespace.$this->functionMap[$funcName];
@@ -103,7 +103,7 @@ class ValidatorFunctionMap
         $result = call_user_func_array([$class[0], $class[1]], $arguments);
 
         if (false === $result) {
-           $this->validator->setError('get the error message');
+            $this->validator->setError('get the error message');
         }
 
         return $result;

@@ -23,8 +23,7 @@ class Comparison extends AbstractValidator
      * @param      $end
      * @param bool $inclusive
      */
-    public function __construct($start, $end, $inclusive=false)
+    public function __construct($start, $end, $inclusive = false)
     {
-
     }
 }

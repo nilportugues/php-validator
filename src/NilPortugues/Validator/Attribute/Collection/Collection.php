@@ -28,5 +28,4 @@ class Collection extends AbstractValidator
 
         $this->addCondition(__METHOD__);
     }
-
 }

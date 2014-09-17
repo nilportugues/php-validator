@@ -16,5 +16,4 @@ namespace NilPortugues\Validator\Traits\Object;
  */
 trait ObjectTrait
 {
-
 }

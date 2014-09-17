@@ -28,5 +28,4 @@ class Object extends AbstractValidator
 
         $this->addCondition(__METHOD__);
     }
-
 }

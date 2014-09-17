@@ -34,7 +34,7 @@ class String extends AbstractValidator
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
-    public function alnum()
+    public function isAlphanumeric()
     {
         $this->addCondition(__METHOD__);
 
@@ -46,7 +46,7 @@ class String extends AbstractValidator
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
-    public function alpha()
+    public function isAlpha()
     {
         $this->addCondition(__METHOD__);
 
@@ -76,7 +76,7 @@ class String extends AbstractValidator
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
-    public function charset(array $charsetNames)
+    public function isCharset(array $charsetNames)
     {
         $this->addCondition(__METHOD__, [$charsetNames]);
 
@@ -88,7 +88,7 @@ class String extends AbstractValidator
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
-    public function hasOnlyConsonants()
+    public function isAllConsonants()
     {
         $this->addCondition(__METHOD__);
 
@@ -99,7 +99,7 @@ class String extends AbstractValidator
      * Validates if the input is equal some value.
      *
      * @param string $comparedValue
-     * @param bool $identical
+     * @param bool   $identical
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
@@ -126,7 +126,7 @@ class String extends AbstractValidator
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
-    public function controlCharacters()
+    public function isControlCharacters()
     {
         $this->addCondition(__METHOD__);
 
@@ -138,7 +138,7 @@ class String extends AbstractValidator
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
-    public function digit()
+    public function isDigit()
     {
         $this->addCondition(__METHOD__);
 
@@ -149,12 +149,13 @@ class String extends AbstractValidator
      * Validates if a given value is at the end of the input.
      *
      * @param string $word
+     * @param bool   $identical
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
-    public function endsWith($word)
+    public function endsWith($word, $identical = false)
     {
-        $this->addCondition(__METHOD__, [$word]);
+        $this->addCondition(__METHOD__, [$word, $identical]);
 
         return $this;
     }
@@ -163,11 +164,11 @@ class String extends AbstractValidator
      * Validates if the input is contained in a specific haystack.
      *
      * @param string $haystack
-     * @param bool $identical
+     * @param bool   $identical
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
-    public function in($haystack, $identical=false)
+    public function in($haystack, $identical = false)
     {
         $this->addCondition(__METHOD__, [$haystack, $identical]);
 
@@ -179,7 +180,7 @@ class String extends AbstractValidator
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
-    public function isGraphical()
+    public function hasGraphicalCharsOnly()
     {
         $this->addCondition(__METHOD__);
 
@@ -187,15 +188,13 @@ class String extends AbstractValidator
     }
 
     /**
-     * @param integer $min
-     * @param integer $max
-     * @param bool $inclusive
+     * @param $length
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
-    public function hasLength($min, $max, $inclusive=false)
+    public function hasLength($length)
     {
-        $this->addCondition(__METHOD__, [$min, $max, $inclusive]);
+        $this->addCondition(__METHOD__, [$length]);
 
         return $this;
     }
@@ -243,7 +242,7 @@ class String extends AbstractValidator
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
-    public function printable()
+    public function hasPrintableCharsOnly()
     {
         $this->addCondition(__METHOD__);
 
@@ -300,13 +299,14 @@ class String extends AbstractValidator
     /**
      * This validator validates only if the value is at the beginning of a string.
      *
-     * @param $word
+     * @param      $word
+     * @param bool $identical
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
-    public function startsWith($word)
+    public function startsWith($word, $identical = false)
     {
-        $this->addCondition(__METHOD__, [$word]);
+        $this->addCondition(__METHOD__, [$word, $identical]);
 
         return $this;
     }
@@ -328,7 +328,7 @@ class String extends AbstractValidator
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
-    public function version()
+    public function isVersion()
     {
         $this->addCondition(__METHOD__);
 
@@ -339,7 +339,7 @@ class String extends AbstractValidator
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
-    public function hasOnlyVowels()
+    public function isVowel()
     {
         $this->addCondition(__METHOD__);
 

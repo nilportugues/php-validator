@@ -53,7 +53,7 @@ trait StringTrait
      * @throws \InvalidArgumentException
      * @return bool
      */
-    public static function between($value, $min, $max, $inclusive=false)
+    public static function between($value, $min, $max, $inclusive = false)
     {
         $min = (int) $min;
         $max = (int) $max;
@@ -63,7 +63,7 @@ trait StringTrait
             throw new \InvalidArgumentException(sprintf('%s cannot be less than  %s for validation', $min, $max));
         }
 
-        if(false === $inclusive) {
+        if (false === $inclusive) {
             return $min < $length && $length < $max;
         }
 
@@ -170,7 +170,6 @@ trait StringTrait
         return $value === $comparedValue;
     }
 
-
     /**
      * @param      $value
      * @param      $haystack
@@ -186,6 +185,7 @@ trait StringTrait
         if (false === $identical) {
             return (false !== mb_stripos($haystack, $value, 0, $enc));
         }
+
         return (false !== mb_strpos($haystack, $value, 0, $enc));
     }
 
@@ -199,8 +199,8 @@ trait StringTrait
     }
 
     /**
-     * @param      $value
-     * @param      $length
+     * @param   $value
+     * @param   $length
      *
      * @return bool
      */
@@ -281,6 +281,7 @@ trait StringTrait
         ) {
             return false;
         }
+
         return true;
     }
 
