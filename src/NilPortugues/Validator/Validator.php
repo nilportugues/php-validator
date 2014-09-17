@@ -78,7 +78,7 @@ class Validator
     /**
      * @param $propertyName
      *
-     * @return Object
+     * @return String
      */
     public function isString($propertyName)
     {

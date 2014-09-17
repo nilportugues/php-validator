@@ -57,7 +57,7 @@ trait StringTrait
     {
         $min = (int) $min;
         $max = (int) $max;
-        $length = mb_strlen($value);
+        $length = mb_strlen($value, mb_detect_encoding($value));
 
         if ($min > $max) {
             throw new \InvalidArgumentException(sprintf('%s cannot be less than  %s for validation', $min, $max));
