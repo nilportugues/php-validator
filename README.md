@@ -42,7 +42,7 @@ $age = $validator->isInteger('age');
 $result = $age->isPositive()->isBetween(0, 100, true)->validate(28);
 
 var_dump($result); //true
-var_dump($age->getErrors()); // []
+var_dump($age->getErrors()); // ['age' => []]
 
 ```
 Clean and easy, right?

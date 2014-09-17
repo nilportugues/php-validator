@@ -32,6 +32,11 @@ abstract class AbstractValidator
     protected $conditions = [];
 
     /**
+     * @var array
+     */
+    protected $errors = [];
+
+    /**
      * @param Validator $validator
      */
     public function __construct(Validator $validator)
@@ -61,19 +66,43 @@ abstract class AbstractValidator
 
     /**
      * @param $value
+     * @param bool $stopOnError
      *
      * @return bool
      */
-    public function validate($value)
+    public function validate($value, $stopOnError = false)
     {
+        $isValid = true;
         foreach ($this->conditions as $condition) {
             $arguments = array_merge([$value], $condition['arguments']);
 
-            if (false === $this->functionMap->get($condition['key'], $arguments)) {
+            $isValid = $isValid && $this->functionMap->get($condition['key'], $arguments);
+
+            if (true == $stopOnError && false === $isValid) {
                 return false;
             }
         }
 
-        return true;
+        return $isValid;
+    }
+
+    /**
+     * @param $error
+     *
+     * @return $this
+     */
+    public function setError($error)
+    {
+        $this->errors[$this->validator->getPropertyName()][] = $error;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getErrors()
+    {
+        return $this->errors;
     }
 }

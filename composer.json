@@ -36,5 +36,8 @@
         "psr-4": {
             "Tests\\NilPortugues\\Validator\\": "tests/NilPortugues/Validator"
         }
+    },
+    "config": {
+        "bin-dir": "bin/"
     }
 }

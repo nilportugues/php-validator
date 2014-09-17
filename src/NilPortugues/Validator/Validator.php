@@ -23,11 +23,6 @@ use NilPortugues\Validator\Attribute\String\String;
 class Validator
 {
     /**
-     * @var array
-     */
-    private $errors = [];
-
-    /**
      * @var string
      */
     private $propertyName;
@@ -93,22 +88,10 @@ class Validator
     }
 
     /**
-     * @param $error
-     *
-     * @return $this
+     * @return string
      */
-    public function setError($error)
+    public function getPropertyName()
     {
-        $this->errors[$this->propertyName][] = $error;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getErrors()
-    {
-        return $this->errors;
+        return $this->propertyName;
     }
 }
