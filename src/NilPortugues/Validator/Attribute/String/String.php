@@ -98,13 +98,14 @@ class String extends AbstractValidator
     /**
      * Validates if the input is equal some value.
      *
+     * @param string $comparedValue
      * @param bool $identical
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
-    public function equals($identical = false)
+    public function equals($comparedValue, $identical = false)
     {
-        $this->addCondition(__METHOD__, [$identical]);
+        $this->addCondition(__METHOD__, [$comparedValue, $identical]);
 
         return $this;
     }
@@ -147,7 +148,7 @@ class String extends AbstractValidator
     /**
      * Validates if a given value is at the end of the input.
      *
-     * @param $word
+     * @param string $word
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
@@ -161,7 +162,7 @@ class String extends AbstractValidator
     /**
      * Validates if the input is contained in a specific haystack.
      *
-     * @param      $haystack
+     * @param string $haystack
      * @param bool $identical
      *
      * @return \NilPortugues\Validator\Attribute\String\String
@@ -186,8 +187,8 @@ class String extends AbstractValidator
     }
 
     /**
-     * @param      $min
-     * @param      $max
+     * @param integer $min
+     * @param integer $max
      * @param bool $inclusive
      *
      * @return \NilPortugues\Validator\Attribute\String\String

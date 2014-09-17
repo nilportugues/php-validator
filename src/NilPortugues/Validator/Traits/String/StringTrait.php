@@ -110,6 +110,25 @@ trait StringTrait
     }
 
     /**
+     * Validates if the input is equal some value.
+     *
+     * @param $value
+     * @param $comparedValue
+     * @param bool $identical
+     *
+     * @return bool
+     */
+    public function equals($value, $comparedValue, $identical = false)
+    {
+        if (false === $identical) {
+            return $value == $comparedValue;
+        }
+
+        return $value === $comparedValue;
+    }
+
+
+    /**
      * @param $value
      * @return bool
      */
