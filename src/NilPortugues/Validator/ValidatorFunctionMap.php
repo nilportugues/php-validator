@@ -37,7 +37,7 @@ class ValidatorFunctionMap
         "Integer::isBetween"    => '\Integer\IntegerTrait::isBetween',
 
         //String
-        'String::isString' => '\String\StringTrait::isString',
+        'String::__construct' => '\String\StringTrait::isString',
         'String::isAlphanumeric' => '\String\StringTrait::isAlphanumeric',
         'String::isAlpha' => '\String\StringTrait::isAlpha',
         'String::between' => '\String\StringTrait::between',
