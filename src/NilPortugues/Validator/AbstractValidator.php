@@ -42,7 +42,7 @@ abstract class AbstractValidator
     public function __construct(Validator $validator)
     {
         $this->validator = $validator;
-        $this->functionMap = new ValidatorFunctionMap();
+        $this->functionMap = new ValidatorFunctionMap($this);
     }
 
     /**

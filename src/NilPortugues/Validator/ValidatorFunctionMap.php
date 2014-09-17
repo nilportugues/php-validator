@@ -70,6 +70,19 @@ class ValidatorFunctionMap
     ];
 
     /**
+     * @var AbstractValidator
+     */
+    private $validator;
+
+    /**
+     * @param AbstractValidator $validator
+     */
+    public function __construct(AbstractValidator $validator)
+    {
+        $this->validator = $validator;
+    }
+
+    /**
      * Gets the function from the function map and runs it against the values.
      *
      * @param       $funcName
@@ -90,7 +103,7 @@ class ValidatorFunctionMap
         $result = call_user_func_array([$class[0], $class[1]], $arguments);
 
         if (false === $result) {
-           echo 'get the error message';
+           $this->validator->setError('get the error message');
         }
 
         return $result;
