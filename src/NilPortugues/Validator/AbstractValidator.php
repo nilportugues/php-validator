@@ -73,6 +73,8 @@ abstract class AbstractValidator
     public function validate($value, $stopOnError = false)
     {
         $isValid = true;
+        $this->errors = [];
+        
         foreach ($this->conditions as $condition) {
             $arguments = array_merge([$value], $condition['arguments']);
 
@@ -82,6 +84,8 @@ abstract class AbstractValidator
                 return false;
             }
         }
+
+        $this->conditions[] = [];
 
         return $isValid;
     }
