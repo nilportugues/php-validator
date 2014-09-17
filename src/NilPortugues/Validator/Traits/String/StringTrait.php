@@ -30,83 +30,126 @@ trait StringTrait
      * @param $value
      * @return bool
      */
-    public static function alnum($value)
+    public static function isAlphanumeric($value)
     {
-
+        return ctype_alnum($value);
     }
 
     /**
      * @param $value
      * @return bool
      */
-    public static function alpha($value)
+    public static function isAlpha($value)
     {
-
-    }
-
-    /**
-     * @param $value
-     * @return bool
-     */
-    public static function between($value)
-    {
-
-    }
-
-    /**
-     * @param $value
-     * @return bool
-     */
-    public static function charset($value)
-    {
-
-    }
-
-    /**
-     * @param $value
-     * @return bool
-     */
-    public static function consonant($value)
-    {
-
+        return ctype_alpha($value);
     }
 
     /**
      * @param      $value
+     * @param      $min
+     * @param      $max
+     * @param bool $inclusive
+     *
+     * @throws \InvalidArgumentException
+     * @return bool
+     */
+    public static function between($value, $min, $max, $inclusive=false)
+    {
+        $min = (int) $min;
+        $max = (int) $max;
+        $length = mb_strlen($value);
+
+        if ($min > $max) {
+            throw new \InvalidArgumentException(sprintf('%s cannot be less than  %s for validation', $min, $max));
+        }
+
+        if(false === $inclusive) {
+            return $min < $length && $length < $max;
+        }
+
+        return $min <= $length && $length <= $max;
+    }
+
+    /**
+     * @param $value
+     * @param $charset
+     *
+     * @return bool
+     */
+    public static function isCharset($value, $charset)
+    {
+        $available = mb_list_encodings();
+
+        $charset = is_array($charset) ? $charset : array($charset);
+
+        $charsetList = array_filter($charset, function ($charsetName) use ($available) {
+            return in_array($charsetName, $available, true);
+        });
+
+        $detectedEncoding = mb_detect_encoding($value, $charset, true);
+
+        return in_array($detectedEncoding, $charsetList, true);
+    }
+
+    /**
+     * @param $value
+     * @return bool
+     */
+    public static function isAllConsonants($value)
+    {
+        return preg_match('/^(\s|[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z])+$/', $value) > 0;
+    }
+
+    /**
+     * @param      $value
+     * @param      $contains
      * @param bool $identical
      *
      * @return bool
      */
-    public static function contains($value, $identical = false)
+    public static function contains($value, $contains, $identical = false)
     {
+        if (false === $identical) {
+            return false !== mb_stripos($value, $contains, 0, mb_detect_encoding($value));
+        }
 
+        return false !== mb_strpos($value, $contains, 0, mb_detect_encoding($value));
     }
 
     /**
      * @param $value
      * @return bool
      */
-    public static function controlCharacters($value)
+    public static function isControlCharacters($value)
     {
-
+        return ctype_cntrl($value);
     }
 
     /**
      * @param $value
      * @return bool
      */
-    public static function digit($value)
+    public static function isDigit($value)
     {
-
+        return ctype_digit($value);
     }
 
     /**
-     * @param $value
+     * @param      $value
+     * @param      $contains
+     * @param bool $identical
+     *
      * @return bool
      */
-    public static function endsWith($value)
+    public static function endsWith($value, $contains, $identical = false)
     {
+        $enc = mb_detect_encoding($value);
 
+        if (false === $identical) {
+            return mb_strripos($value, $contains, -1, $enc) === (mb_strlen($value, $enc) - mb_strlen($contains, $enc));
+        }
+
+        return mb_strrpos($value, $contains, 0, $enc) === (mb_strlen($value, $enc) - mb_strlen($contains, $enc));
     }
 
     /**
@@ -118,7 +161,7 @@ trait StringTrait
      *
      * @return bool
      */
-    public function equals($value, $comparedValue, $identical = false)
+    public static function equals($value, $comparedValue, $identical = false)
     {
         if (false === $identical) {
             return $value == $comparedValue;
@@ -129,39 +172,52 @@ trait StringTrait
 
 
     /**
-     * @param $value
+     * @param      $value
+     * @param      $haystack
+     * @param bool $identical
+     *
      * @return bool
      */
-    public static function in($value)
+    public static function in($value, $haystack, $identical = false)
     {
+        $haystack = (string) $haystack;
+        $enc = mb_detect_encoding($value);
 
+        if (false === $identical) {
+            return (false !== mb_stripos($haystack, $value, 0, $enc));
+        }
+        return (false !== mb_strpos($haystack, $value, 0, $enc));
     }
 
     /**
      * @param $value
      * @return bool
      */
-    public static function graph($value)
+    public static function hasGraphicalCharsOnly($value)
     {
+        return ctype_graph($value);
+    }
 
+    /**
+     * @param      $value
+     * @param      $length
+     *
+     * @return bool
+     */
+    public static function hasLength($value, $length)
+    {
+        $length = (int) $length;
+
+        return mb_strlen($value, mb_detect_encoding($value)) === $length;
     }
 
     /**
      * @param $value
      * @return bool
      */
-    public static function length($value)
+    public static function isLowercase($value)
     {
-
-    }
-
-    /**
-     * @param $value
-     * @return bool
-     */
-    public static function lowercase($value)
-    {
-
+        return $value === mb_strtolower($value, mb_detect_encoding($value));
     }
 
     /**
@@ -170,7 +226,9 @@ trait StringTrait
      */
     public static function notEmpty($value)
     {
+        $value = trim($value);
 
+        return !empty($value);
     }
 
     /**
@@ -179,16 +237,16 @@ trait StringTrait
      */
     public static function noWhitespace($value)
     {
-
+        return 0 === preg_match('/\s/',$value);
     }
 
     /**
      * @param $value
      * @return bool
      */
-    public static function printable($value)
+    public static function hasPrintableCharsOnly($value)
     {
-
+        return ctype_print($value);
     }
 
     /**
@@ -197,78 +255,95 @@ trait StringTrait
      */
     public static function isPunctuation($value)
     {
+        return ctype_punct($value);
+    }
 
+    /**
+     * @param $value
+     * @param $regex
+     *
+     * @return bool
+     */
+    public static function matchesRegex($value, $regex)
+    {
+        return preg_match($regex, $value) > 0;
     }
 
     /**
      * @param $value
      * @return bool
      */
-    public static function regex($value)
+    public static function isSlug($value)
     {
-
+        if ((false !== strstr($value, '--'))
+        || (!preg_match('@^[0-9a-z\-]+$@', $value))
+        || (preg_match('@^-|-$@', $value))
+        ) {
+            return false;
+        }
+        return true;
     }
 
     /**
      * @param $value
      * @return bool
      */
-    public static function slug($value)
+    public static function isSpace($value)
     {
+        return ctype_space($value);
+    }
 
+    /**
+     * @param      $value
+     * @param      $contains
+     * @param bool $identical
+     *
+     * @return bool
+     */
+    public static function startsWith($value, $contains, $identical = false)
+    {
+        $enc = mb_detect_encoding($value);
+
+        if (false === $identical) {
+            return 0 === mb_stripos($value, $contains, 0, $enc);
+        }
+
+        return 0 === mb_strpos($value, $contains, 0, $enc);
     }
 
     /**
      * @param $value
      * @return bool
      */
-    public static function space($value)
+    public static function isUppercase($value)
     {
-
+        return $value === mb_strtoupper($value, mb_detect_encoding($value));
     }
 
     /**
      * @param $value
      * @return bool
      */
-    public static function startsWith($value)
+    public static function isVersion($value)
     {
-
+        return preg_match('/^[0-9]+\.[0-9]+(\.[0-9]*)?([+-][^+-][0-9A-Za-z-.]*)?$/', $value) > 0;
     }
 
     /**
      * @param $value
      * @return bool
      */
-    public static function uppercase($value)
+    public static function isVowel($value)
     {
-
+        return preg_match('/^(\s|[aeiouAEIOU])*$/', $value) > 0;
     }
 
     /**
      * @param $value
      * @return bool
      */
-    public static function version($value)
+    public static function isHexDigit($value)
     {
-
-    }
-
-    /**
-     * @param $value
-     * @return bool
-     */
-    public static function vowel($value)
-    {
-
-    }
-
-    /**
-     * @param $value
-     * @return bool
-     */
-    public static function xdigit($value)
-    {
-
+        return ctype_xdigit($value);
     }
 }
