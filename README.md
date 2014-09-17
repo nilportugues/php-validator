@@ -63,7 +63,7 @@ The recommended way to install SQL Query Builder is through [Composer](http://ge
 The Validator interface is 100% human-friendly and readable. By default, it supports 2 validation styles, full validation and partial validation.
 
 <a name="block2.1"></a>
-## 2. Validate All [↑](#index_block)
+### 2.1. Validate All [↑](#index_block)
 
 When writing validator input data it is expected to be match a set of rules. If one or more of these rules fail, a collection of errors is returned. This is the default behaviour for `validate($input)`.
 
@@ -77,7 +77,7 @@ $result = $age->isPositive()->isBetween(0, 100, true)->validate(28);
 ```
 
 <a name="block2.2"></a>
-## 2. Stop on first error [↑](#index_block)
+### 2.2. Stop on first error [↑](#index_block)
 
 Sometimes, fast validation checks are needed when validating input data. This is possible by passing `true` as the second argument to the `validate` method. 
 
