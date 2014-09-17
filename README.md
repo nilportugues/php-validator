@@ -87,7 +87,7 @@ For instance, in the following code `isBetween`is never executed.
 $validator = new \NilPortugues\Validator\Validator();
 
 $age = $validator->isInteger('age');
-$result = $age->isPositive()->isBetween(0, 100, true)->validate(-10);
+$result = $age->isPositive()->isBetween(0, 100, true)->validate(-10, true);
 ```
 
 
