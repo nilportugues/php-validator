@@ -8,6 +8,8 @@ A simple, powerful and elegant stand-alone validation library with no dependenci
 <a name="index_block"></a>
 * [1. Installation](#block1)
 * [2. Usage](#block2)
+  * [2.1. Validate all](#block2.1)
+  * [2.2. Stop on first error](#block2.2)
 * [3. Methods](#block3)
     * [3.1 String](#block3.1)
         * [3.1.1. isAlphanumeric] (#block3.1.1)
@@ -58,20 +60,36 @@ The recommended way to install SQL Query Builder is through [Composer](http://ge
 <a name="block2"></a>
 # 2. Usage [↑](#index_block)
 
-The Validator interface is 100% human-friendly and readable. Here's how you would validate an input `age`.
+The Validator interface is 100% human-friendly and readable. By default, it supports 2 validation styles, full validation and partial validation.
+
+<a name="block2.1"></a>
+## 2. Validate All [↑](#index_block)
+
+When writing validator input data it is expected to be match a set of rules. If one or more of these rules fail, a collection of errors is returned. This is the default behaviour for `validate($input)`.
+
+Here's how you would validate an input `age`.
 
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
 $age = $validator->isInteger('age');
-
 $result = $age->isPositive()->isBetween(0, 100, true)->validate(28);
-
-var_dump($result); //true
-var_dump($age->getErrors()); // ['age' => []]
-
 ```
-Clean and easy, right?
+
+<a name="block2.2"></a>
+## 2. Stop on first error [↑](#index_block)
+
+Sometimes, fast validation checks are needed when validating input data. This is possible by passing `true` as the second argument to the `validate` method. 
+
+For instance, in the following code `isBetween`is never executed.
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$age = $validator->isInteger('age');
+$result = $age->isPositive()->isBetween(0, 100, true)->validate(-10);
+```
+
 
 <a name="block3"></a>
 # 3. Methods [↑](#index_block)
