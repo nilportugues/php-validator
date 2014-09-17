@@ -37,14 +37,12 @@ The Validator interface is 100% human-friendly and readable. Here's how you woul
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
-$result = $validator
-    ->isInteger('age')
-    ->isPositive()
-    ->isBetween(0, 100, true)
-    ->validate(28);
+$age = $validator->isInteger('age');
+
+$result = $age->isPositive()->isBetween(0, 100, true)->validate(28);
 
 var_dump($result); //true
-var_dump($validator->getErrors()); // []
+var_dump($age->getErrors()); // []
 
 ```
 Clean and easy, right?
