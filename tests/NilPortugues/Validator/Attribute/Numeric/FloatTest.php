@@ -13,27 +13,27 @@ namespace Tests\NilPortugues\Validator\Attribute\Numeric;
 use NilPortugues\Validator\Validator;
 
 /**
- * Class IntegerTest
+ * Class FloatTest
  * @package Tests\NilPortugues\Validator\Attribute\Numeric
  */
-class IntegerTest extends \PHPUnit_Framework_TestCase
+class FloatTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @return \NilPortugues\Validator\Attribute\Numeric\Integer
+     * @return \NilPortugues\Validator\Attribute\Numeric\Float
      */
     protected function getValidator()
     {
         $validator = new Validator();
 
-        return $validator->isInteger('propertyName');
+        return $validator->isFloat('propertyName');
     }
 
     /**
      * @test
      */
-    public function it_should_check_it_is_integer()
+    public function it_should_check_it_is_Float()
     {
-        $this->assertTrue($this->getValidator()->validate(1));
+        $this->assertTrue($this->getValidator()->validate(1.10));
         $this->assertFalse($this->getValidator()->validate('a'));
     }
 
@@ -42,7 +42,7 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_it_is_not_zero()
     {
-        $this->assertTrue($this->getValidator()->isNotZero()->validate(1));
+        $this->assertTrue($this->getValidator()->isNotZero()->validate(1.10));
         $this->assertFalse($this->getValidator()->isNotZero()->validate(0));
     }
 
@@ -51,7 +51,7 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_it_is_positive()
     {
-        $this->assertTrue($this->getValidator()->isPositive()->validate(1));
+        $this->assertTrue($this->getValidator()->isPositive()->validate(1.10));
         $this->assertFalse($this->getValidator()->isPositive()->validate(-10));
     }
 
@@ -60,8 +60,8 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_it_is_negative()
     {
-        $this->assertTrue($this->getValidator()->isNegative()->validate(-10));
-        $this->assertFalse($this->getValidator()->isNegative()->validate(1));
+        $this->assertTrue($this->getValidator()->isNegative()->validate(-10.10));
+        $this->assertFalse($this->getValidator()->isNegative()->validate(1.10));
     }
 
     /**
@@ -69,7 +69,8 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_it_is_between()
     {
-        $this->assertTrue($this->getValidator()->isBetween(10,20, false)->validate(13));
-        $this->assertTrue($this->getValidator()->isBetween(10, 20, true)->validate(10));
+        $this->assertTrue($this->getValidator()->isBetween(10.10,20.10, false)->validate(13.10));
+
+        $this->assertTrue($this->getValidator()->isBetween(10.10, 20.10, true)->validate(10.10));
     }
 }

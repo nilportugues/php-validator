@@ -25,6 +25,7 @@ trait IntegerTrait
     {
         return is_integer($value);
     }
+
     /**
      * @param $value
      *
@@ -32,7 +33,7 @@ trait IntegerTrait
      */
     public static function isNotZero($value)
     {
-        return 0 != $value;
+        return 0 != (int) $value;
     }
 
     /**
@@ -42,7 +43,7 @@ trait IntegerTrait
      */
     public static function isPositive($value)
     {
-        return 0 <= $value;
+        return 0 <= (int) $value;
     }
 
     /**
@@ -52,7 +53,7 @@ trait IntegerTrait
      */
     public static function isNegative($value)
     {
-        return 0 >= $value;
+        return 0 >= (int) $value;
     }
 
     /**
@@ -65,6 +66,10 @@ trait IntegerTrait
      */
     public static function isBetween($value, $min, $max, $inclusive = false)
     {
+        $value = (int) $value;
+        $min = (int) $min;
+        $max = (int) $max;
+
         if (false === $inclusive) {
             return (($value > $min) && ($value < $max));
         }

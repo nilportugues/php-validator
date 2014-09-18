@@ -16,4 +16,64 @@ namespace NilPortugues\Validator\Traits\Float;
  */
 trait FloatTrait
 {
+    /**
+     * @param $value
+     *
+     * @return bool
+     */
+    public static function isFloat($value)
+    {
+        return is_float($value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return bool
+     */
+    public static function isNotZero($value)
+    {
+        return 0 != (float) $value;
+    }
+
+    /**
+     * @param $value
+     *
+     * @return bool
+     */
+    public static function isPositive($value)
+    {
+        return 0 <= (float) $value;
+    }
+
+    /**
+     * @param $value
+     *
+     * @return bool
+     */
+    public static function isNegative($value)
+    {
+        return 0 >= (float) $value;
+    }
+
+    /**
+     * @param      $value
+     * @param      $min
+     * @param      $max
+     * @param bool $inclusive
+     *
+     * @return bool
+     */
+    public static function isBetween($value, $min, $max, $inclusive = false)
+    {
+        $value = (float) $value;
+        $min = (float) $min;
+        $max = (float) $max;
+
+        if (false === $inclusive) {
+            return (($min < $value) && ($value < $max));
+        }
+
+        return (($min <= $value) && ($value <= $max));
+    }    
 }

@@ -49,15 +49,15 @@ class Integer extends Numeric
     }
 
     /**
-     * @param      $min
-     * @param      $max
+     * @param int $min
+     * @param int $max
      * @param bool $inclusive
      *
      * @return \NilPortugues\Validator\Attribute\Numeric\Integer
      */
     public function isBetween($min, $max, $inclusive = false)
     {
-        $this->addCondition(__METHOD__, [$min, $max, $inclusive]);
+        $this->addCondition(__METHOD__, [(int) $min, (int) $max, $inclusive]);
 
         return $this;
     }

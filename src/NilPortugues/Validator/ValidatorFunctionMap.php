@@ -29,6 +29,11 @@ class ValidatorFunctionMap
     private $functionMap = [
 
         //Float
+        "Float::__construct"  => '\Float\FloatTrait::isFloat',
+        "Float::isNotZero"   => '\Float\FloatTrait::isNotZero',
+        "Float::isPositive"   => '\Float\FloatTrait::isPositive',
+        "Float::isNegative"   => '\Float\FloatTrait::isNegative',
+        "Float::isBetween"    => '\Float\FloatTrait::isBetween',
 
         //Integer
         "Integer::__construct"  => '\Integer\IntegerTrait::isInteger',

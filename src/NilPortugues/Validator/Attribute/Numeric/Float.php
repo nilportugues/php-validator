@@ -27,4 +27,48 @@ class Float extends Numeric
 
         $this->addCondition(__METHOD__);
     }
+
+    /**
+     * @return \NilPortugues\Validator\Attribute\Numeric\Float
+     */
+    public function isNotZero()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * @return \NilPortugues\Validator\Attribute\Numeric\Float
+     */
+    public function isPositive()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * @param float $min
+     * @param float $max
+     * @param bool $inclusive
+     *
+     * @return \NilPortugues\Validator\Attribute\Numeric\Float
+     */
+    public function isBetween($min, $max, $inclusive = false)
+    {
+        $this->addCondition(__METHOD__, [(float) $min, (float) $max, $inclusive]);
+
+        return $this;
+    }
+
+    /**
+     * @return \NilPortugues\Validator\Attribute\Numeric\Float
+     */
+    public function isNegative()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
 }
