@@ -39,6 +39,14 @@ A simple, powerful and elegant stand-alone validation library with no dependenci
         * [3.1.25. isVowel] (#block3.1.25)
         * [3.1.26. isHexDigit] (#block3.1.26)
     * [3.2 Numbers (Integers and Floats)](#block3.2)
+        * [3.2.1. isFloat] (#block3.2.1)
+        * [3.2.2. isNotZero] (#block3.2.2)
+        * [3.2.3. isPositive] (#block3.2.3)
+        * [3.2.4. isNegative] (#block3.2.4)
+        * [3.2.5. isBetween] (#block3.2.5)
+        * [3.2.6. isOdd] (#block3.2.6)
+        * [3.2.7. isEven] (#block3.2.7)
+        * [3.2.8. isMultiple] (#block3.2.8)
     * [3.3 Objects](#block3.3)
     * [3.4 Collections (Arrays)](#block3.4)
 * [4. Quality Code](#block4)
@@ -160,6 +168,22 @@ The following chainable validation options are available for string data:
 
 <a name="block3.2"></a>
 ## 3.2 Numbers (Integers and Floats) [↑](#index_block)
+
+#### 3.2.1. isFloat  <a name="block3.2.1"></a> [↑](#index_block)
+
+#### 3.2.2. isNotZero  <a name="block3.2.2"></a> [↑](#index_block)
+
+#### 3.2.3. isPositive  <a name="block3.2.3"></a> [↑](#index_block)
+
+#### 3.2.4. isNegative  <a name="block3.2.4"></a> [↑](#index_block)
+
+#### 3.2.5. isBetween  <a name="block3.2.5"></a> [↑](#index_block)
+
+#### 3.2.6. isOdd  <a name="block3.2.6"></a> [↑](#index_block)
+
+#### 3.2.7. isEven  <a name="block3.2.7"></a> [↑](#index_block)
+
+#### 3.2.8. isMultiple  <a name="block3.2.8"></a> [↑](#index_block)
 
 <a name="block3.3"></a>
 ## 3.3 Objects [↑](#index_block)
