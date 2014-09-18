@@ -82,4 +82,31 @@ class FloatTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException('\InvalidArgumentException');
         $this->getValidator()->isBetween(20.10,10.10, false)->validate(13.10);
     }
+
+    /**
+     * @test
+     */
+    public function it_should_check_is_odd()
+    {
+        $this->assertTrue($this->getValidator()->isOdd()->validate(3.1));
+        $this->assertFalse($this->getValidator()->isOdd()->validate(2.1));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_is_even()
+    {
+        $this->assertTrue($this->getValidator()->isEven()->validate(2.1));
+        $this->assertFalse($this->getValidator()->isEven()->validate(3.1));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_is_multiple()
+    {
+        $this->assertTrue($this->getValidator()->isMultiple(2.1)->validate(2.2));
+        $this->assertFalse($this->getValidator()->isMultiple(2)->validate(5.5));
+    }
 }

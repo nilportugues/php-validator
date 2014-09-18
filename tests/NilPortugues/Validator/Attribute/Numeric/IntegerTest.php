@@ -81,4 +81,31 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException('\InvalidArgumentException');
         $this->getValidator()->isBetween(20,10, false)->validate(13);
     }
+
+    /**
+     * @test
+     */
+    public function it_should_check_is_odd()
+    {
+        $this->assertTrue($this->getValidator()->isOdd()->validate(3));
+        $this->assertFalse($this->getValidator()->isOdd()->validate(2));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_is_even()
+    {
+        $this->assertTrue($this->getValidator()->isEven()->validate(2));
+        $this->assertFalse($this->getValidator()->isEven()->validate(3));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_is_multiple()
+    {
+        $this->assertTrue($this->getValidator()->isMultiple(2)->validate(4));
+        $this->assertFalse($this->getValidator()->isMultiple(2)->validate(3));
+    }
 }

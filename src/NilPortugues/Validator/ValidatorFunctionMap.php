@@ -34,6 +34,9 @@ class ValidatorFunctionMap
         "Float::isPositive"   => '\Float\FloatTrait::isPositive',
         "Float::isNegative"   => '\Float\FloatTrait::isNegative',
         "Float::isBetween"    => '\Float\FloatTrait::isBetween',
+        'Float::isOdd' => '\Float\FloatTrait::isOdd',
+        'Float::isEven' => '\Float\FloatTrait::isEven',
+        'Float::isMultiple' => '\Float\FloatTrait::isMultiple',
 
         //Integer
         "Integer::__construct"  => '\Integer\IntegerTrait::isInteger',
@@ -41,6 +44,9 @@ class ValidatorFunctionMap
         "Integer::isPositive"   => '\Integer\IntegerTrait::isPositive',
         "Integer::isNegative"   => '\Integer\IntegerTrait::isNegative',
         "Integer::isBetween"    => '\Integer\IntegerTrait::isBetween',
+        'Integer::isOdd' => '\Integer\IntegerTrait::isOdd',
+        'Integer::isEven' => '\Integer\IntegerTrait::isEven',
+        'Integer::isMultiple' => '\Integer\IntegerTrait::isMultiple',
 
         //String
         'String::__construct' => '\String\StringTrait::isString',

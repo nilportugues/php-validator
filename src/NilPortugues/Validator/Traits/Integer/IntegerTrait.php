@@ -81,7 +81,6 @@ trait IntegerTrait
         return (($value >= $min) && ($value <= $max));
     }
 
-
     /**
      * @param int $value
      *
