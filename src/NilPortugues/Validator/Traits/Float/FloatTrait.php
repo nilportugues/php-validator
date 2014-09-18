@@ -81,4 +81,42 @@ trait FloatTrait
 
         return (($min <= $value) && ($value <= $max));
     }
+
+    /**
+     * @param float $value
+     *
+     * @return bool
+     */
+    public static function isOdd($value)
+    {
+        $value = (float) $value;
+
+        return 0 == ($value % 3);
+    }
+
+    /**
+     * @param float $value
+     *
+     * @return bool
+     */
+    public static function isEven($value)
+    {
+        $value = (float) $value;
+
+        return 0 == ($value % 2);
+    }
+
+    /**
+     * @param float $value
+     * @param float $multiple
+     *
+     * @return bool
+     */
+    public static function isMultiple($value, $multiple)
+    {
+        $multiple = (float) $multiple;
+        $value = (float) $value;
+
+        return 0 == ($value % $multiple);
+    }
 }

@@ -71,4 +71,36 @@ class Float extends Numeric
 
         return $this;
     }
+
+    /**
+     * @return $this
+     */
+    public function isOdd()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function isEven()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * @param float $multiple
+     *
+     * @return $this
+     */
+    public function isMultiple($multiple)
+    {
+        $this->addCondition(__METHOD__, [(float) $multiple]);
+
+        return $this;
+    }
 }

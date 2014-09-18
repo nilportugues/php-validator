@@ -80,4 +80,43 @@ trait IntegerTrait
 
         return (($value >= $min) && ($value <= $max));
     }
+
+
+    /**
+     * @param int $value
+     *
+     * @return bool
+     */
+    public static function isOdd($value)
+    {
+        $value = (int) $value;
+
+        return 0 == ($value % 3);
+    }
+
+    /**
+     * @param int $value
+     *
+     * @return bool
+     */
+    public static function isEven($value)
+    {
+        $value = (int) $value;
+
+        return 0 == ($value % 2);
+    }
+
+    /**
+     * @param int $value
+     * @param int $multiple
+     *
+     * @return bool
+     */
+    public static function isMultiple($value, $multiple)
+    {
+        $multiple = (int) $multiple;
+        $value = (int) $value;
+
+        return 0 == ($value % $multiple);
+    }
 }

@@ -71,4 +71,36 @@ class Integer extends Numeric
 
         return $this;
     }
+
+    /**
+     * @return $this
+     */
+    public function isOdd()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function isEven()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * @param int $multiple
+     *
+     * @return $this
+     */
+    public function isMultiple($multiple)
+    {
+        $this->addCondition(__METHOD__, [(int) $multiple]);
+
+        return $this;
+    }
 }
