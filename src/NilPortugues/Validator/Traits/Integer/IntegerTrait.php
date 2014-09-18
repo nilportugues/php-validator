@@ -70,6 +70,10 @@ trait IntegerTrait
         $min = (int) $min;
         $max = (int) $max;
 
+        if ($min > $max) {
+            throw new \InvalidArgumentException(sprintf('%s cannot be less than  %s for validation', $min, $max));
+        }
+
         if (false === $inclusive) {
             return (($value > $min) && ($value < $max));
         }

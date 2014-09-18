@@ -25,7 +25,7 @@ trait FloatTrait
     {
         return is_float($value);
     }
-    
+
     /**
      * @param $value
      *
@@ -62,6 +62,7 @@ trait FloatTrait
      * @param      $max
      * @param bool $inclusive
      *
+     * @throws \InvalidArgumentException
      * @return bool
      */
     public static function isBetween($value, $min, $max, $inclusive = false)
@@ -70,10 +71,14 @@ trait FloatTrait
         $min = (float) $min;
         $max = (float) $max;
 
+        if ($min > $max) {
+            throw new \InvalidArgumentException(sprintf('%s cannot be less than  %s for validation', $min, $max));
+        }
+
         if (false === $inclusive) {
             return (($min < $value) && ($value < $max));
         }
 
         return (($min <= $value) && ($value <= $max));
-    }    
+    }
 }

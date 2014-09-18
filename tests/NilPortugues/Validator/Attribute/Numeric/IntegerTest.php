@@ -72,4 +72,13 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->getValidator()->isBetween(10,20, false)->validate(13));
         $this->assertTrue($this->getValidator()->isBetween(10, 20, true)->validate(10));
     }
+
+    /**
+     * @test
+     */
+    public function it_should_check_is_between_exception()
+    {
+        $this->setExpectedException('\InvalidArgumentException');
+        $this->getValidator()->isBetween(20,10, false)->validate(13);
+    }
 }

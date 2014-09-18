@@ -51,7 +51,7 @@ class Float extends Numeric
     /**
      * @param float $min
      * @param float $max
-     * @param bool $inclusive
+     * @param bool  $inclusive
      *
      * @return \NilPortugues\Validator\Attribute\Numeric\Float
      */

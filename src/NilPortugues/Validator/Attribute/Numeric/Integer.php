@@ -49,8 +49,8 @@ class Integer extends Numeric
     }
 
     /**
-     * @param int $min
-     * @param int $max
+     * @param int  $min
+     * @param int  $max
      * @param bool $inclusive
      *
      * @return \NilPortugues\Validator\Attribute\Numeric\Integer

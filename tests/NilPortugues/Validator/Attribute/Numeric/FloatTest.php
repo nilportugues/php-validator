@@ -31,7 +31,7 @@ class FloatTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_it_is_Float()
+    public function it_should_check_it_is_float()
     {
         $this->assertTrue($this->getValidator()->validate(1.10));
         $this->assertFalse($this->getValidator()->validate('a'));
@@ -72,5 +72,14 @@ class FloatTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->getValidator()->isBetween(10.10,20.10, false)->validate(13.10));
 
         $this->assertTrue($this->getValidator()->isBetween(10.10, 20.10, true)->validate(10.10));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_is_between_exception()
+    {
+        $this->setExpectedException('\InvalidArgumentException');
+        $this->getValidator()->isBetween(20.10,10.10, false)->validate(13.10);
     }
 }

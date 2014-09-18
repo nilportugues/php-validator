@@ -87,6 +87,15 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function it_should_check_string_is_between_exception()
+    {
+        $this->setExpectedException('\InvalidArgumentException');
+        $this->getValidator()->between(4, 2, false)->validate('Nil');
+    }
+
+    /**
+     * @test
+     */
     public function it_should_check_string_is_charset()
     {
         $value = 'Portugués';
