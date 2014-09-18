@@ -116,7 +116,7 @@ class String extends AbstractValidator
      */
     public function contains($identical = false)
     {
-        $this->addCondition(__METHOD__, [(bool) $identical]);
+        $this->addCondition(__METHOD__, [$identical]);
 
         return $this;
     }
