@@ -56,15 +56,15 @@ class String extends AbstractValidator
     /**
      * Validates is a string is between ranges.
      *
-     * @param      $start
-     * @param      $end
+     * @param int $start
+     * @param int  $end
      * @param bool $inclusive
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
     public function between($start, $end, $inclusive = false)
     {
-        $this->addCondition(__METHOD__, [$start, $end, $inclusive]);
+        $this->addCondition(__METHOD__, [(int) $start, (int) $end, (bool) $inclusive]);
 
         return $this;
     }
@@ -98,14 +98,14 @@ class String extends AbstractValidator
     /**
      * Validates if the input is equal some value.
      *
-     * @param string $comparedValue
+     * @param mixed $comparedValue
      * @param bool   $identical
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
     public function equals($comparedValue, $identical = false)
     {
-        $this->addCondition(__METHOD__, [$comparedValue, $identical]);
+        $this->addCondition(__METHOD__, [$comparedValue, (bool) $identical]);
 
         return $this;
     }
@@ -116,7 +116,7 @@ class String extends AbstractValidator
      */
     public function contains($identical = false)
     {
-        $this->addCondition(__METHOD__, [$identical]);
+        $this->addCondition(__METHOD__, [(bool) $identical]);
 
         return $this;
     }
@@ -155,7 +155,7 @@ class String extends AbstractValidator
      */
     public function endsWith($word, $identical = false)
     {
-        $this->addCondition(__METHOD__, [$word, $identical]);
+        $this->addCondition(__METHOD__, [$word, (bool) $identical]);
 
         return $this;
     }
@@ -170,7 +170,7 @@ class String extends AbstractValidator
      */
     public function in($haystack, $identical = false)
     {
-        $this->addCondition(__METHOD__, [$haystack, $identical]);
+        $this->addCondition(__METHOD__, [(string) $haystack, (bool) $identical]);
 
         return $this;
     }
@@ -194,7 +194,7 @@ class String extends AbstractValidator
      */
     public function hasLength($length)
     {
-        $this->addCondition(__METHOD__, [$length]);
+        $this->addCondition(__METHOD__, [(int) $length]);
 
         return $this;
     }
@@ -263,13 +263,13 @@ class String extends AbstractValidator
     /**
      * Evaluates a regex on the input and validates if matches.
      *
-     * @param $regex
+     * @param string $regex
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
     public function matchesRegex($regex)
     {
-        $this->addCondition(__METHOD__, [$regex]);
+        $this->addCondition(__METHOD__, [(string) $regex]);
 
         return $this;
     }
@@ -299,14 +299,14 @@ class String extends AbstractValidator
     /**
      * This validator validates only if the value is at the beginning of a string.
      *
-     * @param      $word
+     * @param mixed $word
      * @param bool $identical
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
     public function startsWith($word, $identical = false)
     {
-        $this->addCondition(__METHOD__, [$word, $identical]);
+        $this->addCondition(__METHOD__, [$word, (bool) $identical]);
 
         return $this;
     }
