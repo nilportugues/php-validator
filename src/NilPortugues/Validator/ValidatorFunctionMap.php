@@ -32,6 +32,7 @@ class ValidatorFunctionMap
 
         //Integer
         "Integer::__construct"  => '\Integer\IntegerTrait::isInteger',
+        "Integer::isNotZero"   => '\Integer\IntegerTrait::isNotZero',
         "Integer::isPositive"   => '\Integer\IntegerTrait::isPositive',
         "Integer::isNegative"   => '\Integer\IntegerTrait::isNegative',
         "Integer::isBetween"    => '\Integer\IntegerTrait::isBetween',

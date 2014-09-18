@@ -10,8 +10,27 @@
 
 namespace Tests\NilPortugues\Validator;
 
+use NilPortugues\Validator\ValidatorFunctionMap;
 
-class ValidatorFunctionMapTest extends \PHPUnit_Framework_TestCase {
+/**
+ * Class ValidatorFunctionMapTest
+ * @package Tests\NilPortugues\Validator
+ */
+class ValidatorFunctionMapTest extends \PHPUnit_Framework_TestCase
+{
+    /**
+     * @test
+     */
+    public function it_should_invalid_argument_exception_when_function_no_in_map()
+    {
+        $abstractValidator = $this
+            ->getMockBuilder('NilPortugues\Validator\AbstractValidator')
+            ->disableOriginalConstructor()
+            ->getMock();
 
+        $functionMap = new ValidatorFunctionMap($abstractValidator);
+
+        $this->setExpectedException('\InvalidArgumentException');
+        $functionMap->get('a-function-name-that-doesnt-exist', []);
+    }
 }
- 

@@ -74,7 +74,7 @@ abstract class AbstractValidator
     {
         $isValid = true;
         $this->errors = [];
-        
+
         foreach ($this->conditions as $condition) {
             $arguments = array_merge([$value], $condition['arguments']);
 

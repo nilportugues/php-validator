@@ -31,7 +31,7 @@ class Integer extends Numeric
     /**
      * @return \NilPortugues\Validator\Attribute\Numeric\Integer
      */
-    public function notZero()
+    public function isNotZero()
     {
         $this->addCondition(__METHOD__);
 

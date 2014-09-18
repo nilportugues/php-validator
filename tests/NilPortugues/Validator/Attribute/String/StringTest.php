@@ -440,4 +440,15 @@ class StringTest extends \PHPUnit_Framework_TestCase
         $result = $this->getValidator()->isHexDigit()->validate($value);
         $this->assertFalse($result);
     }
+
+    public function it_should_stop_validation_on_first_error()
+    {
+        $value = '@aaa';
+        $validator = $this->getValidator();
+
+        $result = $validator->isAlphanumeric()->validate($value, true);
+
+        $this->assertFalse($result);
+        $this->assertNotEmpty($validator->getErrors());
+    }
 }

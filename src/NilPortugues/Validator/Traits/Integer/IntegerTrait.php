@@ -25,6 +25,15 @@ trait IntegerTrait
     {
         return is_integer($value);
     }
+    /**
+     * @param $value
+     *
+     * @return bool
+     */
+    public static function isNotZero($value)
+    {
+        return 0 != $value;
+    }
 
     /**
      * @param $value

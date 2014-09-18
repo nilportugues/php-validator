@@ -56,7 +56,7 @@ class String extends AbstractValidator
     /**
      * Validates is a string is between ranges.
      *
-     * @param int $start
+     * @param int  $start
      * @param int  $end
      * @param bool $inclusive
      *
@@ -99,7 +99,7 @@ class String extends AbstractValidator
      * Validates if the input is equal some value.
      *
      * @param mixed $comparedValue
-     * @param bool   $identical
+     * @param bool  $identical
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
@@ -300,7 +300,7 @@ class String extends AbstractValidator
      * This validator validates only if the value is at the beginning of a string.
      *
      * @param mixed $word
-     * @param bool $identical
+     * @param bool  $identical
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
