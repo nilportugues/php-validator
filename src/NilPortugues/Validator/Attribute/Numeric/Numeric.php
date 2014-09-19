@@ -16,6 +16,6 @@ use NilPortugues\Validator\AbstractValidator;
  * Class Numeric
  * @package NilPortugues\Validator\Attribute\Numeric
  */
-abstract class Numeric extends AbstractValidator
+class Numeric extends AbstractValidator
 {
 }
