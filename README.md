@@ -109,13 +109,34 @@ String validation starts when creating a string field in the validator using the
 $validator = new \NilPortugues\Validator\Validator();
 
 $username = $validator->isString('username');
-
 ```
 The following chainable validation options are available for string data:
 
 #### 3.1.1. isAlphanumeric <a name="block3.1.1"></a> [↑](#index_block)
 
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+$result = $string->isAlphanumeric()->validate('28a'); // true
+
+$result = $string->isAlphanumeric()->validate('hello@example.com'); // false
+```
+
 #### 3.1.2. isAlpha <a name="block3.1.2"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+$result = $string->isAlpha()->validate('Hello World'); // true
+
+$result = $string->isAlpha()->validate('28a'); // false
+
+$result = $string->isAlpha()->validate('hello@example.com'); // false
+```
 
 #### 3.1.3. between <a name="block3.1.3"></a> [↑](#index_block)
 
