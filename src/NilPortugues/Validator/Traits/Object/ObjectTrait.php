@@ -30,7 +30,7 @@ trait ObjectTrait
      * @param mixed  $value
      * @param string $instanceOf
      *
-     * @return $this
+     * @return bool
      */
     public static function isInstanceOf($value, $instanceOf)
     {
@@ -41,7 +41,7 @@ trait ObjectTrait
      * @param $value
      * @param $property
      *
-     * @return $this
+     * @return bool
      */
     public static function hasProperty($value, $property)
     {
@@ -52,7 +52,7 @@ trait ObjectTrait
      * @param $value
      * @param $method
      *
-     * @return $this
+     * @return bool
      */
     public static function hasMethod($value, $method)
     {
