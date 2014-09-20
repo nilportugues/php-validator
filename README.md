@@ -14,7 +14,7 @@ A simple, powerful and elegant stand-alone validation library with no dependenci
     * [3.1 String](#block3.1)
         * [3.1.1. isAlphanumeric] (#block3.1.1)
         * [3.1.2. isAlpha] (#block3.1.2)
-        * [3.1.3. between] (#block3.1.3)
+        * [3.1.3. isBetween] (#block3.1.3)
         * [3.1.4. isCharset] (#block3.1.4)
         * [3.1.5. isAllConsonants] (#block3.1.5)
         * [3.1.6. contains] (#block3.1.6)
@@ -47,6 +47,13 @@ A simple, powerful and elegant stand-alone validation library with no dependenci
         * [3.2.6. isEven] (#block3.2.6)
         * [3.2.7. isMultiple] (#block3.2.7)
     * [3.3 Objects](#block3.3)
+        * [3.3.1. isInstanceOf] (#block3.3.1)
+        * [3.3.2. hasProperty] (#block3.3.2)
+        * [3.3.3. hasMethod] (#block3.3.3)
+        * [3.3.4. hasParentClass] (#block3.3.4)
+        * [3.3.5. isChildOf] (#block3.3.5)
+        * [3.3.6. inheritsFrom] (#block3.3.6)
+        * [3.3.7. hasInterface] (#block3.3.7)
     * [3.4 Collections (Arrays)](#block3.4)
 * [4. Quality Code](#block4)
 * [5. Author](#block5)
@@ -101,6 +108,44 @@ $result = $age->isPositive()->isBetween(0, 100, true)->validate(-10, true);
 <a name="block3"></a>
 # 3. Methods [↑](#index_block)
 
+All data type validators share 2 basic methods:
+
+- **isRequired**
+- **isNotNull**
+
+Its usage is fairly simple:
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$username = $validator->isString('username');
+
+$username->isRequired()->validate('Nil'); //true
+$username->isNotNull()->validate(''); //false
+
+//Or combined...
+$username->isRequired()->isNotNull()->validate('Nil'); //true
+```
+
+For optional data, wrap the validator function within an if with an `isset($value)` clause and validate using `isNotNull`.
+
+For instance, suppose gender is a value from 0 to 2 (male, female, other) and is a non-mandatory value:
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$genderValue = $validator->isInteger('gender');
+$result = true;
+
+if (isset($gender)) {
+    $result = $genderValue->isNotNull()->isBetween(0, 2, true)->validate($gender);
+}
+
+return $result;
+```
+
+
+
 <a name="block3.1"></a>
 ## 3.1 String [↑](#index_block)
 String validation starts when creating a string field in the validator using the `isString` method.
@@ -138,7 +183,7 @@ $result = $string->isAlpha()->validate('28a'); // false
 $result = $string->isAlpha()->validate('hello@example.com'); // false
 ```
 
-#### 3.1.3. between <a name="block3.1.3"></a> [↑](#index_block)
+#### 3.1.3. isBetween <a name="block3.1.3"></a> [↑](#index_block)
 
 #### 3.1.4. isCharset <a name="block3.1.4"></a> [↑](#index_block)
 
@@ -205,6 +250,20 @@ $result = $string->isAlpha()->validate('hello@example.com'); // false
 
 <a name="block3.3"></a>
 ## 3.3 Objects [↑](#index_block)
+
+#### 3.3.1. isInstanceOf<a name="block3.3.1"></a> [↑](#index_block)
+
+#### 3.3.2. hasProperty<a name="block3.3.2"></a> [↑](#index_block)
+
+#### 3.3.3. hasMethod<a name="block3.3.3"></a> [↑](#index_block)
+
+#### 3.3.4. hasParentClass<a name="block3.3.4"></a> [↑](#index_block)
+
+#### 3.3.5. isChildOf<a name="block3.3.5"></a> [↑](#index_block)
+
+#### 3.3.6. inheritsFrom<a name="block3.3.6"></a> [↑](#index_block)
+
+#### 3.3.7. hasInterface<a name="block3.3.7"></a> [↑](#index_block)
 
 <a name="block3.4"></a>
 ## 3.4 Collections (Arrays) [↑](#index_block)
