@@ -111,12 +111,14 @@ class String extends Generic
     }
 
     /**
-     * @param  bool                                            $identical
+     * @param       $value
+     * @param  bool $identical
+     *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
-    public function contains($identical = false)
+    public function contains($value, $identical = false)
     {
-        $this->addCondition(__METHOD__, [$identical]);
+        $this->addCondition(__METHOD__, [$value, $identical]);
 
         return $this;
     }
