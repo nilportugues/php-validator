@@ -92,6 +92,16 @@ class ValidatorFunctionMap
         'Object::inheritsFrom' => '\Object\ObjectTrait::inheritsFrom',
         'Object::hasInterface' => '\Object\ObjectTrait::hasInterface',
 
+        //Collection
+        'Collection::__construct' => '\Collection\CollectionTrait::isArray',
+        'Collection::each' => '\Collection\CollectionTrait::each',
+        'Collection::hasKeyFormat' => '\Collection\CollectionTrait::hasKeyFormat',
+        'Collection::endsWith' => '\Collection\CollectionTrait::endsWith',
+        'Collection::contains' => '\Collection\CollectionTrait::contains',
+        'Collection::hasKey' => '\Collection\CollectionTrait::hasKey',
+        'Collection::length' => '\Collection\CollectionTrait::length',
+        'Collection::isNotEmpty' => '\Collection\CollectionTrait::isNotEmpty',
+        'Collection::startsWith' => '\Collection\CollectionTrait::startsWith',
     ];
 
     /**

@@ -103,15 +103,19 @@ class CollectionTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_in()
-    {
-    }
-
-    /**
-     * @test
-     */
     public function it_should_check_if_contains()
     {
+        $array = ['one' => 'hello', 'two' => 1];
+        $arrayObject = new \ArrayObject($array);
+        $fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
+
+        $this->assertTrue(CollectionTrait::contains($array, 'hello', false));
+        $this->assertTrue(CollectionTrait::contains($arrayObject, 'hello', false));
+        $this->assertTrue(CollectionTrait::contains($fixedArray, 'hello', false));
+
+        $this->assertTrue(CollectionTrait::contains($array, 1, true));
+        $this->assertTrue(CollectionTrait::contains($arrayObject, 1, true));
+        $this->assertTrue(CollectionTrait::contains($fixedArray, 1, true));
     }
 
     /**
@@ -119,6 +123,21 @@ class CollectionTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_if_has_key()
     {
+        $array = ['one' => 'hello', 'two' => 1];
+        $arrayObject = new \ArrayObject($array);
+        $fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
+
+        $this->assertTrue(CollectionTrait::hasKey($array, 'one'));
+        $this->assertTrue(CollectionTrait::hasKey($arrayObject, 'one'));
+        $this->assertTrue(CollectionTrait::hasKey($fixedArray, 0));
+
+        $array = [];
+        $arrayObject = new \ArrayObject($array);
+        $fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
+
+        $this->assertFalse(CollectionTrait::hasKey($array, 0));
+        $this->assertFalse(CollectionTrait::hasKey($arrayObject, 0));
+        $this->assertFalse(CollectionTrait::hasKey($fixedArray, 0));
     }
 
     /**
@@ -126,6 +145,21 @@ class CollectionTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_if_length()
     {
+        $array = ['one' => 'hello', 'two' => 1];
+        $arrayObject = new \ArrayObject($array);
+        $fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
+
+        $this->assertTrue(CollectionTrait::length($array, 2));
+        $this->assertTrue(CollectionTrait::length($arrayObject, 2));
+        $this->assertTrue(CollectionTrait::length($fixedArray, 2));
+
+        $array = [];
+        $arrayObject = new \ArrayObject($array);
+        $fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
+
+        $this->assertTrue(CollectionTrait::length($array, 0));
+        $this->assertTrue(CollectionTrait::length($arrayObject, 0));
+        $this->assertTrue(CollectionTrait::length($fixedArray, 0));
     }
 
     /**
@@ -133,6 +167,21 @@ class CollectionTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_if_is_not_empty()
     {
+        $array = ['one' => 'hello', 'two' => 1];
+        $arrayObject = new \ArrayObject($array);
+        $fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
+
+        $this->assertTrue(CollectionTrait::isNotEmpty($array));
+        $this->assertTrue(CollectionTrait::isNotEmpty($arrayObject));
+        $this->assertTrue(CollectionTrait::isNotEmpty($fixedArray));
+
+        $array = [];
+        $arrayObject = new \ArrayObject($array);
+        $fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
+
+        $this->assertFalse(CollectionTrait::isNotEmpty($array));
+        $this->assertFalse(CollectionTrait::isNotEmpty($arrayObject));
+        $this->assertFalse(CollectionTrait::isNotEmpty($fixedArray));
     }
 
     /**

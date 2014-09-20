@@ -103,20 +103,16 @@ trait CollectionTrait
      *
      * @return bool
      */
-    public static function in($haystack, $needle, $strict = false)
-    {
-        return self::contains($haystack, $needle, (bool) $strict);
-    }
-
-    /**
-     * @param $haystack
-     * @param mixed $needle
-     * @param bool  $strict
-     *
-     * @return bool
-     */
     public static function contains($haystack, $needle, $strict = false)
     {
+        if ($haystack instanceof \ArrayObject) {
+            $haystack = $haystack->getArrayCopy();
+        }
+
+        if ($haystack instanceof \SplFixedArray) {
+            $haystack = $haystack->toArray();
+        }
+
         settype($strict, 'bool');
 
         if (false === $strict) {

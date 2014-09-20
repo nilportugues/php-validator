@@ -55,43 +55,27 @@ class Collection extends AbstractValidator
     }
 
     /**
-     * @param array $haystack
      * @param mixed $needle
      * @param bool  $strict
      *
      * @return $this
      */
-    public function endsWith(array $haystack, $needle, $strict = false)
+    public function endsWith($needle, $strict = false)
     {
-        $this->addCondition(__METHOD__, [$haystack, $needle, $strict]);
+        $this->addCondition(__METHOD__, [$needle, $strict]);
 
         return $this;
     }
 
     /**
-     * @param array $haystack
      * @param mixed $needle
      * @param bool  $strict
      *
      * @return $this
      */
-    public function in(array $haystack, $needle, $strict = false)
+    public function contains($needle, $strict = false)
     {
-        $this->addCondition(__METHOD__, [$haystack, $needle, $strict]);
-
-        return $this;
-    }
-
-    /**
-     * @param array $haystack
-     * @param mixed $needle
-     * @param bool  $strict
-     *
-     * @return $this
-     */
-    public function contains(array $haystack, $needle, $strict = false)
-    {
-        $this->addCondition(__METHOD__, [$haystack, $needle, $strict]);
+        $this->addCondition(__METHOD__, [$needle, $strict]);
 
         return $this;
     }
@@ -131,15 +115,14 @@ class Collection extends AbstractValidator
     }
 
     /**
-     * @param array $haystack
-     * @param       $needle
-     * @param bool  $strict
+     * @param      $needle
+     * @param bool $strict
      *
      * @return $this
      */
-    public function startsWith(array $haystack, $needle, $strict = false)
+    public function startsWith($needle, $strict = false)
     {
-        $this->addCondition(__METHOD__, [$haystack, $needle, $strict]);
+        $this->addCondition(__METHOD__, [$needle, $strict]);
 
         return $this;
     }
