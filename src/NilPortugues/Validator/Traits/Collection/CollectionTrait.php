@@ -10,6 +10,8 @@
 
 namespace NilPortugues\Validator\Traits\Collection;
 
+use NilPortugues\Validator\AbstractValidator;
+
 /**
  * Class CollectionTrait
  * @package NilPortugues\Validator\Traits\Collection
@@ -17,75 +19,160 @@ namespace NilPortugues\Validator\Traits\Collection;
 trait CollectionTrait
 {
     /**
-     * @param $value
+     * @param  mixed $value
      * @return bool
      */
     public static function isArray($value)
     {
-        return is_array($value);
+        return is_array($value)
+        || (is_object($value) && $value instanceof \ArrayObject)
+        || (is_object($value) && $value instanceof \SplFixedArray);
+    }
+
+    /**
+     * @param $value
+     * @param \NilPortugues\Validator\AbstractValidator $valueValidator
+     * @param \NilPortugues\Validator\AbstractValidator $keyValidator
+     *
+     * @return bool
+     */
+    public static function each($value, AbstractValidator $valueValidator, AbstractValidator $keyValidator = null)
+    {
+        $isValid = true;
+
+        foreach ($value as $key => $data) {
+            if ($keyValidator instanceof AbstractValidator) {
+                $isValid = $isValid && $keyValidator->validate($key);
+            }
+
+            $isValid = $isValid && $valueValidator->validate($data);
+        }
+
+        return $isValid;
+    }
+
+    /**
+     * @param                   $value
+     * @param AbstractValidator $keyValidator
+     *
+     * @return bool
+     */
+    public static function hasKeyFormat($value, AbstractValidator $keyValidator)
+    {
+        if ($value instanceof \ArrayObject) {
+            $value = $value->getArrayCopy();
+        }
+
+        if ($value instanceof \SplFixedArray) {
+            $value = $value->toArray();
+        }
+
+        $arrayKeys = array_keys($value);
+        $isValid = true;
+
+        foreach ($arrayKeys as $key) {
+            $isValid = $isValid && $keyValidator->validate($key);
+        }
+
+        return $isValid;
+    }
+
+    /**
+     * @param  $haystack
+     * @param mixed $needle
+     * @param bool  $strict
+     *
+     * @return bool
+     */
+    public static function endsWith($haystack, $needle, $strict = false)
+    {
+        $last = end($haystack);
+        $strict = (bool) $strict;
+
+        if (false === $strict) {
+            return $last == $needle;
+        }
+
+        return $last === $needle;
+    }
+
+    /**
+     * @param $haystack
+     * @param mixed $needle
+     * @param bool  $strict
+     *
+     * @return bool
+     */
+    public static function in($haystack, $needle, $strict = false)
+    {
+        return self::contains($haystack, $needle, (bool) $strict);
+    }
+
+    /**
+     * @param $haystack
+     * @param mixed $needle
+     * @param bool  $strict
+     *
+     * @return bool
+     */
+    public static function contains($haystack, $needle, $strict = false)
+    {
+        $strict = (bool) $strict;
+
+        if (false === $strict) {
+            return in_array($needle, $haystack, false);
+        }
+
+        return in_array($needle, $haystack, true);
+    }
+
+    /**
+     * @param $value
+     * @param string $keyName
+     *
+     * @return bool
+     */
+    public static function hasKey($value, $keyName)
+    {
+        return array_key_exists($keyName, $value);
+    }
+
+    /**
+     * @param $value
+     * @param int $length
+     *
+     * @return bool
+     */
+    public static function length($value, $length)
+    {
+        return count($value) === ((int) $length);
     }
 
     /**
      * @param $value
      * @return bool
      */
-    public static function contains($value)
+    public static function isNotEmpty($value)
     {
+        return count($value) > 0;
     }
 
     /**
-     * @param $value
+     * @param $haystack
+     * @param mixed $needle
+     * @param bool  $strict
+     *
      * @return bool
      */
-    public static function each($value)
+    public static function startsWith($haystack, $needle, $strict = false)
     {
-    }
+        $first = reset($haystack);
+        $strict = (bool) $strict;
 
-    /**
-     * @param $value
-     * @return bool
-     */
-    public static function endsWith($value)
-    {
-    }
+        if (false === $strict) {
+            return $first == $needle;
+        }
 
-    /**
-     * @param $value
-     * @return bool
-     */
-    public static function in($value)
-    {
-    }
-
-    /**
-     * @param $value
-     * @return bool
-     */
-    public static function key($value)
-    {
-    }
-
-    /**
-     * @param $value
-     * @return bool
-     */
-    public static function length($value)
-    {
-    }
-
-    /**
-     * @param $value
-     * @return bool
-     */
-    public static function notEmpty($value)
-    {
-    }
-
-    /**
-     * @param $value
-     * @return bool
-     */
-    public static function startsWith($value)
-    {
+        return $first === $needle;
     }
 }

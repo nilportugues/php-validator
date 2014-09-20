@@ -48,10 +48,11 @@ abstract class AbstractValidator
     /**
      * @param       $classMethod
      * @param array $arguments
+     * @param bool  $fetchValidatorErrors
      *
      * @return $this
      */
-    protected function addCondition($classMethod, $arguments = [])
+    protected function addCondition($classMethod, $arguments = [], $fetchValidatorErrors = false)
     {
         $classMethod = explode("\\", $classMethod);
         $classMethod = array_pop($classMethod);
@@ -59,6 +60,7 @@ abstract class AbstractValidator
         $this->conditions[] = [
             'key' => $classMethod,
             'arguments' => $arguments,
+            'is_validator' => $fetchValidatorErrors,
         ];
 
         return $this;
@@ -74,12 +76,16 @@ abstract class AbstractValidator
     {
         $isValid = true;
         $this->errors = [];
+        $this->conditions = array_filter($this->conditions);
 
-        //Loop for for strict validation
         foreach ($this->conditions as $condition) {
             $arguments = array_merge([$value], $condition['arguments']);
 
             $isValid = $isValid && $this->functionMap->get($condition['key'], $arguments);
+
+            if (false === $isValid && $condition['is_validator']) {
+                $this->getErrorsForValidatorsAsArguments($condition['arguments']);
+            }
 
             if (true == $stopOnError && false === $isValid) {
                 return false;
@@ -89,6 +95,18 @@ abstract class AbstractValidator
         $this->conditions[] = [];
 
         return $isValid;
+    }
+
+    /**
+     * @param $arguments
+     */
+    private function getErrorsForValidatorsAsArguments($arguments)
+    {
+        foreach ($arguments as $argument) {
+            if ($argument instanceof AbstractValidator) {
+                $this->errors = array_merge($this->errors, $argument->getErrors());
+            }
+        }
     }
 
     /**
