@@ -33,7 +33,9 @@ trait FloatTrait
      */
     public static function isNotZero($value)
     {
-        return 0 != (float) $value;
+        settype($value, 'float');
+
+        return 0 != $value;
     }
 
     /**
@@ -43,7 +45,9 @@ trait FloatTrait
      */
     public static function isPositive($value)
     {
-        return 0 <= (float) $value;
+        settype($value, 'float');
+
+        return 0 <= $value;
     }
 
     /**
@@ -53,7 +57,9 @@ trait FloatTrait
      */
     public static function isNegative($value)
     {
-        return 0 >= (float) $value;
+        settype($value, 'float');
+
+        return 0 >= $value;
     }
 
     /**
@@ -67,9 +73,9 @@ trait FloatTrait
      */
     public static function isBetween($value, $min, $max, $inclusive = false)
     {
-        $value = (float) $value;
-        $min = (float) $min;
-        $max = (float) $max;
+        settype($value, 'float');
+        settype($min, 'float');
+        settype($max, 'float');
 
         if ($min > $max) {
             throw new \InvalidArgumentException(sprintf('%s cannot be less than  %s for validation', $min, $max));
@@ -89,7 +95,7 @@ trait FloatTrait
      */
     public static function isOdd($value)
     {
-        $value = (int) $value;
+        settype($value, 'int');
 
         return 0 == ($value % 3);
     }
@@ -101,7 +107,7 @@ trait FloatTrait
      */
     public static function isEven($value)
     {
-        $value = (int) $value;
+        settype($value, 'int');
 
         return 0 == ($value % 2);
     }
@@ -114,8 +120,8 @@ trait FloatTrait
      */
     public static function isMultiple($value, $multiple)
     {
-        $multiple = (float) $multiple;
-        $value = (float) $value;
+        settype($value, 'float');
+        settype($multiple, 'float');
 
         return (float) 0 == fmod($value, $multiple);
     }

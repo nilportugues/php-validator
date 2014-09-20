@@ -55,8 +55,10 @@ trait StringTrait
      */
     public static function isBetween($value, $min, $max, $inclusive = false)
     {
-        $min = (int) $min;
-        $max = (int) $max;
+        settype($min, 'int');
+        settype($max, 'int');
+        settype($inclusive, 'bool');
+
         $length = mb_strlen($value, mb_detect_encoding($value));
 
         if ($min > $max) {
@@ -206,7 +208,7 @@ trait StringTrait
      */
     public static function hasLength($value, $length)
     {
-        $length = (int) $length;
+        settype($length, 'int');
 
         return mb_strlen($value, mb_detect_encoding($value)) === $length;
     }

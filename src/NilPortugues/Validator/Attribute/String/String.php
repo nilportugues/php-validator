@@ -64,7 +64,7 @@ class String extends Generic
      */
     public function isBetween($start, $end, $inclusive = false)
     {
-        $this->addCondition(__METHOD__, [(int) $start, (int) $end, (bool) $inclusive]);
+        $this->addCondition(__METHOD__, [$start, $end, $inclusive]);
 
         return $this;
     }
@@ -105,7 +105,7 @@ class String extends Generic
      */
     public function equals($comparedValue, $identical = false)
     {
-        $this->addCondition(__METHOD__, [$comparedValue, (bool) $identical]);
+        $this->addCondition(__METHOD__, [$comparedValue, $identical]);
 
         return $this;
     }
@@ -157,7 +157,7 @@ class String extends Generic
      */
     public function endsWith($word, $identical = false)
     {
-        $this->addCondition(__METHOD__, [$word, (bool) $identical]);
+        $this->addCondition(__METHOD__, [$word, $identical]);
 
         return $this;
     }
@@ -172,7 +172,7 @@ class String extends Generic
      */
     public function in($haystack, $identical = false)
     {
-        $this->addCondition(__METHOD__, [(string) $haystack, (bool) $identical]);
+        $this->addCondition(__METHOD__, [$haystack, $identical]);
 
         return $this;
     }
@@ -196,7 +196,7 @@ class String extends Generic
      */
     public function hasLength($length)
     {
-        $this->addCondition(__METHOD__, [(int) $length]);
+        $this->addCondition(__METHOD__, [$length]);
 
         return $this;
     }
@@ -271,7 +271,7 @@ class String extends Generic
      */
     public function matchesRegex($regex)
     {
-        $this->addCondition(__METHOD__, [(string) $regex]);
+        $this->addCondition(__METHOD__, [$regex]);
 
         return $this;
     }
@@ -308,7 +308,7 @@ class String extends Generic
      */
     public function startsWith($word, $identical = false)
     {
-        $this->addCondition(__METHOD__, [$word, (bool) $identical]);
+        $this->addCondition(__METHOD__, [$word, $identical]);
 
         return $this;
     }

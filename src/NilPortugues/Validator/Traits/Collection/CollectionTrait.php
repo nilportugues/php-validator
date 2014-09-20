@@ -87,7 +87,7 @@ trait CollectionTrait
     public static function endsWith($haystack, $needle, $strict = false)
     {
         $last = end($haystack);
-        $strict = (bool) $strict;
+        settype($strict, 'bool');
 
         if (false === $strict) {
             return $last == $needle;
@@ -117,7 +117,7 @@ trait CollectionTrait
      */
     public static function contains($haystack, $needle, $strict = false)
     {
-        $strict = (bool) $strict;
+        settype($strict, 'bool');
 
         if (false === $strict) {
             return in_array($needle, $haystack, false);
@@ -145,7 +145,9 @@ trait CollectionTrait
      */
     public static function length($value, $length)
     {
-        return count($value) === ((int) $length);
+        settype($length, 'int');
+
+        return count($value) === $length;
     }
 
     /**
@@ -167,7 +169,7 @@ trait CollectionTrait
     public static function startsWith($haystack, $needle, $strict = false)
     {
         $first = reset($haystack);
-        $strict = (bool) $strict;
+        settype($strict, 'bool');
 
         if (false === $strict) {
             return $first == $needle;

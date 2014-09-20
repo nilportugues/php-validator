@@ -58,7 +58,7 @@ class Float extends Generic
      */
     public function isBetween($min, $max, $inclusive = false)
     {
-        $this->addCondition(__METHOD__, [(float) $min, (float) $max, $inclusive]);
+        $this->addCondition(__METHOD__, [$min, $max, $inclusive]);
 
         return $this;
     }
@@ -100,7 +100,7 @@ class Float extends Generic
      */
     public function isMultiple($multiple)
     {
-        $this->addCondition(__METHOD__, [(float) $multiple]);
+        $this->addCondition(__METHOD__, [$multiple]);
 
         return $this;
     }

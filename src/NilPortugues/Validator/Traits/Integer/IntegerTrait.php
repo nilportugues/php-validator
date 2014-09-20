@@ -33,7 +33,9 @@ trait IntegerTrait
      */
     public static function isNotZero($value)
     {
-        return 0 != (int) $value;
+        settype($value, 'int');
+
+        return 0 != $value;
     }
 
     /**
@@ -43,7 +45,9 @@ trait IntegerTrait
      */
     public static function isPositive($value)
     {
-        return 0 <= (int) $value;
+        settype($value, 'int');
+
+        return 0 <= $value;
     }
 
     /**
@@ -53,7 +57,9 @@ trait IntegerTrait
      */
     public static function isNegative($value)
     {
-        return 0 >= (int) $value;
+        settype($value, 'int');
+
+        return 0 >= $value;
     }
 
     /**
@@ -67,9 +73,9 @@ trait IntegerTrait
      */
     public static function isBetween($value, $min, $max, $inclusive = false)
     {
-        $value = (int) $value;
-        $min = (int) $min;
-        $max = (int) $max;
+        settype($value, 'int');
+        settype($min, 'int');
+        settype($max, 'int');
 
         if ($min > $max) {
             throw new \InvalidArgumentException(sprintf('%s cannot be less than  %s for validation', $min, $max));
@@ -89,7 +95,7 @@ trait IntegerTrait
      */
     public static function isOdd($value)
     {
-        $value = (int) $value;
+        settype($value, 'int');
 
         return 0 == ($value % 3);
     }
@@ -101,7 +107,7 @@ trait IntegerTrait
      */
     public static function isEven($value)
     {
-        $value = (int) $value;
+        settype($value, 'int');
 
         return 0 == ($value % 2);
     }
@@ -114,8 +120,8 @@ trait IntegerTrait
      */
     public static function isMultiple($value, $multiple)
     {
-        $multiple = (int) $multiple;
-        $value = (int) $value;
+        settype($value, 'int');
+        settype($multiple, 'int');
 
         return 0 == ($value % $multiple);
     }

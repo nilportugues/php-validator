@@ -83,12 +83,14 @@ abstract class AbstractValidator
 
             $isValid = $isValid && $this->functionMap->get($condition['key'], $arguments);
 
-            if (false === $isValid && $condition['is_validator']) {
-                $this->getErrorsForValidatorsAsArguments($condition['arguments']);
-            }
+            if (false === $isValid) {
+                if ($condition['is_validator']) {
+                    $this->getErrorsForValidatorsAsArguments($condition['arguments']);
+                }
 
-            if (true == $stopOnError && false === $isValid) {
-                return false;
+                if (true == $stopOnError) {
+                    return false;
+                }
             }
         }
 
