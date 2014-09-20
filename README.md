@@ -55,6 +55,14 @@ A simple, powerful and elegant stand-alone validation library with no dependenci
         * [3.3.6. inheritsFrom] (#block3.3.6)
         * [3.3.7. hasInterface] (#block3.3.7)
     * [3.4 Collections (Arrays)](#block3.4)
+        * [3.4.1. each] (#block3.4.1)
+        * [3.4.2. hasKeyFormat] (#block3.4.2)
+        * [3.4.3. endsWith] (#block3.4.3)
+        * [3.4.4. contains] (#block3.4.4)
+        * [3.4.5. hasKey] (#block3.4.5)
+        * [3.4.6. length] (#block3.4.6)
+        * [3.4.7. isNotEmpty] (#block3.4.7)
+        * [3.4.8. startsWith] (#block3.4.8)
 * [4. Quality Code](#block4)
 * [5. Author](#block5)
 * [6. License](#block6)
@@ -267,6 +275,29 @@ $result = $string->isAlpha()->validate('hello@example.com'); // false
 
 <a name="block3.4"></a>
 ## 3.4 Collections (Arrays) [↑](#index_block)
+Collections are data structures that hold other data structures or same type variables.
+
+Supported PHP data structures for the Collection validator are:
+
+- array
+- ArrayObject
+- SplFixedArray
+
+#### 3.4.1. each <a name="block3.4.1"></a> [↑](#index_block)
+
+#### 3.4.2. hasKeyFormat <a name="block3.4.2"></a> [↑](#index_block)
+
+#### 3.4.3. endsWith <a name="block3.4.3"></a> [↑](#index_block)
+
+#### 3.4.4. contains <a name="block3.4.4"></a> [↑](#index_block)
+
+#### 3.4.5. hasKey <a name="block3.4.5"></a> [↑](#index_block)
+
+#### 3.4.6. length <a name="block3.4.6"></a> [↑](#index_block)
+
+#### 3.4.7. isNotEmpty <a name="block3.4.7"></a> [↑](#index_block)
+
+#### 3.4.8. startsWith <a name="block3.4.8"></a> [↑](#index_block)
 
 <a name="block4"></a>
 # 4. Quality Code [↑](#index_block)
