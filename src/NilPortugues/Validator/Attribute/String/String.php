@@ -111,8 +111,8 @@ class String extends Generic
     }
 
     /**
-     * @param       $value
-     * @param  bool $identical
+     * @param      $value
+     * @param bool $identical
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */

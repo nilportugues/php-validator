@@ -36,7 +36,7 @@ class Object extends Generic
      */
     public function isInstanceOf($instanceOf)
     {
-        $this->addCondition($this, [$instanceOf]);
+        $this->addCondition(__METHOD__, [$instanceOf]);
 
         return $this;
     }
@@ -48,7 +48,7 @@ class Object extends Generic
      */
     public function hasProperty($property)
     {
-        $this->addCondition($this, [$property]);
+        $this->addCondition(__METHOD__, [$property]);
 
         return $this;
     }
@@ -60,7 +60,7 @@ class Object extends Generic
      */
     public function hasMethod($method)
     {
-        $this->addCondition($this, [$method]);
+        $this->addCondition(__METHOD__, [$method]);
 
         return $this;
     }
@@ -70,7 +70,7 @@ class Object extends Generic
      */
     public function hasParentClass()
     {
-        $this->addCondition($this);
+        $this->addCondition(__METHOD__);
 
         return $this;
     }
@@ -82,7 +82,7 @@ class Object extends Generic
      */
     public function isChildOf($parentClass)
     {
-        $this->addCondition($this, [$parentClass]);
+        $this->addCondition(__METHOD__, [$parentClass]);
 
         return $this;
     }
@@ -94,7 +94,7 @@ class Object extends Generic
      */
     public function inheritsFrom($inheritsClass)
     {
-        $this->addCondition($this, [$inheritsClass]);
+        $this->addCondition(__METHOD__, [$inheritsClass]);
 
         return $this;
     }
@@ -106,7 +106,7 @@ class Object extends Generic
      */
     public function hasInterface($interface)
     {
-        $this->addCondition($this, [$interface]);
+        $this->addCondition(__METHOD__, [$interface]);
 
         return $this;
     }

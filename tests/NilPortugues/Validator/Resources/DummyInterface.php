@@ -8,11 +8,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Tests\NilPortugues\Validator\Traits\Object;
+namespace Tests\NilPortugues\Validator\Resources;
 
 /**
  * Class DummyInterface
- * @package Tests\NilPortugues\Validator\Traits\Object
+ * @package Tests\NilPortugues\Validator\Resources
  */
 interface DummyInterface
 {

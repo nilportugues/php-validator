@@ -48,7 +48,6 @@ abstract class AbstractValidator
     /**
      * @param       $classMethod
      * @param array $arguments
-     * @param bool  $optional
      *
      * @return $this
      */

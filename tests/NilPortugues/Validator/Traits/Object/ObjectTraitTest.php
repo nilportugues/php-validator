@@ -11,6 +11,7 @@
 namespace Tests\NilPortugues\Validator\Traits\Object;
 
 use NilPortugues\Validator\Traits\Object\ObjectTrait;
+use Tests\NilPortugues\Validator\Resources\Dummy;
 
 /**
  * Class ObjectTraitTest
@@ -100,7 +101,7 @@ class ObjectTraitTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue(ObjectTrait::hasInterface(
             $dummy,
-            'Tests\NilPortugues\Validator\Traits\Object\DummyInterface'
+            'Tests\NilPortugues\Validator\Resources\DummyInterface'
         ));
         $this->assertFalse(ObjectTrait::inheritsFrom($dummy, 'DateTimeZone'));
     }
