@@ -10,14 +10,14 @@
 
 namespace NilPortugues\Validator\Attribute\Object;
 
-use NilPortugues\Validator\AbstractValidator;
+use NilPortugues\Validator\Attribute\Generic;
 use NilPortugues\Validator\Validator;
 
 /**
  * Class Object
  * @package NilPortugues\Validator\Attribute\Object
  */
-class Object extends AbstractValidator
+class Object extends Generic
 {
     /**
      * @param Validator $validator
@@ -27,5 +27,87 @@ class Object extends AbstractValidator
         parent::__construct($validator);
 
         $this->addCondition(__METHOD__);
+    }
+
+    /**
+     * @param $instanceOf
+     *
+     * @return $this
+     */
+    public function isInstanceOf($instanceOf)
+    {
+        $this->addCondition($this, [$instanceOf]);
+
+        return $this;
+    }
+
+    /**
+     * @param $property
+     *
+     * @return $this
+     */
+    public function hasProperty($property)
+    {
+        $this->addCondition($this, [$property]);
+
+        return $this;
+    }
+
+    /**
+     * @param $method
+     *
+     * @return $this
+     */
+    public function hasMethod($method)
+    {
+        $this->addCondition($this, [$method]);
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function hasParentClass()
+    {
+        $this->addCondition($this);
+
+        return $this;
+    }
+
+    /**
+     * @param $parentClass
+     *
+     * @return $this
+     */
+    public function isChildOf($parentClass)
+    {
+        $this->addCondition($this, [$parentClass]);
+
+        return $this;
+    }
+
+    /**
+     * @param $inheritsClass
+     *
+     * @return $this
+     */
+    public function inheritsFrom($inheritsClass)
+    {
+        $this->addCondition($this, [$inheritsClass]);
+
+        return $this;
+    }
+
+    /**
+     * @param $interface
+     *
+     * @return $this
+     */
+    public function hasInterface($interface)
+    {
+        $this->addCondition($this, [$interface]);
+
+        return $this;
     }
 }

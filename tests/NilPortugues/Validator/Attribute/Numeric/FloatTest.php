@@ -13,7 +13,7 @@ namespace Tests\NilPortugues\Validator\Attribute\Numeric;
 use NilPortugues\Validator\Validator;
 
 /**
- * Class FloatTest
+ * Class FloatTraitTest
  * @package Tests\NilPortugues\Validator\Attribute\Numeric
  */
 class FloatTest extends \PHPUnit_Framework_TestCase
@@ -106,7 +106,7 @@ class FloatTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_is_multiple()
     {
-        $this->assertTrue($this->getValidator()->isMultiple(2.1)->validate(2.2));
+        $this->assertTrue($this->getValidator()->isMultiple(2.50)->validate(5.00));
         $this->assertFalse($this->getValidator()->isMultiple(2)->validate(5.5));
     }
 }

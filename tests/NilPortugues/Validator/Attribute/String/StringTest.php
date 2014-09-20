@@ -76,11 +76,11 @@ class StringTest extends \PHPUnit_Framework_TestCase
     public function it_should_check_string_is_between()
     {
         $value = 'Nil';
-        $result = $this->getValidator()->between(2, 4, false)->validate($value);
+        $result = $this->getValidator()->isBetween(2, 4, false)->validate($value);
         $this->assertTrue($result);
 
         $value = 'Nilo';
-        $result = $this->getValidator()->between(2, 4, true)->validate($value);
+        $result = $this->getValidator()->isBetween(2, 4, true)->validate($value);
         $this->assertTrue($result);
     }
 
@@ -90,7 +90,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     public function it_should_check_string_is_between_exception()
     {
         $this->setExpectedException('\InvalidArgumentException');
-        $this->getValidator()->between(4, 2, false)->validate('Nil');
+        $this->getValidator()->isBetween(4, 2, false)->validate('Nil');
     }
 
     /**

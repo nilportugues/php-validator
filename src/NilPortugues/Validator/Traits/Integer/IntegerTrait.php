@@ -62,6 +62,7 @@ trait IntegerTrait
      * @param      $max
      * @param bool $inclusive
      *
+     * @throws \InvalidArgumentException
      * @return bool
      */
     public static function isBetween($value, $min, $max, $inclusive = false)

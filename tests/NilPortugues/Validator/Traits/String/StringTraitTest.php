@@ -66,12 +66,21 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
     public function it_should_check_string_is_between()
     {
         $value = 'Nil';
-        $result = StringTrait::between($value, 2, 4, false);
+        $result = StringTrait::isBetween($value, 2, 4, false);
         $this->assertTrue($result);
 
         $value = 'Nilo';
-        $result = StringTrait::between($value, 2, 4, true);
+        $result = StringTrait::isBetween($value, 2, 4, true);
         $this->assertTrue($result);
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_string_is_between_exception()
+    {
+        $this->setExpectedException('\InvalidArgumentException');
+        StringTrait::isBetween('Nil', 12, 4, false);
     }
 
     /**
@@ -420,7 +429,7 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_xdigit()
+    public function it_should_check_string_is_hex_digit()
     {
         $value = '100';
         $result = StringTrait::isHexDigit($value);

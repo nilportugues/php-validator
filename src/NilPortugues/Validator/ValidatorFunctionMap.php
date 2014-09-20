@@ -28,6 +28,11 @@ class ValidatorFunctionMap
      */
     private $functionMap = [
 
+        //Generic
+        'Generic::isRequired' => '\GenericTrait::isRequired',
+        'Generic::isOptional' => '\GenericTrait::isOptional',
+        'Generic::isNotNull' => '\GenericTrait::isNotNull',
+
         //Float
         "Float::__construct"  => '\Float\FloatTrait::isFloat',
         "Float::isNotZero"   => '\Float\FloatTrait::isNotZero',
@@ -52,7 +57,7 @@ class ValidatorFunctionMap
         'String::__construct' => '\String\StringTrait::isString',
         'String::isAlphanumeric' => '\String\StringTrait::isAlphanumeric',
         'String::isAlpha' => '\String\StringTrait::isAlpha',
-        'String::between' => '\String\StringTrait::between',
+        'String::isBetween' => '\String\StringTrait::isBetween',
         'String::isCharset' => '\String\StringTrait::isCharset',
         'String::isAllConsonants' => '\String\StringTrait::isAllConsonants',
         'String::contains' => '\String\StringTrait::contains',
@@ -78,6 +83,14 @@ class ValidatorFunctionMap
         'String::isHexDigit' => '\String\StringTrait::isHexDigit',
 
         //Object
+        'Object::__construct' => '\Object\ObjectTrait::isObject',
+        'Object::isInstanceOf' => '\Object\ObjectTrait::isInstanceOf',
+        'Object::hasProperty' => '\Object\ObjectTrait::hasProperty',
+        'Object::hasMethod' => '\Object\ObjectTrait::hasMethod',
+        'Object::hasParentClass' => '\Object\ObjectTrait::hasParentClass',
+        'Object::isChildOf' => '\Object\ObjectTrait::isChildOf',
+        'Object::inheritsFrom' => '\Object\ObjectTrait::inheritsFrom',
+        'Object::hasInterface' => '\Object\ObjectTrait::hasInterface',
 
     ];
 

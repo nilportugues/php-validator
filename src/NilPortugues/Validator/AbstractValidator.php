@@ -48,6 +48,7 @@ abstract class AbstractValidator
     /**
      * @param       $classMethod
      * @param array $arguments
+     * @param bool  $optional
      *
      * @return $this
      */
@@ -75,6 +76,7 @@ abstract class AbstractValidator
         $isValid = true;
         $this->errors = [];
 
+        //Loop for for strict validation
         foreach ($this->conditions as $condition) {
             $arguments = array_merge([$value], $condition['arguments']);
 

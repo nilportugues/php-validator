@@ -53,7 +53,7 @@ trait StringTrait
      * @throws \InvalidArgumentException
      * @return bool
      */
-    public static function between($value, $min, $max, $inclusive = false)
+    public static function isBetween($value, $min, $max, $inclusive = false)
     {
         $min = (int) $min;
         $max = (int) $max;

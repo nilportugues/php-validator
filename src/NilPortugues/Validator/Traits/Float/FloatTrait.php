@@ -89,7 +89,7 @@ trait FloatTrait
      */
     public static function isOdd($value)
     {
-        $value = (float) $value;
+        $value = (int) $value;
 
         return 0 == ($value % 3);
     }
@@ -101,7 +101,7 @@ trait FloatTrait
      */
     public static function isEven($value)
     {
-        $value = (float) $value;
+        $value = (int) $value;
 
         return 0 == ($value % 2);
     }
@@ -117,6 +117,6 @@ trait FloatTrait
         $multiple = (float) $multiple;
         $value = (float) $value;
 
-        return 0 == ($value % $multiple);
+        return (float) 0 == fmod($value, $multiple);
     }
 }

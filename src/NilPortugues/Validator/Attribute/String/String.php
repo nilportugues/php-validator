@@ -10,14 +10,14 @@
 
 namespace NilPortugues\Validator\Attribute\String;
 
-use NilPortugues\Validator\AbstractValidator;
+use NilPortugues\Validator\Attribute\Generic;
 use NilPortugues\Validator\Validator;
 
 /**
  * Class String
  * @package NilPortugues\Validator\Attribute\String
  */
-class String extends AbstractValidator
+class String extends Generic
 {
     /**
      * @param Validator $validator
@@ -62,7 +62,7 @@ class String extends AbstractValidator
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
-    public function between($start, $end, $inclusive = false)
+    public function isBetween($start, $end, $inclusive = false)
     {
         $this->addCondition(__METHOD__, [(int) $start, (int) $end, (bool) $inclusive]);
 

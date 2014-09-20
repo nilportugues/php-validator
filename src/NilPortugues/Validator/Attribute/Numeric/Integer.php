@@ -10,14 +10,14 @@
 
 namespace NilPortugues\Validator\Attribute\Numeric;
 
-use NilPortugues\Validator\AbstractValidator;
+use NilPortugues\Validator\Attribute\Generic;
 use NilPortugues\Validator\Validator;
 
 /**
  * Class Integer
  * @package NilPortugues\Validator\Attribute\Numeric
  */
-class Integer extends AbstractValidator
+class Integer extends Generic
 {
     /**
      * @param Validator $validator
