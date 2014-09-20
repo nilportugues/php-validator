@@ -193,86 +193,319 @@ $result = $string->isAlpha()->validate('hello@example.com'); // false
 
 #### 3.1.3. isBetween <a name="block3.1.3"></a> [↑](#index_block)
 
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
+
 #### 3.1.4. isCharset <a name="block3.1.4"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
 
 #### 3.1.5. isAllConsonants <a name="block3.1.5"></a> [↑](#index_block)
 
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
+
 #### 3.1.6. contains <a name="block3.1.6"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
 
 #### 3.1.7. isControlCharacters <a name="block3.1.7"></a> [↑](#index_block)
 
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
+
 #### 3.1.8. isDigit <a name="block3.1.8"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
 
 #### 3.1.9. endsWith <a name="block3.1.9"></a> [↑](#index_block)
 
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+```
+
 #### 3.1.10. equals <a name="block3.1.10"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
 
 #### 3.1.11. in <a name="block3.1.11"></a> [↑](#index_block)
 
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+```
+
 #### 3.1.12. hasGraphicalCharsOnly <a name="block3.1.12"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
 
 #### 3.1.13. hasLength <a name="block3.1.13"></a> [↑](#index_block)
 
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
+
 #### 3.1.14. isLowercase <a name="block3.1.14"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
 
 #### 3.1.15. notEmpty <a name="block3.1.15"></a> [↑](#index_block)
 
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
+
 #### 3.1.16. noWhitespace <a name="block3.1.16"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
 
 #### 3.1.17. hasPrintableCharsOnly <a name="block3.1.17"></a> [↑](#index_block)
 
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
+
 #### 3.1.18. isPunctuation <a name="block3.1.18"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
 
 #### 3.1.19. matchesRegex <a name="block3.1.19"></a> [↑](#index_block)
 
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
+
 #### 3.1.20. isSlug <a name="block3.1.20"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
 
 #### 3.1.21. isSpace <a name="block3.1.21"></a> [↑](#index_block)
 
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
+
 #### 3.1.22. startsWith <a name="block3.1.22"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
 
 #### 3.1.23. isUppercase <a name="block3.1.23"></a> [↑](#index_block)
 
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
+
 #### 3.1.24. isVersion <a name="block3.1.24"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
 
 #### 3.1.25. isVowel <a name="block3.1.25"></a> [↑](#index_block)
 
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
+
 #### 3.1.26. isHexDigit <a name="block3.1.26"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
 
 <a name="block3.2"></a>
 ## 3.2 Numbers (Integers and Floats) [↑](#index_block)
 
+Number validation comes in two flavours, `Integers` and `Floats`. Both validators share the same method interface, but internal implementation is different.
+
+To use these validators, call the as follows:
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$integer = $validator->isInteger('propertyName');
+
+$float = $validator->isFloat('propertyName');
+```
+
 #### 3.2.1. isNotZero  <a name="block3.2.1"></a> [↑](#index_block)
+
+```php
+
+```
 
 #### 3.2.2. isPositive  <a name="block3.2.2"></a> [↑](#index_block)
 
+```php
+
+```
+
 #### 3.2.3. isNegative  <a name="block3.2.3"></a> [↑](#index_block)
+
+```php
+
+```
 
 #### 3.2.4. isBetween  <a name="block3.2.4"></a> [↑](#index_block)
 
+```php
+
+```
+
 #### 3.2.5. isOdd  <a name="block3.2.5"></a> [↑](#index_block)
+
+```php
+
+```
 
 #### 3.2.6. isEven  <a name="block3.2.6"></a> [↑](#index_block)
 
+```php
+
+```
+
 #### 3.2.7. isMultiple  <a name="block3.2.7"></a> [↑](#index_block)
+
+```php
+
+```
 
 <a name="block3.3"></a>
 ## 3.3 Objects [↑](#index_block)
 
 #### 3.3.1. isInstanceOf<a name="block3.3.1"></a> [↑](#index_block)
 
+```php
+
+```
+
 #### 3.3.2. hasProperty<a name="block3.3.2"></a> [↑](#index_block)
+
+```php
+
+```
 
 #### 3.3.3. hasMethod<a name="block3.3.3"></a> [↑](#index_block)
 
+```php
+
+```
+
 #### 3.3.4. hasParentClass<a name="block3.3.4"></a> [↑](#index_block)
+
+```php
+
+```
 
 #### 3.3.5. isChildOf<a name="block3.3.5"></a> [↑](#index_block)
 
+```php
+
+```
+
 #### 3.3.6. inheritsFrom<a name="block3.3.6"></a> [↑](#index_block)
+
+```php
+
+```
 
 #### 3.3.7. hasInterface<a name="block3.3.7"></a> [↑](#index_block)
 
+```php
+
+```
 <a name="block3.4"></a>
 ## 3.4 Collections (Arrays) [↑](#index_block)
 Collections are data structures that hold other data structures or same type variables.
@@ -285,19 +518,51 @@ Supported PHP data structures for the Collection validator are:
 
 #### 3.4.1. each <a name="block3.4.1"></a> [↑](#index_block)
 
+```php
+
+```
+
 #### 3.4.2. hasKeyFormat <a name="block3.4.2"></a> [↑](#index_block)
+
+```php
+
+```
 
 #### 3.4.3. endsWith <a name="block3.4.3"></a> [↑](#index_block)
 
+```php
+
+```
+
 #### 3.4.4. contains <a name="block3.4.4"></a> [↑](#index_block)
+
+```php
+
+```
 
 #### 3.4.5. hasKey <a name="block3.4.5"></a> [↑](#index_block)
 
+```php
+
+```
+
 #### 3.4.6. length <a name="block3.4.6"></a> [↑](#index_block)
+
+```php
+
+```
 
 #### 3.4.7. isNotEmpty <a name="block3.4.7"></a> [↑](#index_block)
 
+```php
+
+```
+
 #### 3.4.8. startsWith <a name="block3.4.8"></a> [↑](#index_block)
+
+```php
+
+```
 
 <a name="block4"></a>
 # 4. Quality Code [↑](#index_block)
