@@ -21,16 +21,6 @@ trait IntegerTrait
      *
      * @return bool
      */
-    public static function isRequired($value)
-    {
-        return empty($value) && !is_numeric($value);
-    }
-
-    /**
-     * @param $value
-     *
-     * @return bool
-     */
     public static function isInteger($value)
     {
         return is_integer($value);

@@ -20,16 +20,6 @@ use NilPortugues\Validator\Validator;
 class Float extends Generic
 {
     /**
-     * @return $this
-     */
-    public function isRequired()
-    {
-        $this->addCondition(__METHOD__);
-
-        return $this;
-    }
-
-    /**
      * @param Validator $validator
      */
     public function __construct(Validator $validator)

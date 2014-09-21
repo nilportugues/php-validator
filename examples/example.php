@@ -1,5 +1,5 @@
 <?php
-include '../vendor/autoload.php';
+include realpath(dirname(__FILE__)).'/../vendor/autoload.php';
 
 class Request
 {
@@ -24,10 +24,10 @@ class Request
     public $gender;
 
     /**
-     * @param mixed $username
-     * @param mixed $password
-     * @param mixed $email
-     * @param mixed $gender
+     * @param string $username
+     * @param string $password
+     * @param string $email
+     * @param string $gender
      */
     public function __construct($username, $password, $email, $gender)
     {
@@ -120,6 +120,7 @@ class UserValidator
 
         $result = $email
             ->isRequired()
+            ->isEmail()
             ->validate($request->email);
 
         $this->isValid = $this->isValid && $result;
