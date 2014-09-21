@@ -106,4 +106,118 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->getValidator()->isBetween($minDate, $maxDate, false)->validate($date1));
         $this->assertFalse($this->getValidator()->isBetween($minDate, $maxDate, true)->validate($date1));
     }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_monday()
+    {
+        $this->assertTrue($this->getValidator()->isMonday()->validate('2014-09-22'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_tuesday()
+    {
+        $this->assertTrue($this->getValidator()->isTuesday()->validate('2014-09-23'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_wednesday()
+    {
+        $this->assertTrue($this->getValidator()->isWednesday()->validate('2014-09-24'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_thursday()
+    {
+        $this->assertTrue($this->getValidator()->isThursday()->validate('2014-09-25'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_friday()
+    {
+        $this->assertTrue($this->getValidator()->isFriday()->validate('2014-09-26'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_saturday()
+    {
+        $this->assertTrue($this->getValidator()->isSaturday()->validate('2014-09-27'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_sunday()
+    {
+        $this->assertTrue($this->getValidator()->isSunday()->validate('2014-09-28'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_today()
+    {
+        $date = new \DateTime('now');
+
+        $this->assertTrue($this->getValidator()->isToday()->validate($date));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_yesterday()
+    {
+        $date = new \DateTime('now -1 day');
+
+        $this->assertTrue($this->getValidator()->isYesterday()->validate($date));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_tomorrow()
+    {
+        $date = new \DateTime('now +1 day');
+
+        $this->assertTrue($this->getValidator()->isTomorrow()->validate($date));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_leap_year()
+    {
+        $date = new \DateTime('2016-01-01');
+
+        $this->assertTrue($this->getValidator()->isLeapYear()->validate($date));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_weekend()
+    {
+        $this->assertTrue($this->getValidator()->isWeekend()->validate('2014-09-20'));
+        $this->assertFalse($this->getValidator()->isWeekend()->validate('2014-09-22'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_weekday()
+    {
+        $this->assertFalse($this->getValidator()->isWeekday()->validate('2014-09-20'));
+        $this->assertTrue($this->getValidator()->isWeekday()->validate('2014-09-22'));
+    }
 }

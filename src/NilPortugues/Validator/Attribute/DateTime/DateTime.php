@@ -68,4 +68,134 @@ class DateTime extends Generic
 
         return $this;
     }
+
+    /*
+     * @return $this
+     */
+    public function isWeekend()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /*
+     * @return $this
+     */
+    public function isWeekday()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /*
+     * @return $this
+     */
+    public function isMonday()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /*
+     * @return $this
+     */
+    public function isTuesday()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /*
+     * @return $this
+     */
+    public function isWednesday()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /*
+     * @return $this
+     */
+    public function isThursday()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /*
+     * @return $this
+     */
+    public function isFriday()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /*
+     * @return $this
+     */
+    public function isSaturday()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /*
+     * @return $this
+     */
+    public function isSunday()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /*
+     * @return $this
+     */
+    public function isToday()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /*
+     * @return $this
+     */
+    public function isYesterday()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /*
+     * @return $this
+     */
+    public function isTomorrow()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /*
+     * @return $this
+     */
+    public function isLeapYear()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
 }

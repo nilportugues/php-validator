@@ -112,13 +112,14 @@ abstract class AbstractValidator
     }
 
     /**
+     * @param $key
      * @param $error
      *
      * @return $this
      */
-    public function setError($error)
+    public function setError($key, $error)
     {
-        $this->errors[$this->validator->getPropertyName()][] = $error;
+        $this->errors[$this->validator->getPropertyName()][$key] = $error;
 
         return $this;
     }

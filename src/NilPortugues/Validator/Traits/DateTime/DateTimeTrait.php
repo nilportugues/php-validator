@@ -26,13 +26,13 @@ trait DateTimeTrait
     public static function isDateTime($value)
     {
         if ($value instanceof \DateTime) {
-            $value = $value->format('Y-m-d H:i:s');
+            return true;
         }
 
-        $dateTime = \DateTime::createFromFormat('Y-m-d H:i:s', $value);
-        $errors = \DateTime::getLastErrors();
+        $date = new \DateTime($value);
+        $errors = $date->getLastErrors();
 
-        return empty($errors['warning_count']) && $dateTime !== false;
+        return (0 == $errors['warning_count'] && 0 == $errors['error_count']);
     }
 
     /**
@@ -108,5 +108,167 @@ trait DateTimeTrait
         }
 
         return (self::isAfter($value, $minDate, true) && self::isBefore($value, $maxDate, true));
+    }
+
+    /**
+     * @param $value
+     *
+     * @return bool
+     */
+    public static function isWeekend($value)
+    {
+        $value = self::convertToDateTime($value);
+
+        return '0' == $value->format('w') || '6' == $value->format('w');
+    }
+
+    /**
+     * @param $value
+     *
+     * @return bool
+     */
+    public static function isWeekday($value)
+    {
+        return !self::isWeekend($value);
+    }
+
+    /**
+     * @param $value
+     *
+     * @return bool
+     */
+    public static function isMonday($value)
+    {
+        $value = self::convertToDateTime($value);
+
+        return '1' == $value->format('w');
+    }
+
+    /**
+     * @param $value
+     *
+     * @return bool
+     */
+    public static function isTuesday($value)
+    {
+        $value = self::convertToDateTime($value);
+
+        return '2' == $value->format('w');
+    }
+
+    /**
+     * @param $value
+     *
+     * @return bool
+     */
+    public static function isWednesday($value)
+    {
+        $value = self::convertToDateTime($value);
+
+        return '3' == $value->format('w');
+    }
+
+    /**
+     * @param $value
+     *
+     * @return bool
+     */
+    public static function isThursday($value)
+    {
+        $value = self::convertToDateTime($value);
+
+        return '4' == $value->format('w');
+    }
+
+    /**
+     * @param $value
+     *
+     * @return bool
+     */
+    public static function isFriday($value)
+    {
+        $value = self::convertToDateTime($value);
+
+        return '5' == $value->format('w');
+    }
+
+    /**
+     * @param $value
+     *
+     * @return bool
+     */
+    public static function isSaturday($value)
+    {
+        $value = self::convertToDateTime($value);
+
+        return '6' == $value->format('w');
+    }
+
+    /**
+     * @param $value
+     *
+     * @return bool
+     */
+    public static function isSunday($value)
+    {
+        $value = self::convertToDateTime($value);
+
+        return '0' == $value->format('w');
+    }
+
+    /**
+     * @param $value
+     *
+     * @return bool
+     */
+    public static function isToday($value)
+    {
+        $value = self::convertToDateTime($value);
+
+        $date = new \DateTime('now');
+
+        return $date->format('Y-m-d') === $value->format('Y-m-d');
+    }
+
+    /**
+     * @param $value
+     *
+     * @return bool
+     */
+    public static function isYesterday($value)
+    {
+        $value = self::convertToDateTime($value);
+
+        $date = new \DateTime('now - 1 day');
+
+        return $date->format('Y-m-d') === $value->format('Y-m-d');
+    }
+
+    /**
+     * @param $value
+     *
+     * @return bool
+     */
+    public static function isTomorrow($value)
+    {
+        $value = self::convertToDateTime($value);
+
+        $date = new \DateTime('now + 1 day');
+
+        return $date->format('Y-m-d') === $value->format('Y-m-d');
+    }
+
+    /**
+     * Determines if the instance is a leap year
+     *
+     * @param $value
+     *
+     * @return bool
+     */
+    public static function isLeapYear($value)
+    {
+        $value = self::convertToDateTime($value);
+
+        return '1' == $value->format('L');
     }
 }

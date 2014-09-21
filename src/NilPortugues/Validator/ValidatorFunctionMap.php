@@ -101,6 +101,19 @@ class ValidatorFunctionMap
         'DateTime::isAfter' => '\DateTime\DateTimeTrait::isAfter',
         'DateTime::isBefore' => '\DateTime\DateTimeTrait::isBefore',
         'DateTime::isBetween' => '\DateTime\DateTimeTrait::isBetween',
+        'DateTime::isWeekend' => '\DateTime\DateTimeTrait::isWeekend',
+        'DateTime::isWeekday' => '\DateTime\DateTimeTrait::isWeekday',
+        'DateTime::isMonday' => '\DateTime\DateTimeTrait::isMonday',
+        'DateTime::isTuesday' => '\DateTime\DateTimeTrait::isTuesday',
+        'DateTime::isWednesday' => '\DateTime\DateTimeTrait::isWednesday',
+        'DateTime::isThursday' => '\DateTime\DateTimeTrait::isThursday',
+        'DateTime::isFriday' => '\DateTime\DateTimeTrait::isFriday',
+        'DateTime::isSaturday' => '\DateTime\DateTimeTrait::isSaturday',
+        'DateTime::isSunday' => '\DateTime\DateTimeTrait::isSunday',
+        'DateTime::isToday' => '\DateTime\DateTimeTrait::isToday',
+        'DateTime::isYesterday' => '\DateTime\DateTimeTrait::isYesterday',
+        'DateTime::isTomorrow' => '\DateTime\DateTimeTrait::isTomorrow',
+        'DateTime::isLeapYear' => '\DateTime\DateTimeTrait::isLeapYear',
 
         //Collection
         'Collection::__construct' => '\Collection\CollectionTrait::isArray',
@@ -148,7 +161,7 @@ class ValidatorFunctionMap
         $result = call_user_func_array([$class[0], $class[1]], $arguments);
 
         if (false === $result) {
-            $this->validator->setError('get the error message');
+            $this->validator->setError($funcName, 'get the error message');
         }
 
         return $result;
