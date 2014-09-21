@@ -647,7 +647,7 @@ $datetime = $validator->isDateTime('propertyName');
 
 ```
 
-#### 3.4.4. isWeekend <a name="block3.4.3"></a> [↑](#index_block)
+#### 3.4.4. isWeekend <a name="block3.4.4"></a> [↑](#index_block)
 
 ```php
 $validator = new \NilPortugues\Validator\Validator();
@@ -655,7 +655,7 @@ $validator = new \NilPortugues\Validator\Validator();
 $datetime = $validator->isDateTime('propertyName');
 
 ```
-#### 3.4.5. isWeekday <a name="block3.4.3"></a> [↑](#index_block)
+#### 3.4.5. isWeekday <a name="block3.4.5"></a> [↑](#index_block)
 
 ```php
 $validator = new \NilPortugues\Validator\Validator();
@@ -663,7 +663,7 @@ $validator = new \NilPortugues\Validator\Validator();
 $datetime = $validator->isDateTime('propertyName');
 
 ```
-#### 3.4.6. isMonday <a name="block3.4.3"></a> [↑](#index_block)
+#### 3.4.6. isMonday <a name="block3.4.6"></a> [↑](#index_block)
 
 ```php
 $validator = new \NilPortugues\Validator\Validator();
@@ -671,7 +671,7 @@ $validator = new \NilPortugues\Validator\Validator();
 $datetime = $validator->isDateTime('propertyName');
 
 ```
-#### 3.4.7. isTuesday <a name="block3.4.3"></a> [↑](#index_block)
+#### 3.4.7. isTuesday <a name="block3.4.7"></a> [↑](#index_block)
 
 ```php
 $validator = new \NilPortugues\Validator\Validator();
@@ -679,7 +679,7 @@ $validator = new \NilPortugues\Validator\Validator();
 $datetime = $validator->isDateTime('propertyName');
 
 ```
-#### 3.4.8. isWednesday <a name="block3.4.3"></a> [↑](#index_block)
+#### 3.4.8. isWednesday <a name="block3.4.8"></a> [↑](#index_block)
 
 ```php
 $validator = new \NilPortugues\Validator\Validator();
@@ -687,7 +687,7 @@ $validator = new \NilPortugues\Validator\Validator();
 $datetime = $validator->isDateTime('propertyName');
 
 ```
-#### 3.4.9. isThursday <a name="block3.4.3"></a> [↑](#index_block)
+#### 3.4.9. isThursday <a name="block3.4.9"></a> [↑](#index_block)
 
 ```php
 $validator = new \NilPortugues\Validator\Validator();
@@ -695,7 +695,7 @@ $validator = new \NilPortugues\Validator\Validator();
 $datetime = $validator->isDateTime('propertyName');
 
 ```
-#### 3.4.10. isFriday <a name="block3.4.3"></a> [↑](#index_block)
+#### 3.4.10. isFriday <a name="block3.4.10"></a> [↑](#index_block)
 
 ```php
 $validator = new \NilPortugues\Validator\Validator();
@@ -703,7 +703,7 @@ $validator = new \NilPortugues\Validator\Validator();
 $datetime = $validator->isDateTime('propertyName');
 
 ```
-#### 3.4.11. isSaturday <a name="block3.4.3"></a> [↑](#index_block)
+#### 3.4.11. isSaturday <a name="block3.4.11"></a> [↑](#index_block)
 
 ```php
 $validator = new \NilPortugues\Validator\Validator();
@@ -711,7 +711,7 @@ $validator = new \NilPortugues\Validator\Validator();
 $datetime = $validator->isDateTime('propertyName');
 
 ```
-#### 3.4.12. isSunday <a name="block3.4.3"></a> [↑](#index_block)
+#### 3.4.12. isSunday <a name="block3.4.12"></a> [↑](#index_block)
 
 ```php
 $validator = new \NilPortugues\Validator\Validator();
@@ -719,7 +719,7 @@ $validator = new \NilPortugues\Validator\Validator();
 $datetime = $validator->isDateTime('propertyName');
 
 ```
-#### 3.4.13. isToday <a name="block3.4.3"></a> [↑](#index_block)
+#### 3.4.13. isToday <a name="block3.4.13"></a> [↑](#index_block)
 
 ```php
 $validator = new \NilPortugues\Validator\Validator();
@@ -727,7 +727,7 @@ $validator = new \NilPortugues\Validator\Validator();
 $datetime = $validator->isDateTime('propertyName');
 
 ```
-#### 3.4.14. isYesterday <a name="block3.4.3"></a> [↑](#index_block)
+#### 3.4.14. isYesterday <a name="block3.4.14"></a> [↑](#index_block)
 
 ```php
 $validator = new \NilPortugues\Validator\Validator();
@@ -735,7 +735,7 @@ $validator = new \NilPortugues\Validator\Validator();
 $datetime = $validator->isDateTime('propertyName');
 
 ```
-#### 3.4.15. isTomorrow <a name="block3.4.3"></a> [↑](#index_block)
+#### 3.4.15. isTomorrow <a name="block3.4.15"></a> [↑](#index_block)
 
 ```php
 $validator = new \NilPortugues\Validator\Validator();
@@ -743,7 +743,7 @@ $validator = new \NilPortugues\Validator\Validator();
 $datetime = $validator->isDateTime('propertyName');
 
 ```
-#### 3.4.16. isLeapYear <a name="block3.4.3"></a> [↑](#index_block)
+#### 3.4.16. isLeapYear <a name="block3.4.16"></a> [↑](#index_block)
 
 ```php
 $validator = new \NilPortugues\Validator\Validator();
