@@ -59,15 +59,19 @@ A simple, powerful and elegant stand-alone validation library with no dependenci
         * [3.3.5. isChildOf] (#block3.3.5)
         * [3.3.6. inheritsFrom] (#block3.3.6)
         * [3.3.7. hasInterface] (#block3.3.7)
-    * [3.4 Collections (Arrays)](#block3.4)
-        * [3.4.1. each] (#block3.4.1)
-        * [3.4.2. hasKeyFormat] (#block3.4.2)
-        * [3.4.3. endsWith] (#block3.4.3)
-        * [3.4.4. contains] (#block3.4.4)
-        * [3.4.5. hasKey] (#block3.4.5)
-        * [3.4.6. length] (#block3.4.6)
-        * [3.4.7. isNotEmpty] (#block3.4.7)
-        * [3.4.8. startsWith] (#block3.4.8)
+    * [3.4 DateTime](#block3.4)
+        * [3.4.1. isAfter] (#block3.4.1)
+        * [3.4.2. isBefore] (#block3.4.2)
+        * [3.4.3. isBetween] (#block3.4.3)
+    * [3.5 Collections (Arrays)](#block3.5)
+        * [3.5.1. each] (#block3.5.1)
+        * [3.5.2. hasKeyFormat] (#block3.5.2)
+        * [3.5.3. endsWith] (#block3.5.3)
+        * [3.5.4. contains] (#block3.5.4)
+        * [3.5.5. hasKey] (#block3.5.5)
+        * [3.5.6. length] (#block3.5.6)
+        * [3.5.7. isNotEmpty] (#block3.5.7)
+        * [3.5.8. startsWith] (#block3.5.8)
 * [4. Quality Code](#block4)
 * [5. Author](#block5)
 * [6. License](#block6)
@@ -178,7 +182,6 @@ $validator = new \NilPortugues\Validator\Validator();
 $string = $validator->isString('propertyName');
 
 $result = $string->isAlphanumeric()->validate('28a'); // true
-
 $result = $string->isAlphanumeric()->validate('hello@example.com'); // false
 ```
 
@@ -190,9 +193,7 @@ $validator = new \NilPortugues\Validator\Validator();
 $string = $validator->isString('propertyName');
 
 $result = $string->isAlpha()->validate('Hello World'); // true
-
 $result = $string->isAlpha()->validate('28a'); // false
-
 $result = $string->isAlpha()->validate('hello@example.com'); // false
 ```
 
@@ -473,44 +474,66 @@ $float = $validator->isFloat('propertyName');
 #### 3.2.1. isNotZero  <a name="block3.2.1"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$integer = $validator->isInteger('propertyName');
 
 ```
 
 #### 3.2.2. isPositive  <a name="block3.2.2"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$integer = $validator->isInteger('propertyName');
 
 ```
 
 #### 3.2.3. isNegative  <a name="block3.2.3"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$integer = $validator->isInteger('propertyName');
 
 ```
 
 #### 3.2.4. isBetween  <a name="block3.2.4"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$integer = $validator->isInteger('propertyName');
 
 ```
 
 #### 3.2.5. isOdd  <a name="block3.2.5"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$integer = $validator->isInteger('propertyName');
 
 ```
 
 #### 3.2.6. isEven  <a name="block3.2.6"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$integer = $validator->isInteger('propertyName');
 
 ```
 
 #### 3.2.7. isMultiple  <a name="block3.2.7"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$integer = $validator->isInteger('propertyName');
 
 ```
+
 
 <a name="block3.3"></a>
 ## 3.3 Objects [↑](#index_block)
@@ -518,46 +541,101 @@ $float = $validator->isFloat('propertyName');
 #### 3.3.1. isInstanceOf<a name="block3.3.1"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$object = $validator->isObject('propertyName');
 
 ```
 
 #### 3.3.2. hasProperty<a name="block3.3.2"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$object = $validator->isObject('propertyName');
 
 ```
 
 #### 3.3.3. hasMethod<a name="block3.3.3"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$object = $validator->isObject('propertyName');
 
 ```
 
 #### 3.3.4. hasParentClass<a name="block3.3.4"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$object = $validator->isObject('propertyName');
 
 ```
 
 #### 3.3.5. isChildOf<a name="block3.3.5"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$object = $validator->isObject('propertyName');
 
 ```
 
 #### 3.3.6. inheritsFrom<a name="block3.3.6"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$object = $validator->isObject('propertyName');
 
 ```
 
 #### 3.3.7. hasInterface<a name="block3.3.7"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$object = $validator->isObject('propertyName');
 
 ```
+
+
 <a name="block3.4"></a>
-## 3.4 Collections (Arrays) [↑](#index_block)
+## 3.4 DateTime  [↑](#index_block)
+DateTime Validator accepts any `\DateTime` objects and `strings` representing **valid date formats**.
+
+
+#### 3.4.1. isAfter <a name="block3.4.1"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$datetime = $validator->isDateTime('propertyName');
+
+```
+
+#### 3.4.2. isBefore <a name="block3.4.2"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$datetime = $validator->isDateTime('propertyName');
+
+```
+
+#### 3.4.3. isBetween <a name="block3.4.3"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$datetime = $validator->isDateTime('propertyName');
+
+```
+
+<a name="block3.5"></a>
+## 3.5 Collections (Arrays) [↑](#index_block)
 Collections are data structures that hold other data structures or same type variables.
 
 Supported PHP data structures for the Collection validator are:
@@ -566,53 +644,80 @@ Supported PHP data structures for the Collection validator are:
 - ArrayObject
 - SplFixedArray
 
-#### 3.4.1. each <a name="block3.4.1"></a> [↑](#index_block)
+#### 3.5.1. each <a name="block3.5.1"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$object = $validator->isArray('propertyName');
 
 ```
 
-#### 3.4.2. hasKeyFormat <a name="block3.4.2"></a> [↑](#index_block)
+#### 3.5.2. hasKeyFormat <a name="block3.5.2"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$object = $validator->isArray('propertyName');
 
 ```
 
-#### 3.4.3. endsWith <a name="block3.4.3"></a> [↑](#index_block)
+#### 3.5.3. endsWith <a name="block3.5.3"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$object = $validator->isArray('propertyName');
 
 ```
 
-#### 3.4.4. contains <a name="block3.4.4"></a> [↑](#index_block)
+#### 3.5.4. contains <a name="block3.5.4"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$object = $validator->isArray('propertyName');
 
 ```
 
-#### 3.4.5. hasKey <a name="block3.4.5"></a> [↑](#index_block)
+#### 3.5.5. hasKey <a name="block3.5.5"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$object = $validator->isArray('propertyName');
 
 ```
 
-#### 3.4.6. length <a name="block3.4.6"></a> [↑](#index_block)
+#### 3.5.6. length <a name="block3.5.6"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$object = $validator->isArray('propertyName');
 
 ```
 
-#### 3.4.7. isNotEmpty <a name="block3.4.7"></a> [↑](#index_block)
+
+#### 3.5.7. isNotEmpty <a name="block3.5.7"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$object = $validator->isArray('propertyName');
 
 ```
 
-#### 3.4.8. startsWith <a name="block3.4.8"></a> [↑](#index_block)
+
+#### 3.5.8. startsWith <a name="block3.5.8"></a> [↑](#index_block)
 
 ```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$object = $validator->isArray('propertyName');
 
 ```
+
 
 <a name="block4"></a>
 # 4. Quality Code [↑](#index_block)
@@ -624,7 +729,6 @@ To run the test suite, you need [Composer](http://getcomposer.org):
     php composer.phar install --dev
     php bin/phpunit
 ```
-
 
 <a name="block5"></a>
 # 5. Author [↑](#index_block)
