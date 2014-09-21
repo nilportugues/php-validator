@@ -30,13 +30,9 @@ trait DateTimeTrait
         }
 
         $dateTime = \DateTime::createFromFormat('Y-m-d H:i:s', $value);
-
         $errors = \DateTime::getLastErrors();
-        if (!empty($errors['warning_count'])) {
-            return false;
-        }
 
-        return $dateTime !== false;
+        return empty($errors['warning_count']) && $dateTime !== false;
     }
 
     /**
