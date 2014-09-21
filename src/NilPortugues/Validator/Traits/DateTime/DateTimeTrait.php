@@ -95,8 +95,8 @@ trait DateTimeTrait
      * Checks if a given date is in a given range of dates.
      *
      * @param      $value
-     * @param      $minDate
-     * @param      $maxDate
+     * @param      string $minDate
+     * @param      string $maxDate
      * @param bool $inclusive
      *
      * @return bool
@@ -123,7 +123,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      *
      * @return bool
      */
@@ -133,7 +133,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      *
      * @return bool
      */
@@ -145,7 +145,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      *
      * @return bool
      */
@@ -157,7 +157,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      *
      * @return bool
      */
@@ -169,7 +169,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      *
      * @return bool
      */
@@ -181,7 +181,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      *
      * @return bool
      */
@@ -193,7 +193,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      *
      * @return bool
      */
@@ -205,7 +205,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      *
      * @return bool
      */
@@ -217,7 +217,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param $value
+     * @param \DateTime $value
      *
      * @return bool
      */
@@ -231,7 +231,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param $value
+     * @param \DateTime $value
      *
      * @return bool
      */
@@ -245,7 +245,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param $value
+     * @param \DateTime $value
      *
      * @return bool
      */
@@ -261,7 +261,7 @@ trait DateTimeTrait
     /**
      * Determines if the instance is a leap year
      *
-     * @param $value
+     * @param \DateTime $value
      *
      * @return bool
      */

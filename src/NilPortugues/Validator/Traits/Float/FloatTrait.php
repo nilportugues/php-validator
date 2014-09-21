@@ -39,7 +39,7 @@ trait FloatTrait
     }
 
     /**
-     * @param $value
+     * @param double $value
      *
      * @return bool
      */
@@ -51,7 +51,7 @@ trait FloatTrait
     }
 
     /**
-     * @param $value
+     * @param double $value
      *
      * @return bool
      */
@@ -63,9 +63,9 @@ trait FloatTrait
     }
 
     /**
-     * @param      $value
-     * @param      $min
-     * @param      $max
+     * @param      double $value
+     * @param      double $min
+     * @param      double $max
      * @param bool $inclusive
      *
      * @throws \InvalidArgumentException

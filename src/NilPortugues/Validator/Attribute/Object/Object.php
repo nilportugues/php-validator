@@ -30,7 +30,7 @@ class Object extends Generic
     }
 
     /**
-     * @param $instanceOf
+     * @param string $instanceOf
      *
      * @return $this
      */
@@ -42,7 +42,7 @@ class Object extends Generic
     }
 
     /**
-     * @param $property
+     * @param string $property
      *
      * @return $this
      */
@@ -54,7 +54,7 @@ class Object extends Generic
     }
 
     /**
-     * @param $method
+     * @param string $method
      *
      * @return $this
      */
@@ -76,7 +76,7 @@ class Object extends Generic
     }
 
     /**
-     * @param $parentClass
+     * @param string $parentClass
      *
      * @return $this
      */
@@ -88,7 +88,7 @@ class Object extends Generic
     }
 
     /**
-     * @param $inheritsClass
+     * @param string $inheritsClass
      *
      * @return $this
      */
@@ -100,7 +100,7 @@ class Object extends Generic
     }
 
     /**
-     * @param $interface
+     * @param string $interface
      *
      * @return $this
      */

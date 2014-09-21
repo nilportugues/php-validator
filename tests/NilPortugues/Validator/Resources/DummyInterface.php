@@ -16,5 +16,8 @@ namespace Tests\NilPortugues\Validator\Resources;
  */
 interface DummyInterface
 {
+    /**
+     * @return string
+     */
     public function getUserName();
 }

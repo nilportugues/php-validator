@@ -46,7 +46,7 @@ abstract class AbstractValidator
     }
 
     /**
-     * @param       $classMethod
+     * @param       string $classMethod
      * @param array $arguments
      * @param bool  $fetchValidatorErrors
      *
@@ -113,7 +113,7 @@ abstract class AbstractValidator
 
     /**
      * @param $key
-     * @param $error
+     * @param string $error
      *
      * @return $this
      */

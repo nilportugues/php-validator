@@ -93,7 +93,7 @@ class UserValidator
     /**
      * @param Request $request
      *
-     * @return bool
+     * @return boolean|null
      */
     private function validateGender(Request $request)
     {
@@ -112,7 +112,7 @@ class UserValidator
     /**
      * @param Request $request
      *
-     * @return bool
+     * @return boolean|null
      */
     private function validateEmail(Request $request)
     {
@@ -130,7 +130,7 @@ class UserValidator
     /**
      * @param Request $request
      *
-     * @return bool
+     * @return boolean|null
      */
     private function validatePassword(Request $request)
     {
@@ -151,7 +151,7 @@ class UserValidator
      *
      * @param Request $request
      *
-     * @return bool
+     * @return boolean|null
      */
     private function validateUsername(Request $request)
     {
@@ -167,7 +167,6 @@ class UserValidator
         $this->errors = array_merge($this->errors, $username->getErrors());
     }
 }
-
 
 $validator = new \NilPortugues\Validator\Validator();
 $userValidator = new UserValidator($validator);

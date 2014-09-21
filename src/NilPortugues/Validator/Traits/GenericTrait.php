@@ -17,7 +17,7 @@ namespace NilPortugues\Validator\Traits;
 trait GenericTrait
 {
     /**
-     * @param $value
+     * @param string|null $value
      *
      * @return bool
      */
@@ -29,7 +29,7 @@ trait GenericTrait
     }
 
     /**
-     * @param $value
+     * @param string|null $value
      *
      * @return bool
      */

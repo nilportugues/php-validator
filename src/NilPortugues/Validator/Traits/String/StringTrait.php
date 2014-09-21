@@ -27,7 +27,7 @@ trait StringTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      * @return bool
      */
     public static function isAlphanumeric($value)
@@ -36,7 +36,7 @@ trait StringTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      * @return bool
      */
     public static function isAlpha($value)
@@ -45,9 +45,9 @@ trait StringTrait
     }
 
     /**
-     * @param      $value
-     * @param      $min
-     * @param      $max
+     * @param      string $value
+     * @param      integer $min
+     * @param      integer $max
      * @param bool $inclusive
      *
      * @throws \InvalidArgumentException
@@ -73,8 +73,8 @@ trait StringTrait
     }
 
     /**
-     * @param $value
-     * @param $charset
+     * @param string $value
+     * @param string $charset
      *
      * @return bool
      */
@@ -94,7 +94,7 @@ trait StringTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      * @return bool
      */
     public static function isAllConsonants($value)
@@ -103,7 +103,7 @@ trait StringTrait
     }
 
     /**
-     * @param      $value
+     * @param      string $value
      * @param      $contains
      * @param bool $identical
      *
@@ -119,7 +119,7 @@ trait StringTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      * @return bool
      */
     public static function isControlCharacters($value)
@@ -137,7 +137,7 @@ trait StringTrait
     }
 
     /**
-     * @param      $value
+     * @param      string $value
      * @param      $contains
      * @param bool $identical
      *
@@ -157,7 +157,7 @@ trait StringTrait
     /**
      * Validates if the input is equal some value.
      *
-     * @param $value
+     * @param string $value
      * @param $comparedValue
      * @param bool $identical
      *
@@ -173,8 +173,8 @@ trait StringTrait
     }
 
     /**
-     * @param      $value
-     * @param      $haystack
+     * @param      string $value
+     * @param      string $haystack
      * @param bool $identical
      *
      * @return bool
@@ -192,7 +192,7 @@ trait StringTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      * @return bool
      */
     public static function hasGraphicalCharsOnly($value)
@@ -201,8 +201,8 @@ trait StringTrait
     }
 
     /**
-     * @param   $value
-     * @param   $length
+     * @param   string $value
+     * @param   integer $length
      *
      * @return bool
      */
@@ -214,7 +214,7 @@ trait StringTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      * @return bool
      */
     public static function isLowercase($value)
@@ -223,7 +223,7 @@ trait StringTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      * @return bool
      */
     public static function notEmpty($value)
@@ -234,7 +234,7 @@ trait StringTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      * @return bool
      */
     public static function noWhitespace($value)
@@ -243,7 +243,7 @@ trait StringTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      * @return bool
      */
     public static function hasPrintableCharsOnly($value)
@@ -252,7 +252,7 @@ trait StringTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      * @return bool
      */
     public static function isPunctuation($value)
@@ -261,8 +261,8 @@ trait StringTrait
     }
 
     /**
-     * @param $value
-     * @param $regex
+     * @param string $value
+     * @param string $regex
      *
      * @return bool
      */
@@ -272,7 +272,7 @@ trait StringTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      * @return bool
      */
     public static function isSlug($value)
@@ -288,7 +288,7 @@ trait StringTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      * @return bool
      */
     public static function isSpace($value)
@@ -297,7 +297,7 @@ trait StringTrait
     }
 
     /**
-     * @param      $value
+     * @param      string $value
      * @param      $contains
      * @param bool $identical
      *
@@ -315,7 +315,7 @@ trait StringTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      * @return bool
      */
     public static function isUppercase($value)
@@ -324,7 +324,7 @@ trait StringTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      * @return bool
      */
     public static function isVersion($value)
@@ -333,7 +333,7 @@ trait StringTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      * @return bool
      */
     public static function isVowel($value)
@@ -342,7 +342,7 @@ trait StringTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      * @return bool
      */
     public static function isHexDigit($value)
@@ -351,7 +351,7 @@ trait StringTrait
     }
 
     /**
-     * @param     $value
+     * @param     string $value
      * @param int $amount
      *
      * @return bool
@@ -363,8 +363,8 @@ trait StringTrait
 
     /**
      * @param $value
-     * @param $amount
-     * @param $regex
+     * @param integer|null $amount
+     * @param string $regex
      *
      * @return bool
      */
@@ -395,7 +395,7 @@ trait StringTrait
     }
 
     /**
-     * @param     $value
+     * @param     string $value
      * @param int $amount
      *
      * @return bool
@@ -406,7 +406,7 @@ trait StringTrait
     }
 
     /**
-     * @param     $value
+     * @param     string $value
      * @param int $amount
      *
      * @return bool
@@ -417,7 +417,7 @@ trait StringTrait
     }
 
     /**
-     * @param     $value
+     * @param     string $value
      * @param int $amount
      *
      * @return bool
@@ -428,7 +428,7 @@ trait StringTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      *
      * @return bool
      */

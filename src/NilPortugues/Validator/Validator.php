@@ -29,7 +29,7 @@ class Validator
     private $propertyName;
 
     /**
-     * @param $propertyName
+     * @param string $propertyName
      *
      * @return Collection
      */
@@ -41,7 +41,7 @@ class Validator
     }
 
     /**
-     * @param $propertyName
+     * @param string $propertyName
      *
      * @return \NilPortugues\Validator\Attribute\Numeric\Integer
      */
@@ -53,7 +53,7 @@ class Validator
     }
 
     /**
-     * @param $propertyName
+     * @param string $propertyName
      *
      * @return \NilPortugues\Validator\Attribute\Numeric\Float
      */
@@ -65,7 +65,7 @@ class Validator
     }
 
     /**
-     * @param $propertyName
+     * @param string $propertyName
      *
      * @return \NilPortugues\Validator\Attribute\Object\Object
      */
@@ -77,7 +77,7 @@ class Validator
     }
 
     /**
-     * @param $propertyName
+     * @param string $propertyName
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
@@ -89,7 +89,7 @@ class Validator
     }
 
     /**
-     * @param $propertyName
+     * @param string $propertyName
      *
      * @return \NilPortugues\Validator\Attribute\DateTime\DateTime
      */

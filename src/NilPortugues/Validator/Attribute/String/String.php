@@ -72,7 +72,7 @@ class String extends Generic
     /**
      * Validates if a string is in a specific charset
      *
-     * @param array $charsetNames
+     * @param string[] $charsetNames
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
@@ -190,7 +190,7 @@ class String extends Generic
     }
 
     /**
-     * @param $length
+     * @param integer $length
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
@@ -396,6 +396,9 @@ class String extends Generic
         return $this;
     }
 
+    /**
+     * @param integer $amount
+     */
     public function hasSpecialCharacters($amount = null)
     {
         $this->addCondition(__METHOD__, [$amount]);

@@ -93,7 +93,7 @@ class Collection extends AbstractValidator
     }
 
     /**
-     * @param $length
+     * @param integer $length
      *
      * @return $this
      */
