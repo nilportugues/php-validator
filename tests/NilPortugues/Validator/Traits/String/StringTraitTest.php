@@ -439,4 +439,68 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
         $result = StringTrait::isHexDigit($value);
         $this->assertFalse($result);
     }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_has_lowercase()
+    {
+        $this->assertTrue(StringTrait::hasLowercase('HELLOWOrLD'));
+        $this->assertTrue(StringTrait::hasLowercase('HeLLoWOrLD', 3));
+
+        $this->assertFalse(StringTrait::hasLowercase('HELLOWORLD'));
+        $this->assertFalse(StringTrait::hasLowercase('el', 3));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_has_uppercase()
+    {
+        $this->assertTrue(StringTrait::hasUppercase('hello World'));
+        $this->assertTrue(StringTrait::hasUppercase('Hello World', 2));
+
+        $this->assertFalse(StringTrait::hasUppercase('hello world'));
+        $this->assertFalse(StringTrait::hasUppercase('helloWorld', 2));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_has_numeric()
+    {
+        $this->assertTrue(StringTrait::hasNumeric('hell0 W0rld'));
+        $this->assertTrue(StringTrait::hasNumeric('H3ll0 W0rld', 3));
+
+        $this->assertFalse(StringTrait::hasNumeric('hello world'));
+        $this->assertFalse(StringTrait::hasNumeric('h3lloWorld', 2));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_has_special_characters()
+    {
+        $this->assertTrue(StringTrait::hasSpecialCharacters('hell0@W0rld'));
+        $this->assertTrue(StringTrait::hasSpecialCharacters('H3ll0@W0@rld', 2));
+
+        $this->assertFalse(StringTrait::hasSpecialCharacters('hello world'));
+        $this->assertFalse(StringTrait::hasSpecialCharacters('h3llo@World', 2));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_email()
+    {
+        $this->assertTrue(StringTrait::isEmail('hello@world.com'));
+        $this->assertTrue(StringTrait::isEmail('hello.earth@world.com'));
+        $this->assertTrue(StringTrait::isEmail('hello.earth+moon@world.com'));
+        $this->assertTrue(StringTrait::isEmail('hello@subdomain.world.com'));
+        $this->assertTrue(StringTrait::isEmail('hello.earth@subdomain.world.com'));
+        $this->assertTrue(StringTrait::isEmail('hello.earth+moon@subdomain.world.com'));
+        $this->assertTrue(StringTrait::isEmail('hello.earth+moon@127.0.0.1'));
+
+        $this->assertFalse(StringTrait::isEmail('hello.earth+moon@localhost'));
+    }
 }

@@ -30,7 +30,6 @@ class ValidatorFunctionMap
 
         //Generic
         'Generic::isRequired' => '\GenericTrait::isRequired',
-        'Generic::isOptional' => '\GenericTrait::isOptional',
         'Generic::isNotNull' => '\GenericTrait::isNotNull',
 
         //Float
@@ -83,6 +82,11 @@ class ValidatorFunctionMap
         'String::isVersion' => '\String\StringTrait::isVersion',
         'String::isVowel' => '\String\StringTrait::isVowel',
         'String::isHexDigit' => '\String\StringTrait::isHexDigit',
+        'String::hasLowercase' => '\String\StringTrait::hasLowercase',
+        'String::hasUppercase' => '\String\StringTrait::hasUppercase',
+        'String::hasNumeric' => '\String\StringTrait::hasNumeric',
+        'String::hasSpecialCharacters' => '\String\StringTrait::hasSpecialCharacters',
+        'String::isEmail' => '\String\StringTrait::isEmail',
 
         //Object
         'Object::__construct' => '\Object\ObjectTrait::isObject',

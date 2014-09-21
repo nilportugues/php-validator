@@ -74,7 +74,7 @@ A simple, powerful and elegant stand-alone validation library with no dependenci
 
 <a name="block1"></a>
 # 1. Installation [↑](#index_block)
-The recommended way to install SQL Query Builder is through [Composer](http://getcomposer.org). Just create a ``composer.json`` file and run the ``php composer.phar install`` command to install it:
+The recommended way to install the Input Validator is through [Composer](http://getcomposer.org). Just create a ``composer.json`` file and run the ``php composer.phar install`` command to install it:
 
 ```json
     {
@@ -636,7 +636,7 @@ Nil Portugués Calderó
 
 <a name="block6"></a>
 # 6. License [↑](#index_block)
-SQL Query Builder is licensed under the MIT license.
+The Input Validator is licensed under the MIT license.
 
 ```
 Copyright (c) 2014 Nil Portugués Calderó

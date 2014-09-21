@@ -450,6 +450,9 @@ class StringTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($result);
     }
 
+    /**
+     * @test
+     */
     public function it_should_stop_validation_on_first_error()
     {
         $value = '@aaa';
@@ -459,5 +462,69 @@ class StringTest extends \PHPUnit_Framework_TestCase
 
         $this->assertFalse($result);
         $this->assertNotEmpty($validator->getErrors());
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_has_lowercase()
+    {
+        $this->assertTrue($this->getValidator()->hasLowercase()->validate('HELLOWOrLD'));
+        $this->assertTrue($this->getValidator()->hasLowercase(3)->validate('HeLLoWOrLD'));
+
+        $this->assertFalse($this->getValidator()->hasLowercase()->validate('HELLOWORLD'));
+        $this->assertFalse($this->getValidator()->hasLowercase(3)->validate('el'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_has_uppercase()
+    {
+        $this->assertTrue($this->getValidator()->hasUppercase()->validate('hello World'));
+        $this->assertTrue($this->getValidator()->hasUppercase(2)->validate('Hello World'));
+
+        $this->assertFalse($this->getValidator()->hasUppercase()->validate('hello world'));
+        $this->assertFalse($this->getValidator()->hasUppercase(2)->validate('helloWorld'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_has_numeric()
+    {
+        $this->assertTrue($this->getValidator()->hasNumeric()->validate('hell0 W0rld'));
+        $this->assertTrue($this->getValidator()->hasNumeric(3)->validate('H3ll0 W0rld'));
+
+        $this->assertFalse($this->getValidator()->hasNumeric()->validate('hello world'));
+        $this->assertFalse($this->getValidator()->hasNumeric(2)->validate('h3lloWorld'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_has_special_characters()
+    {
+        $this->assertTrue($this->getValidator()->hasSpecialCharacters()->validate('hell0@W0rld'));
+        $this->assertTrue($this->getValidator()->hasSpecialCharacters(2)->validate('H3ll0@W0@rld'));
+
+        $this->assertFalse($this->getValidator()->hasSpecialCharacters()->validate('hello world'));
+        $this->assertFalse($this->getValidator()->hasSpecialCharacters(2)->validate('h3llo@World'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_email()
+    {
+        $this->assertTrue($this->getValidator()->isEmail()->validate('hello@world.com'));
+        $this->assertTrue($this->getValidator()->isEmail()->validate('hello.earth@world.com'));
+        $this->assertTrue($this->getValidator()->isEmail()->validate('hello.earth+moon@world.com'));
+        $this->assertTrue($this->getValidator()->isEmail()->validate('hello@subdomain.world.com'));
+        $this->assertTrue($this->getValidator()->isEmail()->validate('hello.earth@subdomain.world.com'));
+        $this->assertTrue($this->getValidator()->isEmail()->validate('hello.earth+moon@subdomain.world.com'));
+        $this->assertTrue($this->getValidator()->isEmail()->validate('hello.earth+moon@127.0.0.1'));
+
+        $this->assertFalse($this->getValidator()->isEmail()->validate('hello.earth+moon@localhost'));
     }
 }

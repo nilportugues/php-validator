@@ -359,4 +359,57 @@ class String extends Generic
 
         return $this;
     }
+
+    /**
+     * @param null $amount
+     *
+     * @return $this
+     */
+    public function hasLowercase($amount = null)
+    {
+        $this->addCondition(__METHOD__, [$amount]);
+
+        return $this;
+    }
+
+    /**
+     * @param null $amount
+     *
+     * @return $this
+     */
+    public function hasUppercase($amount = null)
+    {
+        $this->addCondition(__METHOD__, [$amount]);
+
+        return $this;
+    }
+
+    /**
+     * @param null $amount
+     *
+     * @return $this
+     */
+    public function hasNumeric($amount = null)
+    {
+        $this->addCondition(__METHOD__, [$amount]);
+
+        return $this;
+    }
+
+    public function hasSpecialCharacters($amount = null)
+    {
+        $this->addCondition(__METHOD__, [$amount]);
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function isEmail()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
 }

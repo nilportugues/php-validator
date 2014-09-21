@@ -349,4 +349,93 @@ trait StringTrait
     {
         return ctype_xdigit($value);
     }
+
+    /**
+     * @param      $value
+     * @param null $amount
+     *
+     * @return bool
+     */
+    public static function hasLowercase($value, $amount = null)
+    {
+        return self::hasStringSubset($value, $amount, '/[a-z]/');
+    }
+
+    /**
+     * @param $value
+     * @param $amount
+     * @param $regex
+     *
+     * @return bool
+     */
+    private static function hasStringSubset($value, $amount, $regex)
+    {
+        settype($value, 'string');
+
+        $minMatches = 1;
+        if (!empty($amount)) {
+            $minMatches = $amount;
+        }
+
+        $value = preg_replace('/\s+/', '', $value);
+        $length = strlen($value);
+
+        $counter = 0;
+        for ($i = 0; $i<$length; $i++) {
+            if (preg_match($regex, $value[$i])>0) {
+                $counter++;
+            }
+
+            if ($counter === $minMatches) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @param      $value
+     * @param null $amount
+     *
+     * @return bool
+     */
+    public static function hasUppercase($value, $amount = null)
+    {
+        return self::hasStringSubset($value, $amount, '/[A-Z]/');
+    }
+
+    /**
+     * @param      $value
+     * @param null $amount
+     *
+     * @return bool
+     */
+    public static function hasNumeric($value, $amount = null)
+    {
+        return self::hasStringSubset($value, $amount, '/[0-9]/');
+    }
+
+    /**
+     * @param      $value
+     * @param null $amount
+     *
+     * @return bool
+     */
+    public static function hasSpecialCharacters($value, $amount = null)
+    {
+        return self::hasStringSubset($value, $amount, '/[^a-zA-Z\d\s]/');
+    }
+
+    /**
+     * @param $value
+     *
+     * @return bool
+     */
+    public static function isEmail($value)
+    {
+        settype($value, 'string');
+
+        return preg_match('/^[A-Z0-9._%\-+]+@(?:[A-Z0-9\-]+\.)+(?:[A-Z0-9\-]+)$/i', $value) > 0;
+    }
 }
