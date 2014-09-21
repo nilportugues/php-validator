@@ -352,7 +352,7 @@ trait StringTrait
 
     /**
      * @param      $value
-     * @param null $amount
+     * @param int $amount
      *
      * @return bool
      */
@@ -396,7 +396,7 @@ trait StringTrait
 
     /**
      * @param      $value
-     * @param null $amount
+     * @param int $amount
      *
      * @return bool
      */
@@ -407,7 +407,7 @@ trait StringTrait
 
     /**
      * @param      $value
-     * @param null $amount
+     * @param int $amount
      *
      * @return bool
      */
@@ -418,7 +418,7 @@ trait StringTrait
 
     /**
      * @param      $value
-     * @param null $amount
+     * @param int $amount
      *
      * @return bool
      */

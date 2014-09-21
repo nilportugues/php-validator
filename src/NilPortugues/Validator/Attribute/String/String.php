@@ -361,7 +361,7 @@ class String extends Generic
     }
 
     /**
-     * @param null $amount
+     * @param int $amount
      *
      * @return $this
      */
@@ -373,7 +373,7 @@ class String extends Generic
     }
 
     /**
-     * @param null $amount
+     * @param int $amount
      *
      * @return $this
      */
@@ -385,7 +385,7 @@ class String extends Generic
     }
 
     /**
-     * @param null $amount
+     * @param int $amount
      *
      * @return $this
      */
