@@ -19,7 +19,7 @@ trait DateTimeTrait
     /**
      * Checks if a value is a a valid datetime format.
      *
-     * @param $value
+     * @param string|\DateTime $value
      *
      * @return bool
      */
@@ -36,7 +36,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param $value
+     * @param string|\DateTime $value
      *
      * @return \DateTime
      */
@@ -52,8 +52,8 @@ trait DateTimeTrait
     /**
      * Checks if a given date is happening after the given limiting date.
      *
-     * @param      $value
-     * @param      $limit
+     * @param string|\DateTime $value
+     * @param string|\DateTime $limit
      * @param bool $inclusive
      *
      * @return bool
@@ -73,8 +73,8 @@ trait DateTimeTrait
     /**
      * Checks if a given date is happening before the given limiting date.
      *
-     * @param      $value
-     * @param      $limit
+     * @param string|\DateTime $value
+     * @param string|\DateTime $limit
      * @param bool $inclusive
      *
      * @return bool
@@ -94,9 +94,9 @@ trait DateTimeTrait
     /**
      * Checks if a given date is in a given range of dates.
      *
-     * @param      $value
-     * @param      string $minDate
-     * @param      string $maxDate
+     * @param string|\DateTime $value
+     * @param string|\DateTime $minDate
+     * @param string|\DateTime $maxDate
      * @param bool $inclusive
      *
      * @return bool
@@ -111,7 +111,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param $value
+     * @param string|\DateTime $value
      *
      * @return bool
      */
@@ -123,7 +123,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param string $value
+     * @param string|\DateTime $value
      *
      * @return bool
      */
@@ -133,7 +133,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param string $value
+     * @param string|\DateTime $value
      *
      * @return bool
      */
@@ -145,7 +145,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param string $value
+     * @param string|\DateTime $value
      *
      * @return bool
      */
@@ -157,7 +157,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param string $value
+     * @param string|\DateTime $value
      *
      * @return bool
      */
@@ -169,7 +169,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param string $value
+     * @param string|\DateTime $value
      *
      * @return bool
      */
@@ -181,7 +181,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param string $value
+     * @param string|\DateTime $value
      *
      * @return bool
      */
@@ -193,7 +193,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param string $value
+     * @param string|\DateTime $value
      *
      * @return bool
      */
@@ -205,7 +205,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param string $value
+     * @param string|\DateTime $value
      *
      * @return bool
      */
@@ -217,7 +217,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param \DateTime $value
+     * @param string|\DateTime $value
      *
      * @return bool
      */
@@ -231,7 +231,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param \DateTime $value
+     * @param string|\DateTime $value
      *
      * @return bool
      */
@@ -261,7 +261,7 @@ trait DateTimeTrait
     /**
      * Determines if the instance is a leap year
      *
-     * @param \DateTime $value
+     * @param string|\DateTime $value
      *
      * @return bool
      */
