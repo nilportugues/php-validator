@@ -63,6 +63,19 @@ A simple, powerful and elegant stand-alone validation library with no dependenci
         * [3.4.1. isAfter] (#block3.4.1)
         * [3.4.2. isBefore] (#block3.4.2)
         * [3.4.3. isBetween] (#block3.4.3)
+        * [3.4.4. isWeekend] (#block3.4.4)
+        * [3.4.5. isWeekday] (#block3.4.5)
+        * [3.4.6. isMonday] (#block3.4.6)
+        * [3.4.7. isTuesday] (#block3.4.7)
+        * [3.4.8. isWednesday] (#block3.4.8)
+        * [3.4.9. isThursday] (#block3.4.9)
+        * [3.4.10. isFriday] (#block3.4.10)
+        * [3.4.11. isSaturday] (#block3.4.11)
+        * [3.4.12. isSunday] (#block3.4.12)
+        * [3.4.13. isToday] (#block3.4.13)
+        * [3.4.14. isYesterday] (#block3.4.14)
+        * [3.4.15. isTomorrow] (#block3.4.15)
+        * [3.4.16. isLeapYear] (#block3.4.16)
     * [3.5 Collections (Arrays)](#block3.5)
         * [3.5.1. each] (#block3.5.1)
         * [3.5.2. hasKeyFormat] (#block3.5.2)
@@ -626,6 +639,111 @@ $datetime = $validator->isDateTime('propertyName');
 ```
 
 #### 3.4.3. isBetween <a name="block3.4.3"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$datetime = $validator->isDateTime('propertyName');
+
+```
+
+#### 3.4.4. isWeekend <a name="block3.4.4"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$datetime = $validator->isDateTime('propertyName');
+
+```
+#### 3.4.5. isWeekday <a name="block3.4.5"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$datetime = $validator->isDateTime('propertyName');
+
+```
+#### 3.4.6. isMonday <a name="block3.4.6"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$datetime = $validator->isDateTime('propertyName');
+
+```
+#### 3.4.7. isTuesday <a name="block3.4.7"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$datetime = $validator->isDateTime('propertyName');
+
+```
+#### 3.4.8. isWednesday <a name="block3.4.8"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$datetime = $validator->isDateTime('propertyName');
+
+```
+#### 3.4.9. isThursday <a name="block3.4.9"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$datetime = $validator->isDateTime('propertyName');
+
+```
+#### 3.4.10. isFriday <a name="block3.4.10"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$datetime = $validator->isDateTime('propertyName');
+
+```
+#### 3.4.11. isSaturday <a name="block3.4.11"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$datetime = $validator->isDateTime('propertyName');
+
+```
+#### 3.4.12. isSunday <a name="block3.4.12"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$datetime = $validator->isDateTime('propertyName');
+
+```
+#### 3.4.13. isToday <a name="block3.4.13"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$datetime = $validator->isDateTime('propertyName');
+
+```
+#### 3.4.14. isYesterday <a name="block3.4.14"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$datetime = $validator->isDateTime('propertyName');
+
+```
+#### 3.4.15. isTomorrow <a name="block3.4.15"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$datetime = $validator->isDateTime('propertyName');
+
+```
+#### 3.4.16. isLeapYear <a name="block3.4.16"></a> [↑](#index_block)
 
 ```php
 $validator = new \NilPortugues\Validator\Validator();
