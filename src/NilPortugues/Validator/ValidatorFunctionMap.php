@@ -35,6 +35,7 @@ class ValidatorFunctionMap
 
         //Float
         "Float::__construct"  => '\Float\FloatTrait::isFloat',
+        'Float::isRequired' => '\Float\FloatTrait::isRequired',
         "Float::isNotZero"   => '\Float\FloatTrait::isNotZero',
         "Float::isPositive"   => '\Float\FloatTrait::isPositive',
         "Float::isNegative"   => '\Float\FloatTrait::isNegative',
@@ -45,6 +46,7 @@ class ValidatorFunctionMap
 
         //Integer
         "Integer::__construct"  => '\Integer\IntegerTrait::isInteger',
+        'Integer::isRequired' => '\Integer\IntegerTrait::isRequired',
         "Integer::isNotZero"   => '\Integer\IntegerTrait::isNotZero',
         "Integer::isPositive"   => '\Integer\IntegerTrait::isPositive',
         "Integer::isNegative"   => '\Integer\IntegerTrait::isNegative',

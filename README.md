@@ -38,6 +38,11 @@ A simple, powerful and elegant stand-alone validation library with no dependenci
         * [3.1.24. isVersion] (#block3.1.24)
         * [3.1.25. isVowel] (#block3.1.25)
         * [3.1.26. isHexDigit] (#block3.1.26)
+        * [3.1.27. hasLowercase] (#block3.1.27)
+        * [3.1.28. hasUppercase] (#block3.1.28)
+        * [3.1.29. hasNumeric] (#block3.1.29)
+        * [3.1.30. hasSpecialCharacters] (#block3.1.30)
+        * [3.1.31. isEmail] (#block3.1.31)
     * [3.2 Numbers (Integers and Floats)](#block3.2)
         * [3.2.1. isNotZero] (#block3.2.1)
         * [3.2.2. isPositive] (#block3.2.2)
@@ -397,6 +402,51 @@ $string = $validator->isString('propertyName');
 ```
 
 #### 3.1.26. isHexDigit <a name="block3.1.26"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
+
+#### 3.1.27. hasLowercase <a name="block3.1.27"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
+
+#### 3.1.28. hasUppercase <a name="block3.1.28"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
+
+#### 3.1.29. hasNumeric <a name="block3.1.29"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
+
+#### 3.1.30. hasSpecialCharacters <a name="block3.1.30"></a> [↑](#index_block)
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+
+$string = $validator->isString('propertyName');
+
+```
+
+#### 3.1.31. isEmail <a name="block3.1.31"></a> [↑](#index_block)
 
 ```php
 $validator = new \NilPortugues\Validator\Validator();

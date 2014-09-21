@@ -21,6 +21,16 @@ trait FloatTrait
      *
      * @return bool
      */
+    public static function isRequired($value)
+    {
+        return empty($value) && !is_numeric($value);
+    }
+
+    /**
+     * @param $value
+     *
+     * @return bool
+     */
     public static function isFloat($value)
     {
         return is_float($value);

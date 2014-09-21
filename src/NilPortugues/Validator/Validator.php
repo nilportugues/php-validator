@@ -54,7 +54,7 @@ class Validator
     /**
      * @param $propertyName
      *
-     * @return Float
+     * @return \NilPortugues\Validator\Attribute\Numeric\Float
      */
     public function isFloat($propertyName)
     {
@@ -66,7 +66,7 @@ class Validator
     /**
      * @param $propertyName
      *
-     * @return Object
+     * @return \NilPortugues\Validator\Attribute\Object\Object
      */
     public function isObject($propertyName)
     {
@@ -78,7 +78,7 @@ class Validator
     /**
      * @param $propertyName
      *
-     * @return String
+     * @return \NilPortugues\Validator\Attribute\String\String
      */
     public function isString($propertyName)
     {

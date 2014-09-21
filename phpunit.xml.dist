@@ -36,6 +36,7 @@
         <whitelist>
             <directory>./</directory>
             <exclude>
+                <directory>./examples/</directory>
                 <directory>./vendor/</directory>
             </exclude>
         </whitelist>
