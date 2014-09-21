@@ -11,6 +11,7 @@
 namespace NilPortugues\Validator;
 
 use NilPortugues\Validator\Attribute\Collection\Collection;
+use NilPortugues\Validator\Attribute\DateTime\DateTime;
 use NilPortugues\Validator\Attribute\Numeric\Float;
 use NilPortugues\Validator\Attribute\Numeric\Integer;
 use NilPortugues\Validator\Attribute\Object\Object;
@@ -85,6 +86,18 @@ class Validator
         $this->propertyName = $propertyName;
 
         return new String($this);
+    }
+
+    /**
+     * @param $propertyName
+     *
+     * @return \NilPortugues\Validator\Attribute\DateTime\DateTime
+     */
+    public function isDateTime($propertyName)
+    {
+        $this->propertyName = $propertyName;
+
+        return new DateTime($this);
     }
 
     /**

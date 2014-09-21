@@ -10,11 +10,62 @@
 
 namespace NilPortugues\Validator\Attribute\DateTime;
 
+use NilPortugues\Validator\Attribute\Generic;
+use NilPortugues\Validator\Validator;
 
 /**
  * Class DateTime
  * @package NilPortugues\Validator\Attribute\DateTime
  */
-class DateTime {
+class DateTime extends Generic
+{
+    /**
+     * @param Validator $validator
+     */
+    public function __construct(Validator $validator)
+    {
+        parent::__construct($validator);
 
-} 
+        $this->addCondition(__METHOD__);
+    }
+
+    /**
+     * @param      $limit
+     * @param bool $inclusive
+     *
+     * @return $this
+     */
+    public function isAfter($limit, $inclusive = false)
+    {
+        $this->addCondition(__METHOD__, [$limit, $inclusive]);
+
+        return $this;
+    }
+
+    /**
+     * @param      $limit
+     * @param bool $inclusive
+     *
+     * @return $this
+     */
+    public function isBefore($limit, $inclusive = false)
+    {
+        $this->addCondition(__METHOD__, [$limit, $inclusive]);
+
+        return $this;
+    }
+
+    /**
+     * @param      $minDate
+     * @param      $maxDate
+     * @param bool $inclusive
+     *
+     * @return $this
+     */
+    public function isBetween($minDate, $maxDate, $inclusive = false)
+    {
+        $this->addCondition(__METHOD__, [$minDate, $maxDate, $inclusive]);
+
+        return $this;
+    }
+}

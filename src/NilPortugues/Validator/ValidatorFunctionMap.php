@@ -96,6 +96,12 @@ class ValidatorFunctionMap
         'Object::inheritsFrom' => '\Object\ObjectTrait::inheritsFrom',
         'Object::hasInterface' => '\Object\ObjectTrait::hasInterface',
 
+        //DateTime
+        'DateTime::__construct' => '\DateTime\DateTimeTrait::isDateTime',
+        'DateTime::isAfter' => '\DateTime\DateTimeTrait::isAfter',
+        'DateTime::isBefore' => '\DateTime\DateTimeTrait::isBefore',
+        'DateTime::isBetween' => '\DateTime\DateTimeTrait::isBetween',
+
         //Collection
         'Collection::__construct' => '\Collection\CollectionTrait::isArray',
         'Collection::each' => '\Collection\CollectionTrait::each',
