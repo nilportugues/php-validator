@@ -245,7 +245,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param \DateTime $value
+     * @param string|\DateTime $value
      *
      * @return bool
      */
