@@ -24,10 +24,10 @@ class Request
     public $gender;
 
     /**
-     * @param string $username
-     * @param string $password
-     * @param string $email
-     * @param string $gender
+     * @param mixed $username
+     * @param mixed $password
+     * @param mixed $email
+     * @param mixed $gender
      */
     public function __construct($username, $password, $email, $gender)
     {
