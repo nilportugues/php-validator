@@ -768,14 +768,12 @@ Supported PHP data structures for the Collection validator are:
 $validator = new \NilPortugues\Validator\Validator();
 
 $collection = $validator->isArray('propertyName');
+$valueIsString = $validator->isString('value')->isAlpha();
+$keyIsInteger = $validator->isInteger('key')->isPositive();
 
 $array = ['hello','world'];
 $arrayObject = new \ArrayObject($array);
 $fixedArray = (new \SplFixedArray())->fromArray($array);
-
-$validator = new Validator();
-$valueIsString = $validator->isString('value')->isAlpha();
-$keyIsInteger = $validator->isInteger('key')->isPositive();
 
 $collection->each($valueIsString)->validate($array); //true
 $collection->each($valueIsString, $keyIsInteger)->validate($array); //true
