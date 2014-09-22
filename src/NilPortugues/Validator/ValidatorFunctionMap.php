@@ -141,14 +141,15 @@ class ValidatorFunctionMap
     /**
      * Gets the function from the function map and runs it against the values.
      *
-     * @param       $funcName
-     * @param array $arguments
-     * @param array $errors
+     * @param string $propertyName
+     * @param string $funcName
+     * @param array  $arguments
+     * @param array  $errors
      *
      * @throws \InvalidArgumentException
      * @return bool
      */
-    public function get($funcName, array $arguments = [], array &$errors)
+    public function get($propertyName, $funcName, array $arguments = [], array &$errors)
     {
         if (false === array_key_exists($funcName, $this->functionMap)) {
             throw new \InvalidArgumentException('Validator key not found');
@@ -164,9 +165,26 @@ class ValidatorFunctionMap
                 throw new \InvalidArgumentException('Validator key not found in error file');
             }
 
-            $this->validator->setError($funcName, $errors[$funcName]);
+            $this->validator->setError(
+                $this->buildErrorMessage($errors, $funcName, $propertyName, $arguments)
+            );
         }
 
         return $result;
+    }
+
+    /**
+     * @param array  $errors
+     * @param string $funcName
+     * @param string $propertyName
+     * @param array  $arguments
+     *
+     * @return mixed
+     */
+    private function buildErrorMessage(array &$errors, $funcName, $propertyName, array &$arguments)
+    {
+        $message = str_replace(':attribute', $propertyName, $errors[$funcName]);
+
+        return $message;
     }
 }

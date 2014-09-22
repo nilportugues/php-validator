@@ -82,7 +82,12 @@ abstract class AbstractValidator
         foreach ($this->conditions as $condition) {
             $arguments = array_merge([$value], $condition['arguments']);
 
-            $isValid = $isValid && $this->functionMap->get($condition['key'], $arguments, $errorArray);
+            $isValid = $isValid && $this->functionMap->get(
+                $this->validator->getPropertyName(),
+                $condition['key'],
+                $arguments,
+                $errorArray
+            );
 
             if (false === $isValid) {
                 if ($condition['is_validator']) {
@@ -113,14 +118,13 @@ abstract class AbstractValidator
     }
 
     /**
-     * @param        $key
      * @param string $error
      *
      * @return $this
      */
-    public function setError($key, $error)
+    public function setError($error)
     {
-        $this->errors[$this->validator->getPropertyName()][$key] = $error;
+        $this->errors[$this->validator->getPropertyName()][] = $error;
 
         return $this;
     }
