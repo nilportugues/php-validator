@@ -189,6 +189,7 @@ The following chainable validation options are available for string data:
 
 #### 3.1.1. isAlphanumeric <a name="block3.1.1"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -200,6 +201,7 @@ $result = $string->isAlphanumeric()->validate('hello@example.com'); // false
 
 #### 3.1.2. isAlpha <a name="block3.1.2"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -212,6 +214,7 @@ $result = $string->isAlpha()->validate('hello@example.com'); // false
 
 #### 3.1.3. isBetween <a name="block3.1.3"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -221,6 +224,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.4. isCharset <a name="block3.1.4"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -230,6 +234,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.5. isAllConsonants <a name="block3.1.5"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -239,6 +244,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.6. contains <a name="block3.1.6"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -248,6 +254,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.7. isControlCharacters <a name="block3.1.7"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -257,6 +264,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.8. isDigit <a name="block3.1.8"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -266,6 +274,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.9. endsWith <a name="block3.1.9"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -274,6 +283,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.10. equals <a name="block3.1.10"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -283,6 +293,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.11. in <a name="block3.1.11"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -291,6 +302,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.12. hasGraphicalCharsOnly <a name="block3.1.12"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -300,6 +312,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.13. hasLength <a name="block3.1.13"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -309,6 +322,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.14. isLowercase <a name="block3.1.14"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -318,6 +332,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.15. notEmpty <a name="block3.1.15"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -327,6 +342,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.16. noWhitespace <a name="block3.1.16"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -336,6 +352,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.17. hasPrintableCharsOnly <a name="block3.1.17"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -345,6 +362,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.18. isPunctuation <a name="block3.1.18"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -354,6 +372,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.19. matchesRegex <a name="block3.1.19"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -363,6 +382,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.20. isSlug <a name="block3.1.20"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -372,6 +392,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.21. isSpace <a name="block3.1.21"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -381,6 +402,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.22. startsWith <a name="block3.1.22"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -390,6 +412,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.23. isUppercase <a name="block3.1.23"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -399,6 +422,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.24. isVersion <a name="block3.1.24"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -408,6 +432,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.25. isVowel <a name="block3.1.25"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -417,6 +442,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.26. isHexDigit <a name="block3.1.26"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -426,6 +452,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.27. hasLowercase <a name="block3.1.27"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -435,6 +462,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.28. hasUppercase <a name="block3.1.28"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -444,6 +472,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.29. hasNumeric <a name="block3.1.29"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -453,6 +482,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.30. hasSpecialCharacters <a name="block3.1.30"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -462,6 +492,7 @@ $string = $validator->isString('propertyName');
 
 #### 3.1.31. isEmail <a name="block3.1.31"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -486,6 +517,7 @@ $float = $validator->isFloat('propertyName');
 
 #### 3.2.1. isNotZero  <a name="block3.2.1"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -495,6 +527,7 @@ $integer = $validator->isInteger('propertyName');
 
 #### 3.2.2. isPositive  <a name="block3.2.2"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -504,6 +537,7 @@ $integer = $validator->isInteger('propertyName');
 
 #### 3.2.3. isNegative  <a name="block3.2.3"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -513,6 +547,7 @@ $integer = $validator->isInteger('propertyName');
 
 #### 3.2.4. isBetween  <a name="block3.2.4"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -522,6 +557,7 @@ $integer = $validator->isInteger('propertyName');
 
 #### 3.2.5. isOdd  <a name="block3.2.5"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -531,6 +567,7 @@ $integer = $validator->isInteger('propertyName');
 
 #### 3.2.6. isEven  <a name="block3.2.6"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -540,6 +577,7 @@ $integer = $validator->isInteger('propertyName');
 
 #### 3.2.7. isMultiple  <a name="block3.2.7"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -553,6 +591,7 @@ $integer = $validator->isInteger('propertyName');
 
 #### 3.3.1. isInstanceOf<a name="block3.3.1"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -562,6 +601,7 @@ $object = $validator->isObject('propertyName');
 
 #### 3.3.2. hasProperty<a name="block3.3.2"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -571,6 +611,7 @@ $object = $validator->isObject('propertyName');
 
 #### 3.3.3. hasMethod<a name="block3.3.3"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -580,6 +621,7 @@ $object = $validator->isObject('propertyName');
 
 #### 3.3.4. hasParentClass<a name="block3.3.4"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -589,6 +631,7 @@ $object = $validator->isObject('propertyName');
 
 #### 3.3.5. isChildOf<a name="block3.3.5"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -598,6 +641,7 @@ $object = $validator->isObject('propertyName');
 
 #### 3.3.6. inheritsFrom<a name="block3.3.6"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -607,6 +651,7 @@ $object = $validator->isObject('propertyName');
 
 #### 3.3.7. hasInterface<a name="block3.3.7"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -622,6 +667,7 @@ DateTime Validator accepts any `\DateTime` objects and `strings` representing **
 
 #### 3.4.1. isAfter <a name="block3.4.1"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -631,6 +677,7 @@ $datetime = $validator->isDateTime('propertyName');
 
 #### 3.4.2. isBefore <a name="block3.4.2"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -640,6 +687,7 @@ $datetime = $validator->isDateTime('propertyName');
 
 #### 3.4.3. isBetween <a name="block3.4.3"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -649,6 +697,7 @@ $datetime = $validator->isDateTime('propertyName');
 
 #### 3.4.4. isWeekend <a name="block3.4.4"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -657,6 +706,7 @@ $datetime = $validator->isDateTime('propertyName');
 ```
 #### 3.4.5. isWeekday <a name="block3.4.5"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -665,6 +715,7 @@ $datetime = $validator->isDateTime('propertyName');
 ```
 #### 3.4.6. isMonday <a name="block3.4.6"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -673,6 +724,7 @@ $datetime = $validator->isDateTime('propertyName');
 ```
 #### 3.4.7. isTuesday <a name="block3.4.7"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -681,6 +733,7 @@ $datetime = $validator->isDateTime('propertyName');
 ```
 #### 3.4.8. isWednesday <a name="block3.4.8"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -689,6 +742,7 @@ $datetime = $validator->isDateTime('propertyName');
 ```
 #### 3.4.9. isThursday <a name="block3.4.9"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -697,6 +751,7 @@ $datetime = $validator->isDateTime('propertyName');
 ```
 #### 3.4.10. isFriday <a name="block3.4.10"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -705,6 +760,7 @@ $datetime = $validator->isDateTime('propertyName');
 ```
 #### 3.4.11. isSaturday <a name="block3.4.11"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -713,6 +769,7 @@ $datetime = $validator->isDateTime('propertyName');
 ```
 #### 3.4.12. isSunday <a name="block3.4.12"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -721,6 +778,7 @@ $datetime = $validator->isDateTime('propertyName');
 ```
 #### 3.4.13. isToday <a name="block3.4.13"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -729,6 +787,7 @@ $datetime = $validator->isDateTime('propertyName');
 ```
 #### 3.4.14. isYesterday <a name="block3.4.14"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -737,6 +796,7 @@ $datetime = $validator->isDateTime('propertyName');
 ```
 #### 3.4.15. isTomorrow <a name="block3.4.15"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -745,6 +805,7 @@ $datetime = $validator->isDateTime('propertyName');
 ```
 #### 3.4.16. isLeapYear <a name="block3.4.16"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -764,6 +825,7 @@ Supported PHP data structures for the Collection validator are:
 
 #### 3.5.1. each <a name="block3.5.1"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -787,6 +849,7 @@ $collection->each($valueIsString, $keyIsInteger)->validate($fixedArray); //true
 
 #### 3.5.2. hasKeyFormat <a name="block3.5.2"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -808,6 +871,7 @@ $collection->hasKeyFormat($keyIsInteger)->validate($fixedArray); //true
 
 #### 3.5.3. endsWith <a name="block3.5.3"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -837,6 +901,7 @@ $collection->endsWith('3', true)->validate($fixedArray); //false
 
 #### 3.5.4. contains <a name="block3.5.4"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -858,6 +923,7 @@ $collection->contains(1, true)->validate($fixedArray); //true
 
 #### 3.5.5. hasKey <a name="block3.5.5"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -883,6 +949,7 @@ $collection->hasKey(0)->validate($fixedArray)); //false
 
 #### 3.5.6. length <a name="block3.5.6"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -909,6 +976,7 @@ $collection->length(0)->validate($fixedArray)); //true
 
 #### 3.5.7. isNotEmpty <a name="block3.5.7"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
@@ -934,6 +1002,7 @@ $collection->isNotEmpty()->validate($fixedArray)); //false
 
 #### 3.5.8. startsWith <a name="block3.5.8"></a> [↑](#index_block)
 
+##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
