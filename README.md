@@ -192,11 +192,10 @@ The following chainable validation options are available for string data:
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
-$result = $string->isAlphanumeric()->validate('28a'); // true
-$result = $string->isAlphanumeric()->validate('hello@example.com'); // false
+$string->isAlphanumeric()->validate('28a'); // true
+$string->isAlphanumeric()->validate('hello@example.com'); // false
 ```
 
 #### 3.1.2. isAlpha <a name="block3.1.2"></a> [↑](#index_block)
@@ -204,12 +203,11 @@ $result = $string->isAlphanumeric()->validate('hello@example.com'); // false
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
-$result = $string->isAlpha()->validate('Hello World'); // true
-$result = $string->isAlpha()->validate('28a'); // false
-$result = $string->isAlpha()->validate('hello@example.com'); // false
+$string->isAlpha()->validate('Hello World'); // true
+$string->isAlpha()->validate('28a'); // false
+$string->isAlpha()->validate('hello@example.com'); // false
 ```
 
 #### 3.1.3. isBetween <a name="block3.1.3"></a> [↑](#index_block)
@@ -217,9 +215,10 @@ $result = $string->isAlpha()->validate('hello@example.com'); // false
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->isBetween(2, 4)->validate('Nilo'); //false
+$string->isBetween(2, 4, true)->validate('Nilo'); //true
 ```
 
 #### 3.1.4. isCharset <a name="block3.1.4"></a> [↑](#index_block)
@@ -227,9 +226,9 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->isCharset(['UTF-8'])->validate('Portugués');
 ```
 
 #### 3.1.5. isAllConsonants <a name="block3.1.5"></a> [↑](#index_block)
@@ -237,9 +236,10 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->isAllConsonants()->validate('a'); //false
+$string->isAllConsonants()->validate('bs'); //true
 ```
 
 #### 3.1.6. contains <a name="block3.1.6"></a> [↑](#index_block)
@@ -247,9 +247,10 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->contains(123)->validate('AAAAAAA123A'); //true
+$string->contains(123, true)->validate('AAAAAAA123A'); //false
 ```
 
 #### 3.1.7. isControlCharacters <a name="block3.1.7"></a> [↑](#index_block)
@@ -257,9 +258,10 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->isControlCharacters()->validate("\n\t"); //true
+$string->isControlCharacters()->validate("\nHello\tWorld"); //false
 ```
 
 #### 3.1.8. isDigit <a name="block3.1.8"></a> [↑](#index_block)
@@ -267,9 +269,12 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->isDigit()->validate('10'); //true
+
+$string->isDigit()->validate('A'); //false
+$string->isDigit()->validate(145.6); //false
 ```
 
 #### 3.1.9. endsWith <a name="block3.1.9"></a> [↑](#index_block)
@@ -277,8 +282,10 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
+
+$string->endsWith('aaaA')->validate('AAAAAAAaaaA'); //true
+$string->endsWith(123, true)->validate('AAAAAAA123'); //false
 ```
 
 #### 3.1.10. equals <a name="block3.1.10"></a> [↑](#index_block)
@@ -286,9 +293,12 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->equals('hello')->validate('hello'); //true
+
+$string->equals(1)->validate('1'); //true
+$string->equals(1, true)->validate('1'); //false
 ```
 
 #### 3.1.11. in <a name="block3.1.11"></a> [↑](#index_block)
