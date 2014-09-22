@@ -228,7 +228,7 @@ $string->isBetween(2, 4, true)->validate('Nilo'); //true
 $validator = new \NilPortugues\Validator\Validator();
 $string = $validator->isString('propertyName');
 
-$string->isCharset(['UTF-8'])->validate('Portugués');
+$string->isCharset(['UTF-8'])->validate('Portugués'); //true
 ```
 
 #### 3.1.5. isAllConsonants <a name="block3.1.5"></a> [↑](#index_block)
@@ -306,8 +306,10 @@ $string->equals(1, true)->validate('1'); //false
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
+
+$string->in('a12245 asdhsjasd 63-211', true)->validate('5 asd'); //true
+$string->in(122, true)->validate('a12245 asdhsjasd 63-211'); //false
 ```
 
 #### 3.1.12. hasGraphicalCharsOnly <a name="block3.1.12"></a> [↑](#index_block)
@@ -315,9 +317,10 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->hasGraphicalCharsOnly()->validate('arf12'); //true
+$string->hasGraphicalCharsOnly()->validate("asdf\n\r\t"); //false
 ```
 
 #### 3.1.13. hasLength <a name="block3.1.13"></a> [↑](#index_block)
@@ -325,9 +328,10 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->hasLength(5)->validate('abcdefgh'); //false
+$string->hasLength(8)->validate('abcdefgh'); //true
 ```
 
 #### 3.1.14. isLowercase <a name="block3.1.14"></a> [↑](#index_block)
@@ -335,9 +339,10 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->isLowercase()->validate('strtolower'); //true
+$string->isLowercase()->validate('strtolOwer'); //false
 ```
 
 #### 3.1.15. notEmpty <a name="block3.1.15"></a> [↑](#index_block)
@@ -345,9 +350,10 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->notEmpty()->validate('a'); //true
+$string->notEmpty()->validate(''); //false
 ```
 
 #### 3.1.16. noWhitespace <a name="block3.1.16"></a> [↑](#index_block)
@@ -355,9 +361,10 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->noWhitespace()->validate('aaaaa'); //true
+$string->noWhitespace()->validate('lorem ipsum'); //false
 ```
 
 #### 3.1.17. hasPrintableCharsOnly <a name="block3.1.17"></a> [↑](#index_block)
@@ -365,9 +372,10 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->hasPrintableCharsOnly()->validate("LMKA0$%_123"); //true
+$string->hasPrintableCharsOnly()->validate("LMKA0$%\t_123"); //false
 ```
 
 #### 3.1.18. isPunctuation <a name="block3.1.18"></a> [↑](#index_block)
@@ -375,9 +383,10 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->isPunctuation()->validate('&,.;'); //true
+$string->isPunctuation()->validate('a'); //false
 ```
 
 #### 3.1.19. matchesRegex <a name="block3.1.19"></a> [↑](#index_block)
@@ -385,9 +394,10 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->matchesRegex('/[a-z]/')->validate('a'); //true
+$string->matchesRegex('/[a-z]/')->validate('A'); //false
 ```
 
 #### 3.1.20. isSlug <a name="block3.1.20"></a> [↑](#index_block)
@@ -395,9 +405,13 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->isSlug()->validate('hello-world-yeah'); //true
+
+$string->isSlug()->validate('-hello-world-yeah'); //false
+$string->isSlug()->validate('hello-world-yeah-'); //false
+$string->isSlug()->validate('hello-world----yeah'); //false
 ```
 
 #### 3.1.21. isSpace <a name="block3.1.21"></a> [↑](#index_block)
@@ -405,9 +419,10 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->isSpace()->validate('    '); //true
+$string->isSpace()->validate('e e'); //false
 ```
 
 #### 3.1.22. startsWith <a name="block3.1.22"></a> [↑](#index_block)
@@ -415,9 +430,10 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->startsWith('aaaA')->validate('aaaAAAAAAAA'); //true
+$string->startsWith(123, true)->validate('123AAAAAAA'); //false
 ```
 
 #### 3.1.23. isUppercase <a name="block3.1.23"></a> [↑](#index_block)
@@ -425,9 +441,10 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->isUppercase()->validate('AAAAAA'); //true
+$string->isUppercase()->validate('aaaa'); //false
 ```
 
 #### 3.1.24. isVersion <a name="block3.1.24"></a> [↑](#index_block)
@@ -435,9 +452,12 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->isVersion()->validate('1.0.2'); //true
+$string->isVersion()->validate('1.0.2-beta'); //true
+$string->isVersion()->validate('1.0'); //true
+$string->isVersion()->validate('1.0.2 beta'); //false
 ```
 
 #### 3.1.25. isVowel <a name="block3.1.25"></a> [↑](#index_block)
@@ -445,9 +465,10 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->isVowel()->validate('aeA'); //true
+$string->isVowel()->validate('cds'); //false
 ```
 
 #### 3.1.26. isHexDigit <a name="block3.1.26"></a> [↑](#index_block)
@@ -455,9 +476,10 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->isHexDigit()->validate(100); //true
+$string->isHexDigit()->validate('h0000'); //false
 ```
 
 #### 3.1.27. hasLowercase <a name="block3.1.27"></a> [↑](#index_block)
@@ -465,9 +487,13 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->hasLowercase()->validate('HELLOWOrLD'); //true
+$string->hasLowercase(3)->validate('HeLLoWOrLD'); //true
+
+$string->hasLowercase()->validate('HELLOWORLD'); //false
+$string->hasLowercase(3)->validate('el'); //false
 ```
 
 #### 3.1.28. hasUppercase <a name="block3.1.28"></a> [↑](#index_block)
@@ -475,9 +501,13 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->hasUppercase()->validate('hello World'); //true
+$string->hasUppercase(2)->validate('Hello World'); //true
+
+$string->hasUppercase()->validate('hello world'); //false
+$string->hasUppercase(2)->validate('helloWorld'); //false
 ```
 
 #### 3.1.29. hasNumeric <a name="block3.1.29"></a> [↑](#index_block)
@@ -485,9 +515,13 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->hasNumeric()->validate('hell0 W0rld'); //true
+$string->hasNumeric(3)->validate('H3ll0 W0rld'); //true
+
+$string->hasNumeric()->validate('hello world'); //false
+$string->hasNumeric(2)->validate('h3lloWorld'); //false
 ```
 
 #### 3.1.30. hasSpecialCharacters <a name="block3.1.30"></a> [↑](#index_block)
@@ -495,9 +529,13 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->hasSpecialCharacters()->validate('hell0@W0rld'); //true
+$string->hasSpecialCharacters(2)->validate('H3ll0@W0@rld'); //true
+
+$string->hasSpecialCharacters()->validate('hello world'); //false
+$string->hasSpecialCharacters(2)->validate('h3llo@World'); //false
 ```
 
 #### 3.1.31. isEmail <a name="block3.1.31"></a> [↑](#index_block)
@@ -505,9 +543,17 @@ $string = $validator->isString('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $string = $validator->isString('propertyName');
 
+$string->isEmail()->validate('hello@world.com'); //true
+$string->isEmail()->validate('hello.earth@world.com'); //true
+$string->isEmail()->validate('hello.earth+moon@world.com'); //true
+$string->isEmail()->validate('hello@subdomain.world.com'); //true
+$string->isEmail()->validate('hello.earth@subdomain.world.com'); //true
+$string->isEmail()->validate('hello.earth+moon@subdomain.world.com'); //true
+$string->isEmail()->validate('hello.earth+moon@127.0.0.1'); //true
+
+$string->isEmail()->validate('hello.earth+moon@localhost'); //false
 ```
 
 <a name="block3.2"></a>
@@ -893,8 +939,8 @@ Supported PHP data structures for the Collection validator are:
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $collection = $validator->isArray('propertyName');
+
 $valueIsString = $validator->isString('value')->isAlpha();
 $keyIsInteger = $validator->isInteger('key')->isPositive();
 
@@ -917,7 +963,6 @@ $collection->each($valueIsString, $keyIsInteger)->validate($fixedArray); //true
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $collection = $validator->isArray('propertyName');
 
 $array = ['one' => 'hello', 'two' => 'world'];
@@ -939,7 +984,6 @@ $collection->hasKeyFormat($keyIsInteger)->validate($fixedArray); //true
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $collection = $validator->isArray('propertyName');
 
 $array = ['one' => 'hello', 'two' => 1];
@@ -950,7 +994,6 @@ $collection->endsWith('1')->validate($array); //true
 $collection->endsWith('1')->validate($arrayObject); //true
 $collection->endsWith('1')->validate($fixedArray); //true
 
-//Strict type check
 $collection->endsWith('1', true)->validate($array); //false
 $collection->endsWith('1', true)->validate($arrayObject); //false
 $collection->endsWith('1', true)->validate($fixedArray); //false
@@ -962,7 +1005,6 @@ $collection->endsWith('1', true)->validate($fixedArray); //false
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $collection = $validator->isArray('propertyName');
 
 $array = ['one' => 'hello', 'two' => 1];
@@ -973,7 +1015,6 @@ $collection->contains('hello')->validate($array); //true
 $collection->contains('hello')->validate($arrayObject); //true
 $collection->contains('hello')->validate($fixedArray); //true
 
-//Strict type check
 $collection->contains(1, true)->validate($array); //true
 $collection->contains(1, true)->validate($arrayObject); //true
 $collection->contains(1, true)->validate($fixedArray); //true
@@ -985,7 +1026,6 @@ $collection->contains(1, true)->validate($fixedArray); //true
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $collection = $validator->isArray('propertyName');
 
 $array = ['one' => 'hello', 'two' => 1];
@@ -1011,7 +1051,6 @@ $collection->hasKey(0)->validate($fixedArray)); //false
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $collection = $validator->isArray('propertyName');
 
 $array = ['one' => 'hello', 'two' => 1];
@@ -1038,7 +1077,6 @@ $collection->length(0)->validate($fixedArray)); //true
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $collection = $validator->isArray('propertyName');
 
 $array = ['one' => 'hello', 'two' => 1];
@@ -1064,7 +1102,6 @@ $collection->isNotEmpty()->validate($fixedArray)); //false
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $collection = $validator->isArray('propertyName');
 
 $array = [1, 2, 3];
@@ -1075,7 +1112,6 @@ $collection->startsWith(1)->validate($array)); //true
 $collection->startsWith(1)->validate($arrayObject)); //true
 $collection->startsWith(1)->validate($fixedArray)); //true
 
-//Strict type check
 $collection->startsWith('1', true)->validate($array)); //false
 $collection->startsWith('1', true)->validate($arrayObject)); //false
 $collection->startsWith('1', true)->validate($fixedArray)); //false
