@@ -63,10 +63,10 @@ trait FloatTrait
     }
 
     /**
-     * @param      double $value
-     * @param      double $min
-     * @param      double $max
-     * @param bool $inclusive
+     * @param double $value
+     * @param double $min
+     * @param double $max
+     * @param bool   $inclusive
      *
      * @throws \InvalidArgumentException
      * @return bool

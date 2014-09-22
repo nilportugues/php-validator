@@ -41,14 +41,14 @@ abstract class AbstractValidator
      */
     public function __construct(Validator $validator)
     {
-        $this->validator = $validator;
+        $this->validator   = $validator;
         $this->functionMap = new ValidatorFunctionMap($this);
     }
 
     /**
-     * @param       string $classMethod
-     * @param array $arguments
-     * @param bool  $fetchValidatorErrors
+     * @param string $classMethod
+     * @param array  $arguments
+     * @param bool   $fetchValidatorErrors
      *
      * @return $this
      */
@@ -58,8 +58,8 @@ abstract class AbstractValidator
         $classMethod = array_pop($classMethod);
 
         $this->conditions[] = [
-            'key' => $classMethod,
-            'arguments' => $arguments,
+            'key'          => $classMethod,
+            'arguments'    => $arguments,
             'is_validator' => $fetchValidatorErrors,
         ];
 
@@ -67,21 +67,22 @@ abstract class AbstractValidator
     }
 
     /**
-     * @param $value
+     * @param      $value
      * @param bool $stopOnError
      *
      * @return bool
      */
     public function validate($value, $stopOnError = false)
     {
-        $isValid = true;
-        $this->errors = [];
+        $isValid          = true;
+        $this->errors     = [];
         $this->conditions = array_filter($this->conditions);
+        $errorArray = $this->validator->getErrorMessages();
 
         foreach ($this->conditions as $condition) {
             $arguments = array_merge([$value], $condition['arguments']);
 
-            $isValid = $isValid && $this->functionMap->get($condition['key'], $arguments);
+            $isValid = $isValid && $this->functionMap->get($condition['key'], $arguments, $errorArray);
 
             if (false === $isValid) {
                 if ($condition['is_validator']) {
@@ -112,7 +113,7 @@ abstract class AbstractValidator
     }
 
     /**
-     * @param $key
+     * @param        $key
      * @param string $error
      *
      * @return $this

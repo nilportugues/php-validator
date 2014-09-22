@@ -27,6 +27,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
 
         return $validator->isDateTime('propertyName');
     }
+
     /**
      * @test
      */

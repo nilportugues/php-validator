@@ -63,10 +63,10 @@ trait IntegerTrait
     }
 
     /**
-     * @param      integer $value
-     * @param      integer $min
-     * @param      integer $max
-     * @param bool $inclusive
+     * @param integer $value
+     * @param integer $min
+     * @param integer $max
+     * @param bool    $inclusive
      *
      * @throws \InvalidArgumentException
      * @return bool

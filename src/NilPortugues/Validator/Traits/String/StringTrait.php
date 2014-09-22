@@ -28,6 +28,7 @@ trait StringTrait
 
     /**
      * @param string $value
+     *
      * @return bool
      */
     public static function isAlphanumeric($value)
@@ -37,6 +38,7 @@ trait StringTrait
 
     /**
      * @param string $value
+     *
      * @return bool
      */
     public static function isAlpha($value)
@@ -45,10 +47,10 @@ trait StringTrait
     }
 
     /**
-     * @param      string $value
-     * @param      integer $min
-     * @param      integer $max
-     * @param bool $inclusive
+     * @param string  $value
+     * @param integer $min
+     * @param integer $max
+     * @param bool    $inclusive
      *
      * @throws \InvalidArgumentException
      * @return bool
@@ -84,9 +86,12 @@ trait StringTrait
 
         $charset = is_array($charset) ? $charset : array($charset);
 
-        $charsetList = array_filter($charset, function ($charsetName) use ($available) {
-            return in_array($charsetName, $available, true);
-        });
+        $charsetList = array_filter(
+            $charset,
+            function ($charsetName) use ($available) {
+                return in_array($charsetName, $available, true);
+            }
+        );
 
         $detectedEncoding = mb_detect_encoding($value, $charset, true);
 
@@ -95,6 +100,7 @@ trait StringTrait
 
     /**
      * @param string $value
+     *
      * @return bool
      */
     public static function isAllConsonants($value)
@@ -103,9 +109,9 @@ trait StringTrait
     }
 
     /**
-     * @param      string $value
-     * @param      $contains
-     * @param bool $identical
+     * @param string $value
+     * @param        $contains
+     * @param bool   $identical
      *
      * @return bool
      */
@@ -120,6 +126,7 @@ trait StringTrait
 
     /**
      * @param string $value
+     *
      * @return bool
      */
     public static function isControlCharacters($value)
@@ -129,6 +136,7 @@ trait StringTrait
 
     /**
      * @param $value
+     *
      * @return bool
      */
     public static function isDigit($value)
@@ -137,9 +145,9 @@ trait StringTrait
     }
 
     /**
-     * @param      string $value
-     * @param      $contains
-     * @param bool $identical
+     * @param string $value
+     * @param        $contains
+     * @param bool   $identical
      *
      * @return bool
      */
@@ -158,8 +166,8 @@ trait StringTrait
      * Validates if the input is equal some value.
      *
      * @param string $value
-     * @param $comparedValue
-     * @param bool $identical
+     * @param        $comparedValue
+     * @param bool   $identical
      *
      * @return bool
      */
@@ -173,16 +181,16 @@ trait StringTrait
     }
 
     /**
-     * @param      string $value
-     * @param      string $haystack
-     * @param bool $identical
+     * @param string $value
+     * @param string $haystack
+     * @param bool   $identical
      *
      * @return bool
      */
     public static function in($value, $haystack, $identical = false)
     {
         $haystack = (string) $haystack;
-        $enc = mb_detect_encoding($value);
+        $enc      = mb_detect_encoding($value);
 
         if (false === $identical) {
             return (false !== mb_stripos($haystack, $value, 0, $enc));
@@ -193,6 +201,7 @@ trait StringTrait
 
     /**
      * @param string $value
+     *
      * @return bool
      */
     public static function hasGraphicalCharsOnly($value)
@@ -201,8 +210,8 @@ trait StringTrait
     }
 
     /**
-     * @param   string $value
-     * @param   integer $length
+     * @param string  $value
+     * @param integer $length
      *
      * @return bool
      */
@@ -215,6 +224,7 @@ trait StringTrait
 
     /**
      * @param string $value
+     *
      * @return bool
      */
     public static function isLowercase($value)
@@ -224,6 +234,7 @@ trait StringTrait
 
     /**
      * @param string $value
+     *
      * @return bool
      */
     public static function notEmpty($value)
@@ -235,15 +246,17 @@ trait StringTrait
 
     /**
      * @param string $value
+     *
      * @return bool
      */
     public static function noWhitespace($value)
     {
-        return 0 === preg_match('/\s/',$value);
+        return 0 === preg_match('/\s/', $value);
     }
 
     /**
      * @param string $value
+     *
      * @return bool
      */
     public static function hasPrintableCharsOnly($value)
@@ -253,6 +266,7 @@ trait StringTrait
 
     /**
      * @param string $value
+     *
      * @return bool
      */
     public static function isPunctuation($value)
@@ -273,13 +287,14 @@ trait StringTrait
 
     /**
      * @param string $value
+     *
      * @return bool
      */
     public static function isSlug($value)
     {
         if ((false !== strstr($value, '--'))
-        || (!preg_match('@^[0-9a-z\-]+$@', $value))
-        || (preg_match('@^-|-$@', $value))
+            || (!preg_match('@^[0-9a-z\-]+$@', $value))
+            || (preg_match('@^-|-$@', $value))
         ) {
             return false;
         }
@@ -289,6 +304,7 @@ trait StringTrait
 
     /**
      * @param string $value
+     *
      * @return bool
      */
     public static function isSpace($value)
@@ -297,9 +313,9 @@ trait StringTrait
     }
 
     /**
-     * @param      string $value
-     * @param      $contains
-     * @param bool $identical
+     * @param string $value
+     * @param        $contains
+     * @param bool   $identical
      *
      * @return bool
      */
@@ -316,6 +332,7 @@ trait StringTrait
 
     /**
      * @param string $value
+     *
      * @return bool
      */
     public static function isUppercase($value)
@@ -325,6 +342,7 @@ trait StringTrait
 
     /**
      * @param string $value
+     *
      * @return bool
      */
     public static function isVersion($value)
@@ -334,6 +352,7 @@ trait StringTrait
 
     /**
      * @param string $value
+     *
      * @return bool
      */
     public static function isVowel($value)
@@ -343,6 +362,7 @@ trait StringTrait
 
     /**
      * @param string $value
+     *
      * @return bool
      */
     public static function isHexDigit($value)
@@ -351,8 +371,8 @@ trait StringTrait
     }
 
     /**
-     * @param     string $value
-     * @param int $amount
+     * @param string $value
+     * @param int    $amount
      *
      * @return bool
      */
@@ -362,9 +382,9 @@ trait StringTrait
     }
 
     /**
-     * @param $value
+     * @param              $value
      * @param integer|null $amount
-     * @param string $regex
+     * @param string       $regex
      *
      * @return bool
      */
@@ -377,12 +397,12 @@ trait StringTrait
             $minMatches = $amount;
         }
 
-        $value = preg_replace('/\s+/', '', $value);
+        $value  = preg_replace('/\s+/', '', $value);
         $length = strlen($value);
 
         $counter = 0;
-        for ($i = 0; $i<$length; $i++) {
-            if (preg_match($regex, $value[$i])>0) {
+        for ($i = 0; $i < $length; $i++) {
+            if (preg_match($regex, $value[$i]) > 0) {
                 $counter++;
             }
 
@@ -395,8 +415,8 @@ trait StringTrait
     }
 
     /**
-     * @param     string $value
-     * @param int $amount
+     * @param string $value
+     * @param int    $amount
      *
      * @return bool
      */
@@ -406,8 +426,8 @@ trait StringTrait
     }
 
     /**
-     * @param     string $value
-     * @param int $amount
+     * @param string $value
+     * @param int    $amount
      *
      * @return bool
      */
@@ -417,8 +437,8 @@ trait StringTrait
     }
 
     /**
-     * @param     string $value
-     * @param int $amount
+     * @param string $value
+     * @param int    $amount
      *
      * @return bool
      */

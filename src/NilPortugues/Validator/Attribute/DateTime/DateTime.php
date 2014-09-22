@@ -56,9 +56,9 @@ class DateTime extends Generic
     }
 
     /**
-     * @param      string $minDate
-     * @param      string $maxDate
-     * @param bool $inclusive
+     * @param string $minDate
+     * @param string $maxDate
+     * @param bool   $inclusive
      *
      * @return $this
      */

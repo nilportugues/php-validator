@@ -29,7 +29,7 @@ trait DateTimeTrait
             return true;
         }
 
-        $date = new \DateTime($value);
+        $date   = new \DateTime($value);
         $errors = $date->getLastErrors();
 
         return (0 == $errors['warning_count'] && 0 == $errors['error_count']);
@@ -54,7 +54,7 @@ trait DateTimeTrait
      *
      * @param string|\DateTime $value
      * @param string|\DateTime $limit
-     * @param bool $inclusive
+     * @param bool             $inclusive
      *
      * @return bool
      */
@@ -75,7 +75,7 @@ trait DateTimeTrait
      *
      * @param string|\DateTime $value
      * @param string|\DateTime $limit
-     * @param bool $inclusive
+     * @param bool             $inclusive
      *
      * @return bool
      */
@@ -97,7 +97,7 @@ trait DateTimeTrait
      * @param string|\DateTime $value
      * @param string|\DateTime $minDate
      * @param string|\DateTime $maxDate
-     * @param bool $inclusive
+     * @param bool             $inclusive
      *
      * @return bool
      */

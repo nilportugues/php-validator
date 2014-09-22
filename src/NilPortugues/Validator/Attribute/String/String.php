@@ -250,6 +250,7 @@ class String extends Generic
 
         return $this;
     }
+
     /**
      * Accepts only punctuation characters.
      *
@@ -275,6 +276,7 @@ class String extends Generic
 
         return $this;
     }
+
     /**
      * Validates slug-like strings.
      *
@@ -289,6 +291,7 @@ class String extends Generic
 
     /**
      * @param
+     *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
     public function isSpace()
@@ -336,6 +339,7 @@ class String extends Generic
 
         return $this;
     }
+
     /**
      * Validates strings that contains only vowels.
      *

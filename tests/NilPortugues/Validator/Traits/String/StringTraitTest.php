@@ -23,11 +23,11 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_string()
     {
-        $value = 'asdsdadds';
+        $value  = 'asdsdadds';
         $result = StringTrait::isString($value);
         $this->assertTrue($result);
 
-        $value = new \StdClass();
+        $value  = new \StdClass();
         $result = StringTrait::isString($value);
         $this->assertFalse($result);
     }
@@ -37,11 +37,11 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_alphanumeric()
     {
-        $value = 'Qwerty1234';
+        $value  = 'Qwerty1234';
         $result = StringTrait::isAlphanumeric($value);
         $this->assertTrue($result);
 
-        $value = '';
+        $value  = '';
         $result = StringTrait::isAlphanumeric($value);
         $this->assertFalse($result);
     }
@@ -51,11 +51,11 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_alpha()
     {
-        $value = 'querty';
+        $value  = 'querty';
         $result = StringTrait::isAlpha($value);
         $this->assertTrue($result);
 
-        $value = 'querty123';
+        $value  = 'querty123';
         $result = StringTrait::isAlpha($value);
         $this->assertFalse($result);
     }
@@ -65,11 +65,11 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_between()
     {
-        $value = 'Nil';
+        $value  = 'Nil';
         $result = StringTrait::isBetween($value, 2, 4, false);
         $this->assertTrue($result);
 
-        $value = 'Nilo';
+        $value  = 'Nilo';
         $result = StringTrait::isBetween($value, 2, 4, true);
         $this->assertTrue($result);
     }
@@ -100,11 +100,11 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_all_consonants()
     {
-        $value = 'a';
+        $value  = 'a';
         $result = StringTrait::isAllConsonants($value);
         $this->assertFalse($result);
 
-        $value = 'bs';
+        $value  = 'bs';
         $result = StringTrait::isAllConsonants($value);
         $this->assertTrue($result);
     }
@@ -114,16 +114,16 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_contains()
     {
-        $value = 'AAAAAAAaaaA';
-        $contains = 'aaa';
+        $value     = 'AAAAAAAaaaA';
+        $contains  = 'aaa';
         $identical = true;
-        $result = StringTrait::contains($value, $contains, $identical);
+        $result    = StringTrait::contains($value, $contains, $identical);
         $this->assertTrue($result);
 
-        $value = 'AAAAAAA123A';
-        $contains = 123;
+        $value     = 'AAAAAAA123A';
+        $contains  = 123;
         $identical = false;
-        $result = StringTrait::contains($value, $contains, $identical);
+        $result    = StringTrait::contains($value, $contains, $identical);
         $this->assertTrue($result);
     }
 
@@ -132,11 +132,11 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_control_characters()
     {
-        $value = "\n\t";
+        $value  = "\n\t";
         $result = StringTrait::isControlCharacters($value);
         $this->assertTrue($result);
 
-        $value = "\nHello\tWorld";
+        $value  = "\nHello\tWorld";
         $result = StringTrait::isControlCharacters($value);
         $this->assertFalse($result);
     }
@@ -146,11 +146,11 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_digit()
     {
-        $value = 'A';
+        $value  = 'A';
         $result = StringTrait::isDigit($value);
         $this->assertFalse($result);
 
-        $value = 145.6;
+        $value  = 145.6;
         $result = StringTrait::isDigit($value);
         $this->assertFalse($result);
     }
@@ -160,16 +160,16 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_endsWith()
     {
-        $value = 'AAAAAAAaaaA';
-        $contains = 'aaaA';
+        $value     = 'AAAAAAAaaaA';
+        $contains  = 'aaaA';
         $identical = true;
-        $result = StringTrait::endsWith($value, $contains, $identical);
+        $result    = StringTrait::endsWith($value, $contains, $identical);
         $this->assertTrue($result);
 
-        $value = 'AAAAAAA123';
-        $contains = 123;
+        $value     = 'AAAAAAA123';
+        $contains  = 123;
         $identical = false;
-        $result = StringTrait::endsWith($value, $contains, $identical);
+        $result    = StringTrait::endsWith($value, $contains, $identical);
         $this->assertTrue($result);
     }
 
@@ -178,16 +178,16 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_equals()
     {
-        $value = 'hello';
+        $value         = 'hello';
         $comparedValue = 'hello';
-        $identical = true;
-        $result = StringTrait::equals($value, $comparedValue, $identical);
+        $identical     = true;
+        $result        = StringTrait::equals($value, $comparedValue, $identical);
         $this->assertTrue($result);
 
-        $value = '1';
+        $value         = '1';
         $comparedValue = 1;
-        $identical = false;
-        $result = StringTrait::equals($value, $comparedValue, $identical);
+        $identical     = false;
+        $result        = StringTrait::equals($value, $comparedValue, $identical);
 
         $this->assertTrue($result);
     }
@@ -197,16 +197,16 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_in()
     {
-        $haystack = 'a12245 asdhsjasd 63-211';
-        $value = "122";
+        $haystack  = 'a12245 asdhsjasd 63-211';
+        $value     = "122";
         $identical = false;
-        $result = StringTrait::in($value, $haystack, $identical);
+        $result    = StringTrait::in($value, $haystack, $identical);
         $this->assertTrue($result);
 
-        $haystack = 'a12245 asdhsjasd 63-211';
-        $value = '5 asd';
+        $haystack  = 'a12245 asdhsjasd 63-211';
+        $value     = '5 asd';
         $identical = true;
-        $result = StringTrait::in($value, $haystack, $identical);
+        $result    = StringTrait::in($value, $haystack, $identical);
         $this->assertTrue($result);
     }
 
@@ -215,11 +215,11 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_graph()
     {
-        $value = 'arf12';
+        $value  = 'arf12';
         $result = StringTrait::hasGraphicalCharsOnly($value);
         $this->assertTrue($result);
 
-        $value = "asdf\n\r\t";
+        $value  = "asdf\n\r\t";
         $result = StringTrait::hasGraphicalCharsOnly($value);
         $this->assertFalse($result);
     }
@@ -229,12 +229,12 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_length()
     {
-        $value = 'abcdefgh';
+        $value  = 'abcdefgh';
         $length = 5;
         $result = StringTrait::hasLength($value, $length);
         $this->assertFalse($result);
 
-        $value = 'abcdefgh';
+        $value  = 'abcdefgh';
         $length = 8;
         $result = StringTrait::hasLength($value, $length);
         $this->assertTrue($result);
@@ -245,7 +245,7 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_lowercase()
     {
-        $value = 'strtolower';
+        $value  = 'strtolower';
         $result = StringTrait::isLowercase($value);
         $this->assertTrue($result);
     }
@@ -255,11 +255,11 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_not_empty()
     {
-        $value = 'a';
+        $value  = 'a';
         $result = StringTrait::notEmpty($value);
         $this->assertTrue($result);
 
-        $value = '';
+        $value  = '';
         $result = StringTrait::notEmpty($value);
         $this->assertFalse($result);
     }
@@ -269,11 +269,11 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_no_whitespace()
     {
-        $value = 'aaaaa';
+        $value  = 'aaaaa';
         $result = StringTrait::noWhitespace($value);
         $this->assertTrue($result);
 
-        $value = 'lorem ipsum';
+        $value  = 'lorem ipsum';
         $result = StringTrait::noWhitespace($value);
         $this->assertFalse($result);
     }
@@ -283,11 +283,11 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_printable()
     {
-        $value = 'LMKA0$% _123';
+        $value  = 'LMKA0$% _123';
         $result = StringTrait::hasPrintableCharsOnly($value);
         $this->assertTrue($result);
 
-        $value = "LMKA0$%\t_123";
+        $value  = "LMKA0$%\t_123";
         $result = StringTrait::hasPrintableCharsOnly($value);
         $this->assertFalse($result);
     }
@@ -297,11 +297,11 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_punctuation()
     {
-        $value = '&,.;[]';
+        $value  = '&,.;[]';
         $result = StringTrait::isPunctuation($value);
         $this->assertTrue($result);
 
-        $value = 'a';
+        $value  = 'a';
         $result = StringTrait::isPunctuation($value);
         $this->assertFalse($result);
     }
@@ -311,13 +311,13 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_regex()
     {
-        $value = 'a';
-        $regex = '/[a-z]/';
+        $value  = 'a';
+        $regex  = '/[a-z]/';
         $result = StringTrait::matchesRegex($value, $regex);
         $this->assertTrue($result);
 
-        $value = 'A';
-        $regex = '/[a-z]/';
+        $value  = 'A';
+        $regex  = '/[a-z]/';
         $result = StringTrait::matchesRegex($value, $regex);
         $this->assertFalse($result);
     }
@@ -327,19 +327,19 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_slug()
     {
-        $value = 'hello-world-yeah';
+        $value  = 'hello-world-yeah';
         $result = StringTrait::isSlug($value);
         $this->assertTrue($result);
 
-        $value = '-hello-world-yeah';
+        $value  = '-hello-world-yeah';
         $result = StringTrait::isSlug($value);
         $this->assertFalse($result);
 
-        $value = 'hello-world-yeah-';
+        $value  = 'hello-world-yeah-';
         $result = StringTrait::isSlug($value);
         $this->assertFalse($result);
 
-        $value = 'hello-world----yeah';
+        $value  = 'hello-world----yeah';
         $result = StringTrait::isSlug($value);
         $this->assertFalse($result);
     }
@@ -349,11 +349,11 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_space()
     {
-        $value = '    ';
+        $value  = '    ';
         $result = StringTrait::isSpace($value);
         $this->assertTrue($result);
 
-        $value = 'e e';
+        $value  = 'e e';
         $result = StringTrait::isSpace($value);
         $this->assertFalse($result);
     }
@@ -363,16 +363,16 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_starts_with()
     {
-        $value = 'aaaAAAAAAAA';
-        $contains = 'aaaA';
+        $value     = 'aaaAAAAAAAA';
+        $contains  = 'aaaA';
         $identical = true;
-        $result = StringTrait::startsWith($value, $contains, $identical);
+        $result    = StringTrait::startsWith($value, $contains, $identical);
         $this->assertTrue($result);
 
-        $value = '123AAAAAAA';
-        $contains = 123;
+        $value     = '123AAAAAAA';
+        $contains  = 123;
         $identical = false;
-        $result = StringTrait::startsWith($value, $contains, $identical);
+        $result    = StringTrait::startsWith($value, $contains, $identical);
         $this->assertTrue($result);
     }
 
@@ -381,11 +381,11 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_uppercase()
     {
-        $value = 'AAAAAA';
+        $value  = 'AAAAAA';
         $result = StringTrait::isUppercase($value);
         $this->assertTrue($result);
 
-        $value = 'aaaa';
+        $value  = 'aaaa';
         $result = StringTrait::isUppercase($value);
         $this->assertFalse($result);
     }
@@ -395,19 +395,19 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_version()
     {
-        $value = '1.0.2';
+        $value  = '1.0.2';
         $result = StringTrait::isVersion($value);
         $this->assertTrue($result);
 
-        $value = '1.0.2-beta';
+        $value  = '1.0.2-beta';
         $result = StringTrait::isVersion($value);
         $this->assertTrue($result);
 
-        $value = '1.0';
+        $value  = '1.0';
         $result = StringTrait::isVersion($value);
         $this->assertTrue($result);
 
-        $value = '1.0.2 beta';
+        $value  = '1.0.2 beta';
         $result = StringTrait::isVersion($value);
         $this->assertFalse($result);
     }
@@ -417,11 +417,11 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_vowel()
     {
-        $value = 'aeA';
+        $value  = 'aeA';
         $result = StringTrait::isVowel($value);
         $this->assertTrue($result);
 
-        $value = 'cds';
+        $value  = 'cds';
         $result = StringTrait::isVowel($value);
         $this->assertFalse($result);
     }
@@ -431,11 +431,11 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_hex_digit()
     {
-        $value = '100';
+        $value  = '100';
         $result = StringTrait::isHexDigit($value);
         $this->assertTrue($result);
 
-        $value = 'h0000';
+        $value  = 'h0000';
         $result = StringTrait::isHexDigit($value);
         $this->assertFalse($result);
     }

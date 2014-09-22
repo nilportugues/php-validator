@@ -29,6 +29,50 @@ class Validator
     private $propertyName;
 
     /**
+     * @var string
+     */
+    private $langFile;
+
+    /**
+     * @var string
+     */
+    private $language = 'en_GB';
+
+    /**
+     * @var string
+     */
+    private $errorDir = '/Errors';
+
+    /**
+     * @param string $errorMessageFile
+     */
+    public function __construct($errorMessageFile = '')
+    {
+        $this->langFile = $errorMessageFile;
+    }
+
+    /**
+     * @return mixed
+     * @throws \InvalidArgumentException
+     */
+    public function getErrorMessages()
+    {
+        $filePath = $this->langFile;
+
+        if (null !== $filePath) {
+            $filePath = realpath(dirname(__FILE__))
+                .DIRECTORY_SEPARATOR.$this->errorDir
+                .DIRECTORY_SEPARATOR.$this->language.".php";
+        }
+
+        if (false === file_exists($filePath)) {
+            throw new \InvalidArgumentException("Language not found.");
+        }
+
+        return include $filePath;
+    }
+
+    /**
      * @param string $propertyName
      *
      * @return Collection

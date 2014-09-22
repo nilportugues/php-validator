@@ -39,7 +39,7 @@ trait ObjectTrait
 
     /**
      * @param \Tests\NilPortugues\Validator\Resources\Dummy $value
-     * @param string $property
+     * @param string                                        $property
      *
      * @return bool
      */
@@ -50,7 +50,7 @@ trait ObjectTrait
 
     /**
      * @param \Tests\NilPortugues\Validator\Resources\Dummy $value
-     * @param string $method
+     * @param string                                        $method
      *
      * @return bool
      */
@@ -71,7 +71,7 @@ trait ObjectTrait
 
     /**
      * @param \Tests\NilPortugues\Validator\Resources\Dummy $value
-     * @param string $parentClass
+     * @param string                                        $parentClass
      *
      * @return bool
      */
@@ -82,7 +82,7 @@ trait ObjectTrait
 
     /**
      * @param \Tests\NilPortugues\Validator\Resources\Dummy $value
-     * @param string $inheritsClass
+     * @param string                                        $inheritsClass
      *
      * @return bool
      */
@@ -93,7 +93,7 @@ trait ObjectTrait
 
     /**
      * @param \Tests\NilPortugues\Validator\Resources\Dummy $value
-     * @param string $interface
+     * @param string                                        $interface
      *
      * @return bool
      */

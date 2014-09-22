@@ -99,10 +99,12 @@ class ObjectTraitTest extends \PHPUnit_Framework_TestCase
     {
         $dummy = new Dummy();
 
-        $this->assertTrue(ObjectTrait::hasInterface(
-            $dummy,
-            'Tests\NilPortugues\Validator\Resources\DummyInterface'
-        ));
+        $this->assertTrue(
+            ObjectTrait::hasInterface(
+                $dummy,
+                'Tests\NilPortugues\Validator\Resources\DummyInterface'
+            )
+        );
         $this->assertFalse(ObjectTrait::inheritsFrom($dummy, 'DateTimeZone'));
     }
 }

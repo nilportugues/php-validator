@@ -33,11 +33,11 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_string()
     {
-        $value = 'asdsdadds';
+        $value  = 'asdsdadds';
         $result = $this->getValidator()->validate($value);
         $this->assertTrue($result);
 
-        $value = new \StdClass();
+        $value  = new \StdClass();
         $result = $this->getValidator()->validate($value);
         $this->assertFalse($result);
     }
@@ -47,11 +47,11 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_alphanumeric()
     {
-        $value = 'Qwerty1234';
+        $value  = 'Qwerty1234';
         $result = $this->getValidator()->isAlphanumeric()->validate($value);
         $this->assertTrue($result);
 
-        $value = '';
+        $value  = '';
         $result = $this->getValidator()->isAlphanumeric()->validate($value);
         $this->assertFalse($result);
     }
@@ -61,11 +61,11 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_alpha()
     {
-        $value = 'querty';
+        $value  = 'querty';
         $result = $this->getValidator()->isAlpha()->validate($value);
         $this->assertTrue($result);
 
-        $value = 'querty123';
+        $value  = 'querty123';
         $result = $this->getValidator()->isAlpha()->validate($value);
         $this->assertFalse($result);
     }
@@ -75,11 +75,11 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_between()
     {
-        $value = 'Nil';
+        $value  = 'Nil';
         $result = $this->getValidator()->isBetween(2, 4, false)->validate($value);
         $this->assertTrue($result);
 
-        $value = 'Nilo';
+        $value  = 'Nilo';
         $result = $this->getValidator()->isBetween(2, 4, true)->validate($value);
         $this->assertTrue($result);
     }
@@ -110,11 +110,11 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_all_consonants()
     {
-        $value = 'a';
+        $value  = 'a';
         $result = $this->getValidator()->isAllConsonants()->validate($value);
         $this->assertFalse($result);
 
-        $value = 'bs';
+        $value  = 'bs';
         $result = $this->getValidator()->isAllConsonants()->validate($value);
         $this->assertTrue($result);
     }
@@ -124,16 +124,16 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_contains()
     {
-        $value = 'AAAAAAAaaaA';
-        $contains = 'aaa';
+        $value     = 'AAAAAAAaaaA';
+        $contains  = 'aaa';
         $identical = true;
-        $result = $this->getValidator()->contains($contains, $identical)->validate($value);
+        $result    = $this->getValidator()->contains($contains, $identical)->validate($value);
         $this->assertTrue($result);
 
-        $value = 'AAAAAAA123A';
-        $contains = 123;
+        $value     = 'AAAAAAA123A';
+        $contains  = 123;
         $identical = false;
-        $result = $this->getValidator()->contains($contains, $identical)->validate($value);
+        $result    = $this->getValidator()->contains($contains, $identical)->validate($value);
         $this->assertTrue($result);
     }
 
@@ -142,11 +142,11 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_control_characters()
     {
-        $value = "\n\t";
+        $value  = "\n\t";
         $result = $this->getValidator()->isControlCharacters()->validate($value);
         $this->assertTrue($result);
 
-        $value = "\nHello\tWorld";
+        $value  = "\nHello\tWorld";
         $result = $this->getValidator()->isControlCharacters()->validate($value);
         $this->assertFalse($result);
     }
@@ -156,11 +156,11 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_digit()
     {
-        $value = 'A';
+        $value  = 'A';
         $result = $this->getValidator()->isDigit()->validate($value);
         $this->assertFalse($result);
 
-        $value = 145.6;
+        $value  = 145.6;
         $result = $this->getValidator()->isDigit()->validate($value);
         $this->assertFalse($result);
     }
@@ -170,16 +170,16 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_endsWith()
     {
-        $value = 'AAAAAAAaaaA';
-        $contains = 'aaaA';
+        $value     = 'AAAAAAAaaaA';
+        $contains  = 'aaaA';
         $identical = true;
-        $result = $this->getValidator()->endsWith($contains, $identical)->validate($value);
+        $result    = $this->getValidator()->endsWith($contains, $identical)->validate($value);
         $this->assertTrue($result);
 
-        $value = 'AAAAAAA123';
-        $contains = 123;
+        $value     = 'AAAAAAA123';
+        $contains  = 123;
         $identical = false;
-        $result = $this->getValidator()->endsWith($contains, $identical)->validate($value);
+        $result    = $this->getValidator()->endsWith($contains, $identical)->validate($value);
         $this->assertTrue($result);
     }
 
@@ -188,16 +188,16 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_equals()
     {
-        $value = 'hello';
+        $value         = 'hello';
         $comparedValue = 'hello';
-        $identical = true;
-        $result = $this->getValidator()->equals($comparedValue, $identical)->validate($value);
+        $identical     = true;
+        $result        = $this->getValidator()->equals($comparedValue, $identical)->validate($value);
         $this->assertTrue($result);
 
-        $value = '1';
+        $value         = '1';
         $comparedValue = 1;
-        $identical = false;
-        $result = $this->getValidator()->equals($comparedValue, $identical)->validate($value);
+        $identical     = false;
+        $result        = $this->getValidator()->equals($comparedValue, $identical)->validate($value);
 
         $this->assertTrue($result);
     }
@@ -207,16 +207,16 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_in()
     {
-        $haystack = 'a12245 asdhsjasd 63-211';
-        $value = "122";
+        $haystack  = 'a12245 asdhsjasd 63-211';
+        $value     = "122";
         $identical = false;
-        $result = $this->getValidator()->in($haystack, $identical)->validate($value);
+        $result    = $this->getValidator()->in($haystack, $identical)->validate($value);
         $this->assertTrue($result);
 
-        $haystack = 'a12245 asdhsjasd 63-211';
-        $value = '5 asd';
+        $haystack  = 'a12245 asdhsjasd 63-211';
+        $value     = '5 asd';
         $identical = true;
-        $result = $this->getValidator()->in($haystack, $identical)->validate($value);
+        $result    = $this->getValidator()->in($haystack, $identical)->validate($value);
         $this->assertTrue($result);
     }
 
@@ -225,11 +225,11 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_graph()
     {
-        $value = 'arf12';
+        $value  = 'arf12';
         $result = $this->getValidator()->hasGraphicalCharsOnly()->validate($value);
         $this->assertTrue($result);
 
-        $value = "asdf\n\r\t";
+        $value  = "asdf\n\r\t";
         $result = $this->getValidator()->hasGraphicalCharsOnly()->validate($value);
         $this->assertFalse($result);
     }
@@ -239,12 +239,12 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_length()
     {
-        $value = 'abcdefgh';
+        $value  = 'abcdefgh';
         $length = 5;
         $result = $this->getValidator()->hasLength($length)->validate($value);
         $this->assertFalse($result);
 
-        $value = 'abcdefgh';
+        $value  = 'abcdefgh';
         $length = 8;
         $result = $this->getValidator()->hasLength($length)->validate($value);
         $this->assertTrue($result);
@@ -255,7 +255,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_lowercase()
     {
-        $value = 'strtolower';
+        $value  = 'strtolower';
         $result = $this->getValidator()->isLowercase()->validate($value);
         $this->assertTrue($result);
     }
@@ -265,11 +265,11 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_not_empty()
     {
-        $value = 'a';
+        $value  = 'a';
         $result = $this->getValidator()->notEmpty()->validate($value);
         $this->assertTrue($result);
 
-        $value = '';
+        $value  = '';
         $result = $this->getValidator()->notEmpty()->validate($value);
         $this->assertFalse($result);
     }
@@ -279,11 +279,11 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_no_whitespace()
     {
-        $value = 'aaaaa';
+        $value  = 'aaaaa';
         $result = $this->getValidator()->noWhitespace()->validate($value);
         $this->assertTrue($result);
 
-        $value = 'lorem ipsum';
+        $value  = 'lorem ipsum';
         $result = $this->getValidator()->noWhitespace()->validate($value);
         $this->assertFalse($result);
     }
@@ -293,11 +293,11 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_printable()
     {
-        $value = 'LMKA0$% _123';
+        $value  = 'LMKA0$% _123';
         $result = $this->getValidator()->hasPrintableCharsOnly()->validate($value);
         $this->assertTrue($result);
 
-        $value = "LMKA0$%\t_123";
+        $value  = "LMKA0$%\t_123";
         $result = $this->getValidator()->hasPrintableCharsOnly()->validate($value);
         $this->assertFalse($result);
     }
@@ -307,11 +307,11 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_punctuation()
     {
-        $value = '&,.;[]';
+        $value  = '&,.;[]';
         $result = $this->getValidator()->isPunctuation()->validate($value);
         $this->assertTrue($result);
 
-        $value = 'a';
+        $value  = 'a';
         $result = $this->getValidator()->isPunctuation()->validate($value);
         $this->assertFalse($result);
     }
@@ -321,13 +321,13 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_regex()
     {
-        $value = 'a';
-        $regex = '/[a-z]/';
+        $value  = 'a';
+        $regex  = '/[a-z]/';
         $result = $this->getValidator()->matchesRegex($regex)->validate($value);
         $this->assertTrue($result);
 
-        $value = 'A';
-        $regex = '/[a-z]/';
+        $value  = 'A';
+        $regex  = '/[a-z]/';
         $result = $this->getValidator()->matchesRegex($regex)->validate($value);
         $this->assertFalse($result);
     }
@@ -337,19 +337,19 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_slug()
     {
-        $value = 'hello-world-yeah';
+        $value  = 'hello-world-yeah';
         $result = $this->getValidator()->isSlug()->validate($value);
         $this->assertTrue($result);
 
-        $value = '-hello-world-yeah';
+        $value  = '-hello-world-yeah';
         $result = $this->getValidator()->isSlug()->validate($value);
         $this->assertFalse($result);
 
-        $value = 'hello-world-yeah-';
+        $value  = 'hello-world-yeah-';
         $result = $this->getValidator()->isSlug()->validate($value);
         $this->assertFalse($result);
 
-        $value = 'hello-world----yeah';
+        $value  = 'hello-world----yeah';
         $result = $this->getValidator()->isSlug()->validate($value);
         $this->assertFalse($result);
     }
@@ -359,11 +359,11 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_space()
     {
-        $value = '    ';
+        $value  = '    ';
         $result = $this->getValidator()->isSpace()->validate($value);
         $this->assertTrue($result);
 
-        $value = 'e e';
+        $value  = 'e e';
         $result = $this->getValidator()->isSpace()->validate($value);
         $this->assertFalse($result);
     }
@@ -373,16 +373,16 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_starts_with1()
     {
-        $value = 'aaaAAAAAAAA';
-        $contains = 'aaaA';
+        $value     = 'aaaAAAAAAAA';
+        $contains  = 'aaaA';
         $identical = true;
-        $result = $this->getValidator()->startsWith($contains, $identical)->validate($value);
+        $result    = $this->getValidator()->startsWith($contains, $identical)->validate($value);
         $this->assertTrue($result);
 
-        $value = '123AAAAAAA';
-        $contains = 123;
+        $value     = '123AAAAAAA';
+        $contains  = 123;
         $identical = false;
-        $result = $this->getValidator()->startsWith($contains, $identical)->validate($value);
+        $result    = $this->getValidator()->startsWith($contains, $identical)->validate($value);
         $this->assertTrue($result);
     }
 
@@ -391,11 +391,11 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_uppercase()
     {
-        $value = 'AAAAAA';
+        $value  = 'AAAAAA';
         $result = $this->getValidator()->isUppercase()->validate($value);
         $this->assertTrue($result);
 
-        $value = 'aaaa';
+        $value  = 'aaaa';
         $result = $this->getValidator()->isUppercase()->validate($value);
         $this->assertFalse($result);
     }
@@ -405,19 +405,19 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_version()
     {
-        $value = '1.0.2';
+        $value  = '1.0.2';
         $result = $this->getValidator()->isVersion()->validate($value);
         $this->assertTrue($result);
 
-        $value = '1.0.2-beta';
+        $value  = '1.0.2-beta';
         $result = $this->getValidator()->isVersion()->validate($value);
         $this->assertTrue($result);
 
-        $value = '1.0';
+        $value  = '1.0';
         $result = $this->getValidator()->isVersion()->validate($value);
         $this->assertTrue($result);
 
-        $value = '1.0.2 beta';
+        $value  = '1.0.2 beta';
         $result = $this->getValidator()->isVersion()->validate($value);
         $this->assertFalse($result);
     }
@@ -427,11 +427,11 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_vowel()
     {
-        $value = 'aeA';
+        $value  = 'aeA';
         $result = $this->getValidator()->isVowel()->validate($value);
         $this->assertTrue($result);
 
-        $value = 'cds';
+        $value  = 'cds';
         $result = $this->getValidator()->isVowel()->validate($value);
         $this->assertFalse($result);
     }
@@ -441,11 +441,11 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_string_is_xdigit()
     {
-        $value = '100';
+        $value  = '100';
         $result = $this->getValidator()->isHexDigit()->validate($value);
         $this->assertTrue($result);
 
-        $value = 'h0000';
+        $value  = 'h0000';
         $result = $this->getValidator()->isHexDigit()->validate($value);
         $this->assertFalse($result);
     }
@@ -455,7 +455,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_stop_validation_on_first_error()
     {
-        $value = '@aaa';
+        $value     = '@aaa';
         $validator = $this->getValidator();
 
         $result = $validator->isAlphanumeric()->validate($value, true);

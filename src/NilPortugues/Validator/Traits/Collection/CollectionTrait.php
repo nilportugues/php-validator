@@ -19,7 +19,8 @@ use NilPortugues\Validator\AbstractValidator;
 trait CollectionTrait
 {
     /**
-     * @param  mixed $value
+     * @param mixed $value
+     *
      * @return bool
      */
     public static function isArray($value)
@@ -30,7 +31,7 @@ trait CollectionTrait
     }
 
     /**
-     * @param $value
+     * @param                                           $value
      * @param \NilPortugues\Validator\AbstractValidator $valueValidator
      * @param \NilPortugues\Validator\AbstractValidator $keyValidator
      *
@@ -68,7 +69,7 @@ trait CollectionTrait
         }
 
         $arrayKeys = array_keys($value);
-        $isValid = true;
+        $isValid   = true;
 
         foreach ($arrayKeys as $key) {
             $isValid = $isValid && $keyValidator->validate($key);
@@ -78,7 +79,7 @@ trait CollectionTrait
     }
 
     /**
-     * @param  $haystack
+     * @param       $haystack
      * @param mixed $needle
      * @param bool  $strict
      *
@@ -97,7 +98,7 @@ trait CollectionTrait
     }
 
     /**
-     * @param $haystack
+     * @param       $haystack
      * @param mixed $needle
      * @param bool  $strict
      *
@@ -123,7 +124,7 @@ trait CollectionTrait
     }
 
     /**
-     * @param $value
+     * @param        $value
      * @param string $keyName
      *
      * @return bool
@@ -134,7 +135,7 @@ trait CollectionTrait
     }
 
     /**
-     * @param $value
+     * @param     $value
      * @param int $length
      *
      * @return bool
@@ -148,6 +149,7 @@ trait CollectionTrait
 
     /**
      * @param $value
+     *
      * @return bool
      */
     public static function isNotEmpty($value)
@@ -156,7 +158,7 @@ trait CollectionTrait
     }
 
     /**
-     * @param $haystack
+     * @param       $haystack
      * @param mixed $needle
      * @param bool  $strict
      *
