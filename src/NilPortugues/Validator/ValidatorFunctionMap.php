@@ -154,7 +154,7 @@ class ValidatorFunctionMap
             throw new \InvalidArgumentException('Validator key not found');
         }
 
-        $function = $this->baseNamespace . $this->functionMap[$funcName];
+        $function = $this->baseNamespace.$this->functionMap[$funcName];
         $class    = explode("::", $function);
 
         $result = call_user_func_array([$class[0], $class[1]], $arguments);

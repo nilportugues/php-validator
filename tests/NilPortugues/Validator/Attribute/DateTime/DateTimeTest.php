@@ -221,4 +221,40 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->getValidator()->isWeekday()->validate('2014-09-20'));
         $this->assertTrue($this->getValidator()->isWeekday()->validate('2014-09-22'));
     }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_morning()
+    {
+        $this->assertTrue($this->getValidator()->isMorning()->validate('07:20:15'));
+        $this->assertFalse($this->getValidator()->isMorning()->validate('20:15:00'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_afternoon()
+    {
+        $this->assertTrue($this->getValidator()->isAftenoon()->validate('12:00:00'));
+        $this->assertFalse($this->getValidator()->isAftenoon()->validate('20:15:00'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_evening()
+    {
+        $this->assertTrue($this->getValidator()->isEvening()->validate('18:00:00'));
+        $this->assertFalse($this->getValidator()->isEvening()->validate('07:15:00'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_night()
+    {
+        $this->assertTrue($this->getValidator()->isNight()->validate('01:00:00'));
+        $this->assertFalse($this->getValidator()->isNight()->validate('12:15:00'));
+    }
 }

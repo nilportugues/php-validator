@@ -211,4 +211,40 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse(DateTimeTrait::isWeekday('2014-09-20'));
         $this->assertTrue(DateTimeTrait::isWeekday('2014-09-22'));
     }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_morning()
+    {
+        $this->assertTrue(DateTimeTrait::isMorning('07:20:15'));
+        $this->assertFalse(DateTimeTrait::isMorning('20:15:00'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_afternoon()
+    {
+        $this->assertTrue(DateTimeTrait::isAftenoon('12:00:00'));
+        $this->assertFalse(DateTimeTrait::isAftenoon('20:15:00'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_evening()
+    {
+        $this->assertTrue(DateTimeTrait::isEvening('18:00:00'));
+        $this->assertFalse(DateTimeTrait::isEvening('07:15:00'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_check_if_is_night()
+    {
+        $this->assertTrue(DateTimeTrait::isNight('01:00:00'));
+        $this->assertFalse(DateTimeTrait::isNight('12:15:00'));
+    }
 }

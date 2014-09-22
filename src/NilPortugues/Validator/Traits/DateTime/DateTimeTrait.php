@@ -282,7 +282,7 @@ trait DateTimeTrait
         $value = self::convertToDateTime($value);
         $date = strtotime($value->format('H:i:s'));
 
-        return  $date>= strtotime($value->format('06:00:00')) && $date <= strtotime($value->format('11:59:59'));
+        return  $date >= strtotime($value->format('06:00:00')) && $date <= strtotime($value->format('11:59:59'));
     }
 
     /**
@@ -295,7 +295,7 @@ trait DateTimeTrait
         $value = self::convertToDateTime($value);
         $date = strtotime($value->format('H:i:s'));
 
-        return  $date>= strtotime($value->format('12:00:00')) && $date <= strtotime($value->format('17:59:59'));
+        return  $date >= strtotime($value->format('12:00:00')) && $date <= strtotime($value->format('17:59:59'));
     }
 
     /**
@@ -308,7 +308,7 @@ trait DateTimeTrait
         $value = self::convertToDateTime($value);
         $date = strtotime($value->format('H:i:s'));
 
-        return  $date>= strtotime($value->format('18:00:00')) && $date <= strtotime($value->format('23:59:59'));
+        return  $date >= strtotime($value->format('18:00:00')) && $date <= strtotime($value->format('23:59:59'));
     }
 
     /**
@@ -321,6 +321,6 @@ trait DateTimeTrait
         $value = self::convertToDateTime($value);
         $date = strtotime($value->format('H:i:s'));
 
-        return  $date>= strtotime($value->format('00:00:00')) && $date <= strtotime($value->format('05:59:59'));
+        return $date >= strtotime($value->format('00:00:00')) && $date <= strtotime($value->format('05:59:59'));
     }
 }
