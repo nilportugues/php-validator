@@ -576,9 +576,10 @@ $float = $validator->isFloat('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $integer = $validator->isInteger('propertyName');
 
+$integer->isNotZero()->validate(1); //true
+$integer->isNotZero()->validate(0); //false
 ```
 
 #### 3.2.2. isPositive  <a name="block3.2.2"></a> [↑](#index_block)
@@ -586,9 +587,10 @@ $integer = $validator->isInteger('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $integer = $validator->isInteger('propertyName');
 
+$integer->isPositive()->validate(1); //true
+$integer->isPositive()->validate(-10); //false
 ```
 
 #### 3.2.3. isNegative  <a name="block3.2.3"></a> [↑](#index_block)
@@ -596,9 +598,10 @@ $integer = $validator->isInteger('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $integer = $validator->isInteger('propertyName');
 
+$integer->isNegative()->validate(-10); //true
+$integer->isNegative()->validate(1); //false
 ```
 
 #### 3.2.4. isBetween  <a name="block3.2.4"></a> [↑](#index_block)
@@ -606,9 +609,10 @@ $integer = $validator->isInteger('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $integer = $validator->isInteger('propertyName');
 
+$integer->isBetween(10,20, false)->validate(13); //true
+$integer->isBetween(10, 20, true)->validate(10); //false
 ```
 
 #### 3.2.5. isOdd  <a name="block3.2.5"></a> [↑](#index_block)
@@ -616,9 +620,10 @@ $integer = $validator->isInteger('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $integer = $validator->isInteger('propertyName');
 
+$integer->isOdd()->validate(3); //true
+$integer->isOdd()->validate(2); //false
 ```
 
 #### 3.2.6. isEven  <a name="block3.2.6"></a> [↑](#index_block)
@@ -626,9 +631,10 @@ $integer = $validator->isInteger('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $integer = $validator->isInteger('propertyName');
 
+$integer->isEven()->validate(2); //true
+$integer->isEven()->validate(3); //false
 ```
 
 #### 3.2.7. isMultiple  <a name="block3.2.7"></a> [↑](#index_block)
@@ -636,9 +642,10 @@ $integer = $validator->isInteger('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $integer = $validator->isInteger('propertyName');
 
+$integer->isMultiple(2)->validate(4); //true
+$integer->isMultiple(2)->validate(3); //false
 ```
 
 
@@ -650,9 +657,12 @@ $integer = $validator->isInteger('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $object = $validator->isObject('propertyName');
 
+$object->isInstanceOf('DateTime')->validate(new \DateTime()); //true
+
+$object->isInstanceOf('DateTime')->validate(new \stdClass()); //false
+$object->isInstanceOf('DateTime')->validate('a'); //false
 ```
 
 #### 3.3.2. hasProperty<a name="block3.3.2"></a> [↑](#index_block)
@@ -660,9 +670,12 @@ $object = $validator->isObject('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $object = $validator->isObject('propertyName');
 
+$dummy = new Dummy();
+
+$object->hasProperty('userName')->validate($dummy); //true
+$object->hasProperty('password')->validate($dummy); //false
 ```
 
 #### 3.3.3. hasMethod<a name="block3.3.3"></a> [↑](#index_block)
@@ -670,9 +683,12 @@ $object = $validator->isObject('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $object = $validator->isObject('propertyName');
 
+$dummy = new Dummy();
+
+$object->hasMethod('getUserName')->validate($dummy); //true
+$object->hasMethod('getPassword')->validate($dummy); //false
 ```
 
 #### 3.3.4. hasParentClass<a name="block3.3.4"></a> [↑](#index_block)
@@ -680,9 +696,10 @@ $object = $validator->isObject('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $object = $validator->isObject('propertyName');
 
+$object->hasParentClass()->validate(new Dummy()); //true
+$object->hasParentClass()->validate(new \stdClass()); //false
 ```
 
 #### 3.3.5. isChildOf<a name="block3.3.5"></a> [↑](#index_block)
@@ -690,9 +707,12 @@ $object = $validator->isObject('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $object = $validator->isObject('propertyName');
 
+$dummy = new Dummy(); // class Dummy extends \DateTime
+
+$object->isChildOf('DateTime')->validate($dummy); //true
+$object->isChildOf('DateTimeZone')->validate($dummy); //false
 ```
 
 #### 3.3.6. inheritsFrom<a name="block3.3.6"></a> [↑](#index_block)
@@ -700,9 +720,12 @@ $object = $validator->isObject('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $object = $validator->isObject('propertyName');
 
+$dummy = new Dummy(); // class Dummy extends \DateTime
+
+$object->inheritsFrom('DateTime')->validate($dummy); //true
+$object->inheritsFrom('DateTimeZone')->validate($dummy); //false
 ```
 
 #### 3.3.7. hasInterface<a name="block3.3.7"></a> [↑](#index_block)
@@ -710,9 +733,10 @@ $object = $validator->isObject('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $object = $validator->isObject('propertyName');
 
+$object->hasInterface('Tests\NilPortugues\Validator\Resources\DummyInterface')->validate($dummy); //true
+$object->inheritsFrom('DateTimeZone')->validate($dummy); //false
 ```
 
 
