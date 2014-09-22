@@ -662,8 +662,9 @@ $object = $validator->isObject('propertyName');
 
 <a name="block3.4"></a>
 ## 3.4 DateTime  [↑](#index_block)
-DateTime Validator accepts any `\DateTime` objects and `strings` representing **valid date formats**.
+DateTime Validator accepts `\DateTime` objects and `strings` variables representing **valid date formats**.
 
+As you will see in the following examples, either two are allowed as parameters for any `date` value.
 
 #### 3.4.1. isAfter <a name="block3.4.1"></a> [↑](#index_block)
 
@@ -672,7 +673,21 @@ DateTime Validator accepts any `\DateTime` objects and `strings` representing **
 $validator = new \NilPortugues\Validator\Validator();
 
 $datetime = $validator->isDateTime('propertyName');
+$date1 = '2014-01-01 00:00:00';
+$date2 = new \DateTime($date1);
 
+$limit1 = '2013-12-31 23:59:59';
+
+$datetime->isAfter($limit1, false)->validate($date1); // true
+$datetime->isAfter($limit1, false)->validate($date2); // true
+
+$datetime->isAfter($date1, true)->validate($date1); // true
+$datetime->isAfter($date2, true)->validate($date2); // true
+
+$limit2 = '2015-01-01 00:00:00';
+
+$datetime->isAfter($limit2)->validate($date1); // false
+$datetime->isAfter($limit2)->validate($date2); // false
 ```
 
 #### 3.4.2. isBefore <a name="block3.4.2"></a> [↑](#index_block)
@@ -682,7 +697,21 @@ $datetime = $validator->isDateTime('propertyName');
 $validator = new \NilPortugues\Validator\Validator();
 
 $datetime = $validator->isDateTime('propertyName');
+$date1 = '2012-01-01 00:00:00';
+$date2 = new \DateTime($date1);
 
+$limit1 = '2013-12-31 23:59:59';
+
+$datetime->isBefore($limit1, false)->validate($date1); // true
+$datetime->isBefore($limit1, false)->validate($date2); // true
+
+$datetime->isBefore($date1, true)->validate($date1); // true
+$datetime->isBefore($date2, true)->validate($date2); // true
+
+$limit2 = '2010-01-01 00:00:00';
+
+$datetime->isBefore($limit2)->validate($date1); // false
+$datetime->isBefore($limit2)->validate($date2); // false
 ```
 
 #### 3.4.3. isBetween <a name="block3.4.3"></a> [↑](#index_block)
@@ -692,7 +721,23 @@ $datetime = $validator->isDateTime('propertyName');
 $validator = new \NilPortugues\Validator\Validator();
 
 $datetime = $validator->isDateTime('propertyName');
+$date1 = '2014-01-01 00:00:00';
+$date2 = new \DateTime($date1);
 
+$minDate = '2013-01-01 00:00:00';
+$maxDate = '2015-01-01 00:00:00';
+
+$datetime->isBetween($minDate, $maxDate, false)->validate($date1); // true
+$datetime->isBetween($minDate, $maxDate, false)->validate($date2); // true
+
+$datetime->isBetween($minDate, $maxDate, true)->validate($date1); // true
+$datetime->isBetween($minDate, $maxDate, true)->validate($date2); // true
+
+$minDate = '2013-12-01 00:00:00';
+$maxDate = '2013-12-30 00:00:00';
+
+$datetime->isBetween($minDate, $maxDate, false)->validate($date1); // false
+$datetime->isBetween($minDate, $maxDate, true)->validate($date1); // false
 ```
 
 #### 3.4.4. isWeekend <a name="block3.4.4"></a> [↑](#index_block)
@@ -700,117 +745,127 @@ $datetime = $validator->isDateTime('propertyName');
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $datetime = $validator->isDateTime('propertyName');
 
+$datetime->isWeekend()->validate('2014-09-20'); // true
+$datetime->isWeekend()->validate('2014-09-22'); // false
 ```
 #### 3.4.5. isWeekday <a name="block3.4.5"></a> [↑](#index_block)
 
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $datetime = $validator->isDateTime('propertyName');
 
+$datetime->isWeekday()->validate('2014-09-20'); // false
+$datetime->isWeekday()->validate('2014-09-22'); // true
 ```
 #### 3.4.6. isMonday <a name="block3.4.6"></a> [↑](#index_block)
 
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $datetime = $validator->isDateTime('propertyName');
 
+$datetime->isMonday()->validate('2014-09-22'); // true
 ```
 #### 3.4.7. isTuesday <a name="block3.4.7"></a> [↑](#index_block)
 
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $datetime = $validator->isDateTime('propertyName');
 
+$datetime->isTuesday()->validate('2014-09-23'); // true
 ```
 #### 3.4.8. isWednesday <a name="block3.4.8"></a> [↑](#index_block)
 
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $datetime = $validator->isDateTime('propertyName');
 
+$datetime->isWednesday()->validate('2014-09-24'); // true
 ```
 #### 3.4.9. isThursday <a name="block3.4.9"></a> [↑](#index_block)
 
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $datetime = $validator->isDateTime('propertyName');
 
+$datetime->isThursday()->validate('2014-09-25'); // true
 ```
 #### 3.4.10. isFriday <a name="block3.4.10"></a> [↑](#index_block)
 
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $datetime = $validator->isDateTime('propertyName');
 
+$datetime->isFriday()->validate('2014-09-26'); // true
 ```
 #### 3.4.11. isSaturday <a name="block3.4.11"></a> [↑](#index_block)
 
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $datetime = $validator->isDateTime('propertyName');
 
+$datetime->isSaturday()->validate('2014-09-27'); // true
 ```
 #### 3.4.12. isSunday <a name="block3.4.12"></a> [↑](#index_block)
 
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $datetime = $validator->isDateTime('propertyName');
 
+$datetime->isSunday()->validate('2014-09-28'); // true
 ```
 #### 3.4.13. isToday <a name="block3.4.13"></a> [↑](#index_block)
 
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $datetime = $validator->isDateTime('propertyName');
 
+$date = new \DateTime('now');
+
+$datetime->isToday()->validate($date); // true
 ```
 #### 3.4.14. isYesterday <a name="block3.4.14"></a> [↑](#index_block)
 
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $datetime = $validator->isDateTime('propertyName');
 
+$date = new \DateTime('now -1 day');
+
+$datetime->isYesterday()->validate($date); // true
 ```
 #### 3.4.15. isTomorrow <a name="block3.4.15"></a> [↑](#index_block)
 
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $datetime = $validator->isDateTime('propertyName');
 
+$date = new \DateTime('now +1 day');
+
+$datetime->isTomorrow()->validate($date); // true
 ```
 #### 3.4.16. isLeapYear <a name="block3.4.16"></a> [↑](#index_block)
 
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-
 $datetime = $validator->isDateTime('propertyName');
 
+$date = new \DateTime('2016-01-01');
+
+$datetime->isLeapYear()->validate($date); // true
 ```
 
 <a name="block3.5"></a>
