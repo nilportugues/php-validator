@@ -881,21 +881,14 @@ $array = ['one' => 'hello', 'two' => 1];
 $arrayObject = new \ArrayObject($array);
 $fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
 
-$collection->endsWith('1', false)->validate($array); //true
-$collection->endsWith('1', false)->validate($arrayObject); //true
-$collection->endsWith('1', false)->validate($fixedArray); //true
+$collection->endsWith('1')->validate($array); //true
+$collection->endsWith('1')->validate($arrayObject); //true
+$collection->endsWith('1')->validate($fixedArray); //true
 
-$array = [1, 2, 3];
-$arrayObject = new \ArrayObject($array);
-$fixedArray = (new \SplFixedArray())->fromArray($array);
-
-$collection->endsWith(3, true)->validate($array); //true
-$collection->endsWith(3, true)->validate($arrayObject); //true
-$collection->endsWith(3, true)->validate($fixedArray); //true
-
-$collection->endsWith('3', true)->validate($array); //false
-$collection->endsWith('3', true)->validate($arrayObject); //false
-$collection->endsWith('3', true)->validate($fixedArray); //false
+//Strict type check
+$collection->endsWith('1', true)->validate($array); //false
+$collection->endsWith('1', true)->validate($arrayObject); //false
+$collection->endsWith('1', true)->validate($fixedArray); //false
 
 ```
 
@@ -911,10 +904,11 @@ $array = ['one' => 'hello', 'two' => 1];
 $arrayObject = new \ArrayObject($array);
 $fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
 
-$collection->contains('hello', false)->validate($array); //true
-$collection->contains('hello', false)->validate($arrayObject); //true
-$collection->contains('hello', false)->validate($fixedArray); //true
+$collection->contains('hello')->validate($array); //true
+$collection->contains('hello')->validate($arrayObject); //true
+$collection->contains('hello')->validate($fixedArray); //true
 
+//Strict type check
 $collection->contains(1, true)->validate($array); //true
 $collection->contains(1, true)->validate($arrayObject); //true
 $collection->contains(1, true)->validate($fixedArray); //true
@@ -1012,9 +1006,9 @@ $array = [1, 2, 3];
 $arrayObject = new \ArrayObject($array);
 $fixedArray = (new \SplFixedArray())->fromArray($array);
 
-$collection->startsWith(1, true)->validate($array)); //true
-$collection->startsWith(1, true)->validate($arrayObject)); //true
-$collection->startsWith(1, true)->validate($fixedArray)); //true
+$collection->startsWith(1)->validate($array)); //true
+$collection->startsWith(1)->validate($arrayObject)); //true
+$collection->startsWith(1)->validate($fixedArray)); //true
 
 //Strict type check
 $collection->startsWith('1', true)->validate($array)); //false
