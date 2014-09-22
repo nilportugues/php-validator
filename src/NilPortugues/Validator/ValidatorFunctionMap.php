@@ -146,7 +146,7 @@ class ValidatorFunctionMap
      */
     public function get($funcName, array $arguments = [], array &$errors)
     {
-        if (!array_key_exists($funcName, $this->functionMap)) {
+        if (false === array_key_exists($funcName, $this->functionMap)) {
             throw new \InvalidArgumentException('Validator key not found');
         }
 
@@ -156,6 +156,10 @@ class ValidatorFunctionMap
         $result = call_user_func_array([$class[0], $class[1]], $arguments);
 
         if (false === $result) {
+            if (false === array_key_exists($funcName, $errors)) {
+                throw new \InvalidArgumentException('Validator key not found in error file');
+            }
+
             $this->validator->setError($funcName, $errors[$funcName]);
         }
 
