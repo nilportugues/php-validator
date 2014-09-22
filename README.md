@@ -767,8 +767,24 @@ Supported PHP data structures for the Collection validator are:
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
-$object = $validator->isArray('propertyName');
+$collection = $validator->isArray('propertyName');
 
+$array = ['hello','world'];
+$arrayObject = new \ArrayObject($array);
+$fixedArray = (new \SplFixedArray())->fromArray($array);
+
+$validator = new Validator();
+$valueIsString = $validator->isString('value')->isAlpha();
+$keyIsInteger = $validator->isInteger('key')->isPositive();
+
+$collection->each($valueIsString)->validate($array); //true
+$collection->each($valueIsString, $keyIsInteger)->validate($array); //true
+
+$collection->each($valueIsString)->validate($arrayObject); //true
+$collection->each($valueIsString, $keyIsInteger)->validate($arrayObject); //true
+
+$collection->each($valueIsString)->validate($fixedArray); //true
+$collection->each($valueIsString, $keyIsInteger)->validate($fixedArray); //true
 ```
 
 #### 3.5.2. hasKeyFormat <a name="block3.5.2"></a> [↑](#index_block)
@@ -776,7 +792,19 @@ $object = $validator->isArray('propertyName');
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
-$object = $validator->isArray('propertyName');
+$collection = $validator->isArray('propertyName');
+
+$array = ['one' => 'hello', 'two' => 'world'];
+$arrayObject = new \ArrayObject($array);
+$fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
+
+$validator = new Validator();
+$keyIsString = $validator->isString('key')->isAlpha();
+$keyIsInteger = $validator->isInteger('key')->isPositive();
+
+$collection->hasKeyFormat($keyIsString)->validate($array); //true
+$collection->hasKeyFormat($keyIsString)->validate($arrayObject); //true
+$collection->hasKeyFormat($keyIsInteger)->validate($fixedArray); //true
 
 ```
 
@@ -785,7 +813,27 @@ $object = $validator->isArray('propertyName');
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
-$object = $validator->isArray('propertyName');
+$collection = $validator->isArray('propertyName');
+
+$array = ['one' => 'hello', 'two' => 1];
+$arrayObject = new \ArrayObject($array);
+$fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
+
+$collection->endsWith('1', false)->validate($array); //true
+$collection->endsWith('1', false)->validate($arrayObject); //true
+$collection->endsWith('1', false)->validate($fixedArray); //true
+
+$array = [1, 2, 3];
+$arrayObject = new \ArrayObject($array);
+$fixedArray = (new \SplFixedArray())->fromArray($array);
+
+$collection->endsWith(3, true)->validate($array); //true
+$collection->endsWith(3, true)->validate($arrayObject); //true
+$collection->endsWith(3, true)->validate($fixedArray); //true
+
+$collection->endsWith('3', true)->validate($array); //false
+$collection->endsWith('3', true)->validate($arrayObject); //false
+$collection->endsWith('3', true)->validate($fixedArray); //false
 
 ```
 
@@ -794,7 +842,19 @@ $object = $validator->isArray('propertyName');
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
-$object = $validator->isArray('propertyName');
+$collection = $validator->isArray('propertyName');
+
+$array = ['one' => 'hello', 'two' => 1];
+$arrayObject = new \ArrayObject($array);
+$fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
+
+$collection->contains('hello', false)->validate($array); //true
+$collection->contains('hello', false)->validate($arrayObject); //true
+$collection->contains('hello', false)->validate($fixedArray); //true
+
+$collection->contains(1, true)->validate($array); //true
+$collection->contains(1, true)->validate($arrayObject); //true
+$collection->contains(1, true)->validate($fixedArray); //true
 
 ```
 
@@ -803,7 +863,23 @@ $object = $validator->isArray('propertyName');
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
-$object = $validator->isArray('propertyName');
+$collection = $validator->isArray('propertyName');
+
+$array = ['one' => 'hello', 'two' => 1];
+$arrayObject = new \ArrayObject($array);
+$fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
+
+$collection->hasKey('one')->validate($array)); //true
+$collection->hasKey('one')->validate($arrayObject)); //true
+$collection->hasKey(0)->validate($fixedArray)); //true
+
+$array = [];
+$arrayObject = new \ArrayObject($array);
+$fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
+
+$collection->hasKey(0)->validate($array)); //false
+$collection->hasKey(0)->validate($arrayObject)); //false
+$collection->hasKey(0)->validate($fixedArray)); //false
 
 ```
 
@@ -812,7 +888,23 @@ $object = $validator->isArray('propertyName');
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
-$object = $validator->isArray('propertyName');
+$collection = $validator->isArray('propertyName');
+
+$array = ['one' => 'hello', 'two' => 1];
+$arrayObject = new \ArrayObject($array);
+$fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
+
+$collection->length(2)->validate($array)); //true
+$collection->length(2)->validate($arrayObject)); //true
+$collection->length(2)->validate($fixedArray)); //true
+
+$array = [];
+$arrayObject = new \ArrayObject($array);
+$fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
+
+$collection->length(0)->validate($array)); //true
+$collection->length(0)->validate($arrayObject)); //true
+$collection->length(0)->validate($fixedArray)); //true
 
 ```
 
@@ -822,8 +914,23 @@ $object = $validator->isArray('propertyName');
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
-$object = $validator->isArray('propertyName');
+$collection = $validator->isArray('propertyName');
 
+$array = ['one' => 'hello', 'two' => 1];
+$arrayObject = new \ArrayObject($array);
+$fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
+
+$collection->isNotEmpty()->validate($array)); //true
+$collection->isNotEmpty()->validate($arrayObject)); //true
+$collection->isNotEmpty()->validate($fixedArray)); //true
+
+$array = [];
+$arrayObject = new \ArrayObject($array);
+$fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
+
+$collection->isNotEmpty()->validate($array)); //false
+$collection->isNotEmpty()->validate($arrayObject)); //false
+$collection->isNotEmpty()->validate($fixedArray)); //false
 ```
 
 
@@ -832,7 +939,20 @@ $object = $validator->isArray('propertyName');
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
-$object = $validator->isArray('propertyName');
+$collection = $validator->isArray('propertyName');
+
+$array = [1, 2, 3];
+$arrayObject = new \ArrayObject($array);
+$fixedArray = (new \SplFixedArray())->fromArray($array);
+
+$collection->startsWith(1, true)->validate($array)); //true
+$collection->startsWith(1, true)->validate($arrayObject)); //true
+$collection->startsWith(1, true)->validate($fixedArray)); //true
+
+//Strict type check
+$collection->startsWith('1', true)->validate($array)); //false
+$collection->startsWith('1', true)->validate($arrayObject)); //false
+$collection->startsWith('1', true)->validate($fixedArray)); //false
 
 ```
 
