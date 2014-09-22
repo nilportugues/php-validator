@@ -198,4 +198,44 @@ class DateTime extends Generic
 
         return $this;
     }
+
+    /**
+     * @return $this
+     */
+    public function isMorning()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function isAftenoon()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function isEvening()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function isNight()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
 }

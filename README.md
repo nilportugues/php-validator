@@ -76,6 +76,10 @@ A simple, powerful and elegant stand-alone validation library with no dependenci
         * [3.4.14. isYesterday] (#block3.4.14)
         * [3.4.15. isTomorrow] (#block3.4.15)
         * [3.4.16. isLeapYear] (#block3.4.16)
+        * [3.4.17. isMorning] (#block3.4.17)
+        * [3.4.18. isAftenoon] (#block3.4.18)
+        * [3.4.19. isEvening] (#block3.4.19)
+        * [3.4.20. isNight] (#block3.4.20)
     * [3.5 Collections (Arrays)](#block3.5)
         * [3.5.1. each] (#block3.5.1)
         * [3.5.2. hasKeyFormat] (#block3.5.2)
@@ -946,6 +950,42 @@ $datetime = $validator->isDateTime('propertyName');
 $date = new \DateTime('2016-01-01');
 
 $datetime->isLeapYear()->validate($date); // true
+```
+
+#### 3.4.17. isMorning <a name="block3.4.17"></a> [↑](#index_block)
+
+##### Example
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+$datetime = $validator->isDateTime('propertyName');
+```
+
+#### 3.4.18. isAftenoon <a name="block3.4.18"></a> [↑](#index_block)
+
+##### Example
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+$datetime = $validator->isDateTime('propertyName');
+```
+
+#### 3.4.19. isEvening <a name="block3.4.19"></a> [↑](#index_block)
+
+##### Example
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+$datetime = $validator->isDateTime('propertyName');
+```
+
+#### 3.4.20. isNight <a name="block3.4.20"></a> [↑](#index_block)
+
+##### Example
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+$datetime = $validator->isDateTime('propertyName');
 ```
 
 <a name="block3.5"></a>

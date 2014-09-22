@@ -271,4 +271,56 @@ trait DateTimeTrait
 
         return '1' == $value->format('L');
     }
+
+    /**
+     * @param string|\DateTime $value
+     *
+     * @return bool
+     */
+    public static function isMorning($value)
+    {
+        $value = self::convertToDateTime($value);
+        $date = strtotime($value->format('H:i:s'));
+
+        return  $date>= strtotime($value->format('06:00:00')) && $date <= strtotime($value->format('11:59:59'));
+    }
+
+    /**
+     * @param string|\DateTime $value
+     *
+     * @return bool
+     */
+    public static function isAftenoon($value)
+    {
+        $value = self::convertToDateTime($value);
+        $date = strtotime($value->format('H:i:s'));
+
+        return  $date>= strtotime($value->format('12:00:00')) && $date <= strtotime($value->format('17:59:59'));
+    }
+
+    /**
+     * @param string|\DateTime $value
+     *
+     * @return bool
+     */
+    public static function isEvening($value)
+    {
+        $value = self::convertToDateTime($value);
+        $date = strtotime($value->format('H:i:s'));
+
+        return  $date>= strtotime($value->format('18:00:00')) && $date <= strtotime($value->format('23:59:59'));
+    }
+
+    /**
+     * @param string|\DateTime $value
+     *
+     * @return bool
+     */
+    public static function isNight($value)
+    {
+        $value = self::convertToDateTime($value);
+        $date = strtotime($value->format('H:i:s'));
+
+        return  $date>= strtotime($value->format('00:00:00')) && $date <= strtotime($value->format('05:59:59'));
+    }
 }
