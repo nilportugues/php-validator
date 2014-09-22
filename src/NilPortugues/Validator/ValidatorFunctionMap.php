@@ -109,6 +109,10 @@ class ValidatorFunctionMap
         'DateTime::isYesterday'         => '\DateTime\DateTimeTrait::isYesterday',
         'DateTime::isTomorrow'          => '\DateTime\DateTimeTrait::isTomorrow',
         'DateTime::isLeapYear'          => '\DateTime\DateTimeTrait::isLeapYear',
+        'DateTime::isMorning'           => '\DateTime\DateTimeTrait::isMorning',
+        'DateTime::isAftenoon'          => '\DateTime\DateTimeTrait::isAftenoon',
+        'DateTime::isEvening'           => '\DateTime\DateTimeTrait::isEvening',
+        'DateTime::isNight'             => '\DateTime\DateTimeTrait::isNight',
         //Collection
         'Collection::__construct'       => '\Collection\CollectionTrait::isArray',
         'Collection::each'              => '\Collection\CollectionTrait::each',
@@ -150,7 +154,7 @@ class ValidatorFunctionMap
             throw new \InvalidArgumentException('Validator key not found');
         }
 
-        $function = $this->baseNamespace.$this->functionMap[$funcName];
+        $function = $this->baseNamespace . $this->functionMap[$funcName];
         $class    = explode("::", $function);
 
         $result = call_user_func_array([$class[0], $class[1]], $arguments);

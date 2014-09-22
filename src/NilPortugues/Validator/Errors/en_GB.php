@@ -82,6 +82,10 @@ return [
     'DateTime::isYesterday'         => 'The :attribute date is not yesterday.',
     'DateTime::isTomorrow'          => 'The :attribute date is not tomorrow.',
     'DateTime::isLeapYear'          => 'The :attribute must be a valid leap year.',
+    'DateTime::isMorning'           => 'The :attribute is not morning.',
+    'DateTime::isAftenoon'          => 'The :attribute is not afternoon.',
+    'DateTime::isEvening'           => 'The :attribute is not evening.',
+    'DateTime::isNight'             => 'The :attribute is not night.',
     //Collection
     'Collection::__construct'       => 'The :attribute must be an array.',
     'Collection::each'              => '',
