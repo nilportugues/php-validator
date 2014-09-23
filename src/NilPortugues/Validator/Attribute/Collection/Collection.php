@@ -39,7 +39,7 @@ class Collection extends AbstractValidator
      */
     public function each(AbstractValidator $valueValidator, AbstractValidator $keyValidator = null)
     {
-        $this->addCondition(__METHOD__, [$valueValidator, $keyValidator], true);
+        $this->addCondition(__METHOD__, [$valueValidator, $keyValidator], [], true);
 
         return $this;
     }
@@ -51,7 +51,7 @@ class Collection extends AbstractValidator
      */
     public function hasKeyFormat(AbstractValidator $keyValidator)
     {
-        $this->addCondition(__METHOD__, [$keyValidator], true);
+        $this->addCondition(__METHOD__, [$keyValidator], [], true);
 
         return $this;
     }

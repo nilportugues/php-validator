@@ -31,8 +31,9 @@ class ValidatorFunctionMapTest extends \PHPUnit_Framework_TestCase
         $functionMapArray = [];
         $functionMap      = new ValidatorFunctionMap($abstractValidator, $functionMapArray);
         $errors           = [];
+        $errorValues      = [];
 
         $this->setExpectedException('\InvalidArgumentException');
-        $functionMap->get('property', 'a-function-name-that-doesnt-exist', [], $errors);
+        $functionMap->get('property', 'a-function-name-that-doesnt-exist', [], $errorValues, $errors);
     }
 }
