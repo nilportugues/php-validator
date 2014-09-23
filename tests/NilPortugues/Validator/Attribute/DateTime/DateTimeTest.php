@@ -143,7 +143,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function ItShouldCheckIfIsFriday()
+    public function itShouldCheckIfIsFriday()
     {
         $this->assertTrue($this->getValidator()->isFriday()->validate('2014-09-26'));
     }
