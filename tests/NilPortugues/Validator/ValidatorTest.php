@@ -85,15 +85,4 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $this->validator->isArray('propertyName');
         $this->assertSame('propertyName', $this->validator->getPropertyName());
     }
-
-    /**
-     * @test
-     */
-    public function it_should_get_error_messages()
-    {
-        $errorArray = $this->validator->getErrorMessages();
-
-        $this->assertNotEmpty($errorArray);
-        $this->assertInternalType('array', $errorArray);
-    }
 }

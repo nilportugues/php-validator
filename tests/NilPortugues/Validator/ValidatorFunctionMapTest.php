@@ -28,8 +28,9 @@ class ValidatorFunctionMapTest extends \PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $functionMap = new ValidatorFunctionMap($abstractValidator);
-        $errors = [];
+        $functionMapArray = [];
+        $functionMap      = new ValidatorFunctionMap($abstractValidator, $functionMapArray);
+        $errors           = [];
 
         $this->setExpectedException('\InvalidArgumentException');
         $functionMap->get('property', 'a-function-name-that-doesnt-exist', [], $errors);

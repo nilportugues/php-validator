@@ -21,10 +21,12 @@ class Object extends Generic
 {
     /**
      * @param Validator $validator
+     * @param array     $errorMessages
+     * @param array     $functionMap
      */
-    public function __construct(Validator $validator)
+    public function __construct(Validator $validator, array &$errorMessages, array &$functionMap)
     {
-        parent::__construct($validator);
+        parent::__construct($validator, $errorMessages, $functionMap);
 
         $this->addCondition(__METHOD__);
     }

@@ -31,11 +31,6 @@ class Validator
     /**
      * @var string
      */
-    private $langFile;
-
-    /**
-     * @var string
-     */
     private $language = 'en_GB';
 
     /**
@@ -44,20 +39,37 @@ class Validator
     private $errorDir = '/Errors';
 
     /**
+     * @var string
+     */
+    private $functionMapFile = 'FunctionMap.php';
+
+    /**
+     * @var array
+     */
+    private $functionMap = [];
+
+    /**
+     * @var array
+     */
+    private $errorMessages = [];
+
+    /**
      * @param string $errorMessageFile
      */
     public function __construct($errorMessageFile = '')
     {
-        $this->langFile = $errorMessageFile;
+        $this->buildErrorMessages($errorMessageFile);
+        $this->buildFunctionMap();
     }
 
     /**
-     * @return mixed
+     * @param $errorMessageFile
+     *
      * @throws \InvalidArgumentException
      */
-    public function getErrorMessages()
+    private function buildErrorMessages($errorMessageFile)
     {
-        $filePath = $this->langFile;
+        $filePath = $errorMessageFile;
 
         if (null !== $filePath) {
             $filePath = realpath(dirname(__FILE__))
@@ -69,7 +81,21 @@ class Validator
             throw new \InvalidArgumentException("Language not found.");
         }
 
-        return include $filePath;
+        $this->errorMessages = include $filePath;
+    }
+
+    /**
+     * @throws \RuntimeException
+     */
+    private function buildFunctionMap()
+    {
+        $functionMap = realpath(dirname(__FILE__)).DIRECTORY_SEPARATOR.$this->functionMapFile;
+
+        if (!file_exists($functionMap)) {
+            throw new \RuntimeException('FunctionMap not found');
+        }
+
+        $this->functionMap = include $functionMap;
     }
 
     /**
@@ -81,7 +107,7 @@ class Validator
     {
         $this->propertyName = $propertyName;
 
-        return new Collection($this);
+        return new Collection($this, $this->errorMessages, $this->functionMap);
     }
 
     /**
@@ -93,7 +119,7 @@ class Validator
     {
         $this->propertyName = $propertyName;
 
-        return new Integer($this);
+        return new Integer($this, $this->errorMessages, $this->functionMap);
     }
 
     /**
@@ -105,7 +131,7 @@ class Validator
     {
         $this->propertyName = $propertyName;
 
-        return new Float($this);
+        return new Float($this, $this->errorMessages, $this->functionMap);
     }
 
     /**
@@ -117,7 +143,7 @@ class Validator
     {
         $this->propertyName = $propertyName;
 
-        return new Object($this);
+        return new Object($this, $this->errorMessages, $this->functionMap);
     }
 
     /**
@@ -129,7 +155,7 @@ class Validator
     {
         $this->propertyName = $propertyName;
 
-        return new String($this);
+        return new String($this, $this->errorMessages, $this->functionMap);
     }
 
     /**
@@ -141,7 +167,7 @@ class Validator
     {
         $this->propertyName = $propertyName;
 
-        return new DateTime($this);
+        return new DateTime($this, $this->errorMessages, $this->functionMap);
     }
 
     /**
