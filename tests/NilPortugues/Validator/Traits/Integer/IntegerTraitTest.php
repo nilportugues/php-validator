@@ -21,7 +21,7 @@ class IntegerTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_it_is_float()
+    public function itShouldCheckIfItIsFloat()
     {
         $this->assertTrue(IntegerTrait::isInteger(3));
         $this->assertFalse(IntegerTrait::isInteger(3.14));
@@ -30,7 +30,7 @@ class IntegerTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_it_is_not_zero()
+    public function itShouldCheckIfItIsNotZero()
     {
         $this->assertTrue(IntegerTrait::isNotZero(3));
         $this->assertFalse(IntegerTrait::isNotZero(0));
@@ -39,7 +39,7 @@ class IntegerTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_it_is_positive()
+    public function itShouldCheckIfItIsPositive()
     {
         $this->assertTrue(IntegerTrait::isPositive(3));
         $this->assertFalse(IntegerTrait::isPositive(-3));
@@ -48,7 +48,7 @@ class IntegerTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_it_is_negative()
+    public function itShouldCheckIfItIsNegative()
     {
         $this->assertTrue(IntegerTrait::isNegative(-3));
         $this->assertFalse(IntegerTrait::isNegative(3));
@@ -57,7 +57,7 @@ class IntegerTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_it_is_between()
+    public function itShouldCheckIfItIsBetween()
     {
         $this->assertTrue(IntegerTrait::isBetween(3, 1, 5, false));
         $this->assertTrue(IntegerTrait::isBetween(3, 1, 3, true));
@@ -69,7 +69,7 @@ class IntegerTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_between_exception()
+    public function itShouldCheckStringIsBetweenException()
     {
         $this->setExpectedException('\InvalidArgumentException');
         IntegerTrait::isBetween(3, 12, 4, false);
@@ -78,7 +78,7 @@ class IntegerTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_it_is_odd()
+    public function itShouldCheckIfItIsOdd()
     {
         $this->assertTrue(IntegerTrait::isOdd(3));
         $this->assertFalse(IntegerTrait::isOdd(4));
@@ -87,7 +87,7 @@ class IntegerTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_it_is_even()
+    public function itShouldCheckIfItIsEven()
     {
         $this->assertTrue(IntegerTrait::isEven(4));
         $this->assertFalse(IntegerTrait::isEven(3));
@@ -96,7 +96,7 @@ class IntegerTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_it_is_multiple()
+    public function itShouldCheckIfItIsMultiple()
     {
         $this->assertTrue(IntegerTrait::isMultiple(6, 3));
         $this->assertFalse(IntegerTrait::isMultiple(13, 7));

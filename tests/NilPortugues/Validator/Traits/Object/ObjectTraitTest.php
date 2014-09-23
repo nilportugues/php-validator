@@ -22,7 +22,7 @@ class ObjectTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_object()
+    public function itShouldCheckIfIsObject()
     {
         $this->assertTrue(ObjectTrait::isObject(new \stdClass()));
         $this->assertFalse(ObjectTrait::isObject('a'));
@@ -31,7 +31,7 @@ class ObjectTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_instance_of()
+    public function itShouldCheckIfIsInstanceOf()
     {
         $this->assertTrue(ObjectTrait::isInstanceOf(new \DateTime(), 'DateTime'));
 
@@ -42,7 +42,7 @@ class ObjectTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_has_property()
+    public function itShouldCheckIfHasProperty()
     {
         $dummy = new Dummy();
 
@@ -53,7 +53,7 @@ class ObjectTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_has_method()
+    public function itShouldCheckIfHasMethod()
     {
         $dummy = new Dummy();
 
@@ -64,7 +64,7 @@ class ObjectTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_has_parentClass()
+    public function itShouldCheckIfHasParentClass()
     {
         $this->assertTrue(ObjectTrait::hasParentClass(new Dummy()));
         $this->assertFalse(ObjectTrait::hasParentClass(new \stdClass()));
@@ -73,7 +73,7 @@ class ObjectTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_child_of()
+    public function itShouldCheckIfIsChildOf()
     {
         $dummy = new Dummy();
 
@@ -84,7 +84,7 @@ class ObjectTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_inherits_from()
+    public function itShouldCheckIfInheritsFrom()
     {
         $dummy = new Dummy();
 
@@ -95,7 +95,7 @@ class ObjectTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_has_interface()
+    public function itShouldCheckIfHasInterface()
     {
         $dummy = new Dummy();
 
