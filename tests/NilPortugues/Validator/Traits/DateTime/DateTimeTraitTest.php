@@ -21,7 +21,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_date()
+    public function itShouldCheckIfDate()
     {
         $date1 = '2012-01-01 00:00:00';
         $date2 = new \DateTime($date1);
@@ -33,7 +33,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_date_is_before()
+    public function itShouldCheckIfDateIsBefore()
     {
         $date1 = '2012-01-01 00:00:00';
         $date2 = new \DateTime($date1);
@@ -55,7 +55,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_date_is_after()
+    public function itShouldCheckIfDateIsAfter()
     {
         $date1 = '2014-01-01 00:00:00';
         $date2 = new \DateTime($date1);
@@ -77,7 +77,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_date_is_between()
+    public function itShouldCheckIfDateIsBetween()
     {
         $date1 = '2014-01-01 00:00:00';
         $date2 = new \DateTime($date1);
@@ -101,7 +101,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_monday()
+    public function itShouldCheckIfIsMonday()
     {
         $this->assertTrue(DateTimeTrait::isMonday('2014-09-22'));
     }
@@ -109,7 +109,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_tuesday()
+    public function itShouldCheckIfIsTuesday()
     {
         $this->assertTrue(DateTimeTrait::isTuesday('2014-09-23'));
     }
@@ -117,7 +117,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_wednesday()
+    public function itShouldCheckIfIsWednesday()
     {
         $this->assertTrue(DateTimeTrait::isWednesday('2014-09-24'));
     }
@@ -125,7 +125,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_thursday()
+    public function itShouldCheckIfIsThursday()
     {
         $this->assertTrue(DateTimeTrait::isThursday('2014-09-25'));
     }
@@ -133,7 +133,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_friday()
+    public function itShouldCheckIfIsFriday()
     {
         $this->assertTrue(DateTimeTrait::isFriday('2014-09-26'));
     }
@@ -141,7 +141,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_saturday()
+    public function itShouldCheckIfIsSaturday()
     {
         $this->assertTrue(DateTimeTrait::isSaturday('2014-09-27'));
     }
@@ -149,7 +149,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_sunday()
+    public function itShouldCheckIfIsSunday()
     {
         $this->assertTrue(DateTimeTrait::isSunday('2014-09-28'));
     }
@@ -157,7 +157,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_today()
+    public function itShouldCheckIfIsToday()
     {
         $date = new \DateTime('now');
 
@@ -167,7 +167,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_yesterday()
+    public function itShouldCheckIfIsYesterday()
     {
         $date = new \DateTime('now -1 day');
 
@@ -177,7 +177,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_tomorrow()
+    public function itShouldCheckIfIsTomorrow()
     {
         $date = new \DateTime('now +1 day');
 
@@ -187,7 +187,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_leap_year()
+    public function itShouldCheckIfIsLeapYear()
     {
         $date = new \DateTime('2016-01-01');
 
@@ -197,7 +197,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_weekend()
+    public function itShouldCheckIfIsWeekend()
     {
         $this->assertTrue(DateTimeTrait::isWeekend('2014-09-20'));
         $this->assertFalse(DateTimeTrait::isWeekend('2014-09-22'));
@@ -206,7 +206,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_weekday()
+    public function itShouldCheckIfIsWeekday()
     {
         $this->assertFalse(DateTimeTrait::isWeekday('2014-09-20'));
         $this->assertTrue(DateTimeTrait::isWeekday('2014-09-22'));
@@ -215,7 +215,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_morning()
+    public function itShouldCheckIfIsMorning()
     {
         $this->assertTrue(DateTimeTrait::isMorning('07:20:15'));
         $this->assertFalse(DateTimeTrait::isMorning('20:15:00'));
@@ -224,7 +224,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_afternoon()
+    public function itShouldCheckIfIsAfternoon()
     {
         $this->assertTrue(DateTimeTrait::isAftenoon('12:00:00'));
         $this->assertFalse(DateTimeTrait::isAftenoon('20:15:00'));
@@ -233,7 +233,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_evening()
+    public function itShouldCheckIfIsEvening()
     {
         $this->assertTrue(DateTimeTrait::isEvening('18:00:00'));
         $this->assertFalse(DateTimeTrait::isEvening('07:15:00'));
@@ -242,7 +242,7 @@ class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_night()
+    public function itShouldCheckIfIsNight()
     {
         $this->assertTrue(DateTimeTrait::isNight('01:00:00'));
         $this->assertFalse(DateTimeTrait::isNight('12:15:00'));

@@ -31,7 +31,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_string()
+    public function itShouldCheckStringIsString()
     {
         $value  = 'asdsdadds';
         $result = $this->getValidator()->validate($value);
@@ -45,7 +45,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_alphanumeric()
+    public function itShouldCheckStringIsAlphanumeric()
     {
         $value  = 'Qwerty1234';
         $result = $this->getValidator()->isAlphanumeric()->validate($value);
@@ -59,7 +59,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_alpha()
+    public function itShouldCheckStringIsAlpha()
     {
         $value  = 'querty';
         $result = $this->getValidator()->isAlpha()->validate($value);
@@ -73,7 +73,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_between()
+    public function itShouldCheckStringIsBetween()
     {
         $value  = 'Nil';
         $result = $this->getValidator()->isBetween(2, 4, false)->validate($value);
@@ -87,7 +87,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_between_exception()
+    public function itShouldCheckStringIsBetweenException()
     {
         $this->setExpectedException('\InvalidArgumentException');
         $this->getValidator()->isBetween(4, 2, false)->validate('Nil');
@@ -96,7 +96,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_charset()
+    public function itShouldCheckStringIsCharset()
     {
         $value = 'Portugués';
 
@@ -108,7 +108,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_all_consonants()
+    public function itShouldCheckStringIsAllConsonants()
     {
         $value  = 'a';
         $result = $this->getValidator()->isAllConsonants()->validate($value);
@@ -122,7 +122,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_contains()
+    public function itShouldCheckStringIsContains()
     {
         $value     = 'AAAAAAAaaaA';
         $contains  = 'aaa';
@@ -140,7 +140,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_control_characters()
+    public function itShouldCheckStringIsControlCharacters()
     {
         $value  = "\n\t";
         $result = $this->getValidator()->isControlCharacters()->validate($value);
@@ -154,7 +154,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_digit()
+    public function itShouldCheckStringIsDigit()
     {
         $value  = 'A';
         $result = $this->getValidator()->isDigit()->validate($value);
@@ -168,7 +168,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_endsWith()
+    public function itShouldCheckStringIsEndsWith()
     {
         $value     = 'AAAAAAAaaaA';
         $contains  = 'aaaA';
@@ -186,7 +186,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_equals()
+    public function itShouldCheckStringIsEquals()
     {
         $value         = 'hello';
         $comparedValue = 'hello';
@@ -205,7 +205,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_in()
+    public function itShouldCheckStringIsIn()
     {
         $haystack  = 'a12245 asdhsjasd 63-211';
         $value     = "122";
@@ -223,7 +223,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_graph()
+    public function itShouldCheckStringIsGraph()
     {
         $value  = 'arf12';
         $result = $this->getValidator()->hasGraphicalCharsOnly()->validate($value);
@@ -237,7 +237,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_length()
+    public function itShouldCheckStringIsLength()
     {
         $value  = 'abcdefgh';
         $length = 5;
@@ -253,7 +253,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_lowercase()
+    public function itShouldCheckStringIsLowercase()
     {
         $value  = 'strtolower';
         $result = $this->getValidator()->isLowercase()->validate($value);
@@ -263,7 +263,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_not_empty()
+    public function itShouldCheckStringIsNotEmpty()
     {
         $value  = 'a';
         $result = $this->getValidator()->notEmpty()->validate($value);
@@ -277,7 +277,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_no_whitespace()
+    public function itShouldCheckStringIsNoWhitespace()
     {
         $value  = 'aaaaa';
         $result = $this->getValidator()->noWhitespace()->validate($value);
@@ -291,7 +291,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_printable()
+    public function itShouldCheckStringIsPrintable()
     {
         $value  = 'LMKA0$% _123';
         $result = $this->getValidator()->hasPrintableCharsOnly()->validate($value);
@@ -305,7 +305,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_punctuation()
+    public function itShouldCheckStringIsPunctuation()
     {
         $value  = '&,.;[]';
         $result = $this->getValidator()->isPunctuation()->validate($value);
@@ -319,7 +319,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_regex()
+    public function itShouldCheckStringIsRegex()
     {
         $value  = 'a';
         $regex  = '/[a-z]/';
@@ -335,7 +335,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_slug()
+    public function itShouldCheckStringIsSlug()
     {
         $value  = 'hello-world-yeah';
         $result = $this->getValidator()->isSlug()->validate($value);
@@ -357,7 +357,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_space()
+    public function itShouldCheckStringIsSpace()
     {
         $value  = '    ';
         $result = $this->getValidator()->isSpace()->validate($value);
@@ -371,7 +371,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_starts_with1()
+    public function itShouldCheckStringIsStartsWith1()
     {
         $value     = 'aaaAAAAAAAA';
         $contains  = 'aaaA';
@@ -389,7 +389,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_uppercase()
+    public function itShouldCheckStringIsUppercase()
     {
         $value  = 'AAAAAA';
         $result = $this->getValidator()->isUppercase()->validate($value);
@@ -403,7 +403,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_version()
+    public function itShouldCheckStringIsVersion()
     {
         $value  = '1.0.2';
         $result = $this->getValidator()->isVersion()->validate($value);
@@ -425,7 +425,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_vowel()
+    public function itShouldCheckStringIsVowel()
     {
         $value  = 'aeA';
         $result = $this->getValidator()->isVowel()->validate($value);
@@ -439,7 +439,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_xdigit()
+    public function itShouldCheckStringIsXdigit()
     {
         $value  = '100';
         $result = $this->getValidator()->isHexDigit()->validate($value);
@@ -453,7 +453,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_stop_validation_on_first_error()
+    public function itShouldStopValidationOnFirstError()
     {
         $value     = '@aaa';
         $validator = $this->getValidator();
@@ -467,7 +467,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_has_lowercase()
+    public function itShouldCheckIfHasLowercase()
     {
         $this->assertTrue($this->getValidator()->hasLowercase()->validate('HELLOWOrLD'));
         $this->assertTrue($this->getValidator()->hasLowercase(3)->validate('HeLLoWOrLD'));
@@ -479,7 +479,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_has_uppercase()
+    public function itShouldCheckIfHasUppercase()
     {
         $this->assertTrue($this->getValidator()->hasUppercase()->validate('hello World'));
         $this->assertTrue($this->getValidator()->hasUppercase(2)->validate('Hello World'));
@@ -491,7 +491,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_has_numeric()
+    public function itShouldCheckIfHasNumeric()
     {
         $this->assertTrue($this->getValidator()->hasNumeric()->validate('hell0 W0rld'));
         $this->assertTrue($this->getValidator()->hasNumeric(3)->validate('H3ll0 W0rld'));
@@ -503,7 +503,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_has_special_characters()
+    public function itShouldCheckIfHasSpecialCharacters()
     {
         $this->assertTrue($this->getValidator()->hasSpecialCharacters()->validate('hell0@W0rld'));
         $this->assertTrue($this->getValidator()->hasSpecialCharacters(2)->validate('H3ll0@W0@rld'));
@@ -515,7 +515,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_email()
+    public function itShouldCheckIfIsEmail()
     {
         $this->assertTrue($this->getValidator()->isEmail()->validate('hello@world.com'));
         $this->assertTrue($this->getValidator()->isEmail()->validate('hello.earth@world.com'));

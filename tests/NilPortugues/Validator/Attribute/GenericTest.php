@@ -31,7 +31,7 @@ class GenericTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_is_required()
+    public function itIsRequired()
     {
         $this->assertTrue($this->getValidator()->isRequired()->validate('a'));
         $this->assertFalse($this->getValidator()->isRequired()->validate(''));
@@ -40,7 +40,7 @@ class GenericTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_is_not_null()
+    public function itIsNotNull()
     {
         $this->assertTrue($this->getValidator()->isNotNull()->validate('a'));
         $this->assertFalse($this->getValidator()->isNotNull()->validate(''));

@@ -21,7 +21,7 @@ class FloatTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_it_is_float()
+    public function itShouldCheckIfItIsFloat()
     {
         $this->assertTrue(FloatTrait::isFloat(3.14));
         $this->assertFalse(FloatTrait::isFloat(3));
@@ -30,7 +30,7 @@ class FloatTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_it_is_not_zero()
+    public function itShouldCheckIfItIsNotZero()
     {
         $this->assertTrue(FloatTrait::isNotZero(3.14));
         $this->assertTrue(FloatTrait::isNotZero(0.00000001));
@@ -42,7 +42,7 @@ class FloatTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_it_is_positive()
+    public function itShouldCheckIfItIsPositive()
     {
         $this->assertTrue(FloatTrait::isPositive(3.14));
         $this->assertFalse(FloatTrait::isPositive(-3.14));
@@ -51,7 +51,7 @@ class FloatTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_it_is_negative()
+    public function itShouldCheckIfItIsNegative()
     {
         $this->assertTrue(FloatTrait::isNegative(-3.14));
         $this->assertFalse(FloatTrait::isNegative(3.14));
@@ -60,7 +60,7 @@ class FloatTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_it_is_between()
+    public function itShouldCheckIfItIsBetween()
     {
         $this->assertTrue(FloatTrait::isBetween(3.14, 1.2, 5.6, false));
         $this->assertTrue(FloatTrait::isBetween(3.14, 1.2, 3.14, true));
@@ -72,7 +72,7 @@ class FloatTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_string_is_between_exception()
+    public function itShouldCheckStringIsBetweenException()
     {
         $this->setExpectedException('\InvalidArgumentException');
         FloatTrait::isBetween(3.14, 12.3, 4.2, false);
@@ -81,7 +81,7 @@ class FloatTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_it_is_odd()
+    public function itShouldCheckIfItIsOdd()
     {
         $this->assertTrue(FloatTrait::isOdd(3.15));
         $this->assertFalse(FloatTrait::isOdd(4.14));
@@ -90,7 +90,7 @@ class FloatTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_it_is_even()
+    public function itShouldCheckIfItIsEven()
     {
         $this->assertTrue(FloatTrait::isEven(4.15));
         $this->assertFalse(FloatTrait::isEven(3.14));
@@ -99,7 +99,7 @@ class FloatTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_it_is_multiple()
+    public function itShouldCheckIfItIsMultiple()
     {
         $this->assertTrue(FloatTrait::isMultiple(5.00, 2.50));
         $this->assertFalse(FloatTrait::isMultiple(3.14, 1));

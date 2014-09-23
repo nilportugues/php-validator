@@ -32,7 +32,7 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_object()
+    public function itShouldCheckIfIsObject()
     {
         $this->assertTrue($this->getValidator()->validate(new \stdClass()));
         $this->assertFalse($this->getValidator()->validate('a'));
@@ -41,7 +41,7 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_instance_of()
+    public function itShouldCheckIfIsInstanceOf()
     {
         $this->assertTrue($this->getValidator()->isInstanceOf('DateTime')->validate(new \DateTime()));
 
@@ -52,7 +52,7 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_has_property()
+    public function itShouldCheckIfHasProperty()
     {
         $dummy = new Dummy();
 
@@ -63,7 +63,7 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_has_method()
+    public function itShouldCheckIfHasMethod()
     {
         $dummy = new Dummy();
 
@@ -74,7 +74,7 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_has_parentClass()
+    public function itShouldCheckIfHasParentClass()
     {
         $this->assertTrue($this->getValidator()->hasParentClass()->validate(new Dummy()));
         $this->assertFalse($this->getValidator()->hasParentClass()->validate(new \stdClass()));
@@ -83,7 +83,7 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_child_of()
+    public function itShouldCheckIfIsChildOf()
     {
         $dummy = new Dummy();
 
@@ -94,7 +94,7 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_inherits_from()
+    public function itShouldCheckIfInheritsFrom()
     {
         $dummy = new Dummy();
 
@@ -105,7 +105,7 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_has_interface()
+    public function itShouldCheckIfHasInterface()
     {
         $dummy = new Dummy();
 

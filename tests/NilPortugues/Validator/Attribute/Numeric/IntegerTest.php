@@ -31,7 +31,7 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_it_is_integer()
+    public function itShouldCheckItIsInteger()
     {
         $this->assertTrue($this->getValidator()->validate(1));
         $this->assertFalse($this->getValidator()->validate('a'));
@@ -40,7 +40,7 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_it_is_not_zero()
+    public function itShouldCheckItIsNotZero()
     {
         $this->assertTrue($this->getValidator()->isNotZero()->validate(1));
         $this->assertFalse($this->getValidator()->isNotZero()->validate(0));
@@ -49,7 +49,7 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_it_is_positive()
+    public function itShouldCheckItIsPositive()
     {
         $this->assertTrue($this->getValidator()->isPositive()->validate(1));
         $this->assertFalse($this->getValidator()->isPositive()->validate(-10));
@@ -58,7 +58,7 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_it_is_negative()
+    public function itShouldCheckItIsNegative()
     {
         $this->assertTrue($this->getValidator()->isNegative()->validate(-10));
         $this->assertFalse($this->getValidator()->isNegative()->validate(1));
@@ -67,7 +67,7 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_it_is_between()
+    public function itShouldCheckItIsBetween()
     {
         $this->assertTrue($this->getValidator()->isBetween(10, 20, false)->validate(13));
         $this->assertTrue($this->getValidator()->isBetween(10, 20, true)->validate(10));
@@ -76,7 +76,7 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_is_between_exception()
+    public function itShouldCheckIsBetweenException()
     {
         $this->setExpectedException('\InvalidArgumentException');
         $this->getValidator()->isBetween(20, 10, false)->validate(13);
@@ -85,7 +85,7 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_is_odd()
+    public function itShouldCheckIsOdd()
     {
         $this->assertTrue($this->getValidator()->isOdd()->validate(3));
         $this->assertFalse($this->getValidator()->isOdd()->validate(2));
@@ -94,7 +94,7 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_is_even()
+    public function itShouldCheckIsEven()
     {
         $this->assertTrue($this->getValidator()->isEven()->validate(2));
         $this->assertFalse($this->getValidator()->isEven()->validate(3));
@@ -103,7 +103,7 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_is_multiple()
+    public function itShouldCheckIsMultiple()
     {
         $this->assertTrue($this->getValidator()->isMultiple(2)->validate(4));
         $this->assertFalse($this->getValidator()->isMultiple(2)->validate(3));

@@ -21,7 +21,7 @@ class GenericTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_required()
+    public function itShouldCheckIfIsRequired()
     {
         $value  = 'asdsdadds';
         $result = GenericTrait::isRequired($value);
@@ -35,7 +35,7 @@ class GenericTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_is_not_null()
+    public function itShouldCheckIsNotNull()
     {
         $value  = 'asdsdadds';
         $result = GenericTrait::isNotNull($value);

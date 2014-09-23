@@ -27,7 +27,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_array()
+    public function itShouldCheckIfIsArray()
     {
         $this->assertTrue($this->getValidator()->validate(['hello', 'world']));
         $this->assertTrue($this->getValidator()->validate(new \ArrayObject()));
@@ -39,7 +39,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_each()
+    public function itShouldCheckIfEach()
     {
         $array       = ['hello', 'world'];
         $arrayObject = new \ArrayObject($array);
@@ -62,7 +62,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_has_key_format()
+    public function itShouldCheckIfHasKeyFormat()
     {
         $array       = ['one' => 'hello', 'two' => 'world'];
         $arrayObject = new \ArrayObject($array);
@@ -82,7 +82,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_ends_with()
+    public function itShouldCheckIfEndsWith()
     {
         $array       = ['one' => 'hello', 'two' => 1];
         $arrayObject = new \ArrayObject($array);
@@ -108,7 +108,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_contains()
+    public function itShouldCheckIfContains()
     {
         $array       = ['one' => 'hello', 'two' => 1];
         $arrayObject = new \ArrayObject($array);
@@ -126,7 +126,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_has_key()
+    public function itShouldCheckIfHasKey()
     {
         $array       = ['one' => 'hello', 'two' => 1];
         $arrayObject = new \ArrayObject($array);
@@ -148,7 +148,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_length()
+    public function itShouldCheckIfLength()
     {
         $array       = ['one' => 'hello', 'two' => 1];
         $arrayObject = new \ArrayObject($array);
@@ -170,7 +170,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_not_empty()
+    public function itShouldCheckIfIsNotEmpty()
     {
         $array       = ['one' => 'hello', 'two' => 1];
         $arrayObject = new \ArrayObject($array);
@@ -192,7 +192,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_starts_with()
+    public function itShouldCheckIfStartsWith()
     {
         $array       = ['one' => 'hello', 'two' => 1];
         $arrayObject = new \ArrayObject($array);

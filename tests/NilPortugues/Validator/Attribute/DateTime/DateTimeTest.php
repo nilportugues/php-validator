@@ -31,7 +31,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_date()
+    public function itShouldCheckIfDate()
     {
         $date1 = '2012-01-01 00:00:00';
         $date2 = new \DateTime($date1);
@@ -43,7 +43,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_date_is_before()
+    public function itShouldCheckIfDateIsBefore()
     {
         $date1 = '2012-01-01 00:00:00';
         $date2 = new \DateTime($date1);
@@ -65,7 +65,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_date_is_after()
+    public function itShouldCheckIfDateIsAfter()
     {
         $date1 = '2014-01-01 00:00:00';
         $date2 = new \DateTime($date1);
@@ -87,7 +87,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_date_is_between()
+    public function itShouldCheckIfDateIsBetween()
     {
         $date1 = '2014-01-01 00:00:00';
         $date2 = new \DateTime($date1);
@@ -111,7 +111,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_monday()
+    public function itShouldCheckIfIsMonday()
     {
         $this->assertTrue($this->getValidator()->isMonday()->validate('2014-09-22'));
     }
@@ -119,7 +119,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_tuesday()
+    public function itShouldCheckIfIsTuesday()
     {
         $this->assertTrue($this->getValidator()->isTuesday()->validate('2014-09-23'));
     }
@@ -127,7 +127,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_wednesday()
+    public function itShouldCheckIfIsWednesday()
     {
         $this->assertTrue($this->getValidator()->isWednesday()->validate('2014-09-24'));
     }
@@ -135,7 +135,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_thursday()
+    public function itShouldCheckIfIsThursday()
     {
         $this->assertTrue($this->getValidator()->isThursday()->validate('2014-09-25'));
     }
@@ -143,7 +143,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_friday()
+    public function ItShouldCheckIfIsFriday()
     {
         $this->assertTrue($this->getValidator()->isFriday()->validate('2014-09-26'));
     }
@@ -151,7 +151,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_saturday()
+    public function itShouldCheckIfIsSaturday()
     {
         $this->assertTrue($this->getValidator()->isSaturday()->validate('2014-09-27'));
     }
@@ -159,7 +159,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_sunday()
+    public function itShouldCheckIfIsSunday()
     {
         $this->assertTrue($this->getValidator()->isSunday()->validate('2014-09-28'));
     }
@@ -167,7 +167,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_today()
+    public function itShouldCheckIfIsToday()
     {
         $date = new \DateTime('now');
 
@@ -177,7 +177,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_yesterday()
+    public function itShouldCheckIfIsYesterday()
     {
         $date = new \DateTime('now -1 day');
 
@@ -187,7 +187,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_tomorrow()
+    public function itShouldCheckIfIsTomorrow()
     {
         $date = new \DateTime('now +1 day');
 
@@ -197,7 +197,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_leap_year()
+    public function itShouldCheckIfIsLeapYear()
     {
         $date = new \DateTime('2016-01-01');
 
@@ -207,7 +207,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_weekend()
+    public function itShouldCheckIfIsWeekend()
     {
         $this->assertTrue($this->getValidator()->isWeekend()->validate('2014-09-20'));
         $this->assertFalse($this->getValidator()->isWeekend()->validate('2014-09-22'));
@@ -216,7 +216,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_weekday()
+    public function itShouldCheckIfIsWeekday()
     {
         $this->assertFalse($this->getValidator()->isWeekday()->validate('2014-09-20'));
         $this->assertTrue($this->getValidator()->isWeekday()->validate('2014-09-22'));
@@ -225,7 +225,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_morning()
+    public function itShouldCheckIfIsMorning()
     {
         $this->assertTrue($this->getValidator()->isMorning()->validate('07:20:15'));
         $this->assertFalse($this->getValidator()->isMorning()->validate('20:15:00'));
@@ -234,7 +234,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_afternoon()
+    public function itShouldCheckIfIsAfternoon()
     {
         $this->assertTrue($this->getValidator()->isAftenoon()->validate('12:00:00'));
         $this->assertFalse($this->getValidator()->isAftenoon()->validate('20:15:00'));
@@ -243,7 +243,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_evening()
+    public function itShouldCheckIfIsEvening()
     {
         $this->assertTrue($this->getValidator()->isEvening()->validate('18:00:00'));
         $this->assertFalse($this->getValidator()->isEvening()->validate('07:15:00'));
@@ -252,7 +252,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_check_if_is_night()
+    public function itShouldCheckIfIsNight()
     {
         $this->assertTrue($this->getValidator()->isNight()->validate('01:00:00'));
         $this->assertFalse($this->getValidator()->isNight()->validate('12:15:00'));

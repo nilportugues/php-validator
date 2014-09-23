@@ -21,7 +21,7 @@ class ValidatorFunctionMapTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_invalid_argument_exception_when_function_no_in_map()
+    public function itShouldInvalidArgumentExceptionWhenFunctionNoInMap()
     {
         $abstractValidator = $this
             ->getMockBuilder('NilPortugues\Validator\AbstractValidator')
