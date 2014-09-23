@@ -58,15 +58,15 @@ class String extends Generic
     /**
      * Validates is a string is between ranges.
      *
-     * @param int  $start
-     * @param int  $end
+     * @param int  $min
+     * @param int  $max
      * @param bool $inclusive
      *
      * @return \NilPortugues\Validator\Attribute\String\String
      */
-    public function isBetween($start, $end, $inclusive = false)
+    public function isBetween($min, $max, $inclusive = false)
     {
-        $this->addCondition(__METHOD__, [$start, $end, $inclusive]);
+        $this->addCondition( __METHOD__, [$min, $max, $inclusive], ['min' => $min, 'max' => $max]);
 
         return $this;
     }
@@ -404,6 +404,8 @@ class String extends Generic
 
     /**
      * @param integer $amount
+     *
+     * @return $this
      */
     public function hasSpecialCharacters($amount = null)
     {

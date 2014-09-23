@@ -10,7 +10,6 @@
 
 namespace NilPortugues\Validator;
 
-
 /**
  * Class ValidatorFunctionMap
  * @package NilPortugues\Validator
@@ -48,12 +47,13 @@ class ValidatorFunctionMap
      * @param string $propertyName
      * @param string $funcName
      * @param array  $arguments
+     * @param array  $errorValues
      * @param array  $errors
      *
      * @throws \InvalidArgumentException
      * @return bool
      */
-    public function get($propertyName, $funcName, array $arguments = [], array &$errors)
+    public function get($propertyName, $funcName, array $arguments = [], array &$errorValues = [], array &$errors)
     {
         if (false === array_key_exists($funcName, $this->functionMap)) {
             throw new \InvalidArgumentException('Validator key not found');
@@ -70,7 +70,7 @@ class ValidatorFunctionMap
             }
 
             $this->validator->setError(
-                $this->buildErrorMessage($errors, $funcName, $propertyName, $arguments)
+                $this->buildErrorMessage($errorValues, $errors, $funcName, $propertyName)
             );
         }
 
@@ -78,16 +78,20 @@ class ValidatorFunctionMap
     }
 
     /**
+     * @param array  $errorValues
      * @param array  $errors
      * @param string $funcName
      * @param string $propertyName
-     * @param array  $arguments
      *
      * @return mixed
      */
-    private function buildErrorMessage(array &$errors, $funcName, $propertyName, array &$arguments)
+    private function buildErrorMessage(array &$errorValues, array &$errors, $funcName, $propertyName)
     {
         $message = str_replace(':attribute', $propertyName, $errors[$funcName]);
+
+        foreach ($errorValues as $key => $value) {
+            $message = str_replace(":{$key}", $value, $message);
+        }
 
         return $message;
     }

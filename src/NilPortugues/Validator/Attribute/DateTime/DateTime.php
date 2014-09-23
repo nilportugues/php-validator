@@ -66,7 +66,7 @@ class DateTime extends Generic
      */
     public function isBetween($minDate, $maxDate, $inclusive = false)
     {
-        $this->addCondition(__METHOD__, [$minDate, $maxDate, $inclusive]);
+        $this->addCondition(__METHOD__, [$minDate, $maxDate, $inclusive], ['min' => $minDate, 'max' => $maxDate]);
 
         return $this;
     }

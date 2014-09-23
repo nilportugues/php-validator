@@ -1,5 +1,5 @@
 <?php
-include realpath(dirname(__FILE__)).'/../vendor/autoload.php';
+include realpath(dirname(__FILE__)) . '/../vendor/autoload.php';
 
 class Request
 {
@@ -38,8 +38,8 @@ class Request
 
         $this->username = $username;
         $this->password = $password;
-        $this->email = $email;
-        $this->gender = $gender;
+        $this->email    = $email;
+        $this->gender   = $gender;
     }
 }
 
@@ -63,7 +63,8 @@ class UserValidator
     /**
      * @param \NilPortugues\Validator\Validator $validator
      */
-    public function __construct(\NilPortugues\Validator\Validator $validator) {
+    public function __construct(\NilPortugues\Validator\Validator $validator)
+    {
         $this->validator = $validator;
     }
 
@@ -102,11 +103,11 @@ class UserValidator
         $result = $gender
             ->isRequired()
             ->isPositive()
-            ->isBetween(0,2, true)
+            ->isBetween(0, 2, true)
             ->validate($request->gender);
 
         $this->isValid = $this->isValid && $result;
-        $this->errors = array_merge($this->errors, $gender->getErrors());
+        $this->errors  = array_merge($this->errors, $gender->getErrors());
     }
 
     /**
@@ -124,7 +125,7 @@ class UserValidator
             ->validate($request->email);
 
         $this->isValid = $this->isValid && $result;
-        $this->errors = array_merge($this->errors, $email->getErrors());
+        $this->errors  = array_merge($this->errors, $email->getErrors());
     }
 
     /**
@@ -143,7 +144,7 @@ class UserValidator
             ->validate($request->password);
 
         $this->isValid = $this->isValid && $result;
-        $this->errors = array_merge($this->errors, $password->getErrors());
+        $this->errors  = array_merge($this->errors, $password->getErrors());
     }
 
     /**
@@ -164,11 +165,11 @@ class UserValidator
             ->validate($request->username);
 
         $this->isValid = $this->isValid && $result;
-        $this->errors = array_merge($this->errors, $username->getErrors());
+        $this->errors  = array_merge($this->errors, $username->getErrors());
     }
 }
 
-$validator = new \NilPortugues\Validator\Validator();
+$validator     = new \NilPortugues\Validator\Validator();
 $userValidator = new UserValidator($validator);
 
 $request1 = new Request('nilportugues', 'password', 'hello@world.com', '1');

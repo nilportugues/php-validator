@@ -56,11 +56,16 @@ abstract class AbstractValidator
     /**
      * @param string $classMethod
      * @param array  $arguments
+     * @param array  $errorMessageValues
      * @param bool   $fetchValidatorErrors
      *
      * @return $this
      */
-    protected function addCondition($classMethod, $arguments = [], $fetchValidatorErrors = false)
+    protected function addCondition(
+        $classMethod,
+        array $arguments = [],
+        array $errorMessageValues = [],
+        $fetchValidatorErrors = false)
     {
         $classMethod = explode("\\", $classMethod);
         $classMethod = array_pop($classMethod);
@@ -68,6 +73,7 @@ abstract class AbstractValidator
         $this->conditions[] = [
             'key'          => $classMethod,
             'arguments'    => $arguments,
+            'values'       => $errorMessageValues,
             'is_validator' => $fetchValidatorErrors,
         ];
 
@@ -93,6 +99,7 @@ abstract class AbstractValidator
                     $this->validator->getPropertyName(),
                     $condition['key'],
                     $arguments,
+                    $condition['values'],
                     $this->errorArray
                 );
 

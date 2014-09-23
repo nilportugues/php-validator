@@ -60,7 +60,7 @@ class Integer extends Generic
      */
     public function isBetween($min, $max, $inclusive = false)
     {
-        $this->addCondition(__METHOD__, [$min, $max, $inclusive]);
+        $this->addCondition(__METHOD__, [$min, $max, $inclusive], ['min' => $min, 'max' => $max]);
 
         return $this;
     }
