@@ -69,9 +69,11 @@ class ValidatorFunctionMap
                 throw new \InvalidArgumentException('Validator key not found in error file');
             }
 
-            $this->validator->setError(
-                $this->buildErrorMessage($errorValues, $errors, $funcName, $propertyName)
-            );
+            if (strlen($errors[$funcName])>0) {
+                $this->validator->setError(
+                    $this->buildErrorMessage($errorValues, $errors, $funcName, $propertyName)
+                );
+            }
         }
 
         return $result;

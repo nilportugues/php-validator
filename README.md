@@ -582,7 +582,7 @@ $string->->isUrl()->validate('//google.com/robots.txt'); //true
 
 Number validation comes in two flavours, `Integers` and `Floats`. Both validators share the same method interface, but internal implementation is different.
 
-To use these validators, call the as follows:
+To use these validators, do as follows:
 
 ```php
 $validator = new \NilPortugues\Validator\Validator();
@@ -1196,9 +1196,120 @@ $collection->startsWith(1)->validate($fixedArray)); //true
 $collection->startsWith('1', true)->validate($array)); //false
 $collection->startsWith('1', true)->validate($arrayObject)); //false
 $collection->startsWith('1', true)->validate($fixedArray)); //false
+```
+
+
+<a name="block3.5"></a>
+## 3.6 FileUpload (Arrays) [↑](#index_block)
+FileUpload validation is one of the most boring parts of web development.
+
+### One file validation
+Using FileUpload validator alone, you can validate single file uploads.
+
+```html
+<form method="POST" enctype="multipart/form-data">
+  <input name="image" type="file" accept="image/*">
+  <input type="submit" value="Submit">
+</form>
+```
+On the server side, validation is done as follows:
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+$fileValidator = $validator->isFileUpload('image');
+
+$fileValidator
+     ->isBetween(1, 3, 'MB', true)
+     ->isMimeType(['image/png', 'image/gif', 'image/jpg'])
+     ->hasValidUploadDirectory('./uploads/images')
+     ->notOverwritingExistingFile('./uploads/images')
+     ->validate($_FILES);
+```
+
+## Multiple file validation
+In combination with the Collection Validator, validator for multiple files is possible.
+
+For instance, let's say file upload is done using the following form:
+
+```html
+<form method="POST" enctype="multipart/form-data">
+  <input type="file" name="image[]" multiple="multiple" accept="image/*">
+  <input type="submit" value="Submit">
+</form>
+```
+
+On the server side, validation is done as follows:
+
+```php
+$validator = new \NilPortugues\Validator\Validator();
+$fileValidator = $validator->isFileUpload('image');
+$fileCollection = $validator->isArray('multi_upload');
+
+//Build the validator, but don't call validate method, we'll be passing it.
+$fileValidator
+     ->isBetween(1, 3, 'MB', true)
+     ->isMimeType(['image/png', 'image/gif', 'image/jpg'])
+     ->hasValidUploadDirectory('./uploads/images')
+     ->notOverwritingExistingFile('./uploads/images');
+
+//Validate upload collection
+$fileCollection
+     ->isNotEmpty()
+     ->each($fileValidator)
+     ->validate($_FILES);
 
 ```
 
+#### 3.6.1. isBetween($minSize, $maxSize, $inclusive = false)  <a name="block3.6.1"></a> [↑](#index_block)
+
+##### Example
+```php
+$validator = new \NilPortugues\Validator\Validator();
+$file = $validator->isFileUpload('oneFile');
+
+$file->isBetween(1, 3, 'MB', true)->validate($_FILES);
+```
+
+#### 3.6.2. isMimeType(array $allowedTypes)  <a name="block3.6.2"></a> [↑](#index_block)
+
+##### Example
+```php
+$validator = new \NilPortugues\Validator\Validator();
+$file = $validator->isFileUpload('oneFile');
+
+$file->isMimeType(['image/png', 'image/gif', 'image/jpg'])->validate($_FILES);
+```
+
+#### 3.6.3. hasFileNameFormat(AbstractValidator $validator)  <a name="block3.6.3"></a> [↑](#index_block)
+
+##### Example
+```php
+$validator = new \NilPortugues\Validator\Validator();
+$file = $validator->isFileUpload('oneFile');
+$stringValidator = $validator->isString('oneFile')->isAlpha();
+
+$file->hasFileNameFormat($stringValidator)->validate($_FILES);
+```
+
+#### 3.6.4. hasValidUploadDirectory($uploadDir)  <a name="block3.6.4"></a> [↑](#index_block)
+
+##### Example
+```php
+$validator = new \NilPortugues\Validator\Validator();
+$file = $validator->isFileUpload('oneFile');
+
+$file->hasValidUploadDirectory('./uploads/images')->validate($_FILES);
+```
+
+#### 3.6.5. notOverwritingExistingFile($uploadDir)  <a name="block3.6.5"></a> [↑](#index_block)
+
+##### Example
+```php
+$validator = new \NilPortugues\Validator\Validator();
+$file = $validator->isFileUpload('oneFile');
+
+$file->notOverwritingExistingFile('./uploads/images')->validate($_FILES);
+```
 
 <a name="block4"></a>
 # 4. Quality Code [↑](#index_block)

@@ -12,6 +12,7 @@ namespace NilPortugues\Validator;
 
 use NilPortugues\Validator\Attribute\Collection\Collection;
 use NilPortugues\Validator\Attribute\DateTime\DateTime;
+use NilPortugues\Validator\Attribute\FileUpload\FileUpload;
 use NilPortugues\Validator\Attribute\Numeric\Float;
 use NilPortugues\Validator\Attribute\Numeric\Integer;
 use NilPortugues\Validator\Attribute\Object\Object;
@@ -168,6 +169,18 @@ class Validator
         $this->propertyName = $propertyName;
 
         return new DateTime($this, $this->errorMessages, $this->functionMap);
+    }
+
+    /**
+     * @param string $propertyName
+     *
+     * @return \NilPortugues\Validator\Attribute\FileUpload\FileUpload
+     */
+    public function isFileUpload($propertyName)
+    {
+        $this->propertyName = $propertyName;
+
+        return new FileUpload($this, $this->errorMessages, $this->functionMap);
     }
 
     /**
