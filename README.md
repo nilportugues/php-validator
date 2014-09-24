@@ -1244,27 +1244,8 @@ For instance, let's say file upload is done using the following form:
 </form>
 ```
 
-On the server side, validation is done as follows:
+On the server side... exactly the same as before! Easy, right? :)
 
-```php
-$validator = new \NilPortugues\Validator\Validator();
-$fileValidator = $validator->isFileUpload('image');
-$fileCollection = $validator->isArray('multi_upload');
-
-//Build the validator, but don't call validate method, we'll be passing it.
-$fileValidator
-     ->isBetween(1, 3, 'MB', true)
-     ->isMimeType(['image/png', 'image/gif', 'image/jpg'])
-     ->hasValidUploadDirectory('./uploads/images')
-     ->notOverwritingExistingFile('./uploads/images');
-
-//Validate upload collection
-$fileCollection
-     ->isNotEmpty()
-     ->each($fileValidator)
-     ->validate($_FILES);
-
-```
 
 #### 3.6.1. isBetween($minSize, $maxSize, $inclusive = false)  <a name="block3.6.1"></a> [↑](#index_block)
 
