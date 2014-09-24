@@ -10,6 +10,8 @@
 
 namespace Tests\NilPortugues\Validator\Traits\FileUpload;
 
+use NilPortugues\Validator\Traits\FileUpload\FileUploadTrait;
+
 class FileUploadTraitMultipleFileTest extends \PHPUnit_Framework_TestCase
 {
     /**
@@ -32,5 +34,44 @@ class FileUploadTraitMultipleFileTest extends \PHPUnit_Framework_TestCase
                 'size'     => [203868, 203868, 203868],
             ],
         ];
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldCheckIfIsBetween()
+    {
+        $this->assertTrue(FileUploadTrait::isBetween('image', 0, 2, 'MB', true));
+        $this->assertFalse(FileUploadTrait::isBetween('image', 10, 20, 'MB'));
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldCheckIfIsMimeType()
+    {
+        $this->assertTrue(FileUploadTrait::isMimeType('image', ['image/png', 'image/gif', 'image/jpg']));
+        $this->assertFalse(FileUploadTrait::isMimeType('image', ['image/bmp']));
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldCheckIfHasFileNameFormat()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldCheckIfHasValidUploadDirectory()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldCheckIfNotOverwritingExistingFile()
+    {
     }
 }
