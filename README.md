@@ -90,7 +90,7 @@ A simple, powerful and elegant stand-alone validation library with no dependenci
         * [3.5.6. length] (#block3.5.6)
         * [3.5.7. isNotEmpty] (#block3.5.7)
         * [3.5.8. startsWith] (#block3.5.8)
-     * [3.6 File Upload](#block3.6)
+    * [3.6 File Upload](#block3.6)
         * [3.6.1. isBetween] (#block3.6.1)
         * [3.6.2. isMimeType] (#block3.6.2)
         * [3.6.3. hasFileNameFormat] (#block3.6.3)
