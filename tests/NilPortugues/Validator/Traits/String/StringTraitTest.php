@@ -443,20 +443,14 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function itShouldCheckIfHasLowercase()
+    public function itShouldCheckIfHasLowercaseAndUppercase()
     {
         $this->assertTrue(StringTrait::hasLowercase('HELLOWOrLD'));
         $this->assertTrue(StringTrait::hasLowercase('HeLLoWOrLD', 3));
 
         $this->assertFalse(StringTrait::hasLowercase('HELLOWORLD'));
         $this->assertFalse(StringTrait::hasLowercase('el', 3));
-    }
 
-    /**
-     * @test
-     */
-    public function itShouldCheckIfHasUppercase()
-    {
         $this->assertTrue(StringTrait::hasUppercase('hello World'));
         $this->assertTrue(StringTrait::hasUppercase('Hello World', 2));
 
