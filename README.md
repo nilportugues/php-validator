@@ -568,12 +568,12 @@ $string->isEmail()->validate('hello.earth+moon@localhost'); //false
 $validator = new \NilPortugues\Validator\Validator();
 $string = $validator->isString('propertyName');
 
-$string->->isUrl()->validate('http://google.com');
-$string->->isUrl()->validate('http://google.com/robots.txt');
-$string->->isUrl()->validate('https://google.com');
-$string->->isUrl()->validate('https://google.com/robots.txt');
-$string->->isUrl()->validate('//google.com');
-$string->->isUrl()->validate('//google.com/robots.txt');
+$string->->isUrl()->validate('http://google.com'); //true
+$string->->isUrl()->validate('http://google.com/robots.txt'); //true
+$string->->isUrl()->validate('https://google.com'); //true
+$string->->isUrl()->validate('https://google.com/robots.txt'); //true
+$string->->isUrl()->validate('//google.com'); //true
+$string->->isUrl()->validate('//google.com/robots.txt'); //true
 ```
 
 
