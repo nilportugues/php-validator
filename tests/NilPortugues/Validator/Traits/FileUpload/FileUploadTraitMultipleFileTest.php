@@ -19,8 +19,6 @@ class FileUploadTraitMultipleFileTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->markTestIncomplete();
-
         $_FILES = [
             'image' => [
                 'name'     => ['sample.png', 'sample.png', 'sample.png'],
