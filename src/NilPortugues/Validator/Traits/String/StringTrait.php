@@ -33,7 +33,7 @@ trait StringTrait
      */
     public static function isAlphanumeric($value)
     {
-        return ctype_alnum($value);
+        return preg_match('/^[a-z0-9]+$/i', $value) > 0;
     }
 
     /**
@@ -43,7 +43,7 @@ trait StringTrait
      */
     public static function isAlpha($value)
     {
-        return ctype_alpha($value);
+        return preg_match('/^[a-z]+$/i', $value) > 0;
     }
 
     /**

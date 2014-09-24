@@ -93,15 +93,19 @@ abstract class AbstractValidator
         $this->conditions = array_filter($this->conditions);
 
         foreach ($this->conditions as $condition) {
-            $arguments = array_merge([$value], $condition['arguments']);
+            $arguments = $condition['arguments'];
+
+            if (false === strpos('FileUpload::', $condition['key'])) {
+                $arguments = array_merge([$value], $condition['arguments']);
+            }
 
             $isValid = $isValid && $this->functionMap->get(
-                    $this->validator->getPropertyName(),
-                    $condition['key'],
-                    $arguments,
-                    $condition['values'],
-                    $this->errorArray
-                );
+                $this->validator->getPropertyName(),
+                $condition['key'],
+                $arguments,
+                $condition['values'],
+                $this->errorArray
+            );
 
             if (false === $isValid) {
                 if ($condition['is_validator']) {

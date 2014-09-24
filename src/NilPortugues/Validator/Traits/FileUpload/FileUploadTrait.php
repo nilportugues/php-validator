@@ -25,7 +25,7 @@ class FileUploadTrait
     private static $byte = [
         'KB' => 1000,
         'MB' => 1000000,
-        'GB' => 1000000000
+        'GB' => 1000000000,
     ];
 
     /**
@@ -37,9 +37,7 @@ class FileUploadTrait
      */
     public static function isUploaded($uploadName)
     {
-        return isset($_FILES[$uploadName])
-        && isset($_FILES[$uploadName]['error'])
-        && (0 === count($_FILES[$uploadName]['error']));
+        return isset($_FILES[$uploadName]);
     }
 
     /**
@@ -53,15 +51,12 @@ class FileUploadTrait
      */
     public static function isBetween($uploadName, $minSize, $maxSize, $format = 'B', $inclusive = false)
     {
-        if (!isset($_FILES[$uploadName]['size']) && !isset($_FILES['size'])) {
-            return false;
-        }
-
         $multiplier = 1;
+
         if (array_key_exists(strtoupper($format), self::$byte)) {
             $multiplier = self::$byte[$format];
-
         }
+
         $minSize = $minSize * $multiplier;
         $maxSize = $maxSize * $multiplier;
 
@@ -72,6 +67,10 @@ class FileUploadTrait
             }
 
             return $isValid;
+        }
+
+        if (!isset($_FILES['size'])) {
+            return false;
         }
 
         return IntegerTrait::isBetween($_FILES['size'], $minSize, $maxSize, $inclusive);
@@ -85,10 +84,6 @@ class FileUploadTrait
      */
     public static function isMimeType($uploadName, array $allowedTypes)
     {
-        if (!isset($_FILES[$uploadName]['tmp_name']) && !isset($_FILES['tmp_name'])) {
-            return false;
-        }
-
         if (isset($_FILES[$uploadName]['tmp_name']) && is_array($_FILES[$uploadName]['tmp_name'])) {
             $isValid = true;
             foreach ($_FILES[$uploadName]['tmp_name'] as $name) {
@@ -98,6 +93,10 @@ class FileUploadTrait
             }
 
             return $isValid;
+        }
+
+        if (!isset($_FILES['tmp_name'])) {
+            return false;
         }
 
         $fileInfo = new \finfo(FILEINFO_MIME_TYPE);
@@ -114,10 +113,6 @@ class FileUploadTrait
      */
     public static function hasFileNameFormat($uploadName, AbstractValidator $validator)
     {
-        if (!isset($_FILES[$uploadName]['name'])) {
-            return false;
-        }
-
         if (isset($_FILES[$uploadName]['name']) && is_array($_FILES[$uploadName]['name'])) {
             $isValid = true;
             foreach ($_FILES[$uploadName]['name'] as $name) {
@@ -155,12 +150,8 @@ class FileUploadTrait
      */
     public static function notOverwritingExistingFile($uploadName, $uploadDir)
     {
-        if (!isset($_FILES[$uploadName]['name'])) {
-            return false;
-        }
-
         if (isset($_FILES[$uploadName]['name']) && is_array($_FILES[$uploadName]['name'])) {
-            $isValid = true && file_exists($uploadDir);
+            $isValid = true;
             foreach ($_FILES[$uploadName]['name'] as $name) {
                 $isValid = $isValid && !file_exists($uploadDir.DIRECTORY_SEPARATOR.$name);
             }
@@ -168,7 +159,10 @@ class FileUploadTrait
             return $isValid;
         }
 
-        return file_exists($uploadDir)
-        && !file_exists($uploadDir.DIRECTORY_SEPARATOR.$_FILES[$uploadName]['name']);
+        if (!isset($_FILES[$uploadName]['name'])) {
+            return false;
+        }
+
+        return !file_exists($uploadDir.DIRECTORY_SEPARATOR.$_FILES[$uploadName]['name']);
     }
 }

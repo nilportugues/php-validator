@@ -11,6 +11,7 @@
 namespace Tests\NilPortugues\Validator\Traits\FileUpload;
 
 use NilPortugues\Validator\Traits\FileUpload\FileUploadTrait;
+use NilPortugues\Validator\Validator;
 
 class FileUploadTraitMultipleFileTest extends \PHPUnit_Framework_TestCase
 {
@@ -57,6 +58,14 @@ class FileUploadTraitMultipleFileTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldCheckIfHasFileNameFormat()
     {
+        $validator       = new Validator();
+        $stringValidator = $validator->isString('image')->isLowercase();
+
+        $this->assertTrue(FileUploadTrait::hasFileNameFormat('image', $stringValidator));
+
+        $stringValidator         = $validator->isString('image')->isAlphanumeric();
+        $_FILES['image']['name'] = '@sample.png';
+        $this->assertFalse(FileUploadTrait::hasFileNameFormat('image', $stringValidator));
     }
 
     /**
@@ -64,6 +73,10 @@ class FileUploadTraitMultipleFileTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldCheckIfHasValidUploadDirectory()
     {
+        $this->assertTrue(
+            FileUploadTrait::hasValidUploadDirectory('image', realpath(dirname(__FILE__)).'/resources/')
+        );
+        $this->assertFalse(FileUploadTrait::hasValidUploadDirectory('image', realpath(dirname(__FILE__)).'/not/'));
     }
 
     /**
@@ -71,5 +84,13 @@ class FileUploadTraitMultipleFileTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldCheckIfNotOverwritingExistingFile()
     {
+        $this->assertFalse(
+            FileUploadTrait::notOverwritingExistingFile( 'image', realpath(dirname(__FILE__)).'/resources')
+        );
+
+        $_FILES['image']['name'] = 'a.png';
+        $this->assertTrue(
+            FileUploadTrait::notOverwritingExistingFile( 'image', realpath(dirname(__FILE__)).'/resources')
+        );
     }
 }
