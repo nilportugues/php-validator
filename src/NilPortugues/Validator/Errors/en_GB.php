@@ -106,7 +106,7 @@ return [
     'Collection::startsWith'                 => 'The :attribute array does not start as expected.',
     //FileUpload
     'FileUpload::__construct'                => 'The :attribute must have files uploaded.',
-    'FileUpload::isBetween'                  => 'The :attribute must be between :min:format and :max:format.',
+    'FileUpload::isBetween'                  => 'The :attribute must be between :min and :max bytes.',
     'FileUpload::isMimeType'                 => 'The :attribute is not a valid file format.',
     'FileUpload::hasFileNameFormat'          => 'The :attribute file name format is not valid.',
     'FileUpload::hasValidUploadDirectory'    => 'The :attribute upload directory is not valid.',

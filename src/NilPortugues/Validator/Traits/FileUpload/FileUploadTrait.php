@@ -44,7 +44,7 @@ class FileUploadTrait
      */
     public static function isBetween($uploadName, $minSize, $maxSize, $format = 'B', $inclusive = false)
     {
-        if (!isset($_FILES[$uploadName]['size'])) {
+        if (!isset($_FILES[$uploadName]['size']) && !isset($_FILES['size'])) {
             return false;
         }
 
@@ -59,13 +59,19 @@ class FileUploadTrait
             case 'GB':$multiplier = 1000000000;
                 break;
         }
+        $minSize = $minSize * $multiplier;
+        $maxSize = $maxSize * $multiplier;
 
-        return IntegerTrait::isBetween(
-            $_FILES[$uploadName]['size'],
-            $minSize * $multiplier,
-            $maxSize * $multiplier,
-            $inclusive
-        );
+        if (isset($_FILES[$uploadName]['size']) && is_array($_FILES[$uploadName]['size'])) {
+            $isValid = true;
+            foreach ($_FILES[$uploadName]['size'] as $size) {
+                $isValid = $isValid && IntegerTrait::isBetween($size, $minSize, $maxSize, $inclusive);
+            }
+
+            return $isValid;
+        }
+
+        return IntegerTrait::isBetween($_FILES['size'], $minSize, $maxSize, $inclusive);
     }
 
     /**
@@ -76,12 +82,23 @@ class FileUploadTrait
      */
     public static function isMimeType($uploadName, array $allowedTypes)
     {
-        if (!isset($_FILES[$uploadName]['tmp_name'])) {
+        if (!isset($_FILES[$uploadName]['tmp_name']) && !isset($_FILES['tmp_name'])) {
             return false;
         }
 
+        if (isset($_FILES[$uploadName]['tmp_name']) && is_array($_FILES[$uploadName]['tmp_name'])) {
+            $isValid = true;
+            foreach ($_FILES[$uploadName]['tmp_name'] as $name) {
+                $fileInfo = new \finfo(FILEINFO_MIME_TYPE);
+                $mimeType = $fileInfo->file($name);
+                $isValid = $isValid && in_array($mimeType, $allowedTypes, true);
+            }
+
+            return $isValid;
+        }
+
         $fileInfo = new \finfo(FILEINFO_MIME_TYPE);
-        $mimeType = $fileInfo->file($_FILES[$uploadName]['tmp_name']);
+        $mimeType = $fileInfo->file($_FILES['tmp_name']);
 
         return in_array($mimeType, $allowedTypes, true);
     }
@@ -96,6 +113,15 @@ class FileUploadTrait
     {
         if (!isset($_FILES[$uploadName]['name'])) {
             return false;
+        }
+
+        if (isset($_FILES[$uploadName]['name']) && is_array($_FILES[$uploadName]['name'])) {
+            $isValid = true;
+            foreach ($_FILES[$uploadName]['name'] as $name) {
+                $isValid = $isValid && $validator->validate($name);
+            }
+
+            return $isValid;
         }
 
         return $validator->validate($_FILES[$uploadName]['name']);
@@ -128,6 +154,15 @@ class FileUploadTrait
     {
         if (!isset($_FILES[$uploadName]['name'])) {
             return false;
+        }
+
+        if (isset($_FILES[$uploadName]['name']) && is_array($_FILES[$uploadName]['name'])) {
+            $isValid = true && file_exists($uploadDir);
+            foreach ($_FILES[$uploadName]['name'] as $name) {
+                $isValid = $isValid && !file_exists($uploadDir.DIRECTORY_SEPARATOR.$name);
+            }
+
+            return $isValid;
         }
 
         return file_exists($uploadDir)
