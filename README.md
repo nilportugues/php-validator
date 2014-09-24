@@ -90,6 +90,12 @@ A simple, powerful and elegant stand-alone validation library with no dependenci
         * [3.5.6. length] (#block3.5.6)
         * [3.5.7. isNotEmpty] (#block3.5.7)
         * [3.5.8. startsWith] (#block3.5.8)
+     * [3.6 File Upload](#block3.6)
+        * [3.6.1. isBetween] (#block3.6.1)
+        * [3.6.2. isMimeType] (#block3.6.2)
+        * [3.6.3. hasFileNameFormat] (#block3.6.3)
+        * [3.6.4. hasValidUploadDirectory] (#block3.6.4)
+        * [3.6.5. notOverwritingExistingFile] (#block3.6.5)
 * [4. Quality Code](#block4)
 * [5. Author](#block5)
 * [6. License](#block6)
@@ -1200,7 +1206,7 @@ $collection->startsWith('1', true)->validate($fixedArray)); //false
 
 
 <a name="block3.5"></a>
-## 3.6 FileUpload (Arrays) [↑](#index_block)
+## 3.6 File Upload [↑](#index_block)
 FileUpload validation is one of the most boring parts of web development.
 
 ### One file validation
@@ -1226,7 +1232,7 @@ $fileValidator
      ->validate($_FILES);
 ```
 
-## Multiple file validation
+### Multiple file validation
 In combination with the Collection Validator, validator for multiple files is possible.
 
 For instance, let's say file upload is done using the following form:
