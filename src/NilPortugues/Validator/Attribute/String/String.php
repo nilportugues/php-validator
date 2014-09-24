@@ -423,4 +423,14 @@ class String extends Generic
 
         return $this;
     }
+
+    /**
+     * @return $this
+     */
+    public function isUrl()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
 }

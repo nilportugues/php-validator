@@ -527,4 +527,17 @@ class StringTest extends \PHPUnit_Framework_TestCase
 
         $this->assertFalse($this->getValidator()->isEmail()->validate('hello.earth+moon@localhost'));
     }
+
+    /**
+     * @test
+     */
+    public function itShouldCheckIfIsUrl()
+    {
+        $this->assertTrue($this->getValidator()->isUrl()->validate('http://google.com'));
+        $this->assertTrue($this->getValidator()->isUrl()->validate('http://google.com/robots.txt'));
+        $this->assertTrue($this->getValidator()->isUrl()->validate('https://google.com'));
+        $this->assertTrue($this->getValidator()->isUrl()->validate('https://google.com/robots.txt'));
+        $this->assertTrue($this->getValidator()->isUrl()->validate('//google.com'));
+        $this->assertTrue($this->getValidator()->isUrl()->validate('//google.com/robots.txt'));
+    }
 }

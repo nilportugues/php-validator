@@ -503,4 +503,17 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
 
         $this->assertFalse(StringTrait::isEmail('hello.earth+moon@localhost'));
     }
+
+    /**
+     * @test
+     */
+    public function itShouldCheckIfIsUrl()
+    {
+        $this->assertTrue(StringTrait::isUrl('http://google.com'));
+        $this->assertTrue(StringTrait::isUrl('http://google.com/robots.txt'));
+        $this->assertTrue(StringTrait::isUrl('https://google.com'));
+        $this->assertTrue(StringTrait::isUrl('https://google.com/robots.txt'));
+        $this->assertTrue(StringTrait::isUrl('//google.com'));
+        $this->assertTrue(StringTrait::isUrl('//google.com/robots.txt'));
+    }
 }

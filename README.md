@@ -43,6 +43,7 @@ A simple, powerful and elegant stand-alone validation library with no dependenci
         * [3.1.29. hasNumeric] (#block3.1.29)
         * [3.1.30. hasSpecialCharacters] (#block3.1.30)
         * [3.1.31. isEmail] (#block3.1.31)
+        * [3.1.32. isUrl] (#block3.1.32)
     * [3.2 Numbers (Integers and Floats)](#block3.2)
         * [3.2.1. isNotZero] (#block3.2.1)
         * [3.2.2. isPositive] (#block3.2.2)
@@ -559,6 +560,22 @@ $string->isEmail()->validate('hello.earth+moon@127.0.0.1'); //true
 
 $string->isEmail()->validate('hello.earth+moon@localhost'); //false
 ```
+
+#### 3.1.32. isUrl <a name="block3.1.32"></a> [↑](#index_block)
+
+##### Example
+```php
+$validator = new \NilPortugues\Validator\Validator();
+$string = $validator->isString('propertyName');
+
+$string->->isUrl()->validate('http://google.com');
+$string->->isUrl()->validate('http://google.com/robots.txt');
+$string->->isUrl()->validate('https://google.com');
+$string->->isUrl()->validate('https://google.com/robots.txt');
+$string->->isUrl()->validate('//google.com');
+$string->->isUrl()->validate('//google.com/robots.txt');
+```
+
 
 <a name="block3.2"></a>
 ## 3.2 Numbers (Integers and Floats) [↑](#index_block)

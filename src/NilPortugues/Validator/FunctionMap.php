@@ -64,6 +64,7 @@ return [
     'String::hasNumeric'            => '\String\StringTrait::hasNumeric',
     'String::hasSpecialCharacters'  => '\String\StringTrait::hasSpecialCharacters',
     'String::isEmail'               => '\String\StringTrait::isEmail',
+    'String::isUrl'                 => '\String\StringTrait::isUrl',
     //Object
     'Object::__construct'           => '\Object\ObjectTrait::isObject',
     'Object::isInstanceOf'          => '\Object\ObjectTrait::isInstanceOf',

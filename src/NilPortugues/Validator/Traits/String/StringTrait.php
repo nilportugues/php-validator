@@ -458,4 +458,18 @@ trait StringTrait
 
         return preg_match('/^[A-Z0-9._%\-+]+@(?:[A-Z0-9\-]+\.)+(?:[A-Z0-9\-]+)$/i', $value) > 0;
     }
+
+    /**
+     * @param $value
+     *
+     * @return mixed
+     */
+    public static function isUrl($value)
+    {
+        if ($value[0] == $value[1] && $value[0] == "/") {
+            $value = 'http:'.$value;
+        }
+
+        return false !== filter_var($value, FILTER_VALIDATE_URL, ['options' => ['flags' => FILTER_FLAG_PATH_REQUIRED]]);
+    }
 }
