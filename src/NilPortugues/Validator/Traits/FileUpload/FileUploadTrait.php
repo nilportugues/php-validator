@@ -20,6 +20,15 @@ use NilPortugues\Validator\Traits\Integer\IntegerTrait;
 class FileUploadTrait
 {
     /**
+     * @var array
+     */
+    private static $byte = [
+        'KB' => 1000,
+        'MB' => 1000000,
+        'GB' => 1000000000
+    ];
+
+    /**
      * Validates if the given data is a file that was uploaded
      *
      * @param string $uploadName
@@ -49,15 +58,9 @@ class FileUploadTrait
         }
 
         $multiplier = 1;
-        switch (strtoupper($format)) {
-            case 'KB': $multiplier = 1000;
-                break;
+        if (array_key_exists(strtoupper($format), self::$byte)) {
+            $multiplier = self::$byte[$format];
 
-            case 'MB': $multiplier = 1000000;
-                break;
-
-            case 'GB':$multiplier = 1000000000;
-                break;
         }
         $minSize = $minSize * $multiplier;
         $maxSize = $maxSize * $multiplier;
