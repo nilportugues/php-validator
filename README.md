@@ -1205,7 +1205,7 @@ $collection->startsWith('1', true)->validate($fixedArray)); //false
 ```
 
 
-<a name="block3.5"></a>
+<a name="block3.6"></a>
 ## 3.6 File Upload [↑](#index_block)
 FileUpload validation is one of the most boring parts of web development.
 
