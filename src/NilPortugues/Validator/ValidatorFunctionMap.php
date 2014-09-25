@@ -10,6 +10,8 @@
 
 namespace NilPortugues\Validator;
 
+use NilPortugues\Validator\Traits\FileUpload\FileUploadException;
+
 /**
  * Class ValidatorFunctionMap
  * @package NilPortugues\Validator
@@ -62,18 +64,26 @@ class ValidatorFunctionMap
         $function = $this->baseNamespace.$this->functionMap[$funcName];
         $class    = explode("::", $function);
 
-        $result = call_user_func_array([$class[0], $class[1]], $arguments);
+        try {
+            $result = call_user_func_array([$class[0], $class[1]], $arguments);
 
-        if (false === $result) {
-            if (false === array_key_exists($funcName, $errors)) {
-                throw new \InvalidArgumentException('Validator key not found in error file');
-            }
+            if (false === $result) {
+                if (false === array_key_exists($funcName, $errors)) {
+                    throw new \InvalidArgumentException('Validator key not found in error file');
+                }
 
-            if (strlen($errors[$funcName])>0) {
-                $this->validator->setError(
-                    $this->buildErrorMessage($errorValues, $errors, $funcName, $propertyName)
-                );
+                if (strlen($errors[$funcName])>0) {
+                    $this->validator->setError(
+                        $this->buildErrorMessage($errorValues, $errors, $funcName, $propertyName)
+                    );
+                }
             }
+        } catch (FileUploadException $e) {
+            $this->validator->setError(
+                $this->buildErrorMessage($errorValues, $errors, $e->getMessage(), $propertyName)
+            );
+
+            $result = false;
         }
 
         return $result;
@@ -87,7 +97,7 @@ class ValidatorFunctionMap
      *
      * @return mixed
      */
-    private function buildErrorMessage(array &$errorValues, array &$errors, $funcName, $propertyName)
+    private function buildErrorMessage(array $errorValues, array &$errors, $funcName, $propertyName)
     {
         $message = str_replace(':attribute', $propertyName, $errors[$funcName]);
 

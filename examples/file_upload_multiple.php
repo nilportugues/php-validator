@@ -4,7 +4,7 @@ include realpath(dirname(__FILE__)) . '/../vendor/autoload.php';
 
 if (empty($_FILES)) {
 ?>
-
+<h2>Multiple upload</h2>
 <form method="POST" enctype="multipart/form-data">
   <input type="file" name="image[]" multiple="multiple">
   <input type="submit" value="Submit">
@@ -12,13 +12,11 @@ if (empty($_FILES)) {
 
 <?php
 } else {
-    echo $maxFileSize = min(ini_get('post_max_size'), ini_get('upload_max_filesize'));
-    
     $validator = new \NilPortugues\Validator\Validator();
     $fileValidator = $validator->isFileUpload('image');
 
     $isValid = $fileValidator
-        ->isBetween(0, $maxFileSize, 'B', true)
+        ->isBetween(0, 2, 'MB', true)
         ->isMimeType(['image/png', 'image/gif', 'image/jpeg'])
         ->hasValidUploadDirectory('./')
         ->notOverwritingExistingFile('./')
@@ -28,14 +26,9 @@ if (empty($_FILES)) {
     echo ($isValid) ? 'Yes' : 'No';
 
     $errors = $fileValidator->getErrors();
-    if (!empty($errors)) {
-        echo '<h3>Errors?</h3>';
-        echo '<pre>';
-        print_r($errors);
-        echo '</pre>';
-    } else {
-        echo '<h3>Success!</h3>';
-        echo 'Use move_uploaded_file() function finally to store the image/s';
-    }
+    echo '<h3>Errors?</h3>';
+    echo '<pre>';
+    print_r($errors);
+    echo '</pre>';
 
 }

@@ -113,4 +113,5 @@ return [
     'FileUpload::hasFileNameFormat'          => '\FileUpload\FileUploadTrait::hasFileNameFormat',
     'FileUpload::hasValidUploadDirectory'    => '\FileUpload\FileUploadTrait::hasValidUploadDirectory',
     'FileUpload::notOverwritingExistingFile' => '\FileUpload\FileUploadTrait::notOverwritingExistingFile',
+    'FileUpload::isImage'                    => '\FileUpload\FileUploadTrait::isImage',
 ];

@@ -41,7 +41,15 @@ class FileUpload extends AbstractValidator
      */
     public function isBetween($minSize, $maxSize, $format = 'B', $inclusive = false)
     {
-        $this->addCondition( __METHOD__, [$minSize, $maxSize, $format, $inclusive], ['min' => $minSize, 'max' => $maxSize]);
+        $this->addCondition(
+            __METHOD__,
+            [$minSize, $maxSize, $format, $inclusive],
+            [
+                'min' => $minSize,
+                'max' => $maxSize,
+                'format' => (strtoupper($format[0]) == 'B') ? '' : strtoupper($format[0])
+            ]
+        );
 
         return $this;
     }

@@ -41,7 +41,7 @@ class FileUploadTraitMultipleFileTest extends \PHPUnit_Framework_TestCase
     public function itShouldCheckIfIsBetween()
     {
         $this->assertTrue(FileUploadTrait::isBetween('image', 0, 2, 'MB', true));
-        $this->assertFalse(FileUploadTrait::isBetween('image', 10, 20, 'MB'));
+        $this->assertFalse(FileUploadTrait::isBetween('image', 1, 2, 'MB'));
     }
 
     /**

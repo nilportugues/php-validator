@@ -23,9 +23,14 @@ class FileUploadTrait
      * @var array
      */
     private static $byte = [
+        'K'  => 1000,
         'KB' => 1000,
+        'M'  => 1000000,
         'MB' => 1000000,
+        'G'  => 1000000000,
         'GB' => 1000000000,
+        'T'  => 1000000000000,
+        'TB' => 1000000000000,
     ];
 
     /**
@@ -41,39 +46,89 @@ class FileUploadTrait
     }
 
     /**
-     * @param string $uploadName
-     * @param int    $minSize
-     * @param int    $maxSize
+     * @return int
+     */
+    private static function getMaxServerFileSize()
+    {
+        $maxFileSize     = min(ini_get('post_max_size'), ini_get('upload_max_filesize'));
+        $maxFileSizeUnit = preg_replace('/\d/', '', $maxFileSize);
+
+        $finalMaxFileSize = 0;
+        if (array_key_exists(strtoupper($maxFileSizeUnit), self::$byte)) {
+            $multiplier       = self::$byte[$maxFileSizeUnit];
+            $finalMaxFileSize = preg_replace("/[^0-9,.]/", "", $maxFileSize);
+            $finalMaxFileSize = $finalMaxFileSize * $multiplier;
+        }
+
+        return (int) $finalMaxFileSize;
+    }
+
+    /**
+     * @param        $uploadName
+     * @param        $minSize
+     * @param        $maxSize
      * @param string $format
      * @param bool   $inclusive
      *
      * @return bool
+     * @throws FileUploadException
      */
     public static function isBetween($uploadName, $minSize, $maxSize, $format = 'B', $inclusive = false)
     {
         $multiplier = 1;
-
         if (array_key_exists(strtoupper($format), self::$byte)) {
             $multiplier = self::$byte[$format];
         }
 
         $minSize = $minSize * $multiplier;
         $maxSize = $maxSize * $multiplier;
+        $maxSize = min(self::getMaxServerFileSize($uploadName, $maxSize), $maxSize);
 
         if (isset($_FILES[$uploadName]['size']) && is_array($_FILES[$uploadName]['size'])) {
             $isValid = true;
             foreach ($_FILES[$uploadName]['size'] as $size) {
+                self::checkIfMaximumUploadFileSizeHasBeenExceeded($uploadName, $maxSize, $size);
                 $isValid = $isValid && IntegerTrait::isBetween($size, $minSize, $maxSize, $inclusive);
             }
 
             return $isValid;
         }
 
-        if (!isset($_FILES['size'])) {
+        if (!isset($_FILES[$uploadName]['size'])) {
             return false;
         }
 
-        return IntegerTrait::isBetween($_FILES['size'], $minSize, $maxSize, $inclusive);
+        self::checkIfMaximumUploadFileSizeHasBeenExceeded($uploadName, $maxSize, $_FILES[$uploadName]['size']);
+
+        return IntegerTrait::isBetween($_FILES[$uploadName]['size'], $minSize, $maxSize, $inclusive);
+    }
+
+    /**
+     * @param $uploadName
+     * @param $size
+     * @param $maxSize
+     *
+     * @throws FileUploadException
+     */
+    private static function checkIfMaximumUploadFileSizeHasBeenExceeded($uploadName, $size, $maxSize)
+    {
+        if ($size < $maxSize) {
+            throw new FileUploadException($uploadName);
+        }
+    }
+
+    /**
+     * @param $filePath
+     *
+     * @return mixed
+     */
+    private static function getMimeType($filePath)
+    {
+        $fileInfo = @finfo_open(FILEINFO_MIME_TYPE);
+        $mimeType = @finfo_file($fileInfo, $filePath);
+        finfo_close($fileInfo);
+
+        return $mimeType;
     }
 
     /**
@@ -87,19 +142,19 @@ class FileUploadTrait
         if (isset($_FILES[$uploadName]['tmp_name']) && is_array($_FILES[$uploadName]['tmp_name'])) {
             $isValid = true;
 
-            foreach ($_FILES[$uploadName]['type'] as $mimeType) {
-                $isValid = $isValid && in_array($mimeType, $allowedTypes, true);
+            array_filter($_FILES[$uploadName]['tmp_name']);
+            foreach ($_FILES[$uploadName]['tmp_name'] as $name) {
+                $isValid = $isValid && in_array(self::getMimeType($name), $allowedTypes, true);
             }
 
             return $isValid;
         }
 
-        if (!isset($_FILES['type'])) {
+        if (!isset($_FILES[$uploadName]['tmp_name'])) {
             return false;
         }
 
-
-        return in_array($_FILES['type'], $allowedTypes, true);
+        return in_array(self::getMimeType($_FILES[$uploadName]['tmp_name']), $allowedTypes, true);
     }
 
     /**

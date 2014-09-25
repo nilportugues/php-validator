@@ -106,9 +106,17 @@ return [
     'Collection::startsWith'                 => 'The :attribute array does not start as expected.',
     //FileUpload
     'FileUpload::__construct'                => 'The :attribute has no files.',
-    'FileUpload::isBetween'                  => 'The :attribute must be between :min and :max bytes.',
+    'FileUpload::isBetween'                  => 'The :attribute must be between :min and :max :formatBytes.',
     'FileUpload::isMimeType'                 => 'The :attribute is not a valid file format.',
     'FileUpload::hasFileNameFormat'          => 'The :attribute file name format is not valid.',
     'FileUpload::hasValidUploadDirectory'    => 'The :attribute upload directory is not valid.',
     'FileUpload::notOverwritingExistingFile' => 'The :attribute upload will overwrite an existing file.',
+    'FileUpload::UPLOAD_ERR_INI_SIZE'        => 'The :attribute upload exceeds the maximum file size allowed by the server.',
+    'FileUpload::UPLOAD_ERR_FORM_SIZE'       => 'The :attribute upload exceeds the maximum file size specified in the form.',
+    'FileUpload::UPLOAD_ERR_PARTIAL'         => 'The :attribute was only partially uploaded.',
+    'FileUpload::UPLOAD_ERR_NO_FILE'         => 'No :attribute file was uploaded.',
+    'FileUpload::UPLOAD_ERR_NO_TMP_DIR'      => 'Upload failed. Missing a temporary upload folder.',
+    'FileUpload::UPLOAD_ERR_CANT_WRITE'      => 'Upload failed. Failed to write file to disk.',
+    'FileUpload::UPLOAD_ERR_EXTENSION'       => 'Upload failed. File upload was stopped.',
+
 ];

@@ -78,7 +78,7 @@ trait IntegerTrait
         settype($max, 'int');
 
         if ($min > $max) {
-            throw new \InvalidArgumentException(sprintf('%s cannot be less than  %s for validation', $min, $max));
+            throw new \InvalidArgumentException(sprintf('%s cannot be less than %s for validation', $min, $max));
         }
 
         if (false === $inclusive) {
