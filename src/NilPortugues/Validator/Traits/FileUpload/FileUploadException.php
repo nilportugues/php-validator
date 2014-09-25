@@ -27,7 +27,10 @@ class FileUploadException extends \Exception
             $error = $_FILES[$uploadName]['error'];
         }
 
-        if (!empty($_FILES[$uploadName]['error']) && is_array($_FILES[$uploadName]['error']) && is_int($_FILES[$uploadName]['error'][0])) {
+        if (!empty($_FILES[$uploadName]['error'])
+            && is_array($_FILES[$uploadName]['error'])
+            && is_int($_FILES[$uploadName]['error'][0])
+        ) {
             $error = reset($_FILES[$uploadName]['error']);
         }
 
@@ -43,6 +46,7 @@ class FileUploadException extends \Exception
             case UPLOAD_ERR_INI_SIZE:
                 $this->message = "FileUpload::UPLOAD_ERR_INI_SIZE";
                 break;
+            case UPLOAD_ERR_FORM_SIZE:
                 $this->message = "FileUpload::UPLOAD_ERR_FORM_SIZE";
                 break;
             case UPLOAD_ERR_PARTIAL:
@@ -60,6 +64,6 @@ class FileUploadException extends \Exception
             case UPLOAD_ERR_EXTENSION:
                 $this->message = "FileUpload::UPLOAD_ERR_EXTENSION";
                 break;
-        };
+        }
     }
 }
