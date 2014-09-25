@@ -17,11 +17,24 @@ namespace NilPortugues\Validator\Traits\FileUpload;
 class FileUploadException extends \Exception
 {
     /**
+     * @var array
+     */
+    private $errorMessages = [
+        UPLOAD_ERR_INI_SIZE => "FileUpload::UPLOAD_ERR_INI_SIZE",
+        UPLOAD_ERR_FORM_SIZE => "FileUpload::UPLOAD_ERR_FORM_SIZE",
+        UPLOAD_ERR_PARTIAL => "FileUpload::UPLOAD_ERR_PARTIAL",
+        UPLOAD_ERR_NO_FILE => "FileUpload::UPLOAD_ERR_NO_FILE",
+        UPLOAD_ERR_NO_TMP_DIR => "FileUpload::UPLOAD_ERR_NO_TMP_DIR",
+        UPLOAD_ERR_CANT_WRITE => "FileUpload::UPLOAD_ERR_CANT_WRITE",
+        UPLOAD_ERR_EXTENSION => "FileUpload::UPLOAD_ERR_EXTENSION",
+    ];
+
+    /**
      * @param string $uploadName
      */
     public function __construct($uploadName)
     {
-        $error = '';
+        $error = 4;
 
         if (!empty($_FILES[$uploadName]['error']) && is_int($_FILES[$uploadName]['error'])) {
             $error = $_FILES[$uploadName]['error'];
@@ -34,36 +47,7 @@ class FileUploadException extends \Exception
             $error = reset($_FILES[$uploadName]['error']);
         }
 
-        $this->setErrorMessage($error);
+        $this->message = $this->errorMessages[$error];
     }
 
-    /**
-     * @param $error
-     */
-    private function setErrorMessage($error)
-    {
-        switch ($error) {
-            case UPLOAD_ERR_INI_SIZE:
-                $this->message = "FileUpload::UPLOAD_ERR_INI_SIZE";
-                break;
-            case UPLOAD_ERR_FORM_SIZE:
-                $this->message = "FileUpload::UPLOAD_ERR_FORM_SIZE";
-                break;
-            case UPLOAD_ERR_PARTIAL:
-                $this->message = "FileUpload::UPLOAD_ERR_PARTIAL";
-                break;
-            case UPLOAD_ERR_NO_FILE:
-                $this->message = "FileUpload::UPLOAD_ERR_NO_FILE";
-                break;
-            case UPLOAD_ERR_NO_TMP_DIR:
-                $this->message = "FileUpload::UPLOAD_ERR_NO_TMP_DIR";
-                break;
-            case UPLOAD_ERR_CANT_WRITE:
-                $this->message = "FileUpload::UPLOAD_ERR_CANT_WRITE";
-                break;
-            case UPLOAD_ERR_EXTENSION:
-                $this->message = "FileUpload::UPLOAD_ERR_EXTENSION";
-                break;
-        }
-    }
 }
