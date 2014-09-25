@@ -20,13 +20,13 @@ class FileUploadException extends \Exception
      * @var array
      */
     private $errorMessages = [
-        UPLOAD_ERR_INI_SIZE => "FileUpload::UPLOAD_ERR_INI_SIZE",
-        UPLOAD_ERR_FORM_SIZE => "FileUpload::UPLOAD_ERR_FORM_SIZE",
-        UPLOAD_ERR_PARTIAL => "FileUpload::UPLOAD_ERR_PARTIAL",
-        UPLOAD_ERR_NO_FILE => "FileUpload::UPLOAD_ERR_NO_FILE",
+        UPLOAD_ERR_INI_SIZE   => "FileUpload::UPLOAD_ERR_INI_SIZE",
+        UPLOAD_ERR_FORM_SIZE  => "FileUpload::UPLOAD_ERR_FORM_SIZE",
+        UPLOAD_ERR_PARTIAL    => "FileUpload::UPLOAD_ERR_PARTIAL",
+        UPLOAD_ERR_NO_FILE    => "FileUpload::UPLOAD_ERR_NO_FILE",
         UPLOAD_ERR_NO_TMP_DIR => "FileUpload::UPLOAD_ERR_NO_TMP_DIR",
         UPLOAD_ERR_CANT_WRITE => "FileUpload::UPLOAD_ERR_CANT_WRITE",
-        UPLOAD_ERR_EXTENSION => "FileUpload::UPLOAD_ERR_EXTENSION",
+        UPLOAD_ERR_EXTENSION  => "FileUpload::UPLOAD_ERR_EXTENSION",
     ];
 
     /**
