@@ -60,7 +60,7 @@ class FileUploadTrait
             $finalMaxFileSize = $finalMaxFileSize * $multiplier;
         }
 
-        return (int) $finalMaxFileSize;
+        return (int)$finalMaxFileSize;
     }
 
     /**
@@ -205,7 +205,7 @@ class FileUploadTrait
         if (isset($_FILES[$uploadName]['name']) && is_array($_FILES[$uploadName]['name'])) {
             $isValid = true;
             foreach ($_FILES[$uploadName]['name'] as $name) {
-                $isValid = $isValid && !file_exists($uploadDir.DIRECTORY_SEPARATOR.$name);
+                $isValid = $isValid && !file_exists($uploadDir . DIRECTORY_SEPARATOR . $name);
             }
 
             return $isValid;
@@ -215,6 +215,6 @@ class FileUploadTrait
             return false;
         }
 
-        return !file_exists($uploadDir.DIRECTORY_SEPARATOR.$_FILES[$uploadName]['name']);
+        return !file_exists($uploadDir . DIRECTORY_SEPARATOR . $_FILES[$uploadName]['name']);
     }
 }

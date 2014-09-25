@@ -65,8 +65,8 @@ abstract class AbstractValidator
         $classMethod,
         array $arguments = [],
         array $errorMessageValues = [],
-        $fetchValidatorErrors = false)
-    {
+        $fetchValidatorErrors = false
+    ) {
         $classMethod = explode("\\", $classMethod);
         $classMethod = array_pop($classMethod);
 
@@ -100,12 +100,12 @@ abstract class AbstractValidator
             }
 
             $isValid = $isValid && $this->functionMap->get(
-                $this->validator->getPropertyName(),
-                $condition['key'],
-                $arguments,
-                $condition['values'],
-                $this->errorArray
-            );
+                    $this->validator->getPropertyName(),
+                    $condition['key'],
+                    $arguments,
+                    $condition['values'],
+                    $this->errorArray
+                );
 
             if (false === $isValid) {
                 if ($condition['is_validator']) {

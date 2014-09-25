@@ -25,9 +25,9 @@ class FileUploadTraitMultipleFileTest extends \PHPUnit_Framework_TestCase
                 'name'     => ['sample.png', 'sample.png', 'sample.png'],
                 'type'     => ['image/png', 'image/png', 'image/png'],
                 'tmp_name' => [
-                    realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
-                    realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
-                    realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
+                    realpath(dirname(__FILE__)) . '/resources/phpGpKMlf',
+                    realpath(dirname(__FILE__)) . '/resources/phpGpKMlf',
+                    realpath(dirname(__FILE__)) . '/resources/phpGpKMlf',
                 ],
                 'error'    => [0, 0, 0],
                 'size'     => [203868, 203868, 203868],
@@ -41,7 +41,7 @@ class FileUploadTraitMultipleFileTest extends \PHPUnit_Framework_TestCase
     public function itShouldCheckIfIsBetween()
     {
         $this->assertTrue(FileUploadTrait::isBetween('image', 0, 2, 'MB', true));
-        $this->assertFalse(FileUploadTrait::isBetween('image', 1, 2, 'MB'));
+        $this->assertFalse(FileUploadTrait::isBetween('image', 1.1, 1.9, 'MB'));
     }
 
     /**
@@ -74,9 +74,9 @@ class FileUploadTraitMultipleFileTest extends \PHPUnit_Framework_TestCase
     public function itShouldCheckIfHasValidUploadDirectory()
     {
         $this->assertTrue(
-            FileUploadTrait::hasValidUploadDirectory('image', realpath(dirname(__FILE__)).'/resources/')
+            FileUploadTrait::hasValidUploadDirectory('image', realpath(dirname(__FILE__)) . '/resources/')
         );
-        $this->assertFalse(FileUploadTrait::hasValidUploadDirectory('image', realpath(dirname(__FILE__)).'/not/'));
+        $this->assertFalse(FileUploadTrait::hasValidUploadDirectory('image', realpath(dirname(__FILE__)) . '/not/'));
     }
 
     /**
@@ -85,12 +85,12 @@ class FileUploadTraitMultipleFileTest extends \PHPUnit_Framework_TestCase
     public function itShouldCheckIfNotOverwritingExistingFile()
     {
         $this->assertFalse(
-            FileUploadTrait::notOverwritingExistingFile( 'image', realpath(dirname(__FILE__)).'/resources')
+            FileUploadTrait::notOverwritingExistingFile('image', realpath(dirname(__FILE__)) . '/resources')
         );
 
         $_FILES['image']['name'] = 'a.png';
         $this->assertTrue(
-            FileUploadTrait::notOverwritingExistingFile( 'image', realpath(dirname(__FILE__)).'/resources')
+            FileUploadTrait::notOverwritingExistingFile('image', realpath(dirname(__FILE__)) . '/resources')
         );
     }
 }

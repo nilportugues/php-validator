@@ -3,16 +3,16 @@
 include realpath(dirname(__FILE__)) . '/../vendor/autoload.php';
 
 if (empty($_FILES)) {
-?>
-<h2>Multiple upload</h2>
-<form method="POST" enctype="multipart/form-data">
-  <input type="file" name="image[]" multiple="multiple">
-  <input type="submit" value="Submit">
-</form>
+    ?>
+    <h2>Multiple upload</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image[]" multiple="multiple">
+        <input type="submit" value="Submit">
+    </form>
 
 <?php
 } else {
-    $validator = new \NilPortugues\Validator\Validator();
+    $validator     = new \NilPortugues\Validator\Validator();
     $fileValidator = $validator->isFileUpload('image');
 
     $isValid = $fileValidator

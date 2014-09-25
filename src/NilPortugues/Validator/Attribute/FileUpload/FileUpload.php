@@ -45,8 +45,8 @@ class FileUpload extends AbstractValidator
             __METHOD__,
             [$minSize, $maxSize, $format, $inclusive],
             [
-                'min' => $minSize,
-                'max' => $maxSize,
+                'min'    => $minSize,
+                'max'    => $maxSize,
                 'format' => (strtoupper($format[0]) == 'B') ? '' : strtoupper($format[0])
             ]
         );
@@ -61,7 +61,7 @@ class FileUpload extends AbstractValidator
      */
     public function isMimeType(array $allowedTypes)
     {
-        $this->addCondition( __METHOD__, [$allowedTypes], []);
+        $this->addCondition(__METHOD__, [$allowedTypes], []);
 
         return $this;
     }
@@ -73,7 +73,7 @@ class FileUpload extends AbstractValidator
      */
     public function hasFileNameFormat(AbstractValidator $validator)
     {
-        $this->addCondition( __METHOD__, [$validator]);
+        $this->addCondition(__METHOD__, [$validator]);
 
         return $this;
     }
@@ -85,7 +85,7 @@ class FileUpload extends AbstractValidator
      */
     public function hasValidUploadDirectory($uploadDir)
     {
-        $this->addCondition( __METHOD__, [$uploadDir]);
+        $this->addCondition(__METHOD__, [$uploadDir]);
 
         return $this;
     }
@@ -97,7 +97,7 @@ class FileUpload extends AbstractValidator
      */
     public function notOverwritingExistingFile($uploadDir)
     {
-        $this->addCondition( __METHOD__, [$uploadDir]);
+        $this->addCondition(__METHOD__, [$uploadDir]);
 
         return $this;
     }

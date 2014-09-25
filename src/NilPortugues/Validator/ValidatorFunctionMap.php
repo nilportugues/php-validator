@@ -61,7 +61,7 @@ class ValidatorFunctionMap
             throw new \InvalidArgumentException('Validator key not found');
         }
 
-        $function = $this->baseNamespace.$this->functionMap[$funcName];
+        $function = $this->baseNamespace . $this->functionMap[$funcName];
         $class    = explode("::", $function);
 
         try {
@@ -72,7 +72,7 @@ class ValidatorFunctionMap
                     throw new \InvalidArgumentException('Validator key not found in error file');
                 }
 
-                if (strlen($errors[$funcName])>0) {
+                if (strlen($errors[$funcName]) > 0) {
                     $this->validator->setError(
                         $this->buildErrorMessage($errorValues, $errors, $funcName, $propertyName)
                     );
