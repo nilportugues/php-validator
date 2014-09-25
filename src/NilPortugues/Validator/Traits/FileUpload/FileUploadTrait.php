@@ -37,7 +37,7 @@ class FileUploadTrait
      */
     public static function isUploaded($uploadName)
     {
-        return isset($_FILES[$uploadName]);
+        return array_key_exists($uploadName, $_FILES);
     }
 
     /**
@@ -86,23 +86,20 @@ class FileUploadTrait
     {
         if (isset($_FILES[$uploadName]['tmp_name']) && is_array($_FILES[$uploadName]['tmp_name'])) {
             $isValid = true;
-            foreach ($_FILES[$uploadName]['tmp_name'] as $name) {
-                $fileInfo = new \finfo(FILEINFO_MIME_TYPE);
-                $mimeType = $fileInfo->file($name);
+
+            foreach ($_FILES[$uploadName]['type'] as $mimeType) {
                 $isValid = $isValid && in_array($mimeType, $allowedTypes, true);
             }
 
             return $isValid;
         }
 
-        if (!isset($_FILES['tmp_name'])) {
+        if (!isset($_FILES['type'])) {
             return false;
         }
 
-        $fileInfo = new \finfo(FILEINFO_MIME_TYPE);
-        $mimeType = $fileInfo->file($_FILES['tmp_name']);
 
-        return in_array($mimeType, $allowedTypes, true);
+        return in_array($_FILES['type'], $allowedTypes, true);
     }
 
     /**

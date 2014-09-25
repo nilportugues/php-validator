@@ -105,7 +105,7 @@ return [
     'Collection::isNotEmpty'                 => 'The :attribute must have at least 1 item.',
     'Collection::startsWith'                 => 'The :attribute array does not start as expected.',
     //FileUpload
-    'FileUpload::__construct'                => 'The :attribute must have files uploaded.',
+    'FileUpload::__construct'                => 'The :attribute has no files.',
     'FileUpload::isBetween'                  => 'The :attribute must be between :min and :max bytes.',
     'FileUpload::isMimeType'                 => 'The :attribute is not a valid file format.',
     'FileUpload::hasFileNameFormat'          => 'The :attribute file name format is not valid.',

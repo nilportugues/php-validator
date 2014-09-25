@@ -1225,11 +1225,11 @@ $validator = new \NilPortugues\Validator\Validator();
 $fileValidator = $validator->isFileUpload('image');
 
 $fileValidator
-     ->isBetween(1, 3, 'MB', true)
-     ->isMimeType(['image/png', 'image/gif', 'image/jpg'])
+     ->isBetween(0, 3, 'MB', true)
+     ->isMimeType(['image/png', 'image/gif', 'image/jpeg'])
      ->hasValidUploadDirectory('./uploads/images')
      ->notOverwritingExistingFile('./uploads/images')
-     ->validate($_FILES);
+     ->validate('image');
 ```
 
 ### Multiple file validation
@@ -1251,9 +1251,9 @@ On the server side it is done exactly the same as before! Easy, right? :)
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-$file = $validator->isFileUpload('oneFile');
+$file = $validator->isFileUpload('image');
 
-$file->isBetween(1, 3, 'MB', true)->validate($_FILES);
+$file->isBetween(1, 3, 'MB', true)->validate('image');
 ```
 
 #### 3.6.2. isMimeType(array $allowedTypes)  <a name="block3.6.2"></a> [↑](#index_block)
@@ -1261,9 +1261,9 @@ $file->isBetween(1, 3, 'MB', true)->validate($_FILES);
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-$file = $validator->isFileUpload('oneFile');
+$file = $validator->isFileUpload('image');
 
-$file->isMimeType(['image/png', 'image/gif', 'image/jpg'])->validate($_FILES);
+$file->isMimeType(['image/png', 'image/gif', 'image/jpeg'])->validate('image');
 ```
 
 #### 3.6.3. hasFileNameFormat(AbstractValidator $validator)  <a name="block3.6.3"></a> [↑](#index_block)
@@ -1271,10 +1271,10 @@ $file->isMimeType(['image/png', 'image/gif', 'image/jpg'])->validate($_FILES);
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-$file = $validator->isFileUpload('oneFile');
-$stringValidator = $validator->isString('oneFile')->isAlpha();
+$file = $validator->isFileUpload('image');
+$stringValidator = $validator->isString('image')->isAlpha();
 
-$file->hasFileNameFormat($stringValidator)->validate($_FILES);
+$file->hasFileNameFormat($stringValidator)->validate('image');
 ```
 
 #### 3.6.4. hasValidUploadDirectory($uploadDir)  <a name="block3.6.4"></a> [↑](#index_block)
@@ -1282,9 +1282,9 @@ $file->hasFileNameFormat($stringValidator)->validate($_FILES);
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-$file = $validator->isFileUpload('oneFile');
+$file = $validator->isFileUpload('image');
 
-$file->hasValidUploadDirectory('./uploads/images')->validate($_FILES);
+$file->hasValidUploadDirectory('./uploads/images')->validate('image');
 ```
 
 #### 3.6.5. notOverwritingExistingFile($uploadDir)  <a name="block3.6.5"></a> [↑](#index_block)
@@ -1292,9 +1292,9 @@ $file->hasValidUploadDirectory('./uploads/images')->validate($_FILES);
 ##### Example
 ```php
 $validator = new \NilPortugues\Validator\Validator();
-$file = $validator->isFileUpload('oneFile');
+$file = $validator->isFileUpload('image');
 
-$file->notOverwritingExistingFile('./uploads/images')->validate($_FILES);
+$file->notOverwritingExistingFile('./uploads/images')->validate('image');
 ```
 
 <a name="block4"></a>

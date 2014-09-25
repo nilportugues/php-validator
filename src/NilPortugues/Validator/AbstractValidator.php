@@ -95,7 +95,7 @@ abstract class AbstractValidator
         foreach ($this->conditions as $condition) {
             $arguments = $condition['arguments'];
 
-            if (false === strpos('FileUpload::', $condition['key'])) {
+            if (false === strpos('FileUpload::isUploaded', $condition['key'])) {
                 $arguments = array_merge([$value], $condition['arguments']);
             }
 
