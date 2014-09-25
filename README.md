@@ -1207,7 +1207,7 @@ $collection->startsWith('1', true)->validate($fixedArray)); //false
 
 <a name="block3.6"></a>
 ## 3.6 File Upload [↑](#index_block)
-FileUpload validation is one of the most boring parts of web development.
+FileUpload validation is one of the most boring parts of web development, but this validator makes things a breeze.
 
 ### One file validation
 Using FileUpload validator alone, you can validate single file uploads.
@@ -1233,7 +1233,6 @@ $fileValidator
 ```
 
 ### Multiple file validation
-In combination with the Collection Validator, validator for multiple files is possible.
 
 For instance, let's say file upload is done using the following form:
 
@@ -1244,7 +1243,7 @@ For instance, let's say file upload is done using the following form:
 </form>
 ```
 
-On the server side... exactly the same as before! Easy, right? :)
+On the server side it is done exactly the same as before! Easy, right? :)
 
 
 #### 3.6.1. isBetween($minSize, $maxSize, $inclusive = false)  <a name="block3.6.1"></a> [↑](#index_block)
