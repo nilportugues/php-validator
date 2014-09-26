@@ -510,4 +510,32 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(StringTrait::isUrl('//google.com'));
         $this->assertTrue(StringTrait::isUrl('//google.com/robots.txt'));
     }
+
+    /**
+     * @test
+     */
+    public function itShouldValidateUUID()
+    {
+        $this->assertTrue(StringTrait::isUUID('6ba7b810-9dad-11d1-80b4-00c04fd430c8'));
+        $this->assertTrue(StringTrait::isUUID('6ba7b811-9dad-11d1-80b4-00c04fd430c8'));
+        $this->assertTrue(StringTrait::isUUID('6ba7b812-9dad-11d1-80b4-00c04fd430c8'));
+        $this->assertTrue(StringTrait::isUUID('6ba7b814-9dad-11d1-80b4-00c04fd430c8'));
+        $this->assertTrue(StringTrait::isUUID('00000000-0000-0000-0000-000000000000'));
+
+        $this->assertTrue(StringTrait::isUUID('6ba7b810-9dad-11d1-80b4-00c04fd430c8', false));
+        $this->assertTrue(StringTrait::isUUID('6ba7b811-9dad-11d1-80b4-00c04fd430c8', false));
+        $this->assertTrue(StringTrait::isUUID('6ba7b812-9dad-11d1-80b4-00c04fd430c8', false));
+        $this->assertTrue(StringTrait::isUUID('6ba7b814-9dad-11d1-80b4-00c04fd430c8', false));
+        $this->assertTrue(StringTrait::isUUID('00000000-0000-0000-0000-000000000000', false));
+
+        $this->assertFalse(StringTrait::isUUID('{6ba7b810-9dad-11d1-80b4-00c04fd430c8}'));
+        $this->assertFalse(StringTrait::isUUID('216f-ff40-98d9-11e3-a5e2-0800-200c-9a66'));
+        $this->assertFalse(StringTrait::isUUID('{216fff40-98d9-11e3-a5e2-0800200c9a66}'));
+        $this->assertFalse(StringTrait::isUUID('216fff4098d911e3a5e20800200c9a66'));
+
+        $this->assertTrue(StringTrait::isUUID('{6ba7b810-9dad-11d1-80b4-00c04fd430c8}', false));
+        $this->assertTrue(StringTrait::isUUID('216f-ff40-98d9-11e3-a5e2-0800-200c-9a66', false));
+        $this->assertTrue(StringTrait::isUUID('{216fff40-98d9-11e3-a5e2-0800200c9a66}', false));
+        $this->assertTrue(StringTrait::isUUID('216fff4098d911e3a5e20800200c9a66', false));
+    }
 }

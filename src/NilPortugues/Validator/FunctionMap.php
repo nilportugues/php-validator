@@ -66,6 +66,7 @@ return [
     'String::hasSpecialCharacters'           => $base.'\String\StringTrait::hasSpecialCharacters',
     'String::isEmail'                        => $base.'\String\StringTrait::isEmail',
     'String::isUrl'                          => $base.'\String\StringTrait::isUrl',
+    'String::isUUID'                         => $base.'\String\StringTrait::isUUID',
     //Object
     'Object::__construct'                    => $base.'\Object\ObjectTrait::isObject',
     'Object::isInstanceOf'                   => $base.'\Object\ObjectTrait::isInstanceOf',
