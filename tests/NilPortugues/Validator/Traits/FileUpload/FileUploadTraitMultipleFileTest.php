@@ -29,7 +29,7 @@ class FileUploadTraitMultipleFileTest extends \PHPUnit_Framework_TestCase
                     realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
                     realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
                 ],
-                'error'    => [0, 0, 0],
+                'error'    => [],
                 'size'     => [203868, 203868, 203868],
             ],
         ];
