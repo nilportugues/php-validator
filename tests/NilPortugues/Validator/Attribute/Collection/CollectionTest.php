@@ -50,6 +50,8 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         $keyIsInteger  = $validator->isInteger('key')->isPositive();
 
         $this->assertTrue($this->getValidator()->each($valueIsString)->validate($array));
+        $this->assertFalse($this->getValidator()->each($valueIsString)->validate(['yes','n@']));
+
         $this->assertTrue($this->getValidator()->each($valueIsString, $keyIsInteger)->validate($array));
 
         $this->assertTrue($this->getValidator()->each($valueIsString)->validate($arrayObject));
