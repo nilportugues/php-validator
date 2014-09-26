@@ -49,5 +49,4 @@ class FileUploadException extends \Exception
 
         $this->message = $this->errorMessages[$error];
     }
-
 }

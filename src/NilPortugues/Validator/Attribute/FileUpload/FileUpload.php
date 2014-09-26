@@ -101,4 +101,16 @@ class FileUpload extends AbstractValidator
 
         return $this;
     }
+
+    /**
+     * @param integer $length
+     *
+     * @return \NilPortugues\Validator\Attribute\String\String
+     */
+    public function hasLength($length)
+    {
+        $this->addCondition(__METHOD__, [$length], ['size' => $length]);
+
+        return $this;
+    }
 }

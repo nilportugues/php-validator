@@ -99,7 +99,7 @@ class Collection extends AbstractValidator
      *
      * @return $this
      */
-    public function length($length)
+    public function hasLength($length)
     {
         $this->addCondition(__METHOD__, [$length]);
 

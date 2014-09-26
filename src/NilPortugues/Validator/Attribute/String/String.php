@@ -198,7 +198,7 @@ class String extends Generic
      */
     public function hasLength($length)
     {
-        $this->addCondition(__METHOD__, [$length]);
+        $this->addCondition(__METHOD__, [$length], ['size' => $length]);
 
         return $this;
     }

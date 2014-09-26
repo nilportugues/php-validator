@@ -103,7 +103,7 @@ return [
     'Collection::endsWith'                   => '\Collection\CollectionTrait::endsWith',
     'Collection::contains'                   => '\Collection\CollectionTrait::contains',
     'Collection::hasKey'                     => '\Collection\CollectionTrait::hasKey',
-    'Collection::length'                     => '\Collection\CollectionTrait::length',
+    'Collection::hasLength'                  => '\Collection\CollectionTrait::hasLength',
     'Collection::isNotEmpty'                 => '\Collection\CollectionTrait::isNotEmpty',
     'Collection::startsWith'                 => '\Collection\CollectionTrait::startsWith',
     //FileUpload
@@ -114,4 +114,5 @@ return [
     'FileUpload::hasValidUploadDirectory'    => '\FileUpload\FileUploadTrait::hasValidUploadDirectory',
     'FileUpload::notOverwritingExistingFile' => '\FileUpload\FileUploadTrait::notOverwritingExistingFile',
     'FileUpload::isImage'                    => '\FileUpload\FileUploadTrait::isImage',
+    'FileUpload::hasLength'                  => '\FileUpload\FileUploadTrait::hasLength',
 ];

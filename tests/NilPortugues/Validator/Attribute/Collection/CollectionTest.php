@@ -154,17 +154,17 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         $arrayObject = new \ArrayObject($array);
         $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
 
-        $this->assertTrue($this->getValidator()->length(2)->validate($array));
-        $this->assertTrue($this->getValidator()->length(2)->validate($arrayObject));
-        $this->assertTrue($this->getValidator()->length(2)->validate($fixedArray));
+        $this->assertTrue($this->getValidator()->hasLength(2)->validate($array));
+        $this->assertTrue($this->getValidator()->hasLength(2)->validate($arrayObject));
+        $this->assertTrue($this->getValidator()->hasLength(2)->validate($fixedArray));
 
         $array       = [];
         $arrayObject = new \ArrayObject($array);
         $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
 
-        $this->assertTrue($this->getValidator()->length(0)->validate($array));
-        $this->assertTrue($this->getValidator()->length(0)->validate($arrayObject));
-        $this->assertTrue($this->getValidator()->length(0)->validate($fixedArray));
+        $this->assertTrue($this->getValidator()->hasLength(0)->validate($array));
+        $this->assertTrue($this->getValidator()->hasLength(0)->validate($arrayObject));
+        $this->assertTrue($this->getValidator()->hasLength(0)->validate($fixedArray));
     }
 
     /**

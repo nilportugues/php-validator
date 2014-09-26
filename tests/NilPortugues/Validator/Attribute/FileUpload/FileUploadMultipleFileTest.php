@@ -8,12 +8,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Tests\NilPortugues\Validator\Traits\FileUpload;
+namespace Tests\NilPortugues\Validator\Attribute\FileUpload;
 
-use NilPortugues\Validator\Traits\FileUpload\FileUploadTrait;
 use NilPortugues\Validator\Validator;
 
-class FileUploadTraitMultipleFileTest extends \PHPUnit_Framework_TestCase
+/**
+ * Class FileUploadMultipleFileTest
+ * @package Tests\NilPortugues\Validator\Attribute\FileUpload
+ */
+class FileUploadMultipleFileTest extends \PHPUnit_Framework_TestCase
 {
     /**
      *
@@ -36,12 +39,22 @@ class FileUploadTraitMultipleFileTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @return \NilPortugues\Validator\Attribute\FileUpload\FileUpload
+     */
+    private function getValidator()
+    {
+        $validator = new Validator();
+
+        return $validator->isFileUpload('image');
+    }
+
+    /**
      * @test
      */
     public function itShouldCheckIfHasLength()
     {
-        $this->assertTrue(FileUploadTrait::hasLength('image', 3));
-        $this->assertFalse(FileUploadTrait::hasLength('image', 2));
+        $this->assertTrue($this->getValidator()->hasLength(3)->validate('image'));
+        $this->assertFalse($this->getValidator()->hasLength(2)->validate('image'));
     }
 
     /**
@@ -49,7 +62,7 @@ class FileUploadTraitMultipleFileTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldCheckIfIsBetween()
     {
-        $this->assertTrue(FileUploadTrait::isBetween('image', 0, 2, 'MB', true));
+        $this->assertTrue($this->getValidator()->isBetween(0, 2, 'MB', true)->validate('image'));
     }
 
     /**
@@ -57,8 +70,15 @@ class FileUploadTraitMultipleFileTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldCheckIfIsMimeType()
     {
-        $this->assertTrue(FileUploadTrait::isMimeType('image', ['image/png', 'image/gif', 'image/jpg']));
-        $this->assertFalse(FileUploadTrait::isMimeType('image', ['image/bmp']));
+        $this->assertTrue($this->getValidator()
+                ->isMimeType(['image/png', 'image/gif', 'image/jpg'])
+                ->validate('image')
+        );
+
+        $this->assertFalse($this->getValidator()
+                ->isMimeType(['image/bmp'])
+                ->validate('image')
+        );
     }
 
     /**
@@ -69,11 +89,11 @@ class FileUploadTraitMultipleFileTest extends \PHPUnit_Framework_TestCase
         $validator       = new Validator();
         $stringValidator = $validator->isString('image')->isLowercase();
 
-        $this->assertTrue(FileUploadTrait::hasFileNameFormat('image', $stringValidator));
+        $this->assertTrue($this->getValidator()->hasFileNameFormat($stringValidator)->validate('image'));
 
         $stringValidator         = $validator->isString('image')->isAlphanumeric();
         $_FILES['image']['name'] = '@sample.png';
-        $this->assertFalse(FileUploadTrait::hasFileNameFormat('image', $stringValidator));
+        $this->assertFalse($this->getValidator()->hasFileNameFormat($stringValidator)->validate('image'));
     }
 
     /**
@@ -82,9 +102,14 @@ class FileUploadTraitMultipleFileTest extends \PHPUnit_Framework_TestCase
     public function itShouldCheckIfHasValidUploadDirectory()
     {
         $this->assertTrue(
-            FileUploadTrait::hasValidUploadDirectory('image', realpath(dirname(__FILE__)).'/resources/')
+            $this->getValidator()
+                ->hasValidUploadDirectory(realpath(dirname(__FILE__)).'/resources/')
+                ->validate('image')
         );
-        $this->assertFalse(FileUploadTrait::hasValidUploadDirectory('image', realpath(dirname(__FILE__)).'/not/'));
+        $this->assertFalse($this->getValidator()
+                ->hasValidUploadDirectory(realpath(dirname(__FILE__)).'/not/')
+                ->validate('image')
+        );
     }
 
     /**
@@ -93,12 +118,16 @@ class FileUploadTraitMultipleFileTest extends \PHPUnit_Framework_TestCase
     public function itShouldCheckIfNotOverwritingExistingFile()
     {
         $this->assertFalse(
-            FileUploadTrait::notOverwritingExistingFile('image', realpath(dirname(__FILE__)).'/resources')
+            $this->getValidator()
+                ->notOverwritingExistingFile(realpath(dirname(__FILE__)).'/resources')
+                ->validate('image')
         );
 
         $_FILES['image']['name'] = 'a.png';
         $this->assertTrue(
-            FileUploadTrait::notOverwritingExistingFile('image', realpath(dirname(__FILE__)).'/resources')
+            $this->getValidator()
+                ->notOverwritingExistingFile(realpath(dirname(__FILE__)).'/resources')
+                ->validate('image')
         );
     }
 }

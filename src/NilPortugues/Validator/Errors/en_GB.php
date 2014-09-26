@@ -101,7 +101,7 @@ return [
     'Collection::endsWith'                   => 'The :attribute array does not end as expected.',
     'Collection::contains'                   => 'The :attribute was not found.',
     'Collection::hasKey'                     => 'The :attribute array has no :key.',
-    'Collection::length'                     => 'The :attribute must contain :size items.',
+    'Collection::hasLength'                     => 'The :attribute must contain :size items.',
     'Collection::isNotEmpty'                 => 'The :attribute must have at least 1 item.',
     'Collection::startsWith'                 => 'The :attribute array does not start as expected.',
     //FileUpload
@@ -118,5 +118,5 @@ return [
     'FileUpload::UPLOAD_ERR_NO_TMP_DIR'      => 'Upload failed. Missing a temporary upload folder.',
     'FileUpload::UPLOAD_ERR_CANT_WRITE'      => 'Upload failed. Failed to write file to disk.',
     'FileUpload::UPLOAD_ERR_EXTENSION'       => 'Upload failed. File upload was stopped.',
-
+    'FileUpload::hasLength'                  => 'The :attribute must be :size files.'
 ];

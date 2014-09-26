@@ -88,7 +88,7 @@ A simple, powerful and elegant stand-alone validation library with no dependenci
         * [4.5.3. endsWith] (#block4.5.3)
         * [4.5.4. contains] (#block4.5.4)
         * [4.5.5. hasKey] (#block4.5.5)
-        * [4.5.6. length] (#block4.5.6)
+        * [4.5.6. hasLength] (#block4.5.6)
         * [4.5.7. isNotEmpty] (#block4.5.7)
         * [4.5.8. startsWith] (#block4.5.8)
     * [4.6 File Upload](#block4.6)
@@ -97,6 +97,7 @@ A simple, powerful and elegant stand-alone validation library with no dependenci
         * [4.6.3. hasFileNameFormat] (#block4.6.3)
         * [4.6.4. hasValidUploadDirectory] (#block4.6.4)
         * [4.6.5. notOverwritingExistingFile] (#block4.6.5)
+        * [4.6.6. hasLength] (#block4.6.6)
 * [4. Quality Code](#block4)
 * [5. Author](#block5)
 * [6. License](#block6)
@@ -168,9 +169,9 @@ $errors = $stringValidator->getErrors(); //error array in the provided language.
 
 ## Available translations
 
-- en_GB (English (British))
-- es_ES (Spanish (Spain))
-- ca (Catalan)
+- en_GB     English (British)
+- es_ES     Spanish (Spain)
+- ca        Catalan
 
 <a name="block4"></a>
 # 4. Methods [↑](#index_block)
@@ -1159,7 +1160,7 @@ $collection->hasKey(0)->validate($fixedArray)); //false
 
 ```
 
-#### 4.5.6. length <a name="block4.5.6"></a> [↑](#index_block)
+#### 4.5.6. hasLength <a name="block4.5.6"></a> [↑](#index_block)
 
 ##### Example
 ```php
@@ -1170,17 +1171,17 @@ $array = ['one' => 'hello', 'two' => 1];
 $arrayObject = new \ArrayObject($array);
 $fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
 
-$collection->length(2)->validate($array)); //true
-$collection->length(2)->validate($arrayObject)); //true
-$collection->length(2)->validate($fixedArray)); //true
+$collection->hasLength(2)->validate($array)); //true
+$collection->hasLength(2)->validate($arrayObject)); //true
+$collection->hasLength(2)->validate($fixedArray)); //true
 
 $array = [];
 $arrayObject = new \ArrayObject($array);
 $fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
 
-$collection->length(0)->validate($array)); //true
-$collection->length(0)->validate($arrayObject)); //true
-$collection->length(0)->validate($fixedArray)); //true
+$collection->hasLength(0)->validate($array)); //true
+$collection->hasLength(0)->validate($arrayObject)); //true
+$collection->hasLength(0)->validate($fixedArray)); //true
 
 ```
 
@@ -1321,6 +1322,16 @@ $validator = new \NilPortugues\Validator\Validator();
 $file = $validator->isFileUpload('image');
 
 $file->notOverwritingExistingFile('./uploads/images')->validate('image');
+```
+
+#### 4.6.6. hasLength($size)  <a name="block4.6.6"></a> [↑](#index_block)
+
+##### Example
+```php
+$validator = new \NilPortugues\Validator\Validator();
+$file = $validator->isFileUpload('image');
+
+$file->hasLength(1)->validate('image');
 ```
 
 <a name="block4"></a>

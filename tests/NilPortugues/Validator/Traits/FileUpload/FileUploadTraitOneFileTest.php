@@ -28,11 +28,20 @@ class FileUploadTraitOneFileTest extends \PHPUnit_Framework_TestCase
             'image' => [
                 'name'     => 'sample.png',
                 'type'     => 'image/png',
-                'tmp_name' => realpath(dirname(__FILE__)) . '/resources/phpGpKMlf',
+                'tmp_name' => realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
                 'error'    => '0',
                 'size'     => '203868',
             ],
         ];
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldCheckIfHasLength()
+    {
+        $this->assertTrue(FileUploadTrait::hasLength('image', 1));
+        $this->assertFalse(FileUploadTrait::hasLength('image', 2));
     }
 
     /**
@@ -74,9 +83,9 @@ class FileUploadTraitOneFileTest extends \PHPUnit_Framework_TestCase
     public function itShouldCheckIfHasValidUploadDirectory()
     {
         $this->assertTrue(
-            FileUploadTrait::hasValidUploadDirectory('image', realpath(dirname(__FILE__)) . '/resources/')
+            FileUploadTrait::hasValidUploadDirectory('image', realpath(dirname(__FILE__)).'/resources/')
         );
-        $this->assertFalse(FileUploadTrait::hasValidUploadDirectory('image', realpath(dirname(__FILE__)) . '/not/'));
+        $this->assertFalse(FileUploadTrait::hasValidUploadDirectory('image', realpath(dirname(__FILE__)).'/not/'));
     }
 
     /**
@@ -85,12 +94,12 @@ class FileUploadTraitOneFileTest extends \PHPUnit_Framework_TestCase
     public function itShouldCheckIfNotOverwritingExistingFile()
     {
         $this->assertFalse(
-            FileUploadTrait::notOverwritingExistingFile('image', realpath(dirname(__FILE__)) . '/resources')
+            FileUploadTrait::notOverwritingExistingFile('image', realpath(dirname(__FILE__)).'/resources')
         );
 
         $_FILES['image']['name'] = 'a.png';
         $this->assertTrue(
-            FileUploadTrait::notOverwritingExistingFile('image', realpath(dirname(__FILE__)) . '/resources')
+            FileUploadTrait::notOverwritingExistingFile('image', realpath(dirname(__FILE__)).'/resources')
         );
     }
 }

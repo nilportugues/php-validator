@@ -123,6 +123,6 @@ trait FloatTrait
         settype($value, 'float');
         settype($multiple, 'float');
 
-        return (float)0 == fmod($value, $multiple);
+        return (float) 0 == fmod($value, $multiple);
     }
 }

@@ -74,8 +74,8 @@ class Validator
 
         if (null !== $filePath) {
             $filePath = realpath(dirname(__FILE__))
-                . DIRECTORY_SEPARATOR . $this->errorDir
-                . DIRECTORY_SEPARATOR . $this->language . ".php";
+                .DIRECTORY_SEPARATOR.$this->errorDir
+                .DIRECTORY_SEPARATOR.$this->language.".php";
         }
 
         if (false === file_exists($filePath)) {
@@ -90,7 +90,7 @@ class Validator
      */
     private function buildFunctionMap()
     {
-        $functionMap = realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . $this->functionMapFile;
+        $functionMap = realpath(dirname(__FILE__)).DIRECTORY_SEPARATOR.$this->functionMapFile;
 
         if (!file_exists($functionMap)) {
             throw new \RuntimeException('FunctionMap not found');

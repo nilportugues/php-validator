@@ -140,7 +140,7 @@ trait CollectionTrait
      *
      * @return bool
      */
-    public static function length($value, $length)
+    public static function hasLength($value, $length)
     {
         settype($length, 'int');
 

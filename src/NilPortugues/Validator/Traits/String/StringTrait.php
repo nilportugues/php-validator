@@ -189,7 +189,7 @@ trait StringTrait
      */
     public static function in($value, $haystack, $identical = false)
     {
-        $haystack = (string)$haystack;
+        $haystack = (string) $haystack;
         $enc      = mb_detect_encoding($value);
 
         if (false === $identical) {
@@ -467,7 +467,7 @@ trait StringTrait
     public static function isUrl($value)
     {
         if ($value[0] == $value[1] && $value[0] == "/") {
-            $value = 'http:' . $value;
+            $value = 'http:'.$value;
         }
 
         return false !== filter_var($value, FILTER_VALIDATE_URL, ['options' => ['flags' => FILTER_FLAG_PATH_REQUIRED]]);

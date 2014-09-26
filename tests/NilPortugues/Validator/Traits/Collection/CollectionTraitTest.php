@@ -149,17 +149,17 @@ class CollectionTraitTest extends \PHPUnit_Framework_TestCase
         $arrayObject = new \ArrayObject($array);
         $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
 
-        $this->assertTrue(CollectionTrait::length($array, 2));
-        $this->assertTrue(CollectionTrait::length($arrayObject, 2));
-        $this->assertTrue(CollectionTrait::length($fixedArray, 2));
+        $this->assertTrue(CollectionTrait::hasLength($array, 2));
+        $this->assertTrue(CollectionTrait::hasLength($arrayObject, 2));
+        $this->assertTrue(CollectionTrait::hasLength($fixedArray, 2));
 
         $array       = [];
         $arrayObject = new \ArrayObject($array);
         $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
 
-        $this->assertTrue(CollectionTrait::length($array, 0));
-        $this->assertTrue(CollectionTrait::length($arrayObject, 0));
-        $this->assertTrue(CollectionTrait::length($fixedArray, 0));
+        $this->assertTrue(CollectionTrait::hasLength($array, 0));
+        $this->assertTrue(CollectionTrait::hasLength($arrayObject, 0));
+        $this->assertTrue(CollectionTrait::hasLength($fixedArray, 0));
     }
 
     /**
