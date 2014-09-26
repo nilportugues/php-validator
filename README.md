@@ -168,9 +168,12 @@ $errors = $stringValidator->getErrors(); //error array in the provided language.
 
 ## Available translations
 
-- en_GB (English (British))
-- es_ES (Spanish (Spain))
-- ca (Catalan)
+## Available translations
+
+- en_GB     **English (British)**
+- es_ES     **Spanish (Spain)**
+- ca        **Catalan**
+
 
 <a name="block4"></a>
 # 4. Methods [↑](#index_block)
