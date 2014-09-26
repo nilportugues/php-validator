@@ -154,7 +154,7 @@ The Input Validator features a default translation `src/NilPortugues/Validator/E
     Feel free to submit a pull request or open an issue with more translations!
 ---
 
-## Customization
+#### Customization
 Language can be changed anytime by providing a file following the same structure.
 
 ```php
@@ -166,9 +166,7 @@ $stringValidator = $validator->isString('username');
 $errors = $stringValidator->getErrors(); //error array in the provided language.
 ```
 
-## Available translations
-
-## Available translations
+#### Available translations
 
 - en_GB     **English (British)**
 - es_ES     **Spanish (Spain)**
