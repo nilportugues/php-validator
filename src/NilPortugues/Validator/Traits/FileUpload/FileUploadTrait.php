@@ -82,7 +82,7 @@ class FileUploadTrait
 
         $minSize = $minSize * $multiplier;
         $maxSize = $maxSize * $multiplier;
-        $maxSize = min(self::getMaxServerFileSize($uploadName, $maxSize), $maxSize);
+        $maxSize = min(self::getMaxServerFileSize(), $maxSize);
 
         if (isset($_FILES[$uploadName]['size']) && is_array($_FILES[$uploadName]['size'])) {
             $isValid = true;
