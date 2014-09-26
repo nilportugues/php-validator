@@ -19,11 +19,6 @@ use NilPortugues\Validator\Traits\FileUpload\FileUploadException;
 class ValidatorFunctionMap
 {
     /**
-     * @var string
-     */
-    private $baseNamespace = 'NilPortugues\Validator\Traits';
-
-    /**
      * @var array
      */
     private $functionMap = [];
@@ -61,7 +56,7 @@ class ValidatorFunctionMap
             throw new \InvalidArgumentException('Validator key not found');
         }
 
-        $function = $this->baseNamespace.$this->functionMap[$funcName];
+        $function = $this->functionMap[$funcName];
         $class    = explode("::", $function);
 
         try {

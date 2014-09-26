@@ -33,7 +33,26 @@ class ValidatorFunctionMapTest extends \PHPUnit_Framework_TestCase
         $errors           = [];
         $errorValues      = [];
 
-        $this->setExpectedException('\InvalidArgumentException');
+        $this->setExpectedException('\InvalidArgumentException', 'Validator key not found');
         $functionMap->get('property', 'a-function-name-that-doesnt-exist', [], $errorValues, $errors);
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldThrowExceptionWhenErrorMessageDoesNotExist()
+    {
+        $abstractValidator = $this
+            ->getMockBuilder('NilPortugues\Validator\AbstractValidator')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $functionMapArray = ['String::isAlpha' => '\NilPortugues\Validator\Traits\String\StringTrait::isAlpha'];
+        $functionMap      = new ValidatorFunctionMap($abstractValidator, $functionMapArray);
+        $errors           = [];
+        $errorValues      = ['@'];
+
+        $this->setExpectedException('\InvalidArgumentException', 'Validator key not found in error file');
+        $functionMap->get('property', 'String::isAlpha', ['@'], $errorValues, $errors);
     }
 }
