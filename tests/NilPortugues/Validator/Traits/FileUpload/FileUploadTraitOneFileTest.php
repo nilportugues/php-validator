@@ -51,6 +51,18 @@ class FileUploadTraitOneFileTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertTrue(FileUploadTrait::isBetween('image', 0, 1, 'MB', true));
         $this->assertFalse(FileUploadTrait::isBetween('image', 1, 2, 'MB'));
+
+        $_FILES = [
+            'image' => [
+                'name'     => 'sample.png',
+                'type'     => 'image/png',
+                'tmp_name' => realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
+                'error'    => '0',
+                'size'     => '2000003868',
+            ],
+        ];
+        $this->setExpectedException('\NilPortugues\Validator\Traits\FileUpload\FileUploadException');
+        FileUploadTrait::isBetween('image', 1, 2, 'MB');
     }
 
     /**
