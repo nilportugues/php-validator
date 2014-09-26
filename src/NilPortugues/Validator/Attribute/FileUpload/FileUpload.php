@@ -55,7 +55,7 @@ class FileUpload extends AbstractValidator
     }
 
     /**
-     * @param array $allowedTypes
+     * @param string[] $allowedTypes
      *
      * @return $this
      */
@@ -105,7 +105,7 @@ class FileUpload extends AbstractValidator
     /**
      * @param integer $length
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return FileUpload
      */
     public function hasLength($length)
     {

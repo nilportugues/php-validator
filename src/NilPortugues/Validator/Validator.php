@@ -64,7 +64,7 @@ class Validator
     }
 
     /**
-     * @param $errorMessageFile
+     * @param string $errorMessageFile
      *
      * @throws \InvalidArgumentException
      */

@@ -64,9 +64,9 @@ class FileUploadTrait
     }
 
     /**
-     * @param        $uploadName
-     * @param        $minSize
-     * @param        $maxSize
+     * @param        string $uploadName
+     * @param        integer $minSize
+     * @param        integer $maxSize
      * @param string $format
      * @param bool   $inclusive
      *
@@ -133,7 +133,7 @@ class FileUploadTrait
 
     /**
      * @param string $uploadName
-     * @param array  $allowedTypes
+     * @param string[]  $allowedTypes
      *
      * @return bool
      */
@@ -178,8 +178,8 @@ class FileUploadTrait
     }
 
     /**
-     * @param $uploadName
-     * @param $uploadDir
+     * @param string $uploadName
+     * @param string $uploadDir
      *
      * @return bool
      */
@@ -195,8 +195,8 @@ class FileUploadTrait
     }
 
     /**
-     * @param $uploadName
-     * @param $uploadDir
+     * @param string $uploadName
+     * @param string $uploadDir
      *
      * @return bool
      */
@@ -219,8 +219,8 @@ class FileUploadTrait
     }
 
     /**
-     * @param $uploadName
-     * @param $size
+     * @param string $uploadName
+     * @param integer $size
      *
      * @return bool
      */

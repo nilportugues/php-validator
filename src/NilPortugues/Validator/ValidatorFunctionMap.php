@@ -90,7 +90,7 @@ class ValidatorFunctionMap
      * @param string $funcName
      * @param string $propertyName
      *
-     * @return mixed
+     * @return string
      */
     private function buildErrorMessage(array $errorValues, array &$errors, $funcName, $propertyName)
     {

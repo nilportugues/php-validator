@@ -382,7 +382,7 @@ trait StringTrait
     }
 
     /**
-     * @param              $value
+     * @param              string $value
      * @param integer|null $amount
      * @param string       $regex
      *
@@ -460,9 +460,9 @@ trait StringTrait
     }
 
     /**
-     * @param $value
+     * @param string $value
      *
-     * @return mixed
+     * @return boolean
      */
     public static function isUrl($value)
     {
