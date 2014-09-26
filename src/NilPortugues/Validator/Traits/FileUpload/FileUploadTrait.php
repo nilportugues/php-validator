@@ -64,11 +64,11 @@ class FileUploadTrait
     }
 
     /**
-     * @param        string $uploadName
-     * @param        integer $minSize
-     * @param        integer $maxSize
-     * @param string $format
-     * @param bool   $inclusive
+     * @param string  $uploadName
+     * @param integer $minSize
+     * @param integer $maxSize
+     * @param string  $format
+     * @param bool    $inclusive
      *
      * @return bool
      * @throws FileUploadException
@@ -132,8 +132,8 @@ class FileUploadTrait
     }
 
     /**
-     * @param string $uploadName
-     * @param string[]  $allowedTypes
+     * @param string   $uploadName
+     * @param string[] $allowedTypes
      *
      * @return bool
      */
@@ -219,7 +219,7 @@ class FileUploadTrait
     }
 
     /**
-     * @param string $uploadName
+     * @param string  $uploadName
      * @param integer $size
      *
      * @return bool
@@ -233,5 +233,15 @@ class FileUploadTrait
         }
 
         return 1 == $size && isset($_FILES[$uploadName]['name']);
+    }
+
+    /**
+     * @param string $uploadName
+     *
+     * @return bool
+     */
+    public static function isImage($uploadName)
+    {
+        return self::isMimeType($uploadName, ['image/gif', 'image/jpeg', 'image/png']);
     }
 }

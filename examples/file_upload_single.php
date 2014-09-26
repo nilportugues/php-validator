@@ -1,6 +1,6 @@
 <?php
 
-include realpath(dirname(__FILE__)) . '/../vendor/autoload.php';
+include realpath(dirname(__FILE__)).'/../vendor/autoload.php';
 
 if (empty($_FILES)) {
     ?>
@@ -11,13 +11,14 @@ if (empty($_FILES)) {
     </form>
 
 <?php
+
 } else {
     $validator     = new \NilPortugues\Validator\Validator();
     $fileValidator = $validator->isFileUpload('image');
 
     $isValid = $fileValidator
         ->isBetween(0, 2, 'MB', true)
-        ->isMimeType(['image/png', 'image/gif', 'image/jpeg'])
+        ->isImage() //Same as: isMimeType(['image/png', 'image/gif', 'image/jpeg'])
         ->hasValidUploadDirectory('./')
         ->notOverwritingExistingFile('./')
         ->validate('one_image');

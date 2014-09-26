@@ -70,7 +70,9 @@ class FileUploadTraitOneFileTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldCheckIfIsMimeType()
     {
+        $this->assertTrue(FileUploadTrait::isImage('image'));
         $this->assertTrue(FileUploadTrait::isMimeType('image', ['image/png', 'image/gif', 'image/jpg']));
+
         $this->assertFalse(FileUploadTrait::isMimeType('image', ['image/bmp']));
     }
 

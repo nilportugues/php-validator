@@ -105,11 +105,21 @@ class FileUpload extends AbstractValidator
     /**
      * @param integer $length
      *
-     * @return FileUpload
+     * @return $this
      */
     public function hasLength($length)
     {
         $this->addCondition(__METHOD__, [$length], ['size' => $length]);
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function isImage()
+    {
+        $this->addCondition(__METHOD__);
 
         return $this;
     }

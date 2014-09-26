@@ -67,6 +67,7 @@ class FileUploadOneFileTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldCheckIfIsMimeType()
     {
+        $this->assertTrue($this->getValidator()->isImage()->validate('image'));
         $this->assertTrue($this->getValidator()
                 ->isMimeType(['image/png', 'image/gif', 'image/jpg'])
                 ->validate('image')

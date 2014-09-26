@@ -382,7 +382,7 @@ trait StringTrait
     }
 
     /**
-     * @param              string $value
+     * @param string       $value
      * @param integer|null $amount
      * @param string       $regex
      *
