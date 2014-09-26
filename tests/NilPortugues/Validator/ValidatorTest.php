@@ -85,4 +85,35 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $this->validator->isArray('propertyName');
         $this->assertSame('propertyName', $this->validator->getPropertyName());
     }
+
+    /**
+     * @test
+     */
+    public function itShouldThrowExceptionIfLanguageFileNotFound()
+    {
+        $this->setExpectedException('\InvalidArgumentException');
+        $validator = new Validator('locale.php');
+
+        $stringValidator = $validator->isString('property');
+        $stringValidator->isBetween(500,1000)->validate('a');
+        $stringValidator->getErrors();
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldThrowRuntimeExceptionIfFunctionMapIsNotFound()
+    {
+        $validator = new Validator();
+        $reflection = new \ReflectionObject($validator);
+
+        $property = $reflection->getProperty("functionMapFile");
+        $property->setAccessible(true);
+        $property->setValue($validator, 'notFound.php');
+
+        $this->setExpectedException('\RuntimeException');
+        $method = $reflection->getMethod('buildFunctionMap');
+        $method->setAccessible(true);
+        $method->invoke($validator);
+    }
 }

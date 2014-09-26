@@ -72,7 +72,7 @@ class Validator
     {
         $filePath = $errorMessageFile;
 
-        if (null !== $filePath) {
+        if ('' == $filePath) {
             $filePath = realpath(dirname(__FILE__))
                 .DIRECTORY_SEPARATOR.$this->errorDir
                 .DIRECTORY_SEPARATOR.$this->language.".php";
