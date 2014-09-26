@@ -96,7 +96,6 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 
         $stringValidator = $validator->isString('property');
         $stringValidator->isBetween(500,1000)->validate('a');
-        $stringValidator->getErrors();
     }
 
     /**
