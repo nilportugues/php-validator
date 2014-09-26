@@ -63,6 +63,8 @@ return [
     'String::hasNumeric'                     => 'The :attribute does not have at least :amount numeric characters.',
     'String::hasSpecialCharacters'           => 'The :attribute does not have at least :amount special characters.',
     'String::isEmail'                        => 'The :attribute must be a valid email address.',
+    'String::isUrl'                          => 'The :attribute must be a valid URL.',
+    'String::isUUID'                         => 'The :attribute must be a valid UUID.',
     //Object
     'Object::__construct'                    => 'The :attribute is not a valid object.',
     'Object::isInstanceOf'                   => 'The :attribute is not an instance of :object.',
@@ -118,5 +120,6 @@ return [
     'FileUpload::UPLOAD_ERR_NO_TMP_DIR'      => 'Upload failed. Missing a temporary upload folder.',
     'FileUpload::UPLOAD_ERR_CANT_WRITE'      => 'Upload failed. Failed to write file to disk.',
     'FileUpload::UPLOAD_ERR_EXTENSION'       => 'Upload failed. File upload was stopped.',
+    'FileUpload::isImage'                    => 'The :attribute must be a valid image file.',
     'FileUpload::hasLength'                  => 'The :attribute must be :size files.'
 ];

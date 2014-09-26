@@ -433,4 +433,16 @@ class String extends Generic
 
         return $this;
     }
+
+    /**
+     * @param bool $strict
+     *
+     * @return $this
+     */
+    public function isUUID($strict = true)
+    {
+        $this->addCondition(__METHOD__, [$strict]);
+
+        return $this;
+    }
 }

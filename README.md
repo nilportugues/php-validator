@@ -45,6 +45,7 @@ A simple, powerful and elegant stand-alone validation library with no dependenci
         * [4.1.30. hasSpecialCharacters] (#block4.1.30)
         * [4.1.31. isEmail] (#block4.1.31)
         * [4.1.32. isUrl] (#block4.1.32)
+        * [4.1.33. isUUID] (#block4.1.33)
     * [4.2 Numbers (Integers and Floats)](#block4.2)
         * [4.2.1. isNotZero] (#block4.2.1)
         * [4.2.2. isPositive] (#block4.2.2)
@@ -611,6 +612,35 @@ $string->->isUrl()->validate('//google.com'); //true
 $string->->isUrl()->validate('//google.com/robots.txt'); //true
 ```
 
+#### 4.1.33. isUUID($strict = true) <a name="block4.1.33"></a> [↑](#index_block)
+
+##### Example
+```php
+$validator = new \NilPortugues\Validator\Validator();
+$string = $validator->isString('propertyName');
+
+$string->isUUID()->validate('6ba7b810-9dad-11d1-80b4-00c04fd430c8'); //true
+$string->isUUID()->validate('6ba7b811-9dad-11d1-80b4-00c04fd430c8'); //true
+$string->isUUID()->validate('6ba7b812-9dad-11d1-80b4-00c04fd430c8'); //true
+$string->isUUID()->validate('6ba7b814-9dad-11d1-80b4-00c04fd430c8'); //true
+$string->isUUID()->validate('00000000-0000-0000-0000-000000000000'); //true
+
+$string->isUUID(false)->validate('6ba7b810-9dad-11d1-80b4-00c04fd430c8'); //true
+$string->isUUID(false)->validate('6ba7b811-9dad-11d1-80b4-00c04fd430c8'); //true
+$string->isUUID(false)->validate('6ba7b812-9dad-11d1-80b4-00c04fd430c8'); //true
+$string->isUUID(false)->validate('6ba7b814-9dad-11d1-80b4-00c04fd430c8'); //true
+$string->isUUID(false)->validate('00000000-0000-0000-0000-000000000000'); //true
+
+$string->isUUID()->validate('{6ba7b810-9dad-11d1-80b4-00c04fd430c8}'); //false
+$string->isUUID()->validate('216f-ff40-98d9-11e3-a5e2-0800-200c-9a66'); //false
+$string->isUUID()->validate('{216fff40-98d9-11e3-a5e2-0800200c9a66}'); //false
+$string->isUUID()->validate('216fff4098d911e3a5e20800200c9a66'); //false
+
+$string->isUUID(false)->validate('{6ba7b810-9dad-11d1-80b4-00c04fd430c8}'); //true
+$string->isUUID(false)->validate('216f-ff40-98d9-11e3-a5e2-0800-200c-9a66'); //true
+$string->isUUID(false)->validate('{216fff40-98d9-11e3-a5e2-0800200c9a66}'); //true
+$string->isUUID(false)->validate('216fff4098d911e3a5e20800200c9a66'); //true
+```
 
 <a name="block4.2"></a>
 ## 4.2 Numbers (Integers and Floats) [↑](#index_block)
