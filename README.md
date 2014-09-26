@@ -98,6 +98,7 @@ A simple, powerful and elegant stand-alone validation library with no dependenci
         * [4.6.4. hasValidUploadDirectory] (#block4.6.4)
         * [4.6.5. notOverwritingExistingFile] (#block4.6.5)
         * [4.6.6. hasLength] (#block4.6.6)
+        * [4.6.7. isImage] (#block4.6.7)
 * [4. Quality Code](#block4)
 * [5. Author](#block5)
 * [6. License](#block6)
@@ -1333,6 +1334,16 @@ $validator = new \NilPortugues\Validator\Validator();
 $file = $validator->isFileUpload('image');
 
 $file->hasLength(1)->validate('image');
+```
+
+#### 4.6.7. isImage()  <a name="block4.6.7"></a> [↑](#index_block)
+
+##### Example
+```php
+$validator = new \NilPortugues\Validator\Validator();
+$file = $validator->isFileUpload('image');
+
+$file->isImage()->validate('image');
 ```
 
 <a name="block4"></a>
