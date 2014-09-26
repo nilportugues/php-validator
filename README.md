@@ -1,4 +1,4 @@
- Input Validator [Work in progress]
+ Input Validator
 =========================================
 
 [![Build Status](https://travis-ci.org/nilportugues/validator.png)](https://travis-ci.org/nilportugues/validator) [![Coverage Status](https://img.shields.io/coveralls/nilportugues/validator.svg)](https://coveralls.io/r/nilportugues/validator?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nilportugues/validator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nilportugues/validator/?branch=master) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/9fbb4900-70b9-49f6-b7d5-a9f560cdb036/mini.png)](https://insight.sensiolabs.com/projects/9fbb4900-70b9-49f6-b7d5-a9f560cdb036) [![Latest Stable Version](https://poser.pugx.org/nilportugues/validator/v/stable.svg)](https://packagist.org/packages/nilportugues/validator) [![Total Downloads](https://poser.pugx.org/nilportugues/validator/downloads.svg)](https://packagist.org/packages/nilportugues/validator) [![License](https://poser.pugx.org/nilportugues/validator/license.svg)](https://packagist.org/packages/nilportugues/validator)
@@ -10,7 +10,7 @@ A simple, powerful and elegant stand-alone validation library with no dependenci
 * [2. Usage](#block2)
   * [2.1. Validate all](#block2.1)
   * [2.2. Stop on first error](#block2.2)
-* [3. Translation](#block3)  
+* [3. Validation Message Translation](#block3)  
 * [4. Methods](#block4)
     * [4.1 String](#block4.1)
         * [4.1.1. isAlphanumeric] (#block4.1.1)
@@ -110,7 +110,7 @@ The recommended way to install the Input Validator is through [Composer](http://
 ```json
     {
         "require": {
-            "nilportugues/validator": "dev-master"
+            "nilportugues/validator": "1.0.*@dev"
         }
     }
 ```
@@ -148,9 +148,9 @@ $age = $validator->isInteger('age');
 $result = $age->isPositive()->isBetween(0, 100, true)->validate(-10, true);
 ```
 <a name="block3"></a>
-# 3. Translation [↑](#index_block)
+# 3. Validation Message Translation [↑](#index_block)
 
-The Input Validator features a default translation `src/NilPortugues/Validator/Errors/en_GB.php`.
+The Input Validator features a default translation that can be found at `src/NilPortugues/Validator/Errors/en_GB.php`. If no file path is provided when creating the validator instance, this file is used.
 
 ---
     Feel free to submit a pull request or open an issue with more translations!
@@ -160,7 +160,7 @@ The Input Validator features a default translation `src/NilPortugues/Validator/E
 Language can be changed anytime by providing a file following the same structure.
 
 ```php
-$translationFile = 'full/path/to/translation.php';
+$translationFile = 'full/path/to/alternate-translation.php';
 
 $validator = new \NilPortugues\Validator\Validator($translationFile);
 
@@ -171,8 +171,6 @@ $errors = $stringValidator->getErrors(); //error array in the provided language.
 #### Available translations
 
 - en_GB     **English (British)**
-- es_ES     **Spanish (Spain)**
-- ca        **Catalan**
 
 
 <a name="block4"></a>
