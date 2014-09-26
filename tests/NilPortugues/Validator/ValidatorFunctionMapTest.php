@@ -50,9 +50,40 @@ class ValidatorFunctionMapTest extends \PHPUnit_Framework_TestCase
         $functionMapArray = ['String::isAlpha' => '\NilPortugues\Validator\Traits\String\StringTrait::isAlpha'];
         $functionMap      = new ValidatorFunctionMap($abstractValidator, $functionMapArray);
         $errors           = [];
-        $errorValues      = ['@'];
+        $values           = ['@'];
 
         $this->setExpectedException('\InvalidArgumentException', 'Validator key not found in error file');
-        $functionMap->get('property', 'String::isAlpha', ['@'], $errorValues, $errors);
+        $functionMap->get('property', 'String::isAlpha', $values, $values, $errors);
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldFileUploadException()
+    {
+        $_FILES = [
+            'image' => [
+                'name'     => 'sample.png',
+                'type'     => 'image/png',
+                'tmp_name' => realpath(dirname(__FILE__)).'/Traits/FileUpload/resources/phpGpKMlf',
+                'error'    => 1,
+                'size'     => '200003868',
+            ],
+        ];
+
+        $abstractValidator = $this
+            ->getMockBuilder('NilPortugues\Validator\AbstractValidator')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $functionMapArray = [
+            'FileUpload::isBetween' => '\Tests\NilPortugues\Validator\Resources\DummyFileUpload::isBetween',
+        ];
+
+        $functionMap = new ValidatorFunctionMap($abstractValidator, $functionMapArray);
+        $values      = ['image'];
+        $errors      = ['FileUpload::UPLOAD_ERR_INI_SIZE' => 'error message'];
+
+        $this->assertFalse($functionMap->get('image', 'FileUpload::isBetween', $values, $values, $errors));
     }
 }
