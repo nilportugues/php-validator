@@ -44,7 +44,7 @@ return [
     'String::equals'                         => 'The :attribute and :other must match.',
     'String::in'                             => 'The selected :attribute is invalid.',
     'String::hasGraphicalCharsOnly'          => 'The :attribute may only have graphical characters.',
-    'String::isDigit'                        => 'The :attribute must be :size characters.',
+    'String::hasLength'                      => 'The :attribute must be :size characters.',
     'String::isLowercase'                    => 'The :attribute may only contain lower-cased letters.',
     'String::notEmpty'                       => 'The :attribute is empty.',
     'String::noWhitespace'                   => 'The :attribute has white spaces.',
