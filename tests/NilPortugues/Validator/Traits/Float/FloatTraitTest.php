@@ -45,18 +45,18 @@ class FloatTraitTest extends \PHPUnit_Framework_TestCase
     public function itShouldCheckIfItIsPositive()
     {
         $this->assertTrue(FloatTrait::isPositive(3.14));
-        $this->assertFalse(FloatTrait::isPositive(0));
+        $this->assertTrue(FloatTrait::isPositive(0));
         $this->assertFalse(FloatTrait::isPositive(-3.14));
     }
 
     /**
      * @test
      */
-    public function itShouldCheckIfItIsPositiveOrZero()
+    public function itShouldCheckIfItIsPositiveNotZero()
     {
-        $this->assertTrue(FloatTrait::isPositiveOrZero(3.14));
-        $this->assertTrue(FloatTrait::isPositiveOrZero(0));
-        $this->assertFalse(FloatTrait::isPositiveOrZero(-3.14));
+        $this->assertTrue(FloatTrait::isPositiveNotZero(3.14));
+        $this->assertFalse(FloatTrait::isPositiveNotZero(0));
+        $this->assertFalse(FloatTrait::isPositiveNotZero(-3.14));
     }
 
     /**
@@ -65,18 +65,18 @@ class FloatTraitTest extends \PHPUnit_Framework_TestCase
     public function itShouldCheckIfItIsNegative()
     {
         $this->assertTrue(FloatTrait::isNegative(-3.14));
-        $this->assertFalse(FloatTrait::isNegative(0));
+        $this->assertTrue(FloatTrait::isNegative(0));
         $this->assertFalse(FloatTrait::isNegative(3.14));
     }
 
     /**
      * @test
      */
-    public function itShouldCheckIfItIsNegativeOrZero()
+    public function itShouldCheckIfItIsNegativeNotZero()
     {
-        $this->assertTrue(FloatTrait::isNegativeOrZero(-3.14));
-        $this->assertTrue(FloatTrait::isNegativeOrZero(0));
-        $this->assertFalse(FloatTrait::isNegativeOrZero(3.14));
+        $this->assertTrue(FloatTrait::isNegativeNotZero(-3.14));
+        $this->assertFalse(FloatTrait::isNegativeNotZero(0));
+        $this->assertFalse(FloatTrait::isNegativeNotZero(3.14));
     }
 
     /**
