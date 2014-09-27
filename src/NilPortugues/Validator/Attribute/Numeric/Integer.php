@@ -52,6 +52,16 @@ class Integer extends Generic
     }
 
     /**
+     * @return \NilPortugues\Validator\Attribute\Numeric\Integer
+     */
+    public function isPositiveOrZero()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * @param int  $min
      * @param int  $max
      * @param bool $inclusive
@@ -69,6 +79,16 @@ class Integer extends Generic
      * @return \NilPortugues\Validator\Attribute\Numeric\Integer
      */
     public function isNegative()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * @return \NilPortugues\Validator\Attribute\Numeric\Integer
+     */
+    public function isNegativeOrZero()
     {
         $this->addCondition(__METHOD__);
 

@@ -43,7 +43,7 @@ trait FloatTrait
      *
      * @return bool
      */
-    public static function isPositive($value)
+    public static function isPositiveOrZero($value)
     {
         settype($value, 'float');
 
@@ -55,11 +55,35 @@ trait FloatTrait
      *
      * @return bool
      */
-    public static function isNegative($value)
+    public static function isPositive($value)
+    {
+        settype($value, 'float');
+
+        return 0 < $value;
+    }
+
+    /**
+     * @param double $value
+     *
+     * @return bool
+     */
+    public static function isNegativeOrZero($value)
     {
         settype($value, 'float');
 
         return 0 >= $value;
+    }
+
+    /**
+     * @param double $value
+     *
+     * @return bool
+     */
+    public static function isNegative($value)
+    {
+        settype($value, 'float');
+
+        return 0 > $value;
     }
 
     /**
@@ -97,7 +121,7 @@ trait FloatTrait
     {
         settype($value, 'int');
 
-        return 0 == ($value % 3);
+        return 1 == ($value % 2);
     }
 
     /**

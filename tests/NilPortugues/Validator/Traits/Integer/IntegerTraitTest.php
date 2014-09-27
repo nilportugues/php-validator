@@ -43,6 +43,27 @@ class IntegerTraitTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertTrue(IntegerTrait::isPositive(3));
         $this->assertFalse(IntegerTrait::isPositive(-3));
+        $this->assertFalse(IntegerTrait::isPositive(0));
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldCheckIfItIsPositiveOrZero()
+    {
+        $this->assertTrue(IntegerTrait::isPositiveOrZero(3));
+        $this->assertTrue(IntegerTrait::isPositiveOrZero(0));
+        $this->assertFalse(IntegerTrait::isPositiveOrZero(-3));
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldCheckIfItIsNegativeOrZero()
+    {
+        $this->assertTrue(IntegerTrait::isNegativeOrZero(-3));
+        $this->assertTrue(IntegerTrait::isNegativeOrZero(0));
+        $this->assertFalse(IntegerTrait::isNegativeOrZero(3));
     }
 
     /**

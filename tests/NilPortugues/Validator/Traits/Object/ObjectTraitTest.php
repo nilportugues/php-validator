@@ -34,7 +34,6 @@ class ObjectTraitTest extends \PHPUnit_Framework_TestCase
     public function itShouldCheckIfIsInstanceOf()
     {
         $this->assertTrue(ObjectTrait::isInstanceOf(new \DateTime(), 'DateTime'));
-
         $this->assertFalse(ObjectTrait::isInstanceOf(new \stdClass(), 'DateTime'));
         $this->assertFalse(ObjectTrait::isInstanceOf('a', 'DateTime'));
     }

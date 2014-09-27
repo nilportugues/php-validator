@@ -42,7 +42,7 @@ class CollectionTraitTest extends \PHPUnit_Framework_TestCase
 
         $validator     = new Validator();
         $valueIsString = $validator->isString('value')->isAlpha();
-        $keyIsInteger  = $validator->isInteger('key')->isPositive();
+        $keyIsInteger  = $validator->isInteger('key')->isPositiveOrZero();
 
         $this->assertTrue(CollectionTrait::each($array, $valueIsString));
         $this->assertTrue(CollectionTrait::each($array, $valueIsString, $keyIsInteger));
@@ -65,7 +65,7 @@ class CollectionTraitTest extends \PHPUnit_Framework_TestCase
 
         $validator    = new Validator();
         $keyIsString  = $validator->isString('key')->isAlpha();
-        $keyIsInteger = $validator->isInteger('key')->isPositive();
+        $keyIsInteger = $validator->isInteger('key')->isPositiveOrZero();
 
         $this->assertTrue(CollectionTrait::hasKeyFormat($array, $keyIsString));
 

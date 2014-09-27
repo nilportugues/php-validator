@@ -43,7 +43,7 @@ class FloatTest extends \PHPUnit_Framework_TestCase
     public function itShouldCheckItIsNotZero()
     {
         $this->assertTrue($this->getValidator()->isNotZero()->validate(1.10));
-        $this->assertFalse($this->getValidator()->isNotZero()->validate(0));
+        $this->assertFalse($this->getValidator()->isNotZero()->validate(0.0));
     }
 
     /**
@@ -53,6 +53,17 @@ class FloatTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertTrue($this->getValidator()->isPositive()->validate(1.10));
         $this->assertFalse($this->getValidator()->isPositive()->validate(-10));
+        $this->assertFalse($this->getValidator()->isPositive()->validate(0.0));
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldCheckItIsPositiveOrZero()
+    {
+        $this->assertTrue($this->getValidator()->isPositiveOrZero()->validate(1.10));
+        $this->assertTrue($this->getValidator()->isPositiveOrZero()->validate(0.0));
+        $this->assertFalse($this->getValidator()->isPositiveOrZero()->validate(-10));
     }
 
     /**
@@ -62,6 +73,17 @@ class FloatTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertTrue($this->getValidator()->isNegative()->validate(-10.10));
         $this->assertFalse($this->getValidator()->isNegative()->validate(1.10));
+        $this->assertFalse($this->getValidator()->isNegative()->validate(0.0));
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldCheckItIsNegativeOrZero()
+    {
+        $this->assertTrue($this->getValidator()->isNegativeOrZero()->validate(-10.10));
+        $this->assertTrue($this->getValidator()->isNegativeOrZero()->validate(0.0));
+        $this->assertFalse($this->getValidator()->isNegativeOrZero()->validate(1.10));
     }
 
     /**

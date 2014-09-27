@@ -70,12 +70,14 @@ class FileUploadMultipleFileTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldCheckIfIsMimeType()
     {
-        $this->assertTrue($this->getValidator()
+        $this->assertTrue(
+            $this->getValidator()
                 ->isMimeType(['image/png', 'image/gif', 'image/jpg'])
                 ->validate('image')
         );
 
-        $this->assertFalse($this->getValidator()
+        $this->assertFalse(
+            $this->getValidator()
                 ->isMimeType(['image/bmp'])
                 ->validate('image')
         );
@@ -106,7 +108,8 @@ class FileUploadMultipleFileTest extends \PHPUnit_Framework_TestCase
                 ->hasValidUploadDirectory(realpath(dirname(__FILE__)).'/resources/')
                 ->validate('image')
         );
-        $this->assertFalse($this->getValidator()
+        $this->assertFalse(
+            $this->getValidator()
                 ->hasValidUploadDirectory(realpath(dirname(__FILE__)).'/not/')
                 ->validate('image')
         );

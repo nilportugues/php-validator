@@ -39,11 +39,11 @@ trait IntegerTrait
     }
 
     /**
-     * @param integer $value
+     * @param double $value
      *
      * @return bool
      */
-    public static function isPositive($value)
+    public static function isPositiveOrZero($value)
     {
         settype($value, 'int');
 
@@ -51,7 +51,31 @@ trait IntegerTrait
     }
 
     /**
-     * @param integer $value
+     * @param double $value
+     *
+     * @return bool
+     */
+    public static function isPositive($value)
+    {
+        settype($value, 'int');
+
+        return 0 < $value;
+    }
+
+    /**
+     * @param double $value
+     *
+     * @return bool
+     */
+    public static function isNegativeOrZero($value)
+    {
+        settype($value, 'int');
+
+        return 0 >= $value;
+    }
+
+    /**
+     * @param double $value
      *
      * @return bool
      */
@@ -59,7 +83,7 @@ trait IntegerTrait
     {
         settype($value, 'int');
 
-        return 0 >= $value;
+        return 0 > $value;
     }
 
     /**
