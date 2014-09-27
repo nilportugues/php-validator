@@ -122,7 +122,7 @@ class Integer extends Generic
      */
     public function isMultiple($multiple)
     {
-        $this->addCondition(__METHOD__, [$multiple]);
+        $this->addCondition(__METHOD__, [$multiple], ['size' => $multiple]);
 
         return $this;
     }
