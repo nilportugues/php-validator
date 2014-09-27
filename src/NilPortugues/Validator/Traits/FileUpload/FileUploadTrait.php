@@ -104,7 +104,7 @@ class FileUploadTrait
     }
 
     /**
-     * @param $uploadName
+     * @param string $uploadName
      * @param $size
      * @param $maxSize
      *
