@@ -13,6 +13,8 @@ namespace Tests\NilPortugues\Validator\Traits\Object;
 use NilPortugues\Validator\Traits\Object\ObjectTrait;
 use Tests\NilPortugues\Validator\Resources\Dummy;
 
+class ParentMock {}
+class ChildMock extends ParentMock{}
 /**
  * Class ObjectTraitTest
  * @package Tests\NilPortugues\Validator\Traits\Object
@@ -31,12 +33,29 @@ class ObjectTraitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function itShouldCheckIfIsClassOf()
+    {
+        $this->assertTrue(ObjectTrait::isClassOf(new \DateTime(), 'DateTime'));
+        $this->assertFalse(ObjectTrait::isClassOf(new \stdClass(), 'DateTime'));
+        $this->assertFalse(ObjectTrait::isClassOf('a', 'DateTime'));
+
+        $this->assertTrue(ObjectTrait::isClassOf(new ParentMock, 'Tests\NilPortugues\Validator\Traits\Object\ParentMock'));
+        $this->assertFalse(ObjectTrait::isClassOf(new ChildMock, 'Tests\NilPortugues\Validator\Traits\Object\ParentMock'));
+        $this->assertTrue(ObjectTrait::isClassOf(new ChildMock, 'Tests\NilPortugues\Validator\Traits\Object\ChildMock'));
+    }
+
+    /**
+     * @test
+     */
     public function itShouldCheckIfIsInstanceOf()
     {
         $this->assertTrue(ObjectTrait::isInstanceOf(new \DateTime(), 'DateTime'));
-
         $this->assertFalse(ObjectTrait::isInstanceOf(new \stdClass(), 'DateTime'));
         $this->assertFalse(ObjectTrait::isInstanceOf('a', 'DateTime'));
+
+        $this->assertTrue(ObjectTrait::isInstanceOf(new ParentMock, 'Tests\NilPortugues\Validator\Traits\Object\ParentMock'));
+        $this->assertTrue(ObjectTrait::isInstanceOf(new ChildMock, 'Tests\NilPortugues\Validator\Traits\Object\ParentMock'));
+        $this->assertTrue(ObjectTrait::isInstanceOf(new ChildMock, 'Tests\NilPortugues\Validator\Traits\Object\ChildMock'));
     }
 
     /**
