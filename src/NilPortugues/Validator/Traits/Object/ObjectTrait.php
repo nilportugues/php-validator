@@ -28,13 +28,24 @@ trait ObjectTrait
 
     /**
      * @param mixed  $value
+     * @param string $classOf
+     *
+     * @return bool
+     */
+    public static function isClassOf($value, $classOf)
+    {
+        return is_object($value) && get_class($value) === $classOf;
+    }
+
+    /**
+     * @param mixed  $value
      * @param string $instanceOf
      *
      * @return bool
      */
     public static function isInstanceOf($value, $instanceOf)
     {
-        return is_object($value) && get_class($value) === $instanceOf;
+        return is_object($value) && $value instanceof $instanceOf;
     }
 
     /**
