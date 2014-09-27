@@ -34,7 +34,7 @@ trait ObjectTrait
      */
     public static function isInstanceOf($value, $instanceOf)
     {
-        return is_object($value) && get_class($value) === $instanceOf;
+        return $value instanceof $instanceOf;
     }
 
     /**
