@@ -96,6 +96,8 @@ trait DateTimeTrait
      *
      * @param string|\DateTime $value
      * @param bool             $inclusive
+     * @param string $minDate
+     * @param string $maxDate
      *
      * @return bool
      */
@@ -109,7 +111,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @param string|\DateTime $value
+     * @param string $value
      *
      * @return bool
      */
@@ -122,6 +124,7 @@ trait DateTimeTrait
 
     /**
      *
+     * @param string $value
      * @return bool
      */
     public static function isWeekday($value)
@@ -131,6 +134,7 @@ trait DateTimeTrait
 
     /**
      *
+     * @param string $value
      * @return bool
      */
     public static function isMonday($value)
@@ -142,6 +146,7 @@ trait DateTimeTrait
 
     /**
      *
+     * @param string $value
      * @return bool
      */
     public static function isTuesday($value)
@@ -153,6 +158,7 @@ trait DateTimeTrait
 
     /**
      *
+     * @param string $value
      * @return bool
      */
     public static function isWednesday($value)
@@ -164,6 +170,7 @@ trait DateTimeTrait
 
     /**
      *
+     * @param string $value
      * @return bool
      */
     public static function isThursday($value)
@@ -175,6 +182,7 @@ trait DateTimeTrait
 
     /**
      *
+     * @param string $value
      * @return bool
      */
     public static function isFriday($value)
@@ -186,6 +194,7 @@ trait DateTimeTrait
 
     /**
      *
+     * @param string $value
      * @return bool
      */
     public static function isSaturday($value)
@@ -197,6 +206,7 @@ trait DateTimeTrait
 
     /**
      *
+     * @param string $value
      * @return bool
      */
     public static function isSunday($value)
@@ -208,6 +218,7 @@ trait DateTimeTrait
 
     /**
      *
+     * @param \DateTime $value
      * @return bool
      */
     public static function isToday($value)
@@ -221,6 +232,7 @@ trait DateTimeTrait
 
     /**
      *
+     * @param \DateTime $value
      * @return bool
      */
     public static function isYesterday($value)
@@ -234,6 +246,7 @@ trait DateTimeTrait
 
     /**
      *
+     * @param \DateTime $value
      * @return bool
      */
     public static function isTomorrow($value)
@@ -249,6 +262,7 @@ trait DateTimeTrait
      * Determines if the instance is a leap year
      *
      *
+     * @param \DateTime $value
      * @return bool
      */
     public static function isLeapYear($value)
@@ -260,6 +274,7 @@ trait DateTimeTrait
 
     /**
      *
+     * @param string $value
      * @return bool
      */
     public static function isMorning($value)
@@ -272,6 +287,7 @@ trait DateTimeTrait
 
     /**
      *
+     * @param string $value
      * @return bool
      */
     public static function isAftenoon($value)
@@ -284,6 +300,7 @@ trait DateTimeTrait
 
     /**
      *
+     * @param string $value
      * @return bool
      */
     public static function isEvening($value)
@@ -296,6 +313,7 @@ trait DateTimeTrait
 
     /**
      *
+     * @param string $value
      * @return bool
      */
     public static function isNight($value)
