@@ -16,7 +16,7 @@ use NilPortugues\Validator\Traits\FileUpload\FileUploadTrait;
  * Class FileUploadTraitEmptyFilesVariableTest
  * @package Tests\NilPortugues\Validator\Traits\FileUpload
  */
-class FileUploadTraitEmptyFilesVariableTest  extends \PHPUnit_Framework_TestCase
+class FileUploadTraitEmptyFilesVariableTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @test

@@ -52,6 +52,16 @@ class Float extends Generic
     }
 
     /**
+     * @return \NilPortugues\Validator\Attribute\Numeric\Float
+     */
+    public function isPositiveOrZero()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /**
      * @param float $min
      * @param float $max
      * @param bool  $inclusive
@@ -69,6 +79,16 @@ class Float extends Generic
      * @return \NilPortugues\Validator\Attribute\Numeric\Float
      */
     public function isNegative()
+    {
+        $this->addCondition(__METHOD__);
+
+        return $this;
+    }
+
+    /**
+     * @return \NilPortugues\Validator\Attribute\Numeric\Float
+     */
+    public function isNegativeOrZero()
     {
         $this->addCondition(__METHOD__);
 

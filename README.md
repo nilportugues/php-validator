@@ -49,11 +49,13 @@ A simple, powerful and elegant stand-alone validation library with no dependenci
     * [4.2 Numbers (Integers and Floats)](#block4.2)
         * [4.2.1. isNotZero] (#block4.2.1)
         * [4.2.2. isPositive] (#block4.2.2)
-        * [4.2.3. isNegative] (#block4.2.3)
-        * [4.2.4. isBetween] (#block4.2.4)
-        * [4.2.5. isOdd] (#block4.2.5)
-        * [4.2.6. isEven] (#block4.2.6)
-        * [4.2.7. isMultiple] (#block4.2.7)
+        * [4.2.2. isPositiveOrZero] (#block4.2.3)
+        * [4.2.4. isNegative] (#block4.2.4)
+        * [4.2.5. isNegativeOrZero] (#block4.2.5)
+        * [4.2.6. isBetween] (#block4.2.6)
+        * [4.2.7. isOdd] (#block4.2.7)
+        * [4.2.8. isEven] (#block4.2.8)
+        * [4.2.9. isMultiple] (#block4.2.9)
     * [4.3 Objects](#block4.3)
         * [4.3.1. isInstanceOf] (#block4.3.1)
         * [4.3.2. hasProperty] (#block4.3.2)
@@ -675,9 +677,22 @@ $integer = $validator->isInteger('propertyName');
 
 $integer->isPositive()->validate(1); //true
 $integer->isPositive()->validate(-10); //false
+$integer->isPositive()->validate(0); //false
 ```
 
-#### 4.2.3. isNegative  <a name="block4.2.3"></a> [↑](#index_block)
+#### 4.2.3. isPositiveOrZero <a name="block4.2.3"></a> [↑](#index_block)
+
+##### Example
+```php
+$validator = new \NilPortugues\Validator\Validator();
+$integer = $validator->isInteger('propertyName');
+
+$integer->isPositiveOrZero()->validate(1); //true
+$integer->isPositiveOrZero()->validate(-10); //false
+$integer->isPositiveOrZero()->validate(0); //true
+```
+
+#### 4.2.4. isNegative  <a name="block4.2.4"></a> [↑](#index_block)
 
 ##### Example
 ```php
@@ -686,9 +701,22 @@ $integer = $validator->isInteger('propertyName');
 
 $integer->isNegative()->validate(-10); //true
 $integer->isNegative()->validate(1); //false
+$integer->isNegative()->validate(0); //false
 ```
 
-#### 4.2.4. isBetween  <a name="block4.2.4"></a> [↑](#index_block)
+#### 4.2.5. isNegativeOrZero <a name="block4.2.5"></a> [↑](#index_block)
+
+##### Example
+```php
+$validator = new \NilPortugues\Validator\Validator();
+$integer = $validator->isInteger('propertyName');
+
+$integer->isNegativeOrZero()->validate(-10); //true
+$integer->isNegativeOrZero()->validate(1); //false
+$integer->isNegativeOrZero()->validate(0); //true
+```
+
+#### 4.2.6. isBetween  <a name="block4.2.6"></a> [↑](#index_block)
 
 ##### Example
 ```php
@@ -699,7 +727,7 @@ $integer->isBetween(10,20, false)->validate(13); //true
 $integer->isBetween(10, 20, true)->validate(10); //false
 ```
 
-#### 4.2.5. isOdd  <a name="block4.2.5"></a> [↑](#index_block)
+#### 4.2.7. isOdd  <a name="block4.2.7"></a> [↑](#index_block)
 
 ##### Example
 ```php
@@ -710,7 +738,7 @@ $integer->isOdd()->validate(3); //true
 $integer->isOdd()->validate(2); //false
 ```
 
-#### 4.2.6. isEven  <a name="block4.2.6"></a> [↑](#index_block)
+#### 4.2.8. isEven  <a name="block4.2.8"></a> [↑](#index_block)
 
 ##### Example
 ```php
@@ -721,7 +749,7 @@ $integer->isEven()->validate(2); //true
 $integer->isEven()->validate(3); //false
 ```
 
-#### 4.2.7. isMultiple  <a name="block4.2.7"></a> [↑](#index_block)
+#### 4.2.9. isMultiple  <a name="block4.2.9"></a> [↑](#index_block)
 
 ##### Example
 ```php

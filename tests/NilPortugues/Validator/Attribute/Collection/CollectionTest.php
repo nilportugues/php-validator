@@ -47,10 +47,10 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 
         $validator     = new Validator();
         $valueIsString = $validator->isString('value')->isAlpha();
-        $keyIsInteger  = $validator->isInteger('key')->isPositive();
+        $keyIsInteger  = $validator->isInteger('key')->isPositiveOrZero();
 
         $this->assertTrue($this->getValidator()->each($valueIsString)->validate($array));
-        $this->assertFalse($this->getValidator()->each($valueIsString)->validate(['yes','n@']));
+        $this->assertFalse($this->getValidator()->each($valueIsString)->validate(['yes', 'n@']));
 
         $this->assertTrue($this->getValidator()->each($valueIsString, $keyIsInteger)->validate($array));
 
@@ -72,7 +72,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 
         $validator    = new Validator();
         $keyIsString  = $validator->isString('key')->isAlpha();
-        $keyIsInteger = $validator->isInteger('key')->isPositive();
+        $keyIsInteger = $validator->isInteger('key')->isPositiveOrZero();
 
         $this->assertTrue($this->getValidator()->hasKeyFormat($keyIsString)->validate($array));
 

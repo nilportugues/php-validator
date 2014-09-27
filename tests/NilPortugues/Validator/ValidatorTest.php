@@ -95,7 +95,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $validator = new Validator('locale.php');
 
         $stringValidator = $validator->isString('property');
-        $stringValidator->isBetween(500,1000)->validate('a');
+        $stringValidator->isBetween(500, 1000)->validate('a');
     }
 
     /**
@@ -103,7 +103,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldThrowRuntimeExceptionIfFunctionMapIsNotFound()
     {
-        $validator = new Validator();
+        $validator  = new Validator();
         $reflection = new \ReflectionObject($validator);
 
         $property = $reflection->getProperty("functionMapFile");
