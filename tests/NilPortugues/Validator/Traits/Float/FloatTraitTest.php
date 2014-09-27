@@ -45,7 +45,18 @@ class FloatTraitTest extends \PHPUnit_Framework_TestCase
     public function itShouldCheckIfItIsPositive()
     {
         $this->assertTrue(FloatTrait::isPositive(3.14));
+        $this->assertFalse(FloatTrait::isPositive(0));
         $this->assertFalse(FloatTrait::isPositive(-3.14));
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldCheckIfItIsPositiveOrZero()
+    {
+        $this->assertTrue(FloatTrait::isPositiveOrZero(3.14));
+        $this->assertTrue(FloatTrait::isPositiveOrZero(0));
+        $this->assertFalse(FloatTrait::isPositiveOrZero(-3.14));
     }
 
     /**
@@ -54,7 +65,18 @@ class FloatTraitTest extends \PHPUnit_Framework_TestCase
     public function itShouldCheckIfItIsNegative()
     {
         $this->assertTrue(FloatTrait::isNegative(-3.14));
+        $this->assertFalse(FloatTrait::isNegative(0));
         $this->assertFalse(FloatTrait::isNegative(3.14));
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldCheckIfItIsNegativeOrZero()
+    {
+        $this->assertTrue(FloatTrait::isNegativeOrZero(-3.14));
+        $this->assertTrue(FloatTrait::isNegativeOrZero(0));
+        $this->assertFalse(FloatTrait::isNegativeOrZero(3.14));
     }
 
     /**
@@ -83,8 +105,12 @@ class FloatTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldCheckIfItIsOdd()
     {
+        $this->assertTrue(FloatTrait::isOdd(1.1));
+        $this->assertFalse(FloatTrait::isOdd(2.2));
         $this->assertTrue(FloatTrait::isOdd(3.15));
         $this->assertFalse(FloatTrait::isOdd(4.14));
+        $this->assertTrue(FloatTrait::isOdd(5));
+        $this->assertFalse(FloatTrait::isOdd(6));
     }
 
     /**
@@ -92,8 +118,12 @@ class FloatTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldCheckIfItIsEven()
     {
-        $this->assertTrue(FloatTrait::isEven(4.15));
+        $this->assertFalse(FloatTrait::isEven(1.1));
+        $this->assertTrue(FloatTrait::isEven(2.2));
         $this->assertFalse(FloatTrait::isEven(3.14));
+        $this->assertTrue(FloatTrait::isEven(4.15));
+        $this->assertFalse(FloatTrait::isEven(5));
+        $this->assertTrue(FloatTrait::isEven(6));
     }
 
     /**
