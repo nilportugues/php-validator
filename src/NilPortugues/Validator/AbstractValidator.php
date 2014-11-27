@@ -112,7 +112,7 @@ abstract class AbstractValidator
                     $this->getErrorsForValidatorsAsArguments($condition['arguments']);
                 }
 
-                if (true == $stopOnError) {
+                if (true === $stopOnError) {
                     return false;
                 }
             }
