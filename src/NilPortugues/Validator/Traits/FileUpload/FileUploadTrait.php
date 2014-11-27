@@ -124,9 +124,16 @@ class FileUploadTrait
      */
     private static function getMimeType($filePath)
     {
-        $fileInfo = @finfo_open(FILEINFO_MIME_TYPE);
-        $mimeType = @finfo_file($fileInfo, $filePath);
-        finfo_close($fileInfo);
+        $currentErrorReporting = error_reporting();
+        error_reporting(0);
+
+        $mimeType = '';
+        $fileInfo = finfo_open(FILEINFO_MIME_TYPE);
+        if (false !== $fileInfo) {
+            $mimeType = (string) finfo_file($fileInfo, $filePath);
+            finfo_close($fileInfo);
+        }
+        error_reporting($currentErrorReporting);
 
         return $mimeType;
     }
