@@ -1,14 +1,12 @@
 language: php
-
+cache:
+  directories:
+  - vendor
 php:
-  - 5.4
-  - 5.5
   - 5.6
+  - 5.5
+  - 5.4
   - hhvm-nightly
-
-matrix:
-    allow_failures:
-        - php: hhvm-nightly
   
 before_script:
   - alias composer="php -d zend.enable_gc=0 /usr/bin/composer"
@@ -17,6 +15,11 @@ before_script:
   
 after_script:
   - php bin/coveralls -v
-  
+
 script: 
   - bin/phpunit --coverage-text
+  - bin/phpunit-randomizer --order rand
+
+matrix:
+     allow_failures:
+         - php: hhvm-nightly  
