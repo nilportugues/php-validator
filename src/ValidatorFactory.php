@@ -66,7 +66,7 @@ class ValidatorFactory
 
     /**
      * @param AbstractValidator $validator
-     * @param array $rules
+     * @param string[] $rules
      *
      * @return AbstractValidator
      */
