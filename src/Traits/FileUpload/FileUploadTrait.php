@@ -120,7 +120,7 @@ class FileUploadTrait
     /**
      * @param $filePath
      *
-     * @return mixed
+     * @return string
      */
     private static function getMimeType($filePath)
     {

@@ -110,7 +110,7 @@ class Validator
      *
      * @param string $name
      * @param string $type
-     * @param array  $rules
+     * @param string[]  $rules
      *
      * @return AbstractValidator
      */

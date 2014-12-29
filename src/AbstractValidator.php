@@ -137,7 +137,7 @@ abstract class AbstractValidator
 
     /**
      * @param string $error
-     * @param        $propertyName
+     * @param        string $propertyName
      *
      * @return $this
      */
