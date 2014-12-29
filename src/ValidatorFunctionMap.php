@@ -69,13 +69,13 @@ class ValidatorFunctionMap
 
                 if (strlen($errors[$funcName]) > 0) {
                     $this->validator->setError(
-                        $this->buildErrorMessage($errorValues, $errors, $funcName, $propertyName)
+                        $this->buildErrorMessage($errorValues, $errors, $funcName, $propertyName), $funcName
                     );
                 }
             }
         } catch (FileUploadException $e) {
             $this->validator->setError(
-                $this->buildErrorMessage($errorValues, $errors, $e->getMessage(), $propertyName)
+                $this->buildErrorMessage($errorValues, $errors, $e->getMessage(), $propertyName), $funcName
             );
 
             $result = false;
@@ -94,10 +94,10 @@ class ValidatorFunctionMap
      */
     private function buildErrorMessage(array $errorValues, array &$errors, $funcName, $propertyName)
     {
-        $message = str_replace(':attribute', $propertyName, $errors[$funcName]);
+        $message = str_replace(':attribute',  "'".$propertyName."'", $errors[$funcName]);
 
         foreach ($errorValues as $key => $value) {
-            $message = str_replace(":{$key}", $value, $message);
+            $message = str_replace(":{$key}",$value, $message);
         }
 
         return $message;

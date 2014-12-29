@@ -38,8 +38,13 @@ class StringTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($result);
 
         $value  = new \StdClass();
-        $result = $this->getValidator()->validate($value);
+        $validator = $this->getValidator();
+
+        $result = $validator->validate($value);
+        $errors = $validator->getErrors();
+
         $this->assertFalse($result);
+        $this->assertArrayHasKey('String::__construct', $errors['propertyName']);
     }
 
     /**
