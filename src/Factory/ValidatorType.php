@@ -20,14 +20,13 @@ class ValidatorType
      * @var array
      */
     protected static $supportedTypes = [
-        'array' => 'isArray',
-        'int' => 'isInteger',
-        'integer' => 'isInteger',
-        'float' => 'isFloat',
-        'object' => 'isObject',
-        'string' => 'isString',
-        'date' => 'isDateTime',
-        'file' => 'isFileUpload',
+        'array'       => 'isArray',
+        'integer'     => 'isInteger',
+        'float'       => 'isFloat',
+        'object'      => 'isObject',
+        'string'      => 'isString',
+        'date_time'   => 'isDateTime',
+        'file_upload' => 'isFileUpload',
     ];
 
     /**

@@ -44,7 +44,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
         $errors = $validator->getErrors();
 
         $this->assertFalse($result);
-        $this->assertArrayHasKey('String::__construct', $errors['propertyName']);
+        $this->assertArrayHasKey('string', $errors['propertyName']);
     }
 
     /**

@@ -53,7 +53,9 @@ class ValidatorFunctionMap
     public function get($propertyName, $funcName, array $arguments = [], array &$errorValues = [], array &$errors)
     {
         if (false === array_key_exists($funcName, $this->functionMap)) {
-            throw new \InvalidArgumentException('Validator key not found');
+            throw new \InvalidArgumentException(
+                sprintf('Validator key \'%s\' not found', $funcName)
+            );
         }
 
         $function = $this->functionMap[$funcName];
@@ -63,19 +65,25 @@ class ValidatorFunctionMap
             $result = call_user_func_array([$class[0], $class[1]], $arguments);
 
             if (false === $result) {
+                $funcName = $this->funcNameToUnderscore($funcName);
                 if (false === array_key_exists($funcName, $errors)) {
-                    throw new \InvalidArgumentException('Validator key not found in error file');
+                    throw new \InvalidArgumentException(
+                        sprintf('Validator key \'%s\' not found in error file', $funcName)
+                    );
                 }
 
                 if (strlen($errors[$funcName]) > 0) {
                     $this->validator->setError(
-                        $this->buildErrorMessage($errorValues, $errors, $funcName, $propertyName), $funcName
+                        $this->buildErrorMessage($errorValues, $errors, $funcName, $propertyName),
+                        $funcName
                     );
                 }
             }
         } catch (FileUploadException $e) {
+            $lowerCaseFuncName = $this->funcNameToUnderscore($e->getMessage());
             $this->validator->setError(
-                $this->buildErrorMessage($errorValues, $errors, $e->getMessage(), $propertyName), $funcName
+                $this->buildErrorMessage($errorValues, $errors, $e->getMessage(), $propertyName),
+                $lowerCaseFuncName
             );
 
             $result = false;
@@ -97,9 +105,28 @@ class ValidatorFunctionMap
         $message = str_replace(':attribute',  "'".$propertyName."'", $errors[$funcName]);
 
         foreach ($errorValues as $key => $value) {
-            $message = str_replace(":{$key}",$value, $message);
+            $message = str_replace(":{$key}", $value, $message);
         }
 
         return $message;
+    }
+
+    /**
+     * @param $funcName
+     *
+     * @return string
+     */
+    private function funcNameToUnderscore($funcName)
+    {
+        $camel = preg_replace(
+            '/(?!^)[[:upper:]][[:lower:]]/',
+            '$0',
+            preg_replace(
+                '/(?!^)[[:upper:]]+/', "_" . '$0',
+                str_replace(['::__construct', '::'], ['', '.'], $funcName)
+            )
+        );
+
+        return strtolower($camel);
     }
 }
