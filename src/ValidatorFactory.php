@@ -36,7 +36,7 @@ class ValidatorFactory
     /**
      * @param string $name
      * @param string $type
-     * @param array  $rules
+     * @param string[]  $rules
      *
      * @throws Factory\ValidatorFactoryException
      * @return AbstractValidator
