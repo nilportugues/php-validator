@@ -10,7 +10,6 @@
 
 namespace NilPortugues\Validator\Factory;
 
-
 /**
  * Class ValidatorType
  * @package NilPortugues\Validator\Factory
@@ -21,13 +20,14 @@ class ValidatorType
      * @var array
      */
     protected static $supportedTypes = [
-        'array',
-        'integer',
-        'float',
-        'object',
-        'string',
-        'date',
-        'file',
+        'array' => 'isArray',
+        'int' => 'isInteger',
+        'integer' => 'isInteger',
+        'float' => 'isFloat',
+        'object' => 'isObject',
+        'string' => 'isString',
+        'date' => 'isDateTime',
+        'file' => 'isFileUpload',
     ];
 
     /**
@@ -37,6 +37,16 @@ class ValidatorType
      */
     public static function isSupported($type)
     {
-        return in_array(strtolower($type), self::$supportedTypes, true);
+        return isset(self::$supportedTypes[strtolower($type)]);
     }
-} 
+
+    /**
+     * @param $type
+     *
+     * @return mixed
+     */
+    public static function getMethod($type)
+    {
+        return self::$supportedTypes[strtolower($type)];
+    }
+}

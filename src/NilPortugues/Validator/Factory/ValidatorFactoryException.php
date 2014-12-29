@@ -10,11 +10,10 @@
 
 namespace NilPortugues\Validator\Factory;
 
-
 /**
  * Class ValidatorFactoryException
  * @package NilPortugues\Validator\Factory
  */
-class ValidatorFactoryException {
-
-} 
+class ValidatorFactoryException extends \Exception
+{
+}

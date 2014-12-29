@@ -55,6 +55,11 @@ class Validator
     private $errorMessages = [];
 
     /**
+     * @var string
+     */
+    private static $errorMessageFile = '';
+
+    /**
      * @param string $errorMessageFile
      */
     public function __construct($errorMessageFile = '')
@@ -83,6 +88,7 @@ class Validator
         }
 
         $this->errorMessages = include $filePath;
+        self::$errorMessageFile = $filePath;
     }
 
     /**
@@ -97,6 +103,26 @@ class Validator
         }
 
         $this->functionMap = include $functionMap;
+    }
+
+    /**
+     * Creates a validator based on the provided information.
+     *
+     * @param string $name
+     * @param string $type
+     * @param array  $rules
+     *
+     * @return AbstractValidator
+     */
+    public static function create($name, $type, array $rules = [])
+    {
+        $validator = new self;
+
+        if (!empty(self::$errorMessageFile)) {
+            $validator->errorMessages = include self::$errorMessageFile;
+        }
+
+        return (new ValidatorFactory($validator))->create($name, $type, $rules);
     }
 
     /**
