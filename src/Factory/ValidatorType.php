@@ -31,7 +31,7 @@ class ValidatorType
     ];
 
     /**
-     * @param $type
+     * @param string $type
      *
      * @return bool
      */
@@ -41,7 +41,7 @@ class ValidatorType
     }
 
     /**
-     * @param $type
+     * @param string $type
      *
      * @return mixed
      */
