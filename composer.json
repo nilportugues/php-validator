@@ -30,12 +30,12 @@
     },
     "autoload": {
         "psr-4": {
-            "NilPortugues\\Validator\\": "src/NilPortugues/Validator"
+            "NilPortugues\\Validator\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\NilPortugues\\Validator\\": "tests/NilPortugues/Validator"
+            "Tests\\NilPortugues\\Validator\\": "tests/"
         }
     },
     "config": {
