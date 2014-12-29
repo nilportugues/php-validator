@@ -1,0 +1,11 @@
+--- /dev/null
++++ /dev/null
+@@ -110,7 +110,7 @@
+      *
+      * @param string $name
+      * @param string $type
+-     * @param array  $rules
++     * @param string[]  $rules
+      *
+      * @return AbstractValidator
+      */
