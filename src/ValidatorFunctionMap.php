@@ -112,7 +112,7 @@ class ValidatorFunctionMap
     }
 
     /**
-     * @param $funcName
+     * @param string $funcName
      *
      * @return string
      */
