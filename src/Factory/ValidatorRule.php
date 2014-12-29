@@ -86,7 +86,7 @@ class ValidatorRule
     }
 
     /**
-     * @param $validatorType
+     * @param \NilPortugues\Validator\AbstractValidator $validatorType
      *
      * @return array
      */
@@ -100,7 +100,7 @@ class ValidatorRule
 
     /**
      * @param array $data
-     * @param array $removeValues
+     * @param string[] $removeValues
      *
      * @return array
      */
@@ -133,8 +133,8 @@ class ValidatorRule
     }
 
     /**
-     * @param $haystack
-     * @param $needle
+     * @param string $haystack
+     * @param string $needle
      *
      * @return bool
      */
@@ -144,7 +144,7 @@ class ValidatorRule
     }
 
     /**
-     * @param $key
+     * @param string $key
      * @param $rule
      *
      * @return string
