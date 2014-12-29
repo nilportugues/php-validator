@@ -153,7 +153,7 @@ $result = $age->isPositive()->isBetween(0, 100, true)->validate(-10, true);
 <a name="block3"></a>
 # 3. Validation Message Translation [↑](#index_block)
 
-The Input Validator features a default translation that can be found at `src/NilPortugues/Validator/Errors/en_GB.php`. If no file path is provided when creating the validator instance, this file is used.
+The Input Validator features a default translation that can be found at `src/Errors/en_GB.php`. If no file path is provided when creating the validator instance, this file is used.
 
 ---
     Feel free to submit a pull request or open an issue with more translations!
