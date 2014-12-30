@@ -229,7 +229,7 @@ The following chainable validation options are available for string data:
 
 ##### Using the Validator class
 ```php
-<?php use \NilPortugues\Validator\Validator;
+use \NilPortugues\Validator\Validator;
 
 $validator = new Validator();
 $string = $validator->isString('propertyName');
@@ -241,7 +241,7 @@ $string->isAlphanumeric()->validate('hello@example.com'); // false
 ##### Using the Validator::create
 
 ```php
-<?php use \NilPortugues\Validator\Validator;
+use \NilPortugues\Validator\Validator;
 
 $validator = Validator::create('propertyName', 'string', ['alphanumeric']);
 
@@ -255,7 +255,7 @@ $validator->validate('hello@example.com');
 ##### Extending from the BaseValidator
 
 ```php
-<?php use \NilPortugues\Validator\BaseValidator;
+use \NilPortugues\Validator\BaseValidator;
 
 class FieldValidator extends BaseValidator
 {
