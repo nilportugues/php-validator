@@ -155,4 +155,16 @@ abstract class AbstractValidator
     {
         return $this->errors;
     }
+
+    /**
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function setPropertyName($name)
+    {
+        $this->validator->setPropertyName($name);
+
+        return $this;
+    }
 }

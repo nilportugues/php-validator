@@ -142,12 +142,16 @@ $validator = new \NilPortugues\Validator\Validator();
 
 $ageValidator = $validator->isInteger('age');
 $result = $ageValidator->isPositive()->isBetween(0, 100, true)->validate(28);
+$errors = $ageValidator->getErrors();
 ```
 
 <a name="block2.1.2"></a>
 #### 2.1.2. Factory using Validator::create
 
-Using the Validator as a factory will create a **new Validator object** each time the `::create` method is used.
+Using the Validator as a factory will provide a Validator object each time the `::create` method is used.
+
+This style fits best when validating lots of fields one after another or inside array loops where changing `$rules` dynamically can make sense.
+
 
 ```php
 use \NilPortugues\Validator\Validator;
@@ -156,12 +160,13 @@ $rules = ['positive', 'between:0:100:true'];
 $ageValidator = Validator::create('age', 'integer', $rules);
 
 $result = $ageValidator->validate(28);
+$errors = $ageValidator->getErrors();
 ```
 
 <a name="block2.1.3"></a>
 #### 2.1.3. Extending from the BaseValidator
 
-Validators extending from `\NilPortugues\Validator\BaseValidator` can be easily reused and tested.
+Validators extending from `\NilPortugues\Validator\BaseValidator` are short and maintainable, but rules can't be changed.
 
 ```php
 use \NilPortugues\Validator\BaseValidator;
@@ -185,6 +190,7 @@ class AgeValidator extends BaseValidator
 $ageValidator = new AgeValidator();
 
 $ageValidator->validate('age', '28a');
+$errors = $ageValidator->getErrors();
 ```
 
 <a name="block2.2"></a>

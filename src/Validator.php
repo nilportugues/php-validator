@@ -216,4 +216,16 @@ class Validator
     {
         return $this->propertyName;
     }
+
+    /**
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function setPropertyName($name)
+    {
+        $this->propertyName = $name;
+
+        return $this;
+    }
 }
