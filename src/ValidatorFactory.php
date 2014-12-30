@@ -26,11 +26,6 @@ class ValidatorFactory
     protected $validator;
 
     /**
-     * @var AbstractValidator[]
-     */
-    protected $validatorCache = [];
-
-    /**
      * @param Validator $validator
      */
     public function __construct(Validator $validator)
@@ -54,13 +49,7 @@ class ValidatorFactory
             );
         }
 
-        if (empty($this->validatorCache[$type])) {
-            $validator = $this->createValidator($name, $type);
-            $this->validatorCache[$type] = $validator;
-        }
-
-        $validator = $this->validatorCache[$type];
-        $validator->setPropertyName($name);
+        $validator = $this->createValidator($name, $type);
 
         return $this->applyValidatorRules($validator, $rules);
     }
