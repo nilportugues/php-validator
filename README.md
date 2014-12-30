@@ -3,7 +3,10 @@
 
 [![Build Status](https://travis-ci.org/nilportugues/validator.png)](https://travis-ci.org/nilportugues/validator) [![Coverage Status](https://img.shields.io/coveralls/nilportugues/validator.svg)](https://coveralls.io/r/nilportugues/validator?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nilportugues/validator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nilportugues/validator/?branch=master) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/9fbb4900-70b9-49f6-b7d5-a9f560cdb036/mini.png)](https://insight.sensiolabs.com/projects/9fbb4900-70b9-49f6-b7d5-a9f560cdb036) [![Latest Stable Version](https://poser.pugx.org/nilportugues/validator/v/stable.svg)](https://packagist.org/packages/nilportugues/validator) [![Total Downloads](https://poser.pugx.org/nilportugues/validator/downloads.svg)](https://packagist.org/packages/nilportugues/validator) [![License](https://poser.pugx.org/nilportugues/validator/license.svg)](https://packagist.org/packages/nilportugues/validator)
  
-A simple, powerful and elegant stand-alone validation library with no dependencies.
+Validation is a very common task in web applications. Data entered in forms needs to be validated. Data also needs to be validated before it is written into a database or passed to a web service.
+
+NilPortugues\\\Validator is a simple, powerful and elegant stand-alone validation library with no external dependencies.
+
 
 <a name="index_block"></a>
 * [1. Installation](#block1)
@@ -108,14 +111,10 @@ A simple, powerful and elegant stand-alone validation library with no dependenci
 
 <a name="block1"></a>
 # 1. Installation [↑](#index_block)
-The recommended way to install the Input Validator is through [Composer](http://getcomposer.org). Just create a ``composer.json`` file and run the ``php composer.phar install`` command to install it:
+The recommended way to install the Input Validator is through [Composer](http://getcomposer.org). Just create a ``composer.json`` file and run the following command to install it:
 
-```json
-    {
-        "require": {
-            "nilportugues/validator": "1.0.*@dev"
-        }
-    }
+```sh
+php composer.phar require nilportugues/validator
 ```
 
 <a name="block2"></a>
@@ -215,8 +214,6 @@ if (isset($gender)) {
 return $result;
 ```
 
-
-
 <a name="block4.1"></a>
 ## 4.1 String [↑](#index_block)
 String validation starts when creating a string field in the validator using the `isString` method.
@@ -230,14 +227,53 @@ The following chainable validation options are available for string data:
 
 #### 4.1.1. isAlphanumeric <a name="block4.1.1"></a> [↑](#index_block)
 
-##### Example
+##### Using the Validator class
 ```php
-$validator = new \NilPortugues\Validator\Validator();
+<?php use \NilPortugues\Validator\Validator;
+
+$validator = new Validator();
 $string = $validator->isString('propertyName');
 
 $string->isAlphanumeric()->validate('28a'); // true
 $string->isAlphanumeric()->validate('hello@example.com'); // false
 ```
+
+##### Using the Validator::create
+
+```php
+<?php use \NilPortugues\Validator\Validator;
+
+$validator = Validator::create('propertyName', 'string', ['alphanumeric']);
+
+//Returns true
+$validator->validate('28a');
+
+//Returns false
+$validator->validate('hello@example.com');
+```
+
+##### Extending from the BaseValidator
+
+```php
+<?php use \NilPortugues\Validator\BaseValidator;
+
+class FieldValidator extends BaseValidator
+{
+    protected $type = 'string';
+
+    protected $rules = ['alphanumeric'];
+}
+
+$fieldValidator = new FieldValidator();
+
+//Returns true
+$fieldValidator->validate('propertyName', '28a'); //true
+
+//Returns false
+$fieldValidator->validate('propertyName', 'hello@example.com');
+$errors = $fieldValidator->getErrors(); //returns an array with error data;
+```
+
 
 #### 4.1.2. isAlpha <a name="block4.1.2"></a> [↑](#index_block)
 
@@ -1424,25 +1460,3 @@ Nil Portugués Calderó
 <a name="block6"></a>
 # 6. License [↑](#index_block)
 The Input Validator is licensed under the MIT license.
-
-```
-Copyright (c) 2014 Nil Portugués Calderó
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-```
