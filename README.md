@@ -141,7 +141,7 @@ NilPortugues\Validator supports up to 3 different styles to write validators: In
 $validator = new \NilPortugues\Validator\Validator();
 
 $ageValidator = $validator->isInteger('age');
-$result = $ageValidator->isPositive()->isBetween(0, 100, true)->validate(28);
+$result = $ageValidator->isPositive()->isBetween(18, 100, true)->validate(28);
 $errors = $ageValidator->getErrors();
 ```
 
@@ -156,7 +156,7 @@ This style fits best when validating lots of fields one after another or inside 
 ```php
 use \NilPortugues\Validator\Validator;
 
-$rules = ['positive', 'between:0:100:true'];
+$rules = ['positive', 'between:18:100:true'];
 $ageValidator = Validator::create('age', 'integer', $rules);
 
 $result = $ageValidator->validate(28);
@@ -183,7 +183,7 @@ class AgeValidator extends BaseValidator
      */
     protected $rules = [
         'positive',
-        'between:0:100:true'
+        'between:18:100:true'
     ];
 }
 
