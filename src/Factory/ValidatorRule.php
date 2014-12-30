@@ -40,7 +40,7 @@ class ValidatorRule
 
     /**
      * @param \NilPortugues\Validator\AbstractValidator $validatorType
-     * @param                                           $rule
+     * @param                                           string $rule
      *
      * @return array
      */
