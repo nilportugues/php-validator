@@ -189,7 +189,7 @@ class AgeValidator extends BaseValidator
 
 $ageValidator = new AgeValidator();
 
-$ageValidator->validate('age', '28a');
+$result = $ageValidator->validate('age', 28);
 $errors = $ageValidator->getErrors();
 ```
 
