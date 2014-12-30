@@ -171,11 +171,4 @@ class ValidatorRule
         }
         return $arguments;
     }
-
-    /**
-     *
-     */
-    private function __clone()
-    {
-    }
 }
