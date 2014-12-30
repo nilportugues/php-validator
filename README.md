@@ -12,11 +12,17 @@ NilPortugues\\\Validator is a simple, powerful and elegant stand-alone validatio
 * [1. Installation](#block1)
 * [2. Usage](#block2)
   * [2.1. Validate all](#block2.1)
+    * [2.1.1. Instantiation of Validator class](#block2.1.1)
+    * [2.1.2. Factory using Validator::create](#block2.1.2)
+    * [2.1.3. Extending from the BaseValidator](#block2.1.3)
   * [2.2. Stop on first error](#block2.2)
 * [3. Validation Message Translation](#block3)  
 * [4. Methods](#block4)
     * [4.1 String](#block4.1)
         * [4.1.1. isAlphanumeric] (#block4.1.1)
+            * [4.1.1.1. Instantiation of Validator class](#block4.1.1.1)
+            * [4.1.1.2. Factory using Validator::create](#block4.1.1.2)
+            * [4.1.1.3. Extending from the BaseValidator](#block4.1.1.3)
         * [4.1.2. isAlpha] (#block4.1.2)
         * [4.1.3. isBetween] (#block4.1.3)
         * [4.1.4. isCharset] (#block4.1.4)
@@ -120,20 +126,61 @@ php composer.phar require nilportugues/validator
 <a name="block2"></a>
 # 2. Usage [↑](#index_block)
 
-The Validator interface is 100% human-friendly and readable. By default, it supports 2 validation styles, full validation and partial validation.
+The Validator interface is 100% human-friendly and readable. By default, it supports full validation and partial validation (stop when first error occurs).
 
 <a name="block2.1"></a>
 ### 2.1. Validate All [↑](#index_block)
 
 When writing validator input data it is expected to be match a set of rules. If one or more of these rules fail, a collection of errors is returned. This is the default behaviour for `validate($input)`.
 
-Here's how you would validate an input `age`.
+NilPortugues\Validator supports up to 3 different styles to write validators: Instantiation, Factory or as a Class. Here's how you would validate an input `age` for these 3 styles:
 
+<a name="block2.1.1"></a>
+#### 2.1.1. Instantiation of Validator class
 ```php
 $validator = new \NilPortugues\Validator\Validator();
 
-$age = $validator->isInteger('age');
-$result = $age->isPositive()->isBetween(0, 100, true)->validate(28);
+$ageValidator = $validator->isInteger('age');
+$result = $ageValidator->isPositive()->isBetween(0, 100, true)->validate(28);
+```
+
+<a name="block2.1.2"></a>
+#### 2.1.2. Factory using Validator::create
+
+Using the Validator as a factory will create a validator each time the `::create` method is used.
+
+```php
+use \NilPortugues\Validator\Validator;
+
+$ageValidator = Validator::create('age', 'integer', ['between:0:100:true']);
+
+$result = $ageValidator->validate(28);
+```
+
+<a name="block2.1.3"></a>
+##### 2.1.3. Extending from the BaseValidator
+
+Validators extending from `\NilPortugues\Validator\BaseValidator` can be easily reused and tested.
+
+```php
+use \NilPortugues\Validator\BaseValidator;
+
+class AgeValidator extends BaseValidator
+{
+    /**
+     * @var string
+     */
+    protected $type = 'integer';
+
+    /**
+     * @var array
+     */
+    protected $rules = ['between:0:100:true'];
+}
+
+$ageValidator = new AgeValidator();
+
+$ageValidator->validate('age', '28a');
 ```
 
 <a name="block2.2"></a>
@@ -227,7 +274,8 @@ The following chainable validation options are available for string data:
 
 #### 4.1.1. isAlphanumeric <a name="block4.1.1"></a> [↑](#index_block)
 
-##### Using the Validator class
+<a name="block4.1.1.1"></a>
+##### 4.1.1.1 Instantiation of Validator class
 ```php
 use \NilPortugues\Validator\Validator;
 
@@ -238,21 +286,20 @@ $string->isAlphanumeric()->validate('28a'); // true
 $string->isAlphanumeric()->validate('hello@example.com'); // false
 ```
 
-##### Using the Validator::create
+<a name="block4.1.1.2"></a>
+##### 4.1.1.2. Factory using Validator::create
 
 ```php
 use \NilPortugues\Validator\Validator;
 
 $validator = Validator::create('propertyName', 'string', ['alphanumeric']);
 
-//Returns true
-$validator->validate('28a');
-
-//Returns false
-$validator->validate('hello@example.com');
+$validator->validate('28a'); // true
+$validator->validate('hello@example.com'); // false
 ```
 
-##### Extending from the BaseValidator
+<a name="block4.1.1.3"></a>
+##### 4.1.1.3. Extending from the BaseValidator
 
 ```php
 use \NilPortugues\Validator\BaseValidator;
@@ -266,12 +313,8 @@ class FieldValidator extends BaseValidator
 
 $fieldValidator = new FieldValidator();
 
-//Returns true
 $fieldValidator->validate('propertyName', '28a'); //true
-
-//Returns false
 $fieldValidator->validate('propertyName', 'hello@example.com');
-$errors = $fieldValidator->getErrors(); //returns an array with error data;
 ```
 
 
