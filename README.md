@@ -152,7 +152,8 @@ Using the Validator as a factory will create a **new Validator object** each tim
 ```php
 use \NilPortugues\Validator\Validator;
 
-$ageValidator = Validator::create('age', 'integer', ['positive', 'between:0:100:true']);
+$rules = ['positive', 'between:0:100:true'];
+$ageValidator = Validator::create('age', 'integer', $rules);
 
 $result = $ageValidator->validate(28);
 ```
