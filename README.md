@@ -11,7 +11,7 @@ NilPortugues\\\Validator is a simple, powerful and elegant stand-alone validatio
 <a name="index_block"></a>
 * [1. Installation](#block1)
 * [2. Usage](#block2)
-  * [2.1. Validate all](#block2.1)
+  * [2.1. Validation made for everyone](#block2.1)
     * [2.1.1. Instantiation of Validator class](#block2.1.1)
     * [2.1.2. Factory using Validator::create](#block2.1.2)
     * [2.1.3. Extending from the BaseValidator](#block2.1.3)
@@ -129,7 +129,7 @@ php composer.phar require nilportugues/validator
 The Validator interface is 100% human-friendly and readable. By default, it supports full validation and partial validation (stop when first error occurs).
 
 <a name="block2.1"></a>
-### 2.1. Validate All [↑](#index_block)
+### 2.1. Validation made for everyone [↑](#index_block)
 
 When writing validator input data it is expected to be match a set of rules. If one or more of these rules fail, a collection of errors is returned. This is the default behaviour for `validate($input)`.
 
@@ -147,12 +147,12 @@ $result = $ageValidator->isPositive()->isBetween(0, 100, true)->validate(28);
 <a name="block2.1.2"></a>
 #### 2.1.2. Factory using Validator::create
 
-Using the Validator as a factory will create a validator each time the `::create` method is used.
+Using the Validator as a factory will create a **new Validator object** each time the `::create` method is used.
 
 ```php
 use \NilPortugues\Validator\Validator;
 
-$ageValidator = Validator::create('age', 'integer', ['between:0:100:true']);
+$ageValidator = Validator::create('age', 'integer', ['positive', 'between:0:100:true']);
 
 $result = $ageValidator->validate(28);
 ```
@@ -175,7 +175,10 @@ class AgeValidator extends BaseValidator
     /**
      * @var array
      */
-    protected $rules = ['between:0:100:true'];
+    protected $rules = [
+        'positive',
+        'between:0:100:true'
+    ];
 }
 
 $ageValidator = new AgeValidator();
