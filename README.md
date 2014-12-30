@@ -158,7 +158,7 @@ $result = $ageValidator->validate(28);
 ```
 
 <a name="block2.1.3"></a>
-##### 2.1.3. Extending from the BaseValidator
+#### 2.1.3. Extending from the BaseValidator
 
 Validators extending from `\NilPortugues\Validator\BaseValidator` can be easily reused and tested.
 
