@@ -38,7 +38,7 @@ abstract class BaseValidator
 
     /**
      * @param string $name
-     * @param mixed  $value
+     * @param string  $value
      * @param bool   $stopOnError
      *
      * @return bool
