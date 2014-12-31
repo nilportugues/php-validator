@@ -76,8 +76,8 @@ class ValidatorRule
             $funcMethods[$method]    = $method;
             $funcMethods[$camelCase] = $method;
 
-            if (self::startsWith($camelCase, 'is_') || self::startsWith($camelCase, 'has_')) {
-                $methodAlias               = str_replace(['is_', 'has_'], '', $camelCase);
+            if (self::startsWith($camelCase, 'is_')) {
+                $methodAlias               = str_replace('is_', '', $camelCase);
                 $funcMethods[$methodAlias] = $method;
             }
         }
