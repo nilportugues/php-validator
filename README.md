@@ -117,7 +117,7 @@ NilPortugues\\\Validator is a simple, powerful and elegant stand-alone validatio
 
 <a name="block1"></a>
 # 1. Installation [↑](#index_block)
-The recommended way to install the Input Validator is through [Composer](http://getcomposer.org). Just create a ``composer.json`` file and run the following command to install it:
+The recommended way to install the Input Validator is through [Composer](http://getcomposer.org). Run the following command to install it:
 
 ```sh
 php composer.phar require nilportugues/validator
