@@ -166,7 +166,7 @@ $errors = $ageValidator->getErrors();
 <a name="block2.1.3"></a>
 #### 2.1.3. Extending from the BaseValidator
 
-Validators extending from `\NilPortugues\Validator\BaseValidator` are short and maintainable, but rules can't be changed.
+Validators extending from `\NilPortugues\Validator\BaseValidator` are short and maintainable.
 
 ```php
 use \NilPortugues\Validator\BaseValidator;
@@ -188,6 +188,39 @@ class AgeValidator extends BaseValidator
 }
 
 $ageValidator = new AgeValidator();
+
+$result = $ageValidator->validate('age', 28);
+$errors = $ageValidator->getErrors();
+```
+
+Rules cannot be dynamically changed unless you provide the class a method to do so! For instance:
+
+```php
+use \NilPortugues\Validator\BaseValidator;
+
+class AgeValidator extends BaseValidator
+{
+    /**
+     * @var string
+     */
+    protected $type = 'integer';
+
+    /**
+     * @var array
+     */
+    protected $rules = ['positive'];
+
+    /**
+     * @param array $rules
+     */
+    public function __construct(array $rules)
+    {
+        $this->rules = array_merge($this->rules, $rules);
+        parent::__construct();
+    }
+}
+
+$ageValidator = new AgeValidator(['between:18:100:true']);
 
 $result = $ageValidator->validate('age', 28);
 $errors = $ageValidator->getErrors();
