@@ -5,7 +5,7 @@
  
 Validation is a very common task in web applications. Data entered in forms needs to be validated. Data also needs to be validated before it is written into a database or passed to a web service.
 
-NilPortugues\\\Validator is a simple, powerful and elegant stand-alone validation library with no external dependencies.
+NilPortugues\Validator is a simple, powerful and elegant stand-alone validation library with no external dependencies.
 
 
 <a name="index_block"></a>
