@@ -16,7 +16,7 @@ use NilPortugues\Validator\Attribute\FileUpload\FileUpload;
 use NilPortugues\Validator\Attribute\Numeric\Float as FloatValidator;
 use NilPortugues\Validator\Attribute\Numeric\Integer;
 use NilPortugues\Validator\Attribute\Object\Object;
-use NilPortugues\Validator\Attribute\String\String;
+use NilPortugues\Validator\Attribute\String\String as StringValidator;
 
 /**
  * Class Validator
@@ -182,7 +182,7 @@ class Validator
     {
         $this->propertyName = $propertyName;
 
-        return new String($this, $this->errorMessages, $this->functionMap);
+        return new StringValidator($this, $this->errorMessages, $this->functionMap);
     }
 
     /**
