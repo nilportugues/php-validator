@@ -13,7 +13,7 @@ namespace NilPortugues\Validator;
 use NilPortugues\Validator\Attribute\Collection\Collection;
 use NilPortugues\Validator\Attribute\DateTime\DateTime;
 use NilPortugues\Validator\Attribute\FileUpload\FileUpload;
-use NilPortugues\Validator\Attribute\Numeric\Float;
+use NilPortugues\Validator\Attribute\Numeric\Float as FloatValidator;
 use NilPortugues\Validator\Attribute\Numeric\Integer;
 use NilPortugues\Validator\Attribute\Object\Object;
 use NilPortugues\Validator\Attribute\String\String;
@@ -158,7 +158,7 @@ class Validator
     {
         $this->propertyName = $propertyName;
 
-        return new Float($this, $this->errorMessages, $this->functionMap);
+        return new FloatValidator($this, $this->errorMessages, $this->functionMap);
     }
 
     /**
