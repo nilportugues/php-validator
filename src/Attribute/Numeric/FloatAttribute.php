@@ -10,14 +10,14 @@
 
 namespace NilPortugues\Validator\Attribute\Numeric;
 
-use NilPortugues\Validator\Attribute\Generic;
+use NilPortugues\Validator\Attribute\GenericAttribute;
 use NilPortugues\Validator\Validator;
 
 /**
- * Class Float
+ * Class FloatAttribute
  * @package NilPortugues\Validator\Attribute\Numeric
  */
-class Float extends Generic
+class FloatAttribute extends GenericAttribute
 {
     /**
      * @param Validator $validator
@@ -32,7 +32,7 @@ class Float extends Generic
     }
 
     /**
-     * @return \NilPortugues\Validator\Attribute\Numeric\Float
+     * @return \NilPortugues\Validator\Attribute\Numeric\FloatAttribute
      */
     public function isNotZero()
     {
@@ -42,7 +42,7 @@ class Float extends Generic
     }
 
     /**
-     * @return \NilPortugues\Validator\Attribute\Numeric\Float
+     * @return \NilPortugues\Validator\Attribute\Numeric\FloatAttribute
      */
     public function isPositive()
     {
@@ -52,7 +52,7 @@ class Float extends Generic
     }
 
     /**
-     * @return \NilPortugues\Validator\Attribute\Numeric\Float
+     * @return \NilPortugues\Validator\Attribute\Numeric\FloatAttribute
      */
     public function isPositiveOrZero()
     {
@@ -66,7 +66,7 @@ class Float extends Generic
      * @param float $max
      * @param bool  $inclusive
      *
-     * @return \NilPortugues\Validator\Attribute\Numeric\Float
+     * @return \NilPortugues\Validator\Attribute\Numeric\FloatAttribute
      */
     public function isBetween($min, $max, $inclusive = false)
     {
@@ -76,7 +76,7 @@ class Float extends Generic
     }
 
     /**
-     * @return \NilPortugues\Validator\Attribute\Numeric\Float
+     * @return \NilPortugues\Validator\Attribute\Numeric\FloatAttribute
      */
     public function isNegative()
     {
@@ -86,7 +86,7 @@ class Float extends Generic
     }
 
     /**
-     * @return \NilPortugues\Validator\Attribute\Numeric\Float
+     * @return \NilPortugues\Validator\Attribute\Numeric\FloatAttribute
      */
     public function isNegativeOrZero()
     {

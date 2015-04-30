@@ -37,7 +37,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     public function itShouldGetIntegerClass()
     {
         $this->assertSame(
-            'NilPortugues\Validator\Attribute\Numeric\Integer',
+            'NilPortugues\Validator\Attribute\Numeric\IntegerAttribute',
             get_class($this->validator->isInteger('propertyName'))
         );
     }
@@ -48,7 +48,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     public function itShouldGetFloatClass()
     {
         $this->assertSame(
-            'NilPortugues\Validator\Attribute\Numeric\Float',
+            'NilPortugues\Validator\Attribute\Numeric\FloatAttribute',
             get_class($this->validator->isFloat('propertyName'))
         );
     }
@@ -59,7 +59,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     public function itShouldGetArrayClass()
     {
         $this->assertSame(
-            'NilPortugues\Validator\Attribute\Collection\Collection',
+            'NilPortugues\Validator\Attribute\Collection\CollectionAttribute',
             get_class($this->validator->isArray('propertyName'))
         );
     }
@@ -70,7 +70,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     public function itShouldGetObjectClass()
     {
         $this->assertSame(
-            'NilPortugues\Validator\Attribute\Object\Object',
+            'NilPortugues\Validator\Attribute\Object\ObjectAttribute',
             get_class($this->validator->isObject('propertyName'))
         );
     }

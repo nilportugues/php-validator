@@ -15,7 +15,7 @@ use NilPortugues\Validator\Validator;
 
 /**
  * Class CollectionTraitTest
- * @package Tests\NilPortugues\Validator\Traits\Collection
+ * @package Tests\NilPortugues\Validator\Traits\CollectionAttribute
  */
 class CollectionTraitTest extends \PHPUnit_Framework_TestCase
 {

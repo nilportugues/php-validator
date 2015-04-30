@@ -15,7 +15,7 @@ use NilPortugues\Validator\Traits\Integer\IntegerTrait;
 
 /**
  * Class FileUploadTrait
- * @package NilPortugues\Validator\Traits\FileUpload
+ * @package NilPortugues\Validator\Traits\FileUploadAttribute
  */
 class FileUploadTrait
 {

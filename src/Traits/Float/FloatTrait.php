@@ -12,7 +12,7 @@ namespace NilPortugues\Validator\Traits\Float;
 
 /**
  * Class FloatTrait
- * @package NilPortugues\Validator\Traits\Float
+ * @package NilPortugues\Validator\Traits\FloatAttribute
  */
 trait FloatTrait
 {

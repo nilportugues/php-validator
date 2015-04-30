@@ -11,7 +11,7 @@
 namespace NilPortugues\Validator\Traits;
 
 /**
- * Class Generic
+ * Class GenericAttribute
  * @package Tests\NilPortugues\Validator\Traits
  */
 trait GenericTrait

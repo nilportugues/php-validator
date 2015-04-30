@@ -10,13 +10,13 @@
 
 namespace NilPortugues\Validator;
 
-use NilPortugues\Validator\Attribute\Collection\Collection;
-use NilPortugues\Validator\Attribute\DateTime\DateTime;
-use NilPortugues\Validator\Attribute\FileUpload\FileUpload;
-use NilPortugues\Validator\Attribute\Numeric\Float as FloatValidator;
-use NilPortugues\Validator\Attribute\Numeric\Integer;
-use NilPortugues\Validator\Attribute\Object\Object;
-use NilPortugues\Validator\Attribute\String\String as StringValidator;
+use NilPortugues\Validator\Attribute\Collection\CollectionAttribute;
+use NilPortugues\Validator\Attribute\DateTime\DateTimeAttribute;
+use NilPortugues\Validator\Attribute\FileUpload\FileUploadAttribute;
+use NilPortugues\Validator\Attribute\Numeric\FloatAttribute as FloatValidator;
+use NilPortugues\Validator\Attribute\Numeric\IntegerAttribute;
+use NilPortugues\Validator\Attribute\Object\ObjectAttribute;
+use NilPortugues\Validator\Attribute\String\StringAttribute as StringValidator;
 
 /**
  * Class Validator
@@ -128,31 +128,31 @@ class Validator
     /**
      * @param string $propertyName
      *
-     * @return Collection
+     * @return CollectionAttribute
      */
     public function isArray($propertyName)
     {
         $this->propertyName = $propertyName;
 
-        return new Collection($this, $this->errorMessages, $this->functionMap);
+        return new CollectionAttribute($this, $this->errorMessages, $this->functionMap);
     }
 
     /**
      * @param string $propertyName
      *
-     * @return \NilPortugues\Validator\Attribute\Numeric\Integer
+     * @return \NilPortugues\Validator\Attribute\Numeric\IntegerAttribute
      */
     public function isInteger($propertyName)
     {
         $this->propertyName = $propertyName;
 
-        return new Integer($this, $this->errorMessages, $this->functionMap);
+        return new IntegerAttribute($this, $this->errorMessages, $this->functionMap);
     }
 
     /**
      * @param string $propertyName
      *
-     * @return \NilPortugues\Validator\Attribute\Numeric\Float
+     * @return \NilPortugues\Validator\Attribute\Numeric\FloatAttribute
      */
     public function isFloat($propertyName)
     {
@@ -164,19 +164,19 @@ class Validator
     /**
      * @param string $propertyName
      *
-     * @return \NilPortugues\Validator\Attribute\Object\Object
+     * @return \NilPortugues\Validator\Attribute\Object\ObjectAttribute
      */
     public function isObject($propertyName)
     {
         $this->propertyName = $propertyName;
 
-        return new Object($this, $this->errorMessages, $this->functionMap);
+        return new ObjectAttribute($this, $this->errorMessages, $this->functionMap);
     }
 
     /**
      * @param string $propertyName
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function isString($propertyName)
     {
@@ -188,25 +188,25 @@ class Validator
     /**
      * @param string $propertyName
      *
-     * @return \NilPortugues\Validator\Attribute\DateTime\DateTime
+     * @return \NilPortugues\Validator\Attribute\DateTime\DateTimeAttribute
      */
     public function isDateTime($propertyName)
     {
         $this->propertyName = $propertyName;
 
-        return new DateTime($this, $this->errorMessages, $this->functionMap);
+        return new DateTimeAttribute($this, $this->errorMessages, $this->functionMap);
     }
 
     /**
      * @param string $propertyName
      *
-     * @return \NilPortugues\Validator\Attribute\FileUpload\FileUpload
+     * @return \NilPortugues\Validator\Attribute\FileUpload\FileUploadAttribute
      */
     public function isFileUpload($propertyName)
     {
         $this->propertyName = $propertyName;
 
-        return new FileUpload($this, $this->errorMessages, $this->functionMap);
+        return new FileUploadAttribute($this, $this->errorMessages, $this->functionMap);
     }
 
     /**

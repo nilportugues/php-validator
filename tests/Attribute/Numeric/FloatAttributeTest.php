@@ -16,10 +16,10 @@ use NilPortugues\Validator\Validator;
  * Class FloatTraitTest
  * @package Tests\NilPortugues\Validator\Attribute\Numeric
  */
-class FloatTest extends \PHPUnit_Framework_TestCase
+class FloatAttributeTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @return \NilPortugues\Validator\Attribute\Numeric\Float
+     * @return \NilPortugues\Validator\Attribute\Numeric\FloatAttribute
      */
     protected function getValidator()
     {

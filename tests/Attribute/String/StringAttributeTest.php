@@ -13,13 +13,13 @@ namespace Tests\NilPortugues\Validator\Attribute\String;
 use NilPortugues\Validator\Validator;
 
 /**
- * Class StringTest
- * @package Tests\NilPortugues\Validator\Attribute\String
+ * Class StringAttributeTest
+ * @package Tests\NilPortugues\Validator\Attribute\StringAttribute
  */
-class StringTest extends \PHPUnit_Framework_TestCase
+class StringAttributeTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     protected function getValidator()
     {

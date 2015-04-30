@@ -12,7 +12,7 @@ namespace NilPortugues\Validator\Traits\FileUpload;
 
 /**
  * Class FileUploadException
- * @package NilPortugues\Validator\Traits\FileUpload
+ * @package NilPortugues\Validator\Traits\FileUploadAttribute
  */
 class FileUploadException extends \Exception
 {

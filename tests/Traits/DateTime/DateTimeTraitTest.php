@@ -14,7 +14,7 @@ use NilPortugues\Validator\Traits\DateTime\DateTimeTrait;
 
 /**
  * Class DateTimeTraitTest
- * @package Tests\NilPortugues\Validator\Traits\DateTime
+ * @package Tests\NilPortugues\Validator\Traits\DateTimeAttribute
  */
 class DateTimeTraitTest extends \PHPUnit_Framework_TestCase
 {

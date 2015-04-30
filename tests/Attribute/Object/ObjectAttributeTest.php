@@ -14,13 +14,13 @@ use NilPortugues\Validator\Validator;
 use Tests\NilPortugues\Validator\Resources\Dummy;
 
 /**
- * Class ObjectTest
- * @package Tests\NilPortugues\Validator\Attribute\Object
+ * Class ObjectAttributeTest
+ * @package Tests\NilPortugues\Validator\Attribute\ObjectAttribute
  */
-class ObjectTest extends \PHPUnit_Framework_TestCase
+class ObjectAttributeTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @return \NilPortugues\Validator\Attribute\Object\Object
+     * @return \NilPortugues\Validator\Attribute\Object\ObjectAttribute
      */
     protected function getValidator()
     {

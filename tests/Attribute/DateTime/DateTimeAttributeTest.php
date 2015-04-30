@@ -13,13 +13,13 @@ namespace Tests\NilPortugues\Validator\Attribute\DateTime;
 use NilPortugues\Validator\Validator;
 
 /**
- * Class DateTimeTest
- * @package Tests\NilPortugues\Validator\Attribute\DateTime
+ * Class DateTimeAttributeTest
+ * @package Tests\NilPortugues\Validator\Attribute\DateTimeAttribute
  */
-class DateTimeTest extends \PHPUnit_Framework_TestCase
+class DateTimeAttributeTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @return \NilPortugues\Validator\Attribute\DateTime\DateTime
+     * @return \NilPortugues\Validator\Attribute\DateTime\DateTimeAttribute
      */
     protected function getValidator()
     {

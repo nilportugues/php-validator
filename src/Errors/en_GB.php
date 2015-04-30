@@ -9,10 +9,10 @@
  */
 
 return [
-    //Generic
+    //GenericAttribute
     'generic.is_required'                       => 'The :attribute field is required.',
     'generic.is_not_null'                       => 'The :attribute must be a non null value.',
-    //Float
+    //FloatAttribute
     'float'                                     => 'The :attribute must be a float.',
     'float.is_not_zero'                         => 'The :attribute must not be zero.',
     'float.is_positive'                         => 'The :attribute must be a positive value.',
@@ -23,7 +23,7 @@ return [
     'float.is_odd'                              => 'The :attribute must be divisible by 3.',
     'float.is_even'                             => 'The :attribute must be divisible by 2.',
     'float.is_multiple'                         => 'The :attribute must be multiple of :size.',
-    //Integer
+    //IntegerAttribute
     'integer'                                   => 'The :attribute must be an integer.',
     'integer.is_not_zero'                       => 'The :attribute must not be zero.',
     'integer.is_positive'                       => 'The :attribute must be a positive value.',
@@ -34,7 +34,7 @@ return [
     'integer.is_odd'                            => 'The :attribute must be divisible by 3.',
     'integer.is_even'                           => 'The :attribute must be divisible by 2',
     'integer.is_multiple'                       => 'The :attribute must be multiple of :size.',
-    //String
+    //StringAttribute
     'string'                                    => 'The :attribute must be a string.',
     'string.is_alphanumeric'                    => 'The :attribute may only contain letters and digits.',
     'string.is_alpha'                           => 'The :attribute may only contain letters.',
@@ -69,7 +69,7 @@ return [
     'string.is_email'                           => 'The :attribute must be a valid email address.',
     'string.is_url'                             => 'The :attribute must be a valid URL.',
     'string.is_uuid'                            => 'The :attribute must be a valid UUID.',
-    //Object
+    //ObjectAttribute
     'object'                                    => 'The :attribute is not a valid object.',
     'object.is_instance_of'                     => 'The :attribute is not an instance of :object.',
     'object.has_property'                       => 'The :attribute property :property is not valid.',
@@ -100,7 +100,7 @@ return [
     'date_time.is_aftenoon'                     => 'The :attribute is not afternoon.',
     'date_time.is_evening'                      => 'The :attribute is not evening.',
     'date_time.is_night'                        => 'The :attribute is not night.',
-    //Collection
+    //CollectionAttribute
     'collection'                                => 'The :attribute must be an array.',
     'collection.each'                           => '', //Will use the generated errors from the provided validators.
     'collection.has_key_format'                 => 'The :attribute array key format is not valid.',
@@ -110,7 +110,7 @@ return [
     'collection.has_length'                     => 'The :attribute must contain :size items.',
     'collection.is_not_empty'                   => 'The :attribute must have at least 1 item.',
     'collection.starts_with'                    => 'The :attribute array does not start as expected.',
-    //FileUpload
+    //FileUploadAttribute
     'file_upload'                               => 'The :attribute has no files.',
     'file_upload.is_between'                    => 'The :attribute must be between :min and :max :formatBytes.',
     'file_upload.is_mime_type'                  => 'The :attribute is not a valid file format.',

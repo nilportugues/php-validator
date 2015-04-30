@@ -12,7 +12,7 @@ namespace NilPortugues\Validator\Traits\Object;
 
 /**
  * Class ObjectTrait
- * @package NilPortugues\Validator\Traits\Object
+ * @package NilPortugues\Validator\Traits\ObjectAttribute
  */
 trait ObjectTrait
 {

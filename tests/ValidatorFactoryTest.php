@@ -25,7 +25,7 @@ class ValidatorFactoryTest extends \PHPUnit_Framework_TestCase
     {
         $stringValidator = Validator::create('field1', 'string', ['between:5:11']);
 
-        $this->assertInstanceOf('\NilPortugues\Validator\Attribute\String\String', $stringValidator);
+        $this->assertInstanceOf('\NilPortugues\Validator\Attribute\String\StringAttribute', $stringValidator);
         $this->assertFalse($stringValidator->validate('hello world'));
     }
 

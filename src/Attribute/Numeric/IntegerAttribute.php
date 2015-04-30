@@ -10,14 +10,14 @@
 
 namespace NilPortugues\Validator\Attribute\Numeric;
 
-use NilPortugues\Validator\Attribute\Generic;
+use NilPortugues\Validator\Attribute\GenericAttribute;
 use NilPortugues\Validator\Validator;
 
 /**
- * Class Integer
+ * Class IntegerAttribute
  * @package NilPortugues\Validator\Attribute\Numeric
  */
-class Integer extends Generic
+class IntegerAttribute extends GenericAttribute
 {
     /**
      * @param Validator $validator
@@ -32,7 +32,7 @@ class Integer extends Generic
     }
 
     /**
-     * @return \NilPortugues\Validator\Attribute\Numeric\Integer
+     * @return \NilPortugues\Validator\Attribute\Numeric\IntegerAttribute
      */
     public function isNotZero()
     {
@@ -42,7 +42,7 @@ class Integer extends Generic
     }
 
     /**
-     * @return \NilPortugues\Validator\Attribute\Numeric\Integer
+     * @return \NilPortugues\Validator\Attribute\Numeric\IntegerAttribute
      */
     public function isPositive()
     {
@@ -52,7 +52,7 @@ class Integer extends Generic
     }
 
     /**
-     * @return \NilPortugues\Validator\Attribute\Numeric\Integer
+     * @return \NilPortugues\Validator\Attribute\Numeric\IntegerAttribute
      */
     public function isPositiveOrZero()
     {
@@ -66,7 +66,7 @@ class Integer extends Generic
      * @param int  $max
      * @param bool $inclusive
      *
-     * @return \NilPortugues\Validator\Attribute\Numeric\Integer
+     * @return \NilPortugues\Validator\Attribute\Numeric\IntegerAttribute
      */
     public function isBetween($min, $max, $inclusive = false)
     {
@@ -76,7 +76,7 @@ class Integer extends Generic
     }
 
     /**
-     * @return \NilPortugues\Validator\Attribute\Numeric\Integer
+     * @return \NilPortugues\Validator\Attribute\Numeric\IntegerAttribute
      */
     public function isNegative()
     {
@@ -86,7 +86,7 @@ class Integer extends Generic
     }
 
     /**
-     * @return \NilPortugues\Validator\Attribute\Numeric\Integer
+     * @return \NilPortugues\Validator\Attribute\Numeric\IntegerAttribute
      */
     public function isNegativeOrZero()
     {

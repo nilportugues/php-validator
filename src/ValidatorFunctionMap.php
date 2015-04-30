@@ -102,7 +102,7 @@ class ValidatorFunctionMap
      */
     private function buildErrorMessage(array $errorValues, array &$errors, $funcName, $propertyName)
     {
-        $message = str_replace(':attribute',  "'".$propertyName."'", $errors[$funcName]);
+        $message = str_replace(':attribute', "'".$propertyName."'", $errors[$funcName]);
 
         foreach ($errorValues as $key => $value) {
             $message = str_replace(":{$key}", $value, $message);
@@ -127,6 +127,6 @@ class ValidatorFunctionMap
             )
         );
 
-        return strtolower($camel);
+        return str_replace('_attribute', '', strtolower($camel));
     }
 }

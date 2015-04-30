@@ -14,7 +14,7 @@ use NilPortugues\Validator\Traits\String\StringTrait;
 
 /**
  * Class StringTraitTest
- * @package Tests\NilPortugues\Validator\Traits\String
+ * @package Tests\NilPortugues\Validator\Traits\StringAttribute
  */
 class StringTraitTest extends \PHPUnit_Framework_TestCase
 {

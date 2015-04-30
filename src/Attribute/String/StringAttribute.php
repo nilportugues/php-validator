@@ -10,14 +10,14 @@
 
 namespace NilPortugues\Validator\Attribute\String;
 
-use NilPortugues\Validator\Attribute\Generic;
+use NilPortugues\Validator\Attribute\GenericAttribute;
 use NilPortugues\Validator\Validator;
 
 /**
- * Class String
- * @package NilPortugues\Validator\Attribute\String
+ * Class StringAttribute
+ * @package NilPortugues\Validator\Attribute\StringAttribute
  */
-class String extends Generic
+class StringAttribute extends GenericAttribute
 {
     /**
      * @param Validator $validator
@@ -34,7 +34,7 @@ class String extends Generic
     /**
      * Validates alphanumeric characters from a-Z and 0-9
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function isAlphanumeric()
     {
@@ -46,7 +46,7 @@ class String extends Generic
     /**
      * Validates alphanumeric characters from a-Z, white spaces and empty values.
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function isAlpha()
     {
@@ -62,7 +62,7 @@ class String extends Generic
      * @param int  $max
      * @param bool $inclusive
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function isBetween($min, $max, $inclusive = false)
     {
@@ -76,7 +76,7 @@ class String extends Generic
      *
      * @param string[] $charsetNames
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function isCharset(array $charsetNames)
     {
@@ -88,7 +88,7 @@ class String extends Generic
     /**
      * Validates strings that contain only consonants.
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function isAllConsonants()
     {
@@ -103,7 +103,7 @@ class String extends Generic
      * @param mixed $comparedValue
      * @param bool  $identical
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function equals($comparedValue, $identical = false)
     {
@@ -116,7 +116,7 @@ class String extends Generic
      * @param      $value
      * @param bool $identical
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function contains($value, $identical = false)
     {
@@ -128,7 +128,7 @@ class String extends Generic
     /**
      * Only accepts control characters.
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function isControlCharacters()
     {
@@ -140,7 +140,7 @@ class String extends Generic
     /**
      * Validates a value that doesn't allow a-Z, but accepts empty values and whitespace.
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function isDigit()
     {
@@ -155,7 +155,7 @@ class String extends Generic
      * @param string $word
      * @param bool   $identical
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function endsWith($word, $identical = false)
     {
@@ -170,7 +170,7 @@ class String extends Generic
      * @param string $haystack
      * @param bool   $identical
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function in($haystack, $identical = false)
     {
@@ -182,7 +182,7 @@ class String extends Generic
     /**
      * Validates all characters that are graphically represented.
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function hasGraphicalCharsOnly()
     {
@@ -194,7 +194,7 @@ class String extends Generic
     /**
      * @param integer $length
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function hasLength($length)
     {
@@ -206,7 +206,7 @@ class String extends Generic
     /**
      * Validates if string characters are lowercase in the input.
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function isLowercase()
     {
@@ -220,7 +220,7 @@ class String extends Generic
      * This function also takes whitespace into account, use noWhitespace() if no spaces or line breaks
      * and other whitespace anywhere in the input is desired
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function notEmpty()
     {
@@ -232,7 +232,7 @@ class String extends Generic
     /**
      * Validates if a string contains no whitespace (spaces, tabs and line breaks).
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function noWhitespace()
     {
@@ -244,7 +244,7 @@ class String extends Generic
     /**
      * Validates all characters that are graphically printable.
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function hasPrintableCharsOnly()
     {
@@ -256,7 +256,7 @@ class String extends Generic
     /**
      * Accepts only punctuation characters.
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function isPunctuation()
     {
@@ -270,7 +270,7 @@ class String extends Generic
      *
      * @param string $regex
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function matchesRegex($regex)
     {
@@ -282,7 +282,7 @@ class String extends Generic
     /**
      * Validates slug-like strings.
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function isSlug()
     {
@@ -294,7 +294,7 @@ class String extends Generic
     /**
      * @param
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function isSpace()
     {
@@ -309,7 +309,7 @@ class String extends Generic
      * @param mixed $word
      * @param bool  $identical
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function startsWith($word, $identical = false)
     {
@@ -321,7 +321,7 @@ class String extends Generic
     /**
      * Validates if string characters are uppercase in the input.
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function isUppercase()
     {
@@ -333,7 +333,7 @@ class String extends Generic
     /**
      * Validates version numbers using Semantic Versioning. Eg: 1.0.0
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function isVersion()
     {
@@ -345,7 +345,7 @@ class String extends Generic
     /**
      * Validates strings that contains only vowels.
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function isVowel()
     {
@@ -357,7 +357,7 @@ class String extends Generic
     /**
      * Accepts an hexadecimal number,  however, that it doesn't accept strings starting with 0x.
      *
-     * @return \NilPortugues\Validator\Attribute\String\String
+     * @return \NilPortugues\Validator\Attribute\String\StringAttribute
      */
     public function isHexDigit()
     {

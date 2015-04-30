@@ -12,7 +12,7 @@ namespace NilPortugues\Validator\Traits\String;
 
 /**
  * Class StringTrait
- * @package NilPortugues\Validator\Traits\String
+ * @package NilPortugues\Validator\Traits\StringAttribute
  */
 trait StringTrait
 {

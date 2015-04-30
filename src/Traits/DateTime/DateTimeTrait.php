@@ -12,7 +12,7 @@ namespace NilPortugues\Validator\Traits\DateTime;
 
 /**
  * Class DateTimeTrait
- * @package NilPortugues\Validator\Traits\DateTime
+ * @package NilPortugues\Validator\Traits\DateTimeAttribute
  */
 trait DateTimeTrait
 {

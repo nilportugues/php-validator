@@ -14,10 +14,10 @@ use NilPortugues\Validator\AbstractValidator;
 use NilPortugues\Validator\Validator;
 
 /**
- * Class FileUpload
- * @package NilPortugues\Validator\Attribute\FileUpload
+ * Class FileUploadAttribute
+ * @package NilPortugues\Validator\Attribute\FileUploadAttribute
  */
-class FileUpload extends AbstractValidator
+class FileUploadAttribute extends AbstractValidator
 {
     /**
      * @param Validator $validator

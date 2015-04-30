@@ -14,10 +14,10 @@ use NilPortugues\Validator\AbstractValidator;
 use NilPortugues\Validator\Validator;
 
 /**
- * Class Collection
- * @package NilPortugues\Validator\Attribute\Collection
+ * Class CollectionAttribute
+ * @package NilPortugues\Validator\Attribute\CollectionAttribute
  */
-class Collection extends AbstractValidator
+class CollectionAttribute extends AbstractValidator
 {
     /**
      * @param Validator $validator

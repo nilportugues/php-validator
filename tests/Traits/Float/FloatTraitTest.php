@@ -14,7 +14,7 @@ use NilPortugues\Validator\Traits\Float\FloatTrait;
 
 /**
  * Class FloatTraitTest
- * @package Tests\NilPortugues\Validator\Traits\Float
+ * @package Tests\NilPortugues\Validator\Traits\FloatAttribute
  */
 class FloatTraitTest extends \PHPUnit_Framework_TestCase
 {

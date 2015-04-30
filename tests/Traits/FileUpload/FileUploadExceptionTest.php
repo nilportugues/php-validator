@@ -14,7 +14,7 @@ use NilPortugues\Validator\Traits\FileUpload\FileUploadException;
 
 /**
  * Class FileUploadExceptionTest
- * @package Tests\NilPortugues\Validator\Traits\FileUpload
+ * @package Tests\NilPortugues\Validator\Traits\FileUploadAttribute
  */
 class FileUploadExceptionTest extends \PHPUnit_Framework_TestCase
 {

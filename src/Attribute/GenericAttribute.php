@@ -13,10 +13,10 @@ namespace NilPortugues\Validator\Attribute;
 use NilPortugues\Validator\AbstractValidator;
 
 /**
- * Class Generic
+ * Class GenericAttribute
  * @package NilPortugues\Validator\Attribute
  */
-class Generic extends AbstractValidator
+class GenericAttribute extends AbstractValidator
 {
     /**
      * @return $this

@@ -12,10 +12,10 @@ namespace Tests\NilPortugues\Validator\Attribute\Collection;
 
 use NilPortugues\Validator\Validator;
 
-class CollectionTest extends \PHPUnit_Framework_TestCase
+class CollectionAttributeTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @return \NilPortugues\Validator\Attribute\Collection\Collection
+     * @return \NilPortugues\Validator\Attribute\Collection\CollectionAttribute
      */
     protected function getValidator()
     {

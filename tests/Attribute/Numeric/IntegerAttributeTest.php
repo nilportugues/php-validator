@@ -13,13 +13,13 @@ namespace Tests\NilPortugues\Validator\Attribute\Numeric;
 use NilPortugues\Validator\Validator;
 
 /**
- * Class IntegerTest
+ * Class IntegerAttributeTest
  * @package Tests\NilPortugues\Validator\Attribute\Numeric
  */
-class IntegerTest extends \PHPUnit_Framework_TestCase
+class IntegerAttributeTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @return \NilPortugues\Validator\Attribute\Numeric\Integer
+     * @return \NilPortugues\Validator\Attribute\Numeric\IntegerAttribute
      */
     protected function getValidator()
     {

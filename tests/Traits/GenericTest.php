@@ -13,7 +13,7 @@ namespace Tests\NilPortugues\Validator\Traits;
 use NilPortugues\Validator\Traits\GenericTrait;
 
 /**
- * Class GenericTest
+ * Class GenericAttributeTest
  * @package Tests\NilPortugues\Validator\Traits
  */
 class GenericTest extends \PHPUnit_Framework_TestCase

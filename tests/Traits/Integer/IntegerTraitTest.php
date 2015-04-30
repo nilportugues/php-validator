@@ -14,7 +14,7 @@ use NilPortugues\Validator\Traits\Integer\IntegerTrait;
 
 /**
  * Class IntegerTraitTest
- * @package Tests\NilPortugues\Validator\Traits\Integer
+ * @package Tests\NilPortugues\Validator\Traits\IntegerAttribute
  */
 class IntegerTraitTest extends \PHPUnit_Framework_TestCase
 {

@@ -10,14 +10,14 @@
 
 namespace NilPortugues\Validator\Attribute\Object;
 
-use NilPortugues\Validator\Attribute\Generic;
+use NilPortugues\Validator\Attribute\GenericAttribute;
 use NilPortugues\Validator\Validator;
 
 /**
- * Class Object
- * @package NilPortugues\Validator\Attribute\Object
+ * Class ObjectAttribute
+ * @package NilPortugues\Validator\Attribute\ObjectAttribute
  */
-class Object extends Generic
+class ObjectAttribute extends GenericAttribute
 {
     /**
      * @param Validator $validator

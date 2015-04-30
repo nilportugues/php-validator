@@ -12,7 +12,7 @@ namespace NilPortugues\Validator\Traits\Integer;
 
 /**
  * Class IntegerTrait
- * @package NilPortugues\Validator\Traits\Integer
+ * @package NilPortugues\Validator\Traits\IntegerAttribute
  */
 trait IntegerTrait
 {

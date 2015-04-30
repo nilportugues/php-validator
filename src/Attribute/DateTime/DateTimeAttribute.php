@@ -10,14 +10,14 @@
 
 namespace NilPortugues\Validator\Attribute\DateTime;
 
-use NilPortugues\Validator\Attribute\Generic;
+use NilPortugues\Validator\Attribute\GenericAttribute;
 use NilPortugues\Validator\Validator;
 
 /**
- * Class DateTime
- * @package NilPortugues\Validator\Attribute\DateTime
+ * Class DateTimeAttribute
+ * @package NilPortugues\Validator\Attribute\DateTimeAttribute
  */
-class DateTime extends Generic
+class DateTimeAttribute extends GenericAttribute
 {
     /**
      * @param Validator $validator

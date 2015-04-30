@@ -15,7 +15,7 @@ use Tests\NilPortugues\Validator\Resources\Dummy;
 
 /**
  * Class ObjectTraitTest
- * @package Tests\NilPortugues\Validator\Traits\Object
+ * @package Tests\NilPortugues\Validator\Traits\ObjectAttribute
  */
 class ObjectTraitTest extends \PHPUnit_Framework_TestCase
 {

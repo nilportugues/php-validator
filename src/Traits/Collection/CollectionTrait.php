@@ -14,7 +14,7 @@ use NilPortugues\Validator\AbstractValidator;
 
 /**
  * Class CollectionTrait
- * @package NilPortugues\Validator\Traits\Collection
+ * @package NilPortugues\Validator\Traits\CollectionAttribute
  */
 trait CollectionTrait
 {
