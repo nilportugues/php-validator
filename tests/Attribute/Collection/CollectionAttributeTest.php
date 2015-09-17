@@ -74,6 +74,8 @@ class CollectionAttributeTest extends \PHPUnit_Framework_TestCase
         $keyIsString  = $validator->isString('key')->isAlpha();
         $keyIsInteger = $validator->isInteger('key')->isPositiveOrZero();
 
+
+
         $this->assertTrue($this->getValidator()->hasKeyFormat($keyIsString)->validate($array));
 
         $this->assertTrue($this->getValidator()->hasKeyFormat($keyIsString)->validate($arrayObject));

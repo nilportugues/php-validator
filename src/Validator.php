@@ -13,10 +13,10 @@ namespace NilPortugues\Validator;
 use NilPortugues\Validator\Attribute\Collection\CollectionAttribute;
 use NilPortugues\Validator\Attribute\DateTime\DateTimeAttribute;
 use NilPortugues\Validator\Attribute\FileUpload\FileUploadAttribute;
-use NilPortugues\Validator\Attribute\Numeric\FloatAttribute as FloatValidator;
+use NilPortugues\Validator\Attribute\Numeric\FloatAttribute;
 use NilPortugues\Validator\Attribute\Numeric\IntegerAttribute;
 use NilPortugues\Validator\Attribute\Object\ObjectAttribute;
-use NilPortugues\Validator\Attribute\String\StringAttribute as StringValidator;
+use NilPortugues\Validator\Attribute\String\StringAttribute;
 
 /**
  * Class Validator
@@ -47,12 +47,12 @@ class Validator
     /**
      * @var array
      */
-    private $functionMap = [];
+    private static $functionMap = [];
 
     /**
      * @var array
      */
-    private $errorMessages = [];
+    private static $errorMessages = [];
 
     /**
      * @var string
@@ -87,7 +87,7 @@ class Validator
             throw new \InvalidArgumentException("Language not found.");
         }
 
-        $this->errorMessages = include $filePath;
+        self::$errorMessages = include $filePath;
         self::$errorMessageFile = $filePath;
     }
 
@@ -102,7 +102,7 @@ class Validator
             throw new \RuntimeException('FunctionMap not found');
         }
 
-        $this->functionMap = include $functionMap;
+        self::$functionMap = include $functionMap;
     }
 
     /**
@@ -119,7 +119,7 @@ class Validator
         $validator = new self;
 
         if (!empty(self::$errorMessageFile)) {
-            $validator->errorMessages = include self::$errorMessageFile;
+            $validator::$errorMessages = include self::$errorMessageFile;
         }
 
         return (new ValidatorFactory($validator))->create($name, $type, $rules);
@@ -134,7 +134,7 @@ class Validator
     {
         $this->propertyName = $propertyName;
 
-        return new CollectionAttribute($this, $this->errorMessages, $this->functionMap);
+        return new CollectionAttribute($this, self::$errorMessages, self::$functionMap);
     }
 
     /**
@@ -146,7 +146,7 @@ class Validator
     {
         $this->propertyName = $propertyName;
 
-        return new IntegerAttribute($this, $this->errorMessages, $this->functionMap);
+        return new IntegerAttribute($this, self::$errorMessages, self::$functionMap);
     }
 
     /**
@@ -158,7 +158,7 @@ class Validator
     {
         $this->propertyName = $propertyName;
 
-        return new FloatValidator($this, $this->errorMessages, $this->functionMap);
+        return new FloatAttribute($this, self::$errorMessages, self::$functionMap);
     }
 
     /**
@@ -170,7 +170,7 @@ class Validator
     {
         $this->propertyName = $propertyName;
 
-        return new ObjectAttribute($this, $this->errorMessages, $this->functionMap);
+        return new ObjectAttribute($this, self::$errorMessages, self::$functionMap);
     }
 
     /**
@@ -182,7 +182,7 @@ class Validator
     {
         $this->propertyName = $propertyName;
 
-        return new StringValidator($this, $this->errorMessages, $this->functionMap);
+        return new StringAttribute($this, self::$errorMessages, self::$functionMap);
     }
 
     /**
@@ -194,7 +194,7 @@ class Validator
     {
         $this->propertyName = $propertyName;
 
-        return new DateTimeAttribute($this, $this->errorMessages, $this->functionMap);
+        return new DateTimeAttribute($this, self::$errorMessages, self::$functionMap);
     }
 
     /**
@@ -206,7 +206,7 @@ class Validator
     {
         $this->propertyName = $propertyName;
 
-        return new FileUploadAttribute($this, $this->errorMessages, $this->functionMap);
+        return new FileUploadAttribute($this, self::$errorMessages, self::$functionMap);
     }
 
     /**
