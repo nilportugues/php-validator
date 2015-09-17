@@ -50,7 +50,7 @@ class ValidatorFunctionMapTest extends \PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $functionMapArray = ['String::isAlpha' => '\NilPortugues\Validator\Traits\String\StringTrait::isAlpha'];
+        $functionMapArray = ['String::isAlpha' => '\NilPortugues\Validator\Validation\String\StringValidation::isAlpha'];
         $functionMap      = new ValidatorFunctionMap($abstractValidator, $functionMapArray);
         $errors           = [];
         $values           = ['@'];

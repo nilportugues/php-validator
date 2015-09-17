@@ -10,7 +10,7 @@
 
 namespace Tests\NilPortugues\Validator\Resources;
 
-use NilPortugues\Validator\Traits\FileUpload\FileUploadException;
+use NilPortugues\Validator\Validation\FileUpload\FileUploadException;
 
 /**
  * Class DummyFileUpload
@@ -21,7 +21,7 @@ class DummyFileUpload
     /**
      * @param $uploadName
      *
-     * @throws \NilPortugues\Validator\Traits\FileUpload\FileUploadException
+     * @throws \NilPortugues\Validator\Validation\FileUpload\FileUploadException
      */
     public static function isBetween($uploadName)
     {

@@ -10,7 +10,7 @@
 
 namespace NilPortugues\Validator;
 
-use NilPortugues\Validator\Traits\FileUpload\FileUploadException;
+use NilPortugues\Validator\Validation\FileUpload\FileUploadException;
 
 /**
  * Class ValidatorFunctionMap

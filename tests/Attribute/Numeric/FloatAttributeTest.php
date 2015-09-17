@@ -13,7 +13,7 @@ namespace Tests\NilPortugues\Validator\Attribute\Numeric;
 use NilPortugues\Validator\Validator;
 
 /**
- * Class FloatTraitTest
+ * Class FloatValidationTest
  * @package Tests\NilPortugues\Validator\Attribute\Numeric
  */
 class FloatAttributeTest extends \PHPUnit_Framework_TestCase
