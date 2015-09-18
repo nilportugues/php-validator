@@ -19,12 +19,12 @@ abstract class AbstractValidator
     /**
      * @var Validator
      */
-    protected static $validator;
+    protected $validator;
 
     /**
      * @var ValidatorFunctionMap
      */
-    protected static $functionMap;
+    protected $functionMap;
 
     /**
      * @var array
@@ -39,7 +39,7 @@ abstract class AbstractValidator
     /**
      * @var array
      */
-    protected static $errorArray = [];
+    protected $errorArray = [];
 
     /**
      * @param Validator $validator
@@ -48,9 +48,9 @@ abstract class AbstractValidator
      */
     public function __construct(Validator $validator, array &$errorMessages, array &$functionMap)
     {
-        self::$validator   = $validator;
-        self::$functionMap = new ValidatorFunctionMap($this, $functionMap);
-        self::$errorArray  = $errorMessages;
+        $this->validator   = $validator;
+        $this->functionMap = ValidatorFunctionMap::getInstance($this, $functionMap);
+        $this->errorArray  = $errorMessages;
     }
 
     /**
@@ -99,12 +99,12 @@ abstract class AbstractValidator
                 $arguments = array_merge([$value], $condition['arguments']);
             }
 
-            $isValid = $isValid && self::$functionMap->get(
-                    self::$validator->getPropertyName(),
+            $isValid = $isValid && $this->functionMap->get(
+                    $this->validator->getPropertyName(),
                     $condition['key'],
                     $arguments,
                     $condition['values'],
-                    self::$errorArray
+                    $this->errorArray
                 );
 
             if (false === $isValid) {
@@ -143,7 +143,7 @@ abstract class AbstractValidator
      */
     public function setError($error, $propertyName)
     {
-        $this->errors[self::$validator->getPropertyName()][$propertyName] = $error;
+        $this->errors[$this->validator->getPropertyName()][$propertyName] = $error;
 
         return $this;
     }

@@ -48,7 +48,7 @@ class UserValidator
     /**
      * @var NilPortugues\Validator\Validator
      */
-    private $validator;
+    private static $validator;
 
     /**
      * @var array
@@ -61,11 +61,13 @@ class UserValidator
     private $isValid = true;
 
     /**
-     * @param \NilPortugues\Validator\Validator $validator
+     * 
      */
-    public function __construct(\NilPortugues\Validator\Validator $validator)
+    public function __construct()
     {
-        $this->validator = $validator;
+        if(!isset(self::$validator)) {
+            self::$validator = new \NilPortugues\Validator\Validator();
+        }
     }
 
     /**
@@ -98,7 +100,7 @@ class UserValidator
      */
     private function validateGender(Request $request)
     {
-        $gender = $this->validator->isInteger('gender');
+        $gender = self::$validator->isInteger('gender');
 
         $result = $gender
             ->isRequired()
@@ -117,7 +119,7 @@ class UserValidator
      */
     private function validateEmail(Request $request)
     {
-        $email = $this->validator->isString('email');
+        $email = self::$validator->isString('email');
 
         $result = $email
             ->isRequired()
@@ -135,7 +137,7 @@ class UserValidator
      */
     private function validatePassword(Request $request)
     {
-        $password = $this->validator->isString('password');
+        $password = self::$validator->isString('password');
 
         $result = $password
             ->isRequired()
@@ -156,7 +158,7 @@ class UserValidator
      */
     private function validateUsername(Request $request)
     {
-        $username = $this->validator->isString('username');
+        $username = self::$validator->isString('username');
 
         $result = $username
             ->isRequired()
@@ -169,8 +171,9 @@ class UserValidator
     }
 }
 
-$validator     = new \NilPortugues\Validator\Validator();
-$userValidator = new UserValidator($validator);
+
+
+$userValidator = new UserValidator();
 
 $request1 = new Request('nilportugues', 'password', 'hello@world.com', '1');
 $request2 = new Request('nil', 'password', 'not-an-email.com', '');

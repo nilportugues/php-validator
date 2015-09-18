@@ -29,13 +29,33 @@ class ValidatorFunctionMap
     private $validator;
 
     /**
-     * @param AbstractValidator $abstractValidator
-     * @param array             $functionMap
+     * @var self
      */
-    public function __construct(AbstractValidator $abstractValidator, array &$functionMap)
+    private static $instance;
+
+    /**
+     * @param AbstractValidator $abstractValidator
+     * @param array $functionMap
+     */
+    private function __construct(AbstractValidator $abstractValidator, array &$functionMap)
     {
         $this->validator   = $abstractValidator;
         $this->functionMap = $functionMap;
+    }
+    /**
+     * @param AbstractValidator $abstractValidator
+     * @param array $functionMap
+     * @return ValidatorFunctionMap
+     */
+    public static function getInstance(AbstractValidator $abstractValidator, array &$functionMap)
+    {
+        if (!isset(self::$instance)) {
+            self::$instance = new self($abstractValidator, $functionMap);
+        }
+        $i = self::$instance;
+        $i->validator = $abstractValidator;
+
+        return self::$instance;
     }
 
     /**

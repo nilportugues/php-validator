@@ -29,7 +29,7 @@ class ValidatorFunctionMapTest extends \PHPUnit_Framework_TestCase
             ->getMock();
 
         $functionMapArray = [];
-        $functionMap      = new ValidatorFunctionMap($abstractValidator, $functionMapArray);
+        $functionMap      = ValidatorFunctionMap::getInstance($abstractValidator, $functionMapArray);
         $errors           = [];
         $errorValues      = [];
 
@@ -51,7 +51,7 @@ class ValidatorFunctionMapTest extends \PHPUnit_Framework_TestCase
             ->getMock();
 
         $functionMapArray = ['String::isAlpha' => '\NilPortugues\Validator\Validation\String\StringValidation::isAlpha'];
-        $functionMap      = new ValidatorFunctionMap($abstractValidator, $functionMapArray);
+        $functionMap      = ValidatorFunctionMap::getInstance($abstractValidator, $functionMapArray);
         $errors           = [];
         $values           = ['@'];
 
@@ -59,7 +59,7 @@ class ValidatorFunctionMapTest extends \PHPUnit_Framework_TestCase
             '\InvalidArgumentException',
             'Validator key \'string.is_alpha\' not found in error file'
         );
-        $functionMap->get('property', 'String::isAlpha', $values, $values, $errors);
+        $functionMap->get('property', 'StringAttribute::isAlpha', $values, $values, $errors);
     }
 
     /**
@@ -83,13 +83,13 @@ class ValidatorFunctionMapTest extends \PHPUnit_Framework_TestCase
             ->getMock();
 
         $functionMapArray = [
-            'FileUpload::isBetween' => '\Tests\NilPortugues\Validator\Resources\DummyFileUpload::isBetween',
+            'FileUploadAttribute::isBetween' => '\Tests\NilPortugues\Validator\Resources\DummyFileUpload::isBetween',
         ];
 
-        $functionMap = new ValidatorFunctionMap($abstractValidator, $functionMapArray);
-        $values      = ['image'];
+        $functionMap =  ValidatorFunctionMap::getInstance($abstractValidator, $functionMapArray);
+        $values      = ['image', 0, 2, 'MB', true];
         $errors      = ['FileUpload::UPLOAD_ERR_INI_SIZE' => 'error message'];
 
-        $this->assertFalse($functionMap->get('image', 'FileUpload::isBetween', $values, $values, $errors));
+        $this->assertFalse($functionMap->get('image', 'FileUploadAttribute::isBetween', $values, $values, $errors));
     }
 }

@@ -23,7 +23,7 @@ class DummyFileUpload
      *
      * @throws \NilPortugues\Validator\Validation\FileUpload\FileUploadException
      */
-    public static function isBetween($uploadName)
+    public static function isBetween($minSize, $maxSize, $format = 'B', $inclusive = false)
     {
         throw new FileUploadException($uploadName);
     }
