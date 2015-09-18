@@ -32,12 +32,12 @@ class Validator
     /**
      * @var string
      */
-    private $language = 'en_GB';
+    private static $language = 'en_GB';
 
     /**
      * @var string
      */
-    private $errorDir = '/Errors';
+    private static $errorDir = '/Errors';
 
     /**
      * @var string
@@ -60,12 +60,30 @@ class Validator
     private static $errorMessageFile = '';
 
     /**
+     * @var self
+     */
+    private static $instances = [];
+
+    /**
+     * @param string $errorMessageFile
+     *
+     * @return \NilPortugues\Validator\Validator
+     */
+    public static function create($errorMessageFile = '')
+    {
+        if (!isset(self::$instances[$errorMessageFile])) {
+            self::$instances[$errorMessageFile] = new self($errorMessageFile);
+        }
+        return self::$instances[$errorMessageFile];
+    }
+
+    /**
      * @param string $errorMessageFile
      */
-    public function __construct($errorMessageFile = '')
+    private function __construct($errorMessageFile = '')
     {
-        $this->buildErrorMessages($errorMessageFile);
-        $this->buildFunctionMap();
+        self::buildErrorMessages($errorMessageFile);
+        self::buildFunctionMap();
     }
 
     /**
@@ -73,14 +91,14 @@ class Validator
      *
      * @throws \InvalidArgumentException
      */
-    private function buildErrorMessages($errorMessageFile)
+    private static function buildErrorMessages($errorMessageFile)
     {
         $filePath = $errorMessageFile;
 
         if ('' == $filePath) {
             $filePath = realpath(dirname(__FILE__))
-                .DIRECTORY_SEPARATOR.$this->errorDir
-                .DIRECTORY_SEPARATOR.$this->language.".php";
+                .DIRECTORY_SEPARATOR.self::$errorDir
+                .DIRECTORY_SEPARATOR.self::$language.".php";
         }
 
         if (false === file_exists($filePath)) {
@@ -106,35 +124,13 @@ class Validator
     }
 
     /**
-     * Creates a validator based on the provided information.
-     *
-     * @param string $name
-     * @param string $type
-     * @param string[]  $rules
-     *
-     * @return AbstractValidator
-     */
-    public static function create($name, $type, array $rules = [])
-    {
-        $validator = new self;
-
-        if (!empty(self::$errorMessageFile)) {
-            $validator::$errorMessages = include self::$errorMessageFile;
-        }
-
-        return (new ValidatorFactory($validator))->create($name, $type, $rules);
-    }
-
-    /**
      * @param string $propertyName
      *
      * @return CollectionAttribute
      */
     public function isArray($propertyName)
     {
-        $this->propertyName = $propertyName;
-
-        return new CollectionAttribute($this, self::$errorMessages, self::$functionMap);
+        return new CollectionAttribute($propertyName, $this, self::$errorMessages, self::$functionMap);
     }
 
     /**
@@ -144,9 +140,7 @@ class Validator
      */
     public function isInteger($propertyName)
     {
-        $this->propertyName = $propertyName;
-
-        return new IntegerAttribute($this, self::$errorMessages, self::$functionMap);
+        return new IntegerAttribute($propertyName, $this, self::$errorMessages, self::$functionMap);
     }
 
     /**
@@ -156,9 +150,7 @@ class Validator
      */
     public function isFloat($propertyName)
     {
-        $this->propertyName = $propertyName;
-
-        return new FloatAttribute($this, self::$errorMessages, self::$functionMap);
+        return new FloatAttribute($propertyName, $this, self::$errorMessages, self::$functionMap);
     }
 
     /**
@@ -168,9 +160,7 @@ class Validator
      */
     public function isObject($propertyName)
     {
-        $this->propertyName = $propertyName;
-
-        return new ObjectAttribute($this, self::$errorMessages, self::$functionMap);
+        return new ObjectAttribute($propertyName, $this, self::$errorMessages, self::$functionMap);
     }
 
     /**
@@ -180,9 +170,7 @@ class Validator
      */
     public function isString($propertyName)
     {
-        $this->propertyName = $propertyName;
-
-        return new StringAttribute($this, self::$errorMessages, self::$functionMap);
+        return new StringAttribute($propertyName, $this, self::$errorMessages, self::$functionMap);
     }
 
     /**
@@ -192,9 +180,7 @@ class Validator
      */
     public function isDateTime($propertyName)
     {
-        $this->propertyName = $propertyName;
-
-        return new DateTimeAttribute($this, self::$errorMessages, self::$functionMap);
+        return new DateTimeAttribute($propertyName, $this, self::$errorMessages, self::$functionMap);
     }
 
     /**
@@ -204,16 +190,6 @@ class Validator
      */
     public function isFileUpload($propertyName)
     {
-        $this->propertyName = $propertyName;
-
-        return new FileUploadAttribute($this, self::$errorMessages, self::$functionMap);
-    }
-
-    /**
-     * @return string
-     */
-    public function getPropertyName()
-    {
-        return $this->propertyName;
+        return new FileUploadAttribute($propertyName, $this, self::$errorMessages, self::$functionMap);
     }
 }

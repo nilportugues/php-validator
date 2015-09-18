@@ -66,7 +66,7 @@ class FileUploadValidatorMultipleFileTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldCheckIfHasFileNameFormat()
     {
-        $validator       = new Validator();
+        $validator       = Validator::create();
         $stringValidator = $validator->isString('image')->isLowercase();
 
         $this->assertTrue(FileUploadValidation::hasFileNameFormat('image', $stringValidator));

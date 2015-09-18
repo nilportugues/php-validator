@@ -39,7 +39,7 @@ class FileUploadAttributeOneFileTest extends \PHPUnit_Framework_TestCase
      */
     private function getValidator()
     {
-        $validator = new Validator();
+        $validator = Validator::create();
 
         return $validator->isFileUpload('image');
     }
@@ -86,7 +86,7 @@ class FileUploadAttributeOneFileTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldCheckIfHasFileNameFormat()
     {
-        $validator       = new Validator();
+        $validator       = Validator::create();
         $stringValidator = $validator->isString('image')->isLowercase();
 
         $this->assertTrue($this->getValidator()->hasFileNameFormat($stringValidator)->validate('image'));

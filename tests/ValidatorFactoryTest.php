@@ -10,7 +10,7 @@
 
 namespace Tests\NilPortugues\Validator;
 
-use NilPortugues\Validator\Validator;
+use NilPortugues\Validator\ValidatorFactory;
 
 /**
  * Class ValidatorFactoryTest
@@ -23,7 +23,7 @@ class ValidatorFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldGetStringValidatorAndReturnFalse()
     {
-        $stringValidator = Validator::create('field1', 'string', ['between:5:11']);
+        $stringValidator = ValidatorFactory::create('field1', 'string', ['between:5:11']);
 
         $this->assertInstanceOf('\NilPortugues\Validator\Attribute\String\StringAttribute', $stringValidator);
         $this->assertFalse($stringValidator->validate('hello world'));
@@ -34,7 +34,7 @@ class ValidatorFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldGetStringValidatorWithBooleanValueAndReturnFalse()
     {
-        $stringValidator = Validator::create('field1', 'string', ['between:5:11:false']);
+        $stringValidator = ValidatorFactory::create('field1', 'string', ['between:5:11:false']);
         $this->assertFalse($stringValidator->validate('hello world'));
     }
 
@@ -43,7 +43,7 @@ class ValidatorFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldGetStringValidatorAndReturnTrue()
     {
-        $stringValidator = Validator::create('field1', 'string', ['between:5:11:true']);
+        $stringValidator = ValidatorFactory::create('field1', 'string', ['between:5:11:true']);
         $this->assertTrue($stringValidator->validate('hello world'));
     }
 
@@ -52,13 +52,13 @@ class ValidatorFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldGetStringValidatorAndAssertTrueUsingAllMethodAliases()
     {
-        $stringValidator = Validator::create('field1', 'string', ['is_email']);
+        $stringValidator = ValidatorFactory::create('field1', 'string', ['is_email']);
         $this->assertTrue($stringValidator->validate('support@apple.com'));
 
-        $stringValidator = Validator::create('field2', 'string', ['isEmail']);
+        $stringValidator = ValidatorFactory::create('field2', 'string', ['isEmail']);
         $this->assertTrue($stringValidator->validate('support@apple.com'));
 
-        $stringValidator = Validator::create('field3', 'string', ['email']);
+        $stringValidator = ValidatorFactory::create('field3', 'string', ['email']);
         $this->assertTrue($stringValidator->validate('support@apple.com'));
     }
 
@@ -68,6 +68,6 @@ class ValidatorFactoryTest extends \PHPUnit_Framework_TestCase
     public function itShouldThrowValidatorFactoryException()
     {
         $this->setExpectedException('NilPortugues\Validator\Factory\ValidatorFactoryException');
-        Validator::create('field1', 'not-a-valid-type');
+        ValidatorFactory::create('field1', 'not-a-valid-type');
     }
 }

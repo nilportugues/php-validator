@@ -21,19 +21,6 @@ use NilPortugues\Validator\Factory\ValidatorType;
 class ValidatorFactory
 {
     /**
-     * @var Validator
-     */
-    protected $validator;
-
-    /**
-     * @param Validator $validator
-     */
-    public function __construct(Validator $validator)
-    {
-        $this->validator = $validator;
-    }
-
-    /**
      * @param string $name
      * @param string $type
      * @param string[]  $rules
@@ -41,7 +28,7 @@ class ValidatorFactory
      * @throws Factory\ValidatorFactoryException
      * @return AbstractValidator
      */
-    public function create($name, $type, array &$rules = [])
+    public static function create($name, $type, array $rules = [])
     {
         if (false === ValidatorType::isSupported($type)) {
             throw new ValidatorFactoryException(
@@ -49,9 +36,10 @@ class ValidatorFactory
             );
         }
 
-        $validator = $this->createValidator($name, $type);
 
-        return $this->applyValidatorRules($validator, $rules);
+        $validator = self::createValidator($name, $type);
+
+        return self::applyValidatorRules($validator, $rules);
     }
 
     /**
@@ -60,9 +48,9 @@ class ValidatorFactory
      *
      * @return AbstractValidator
      */
-    private function createValidator($name, $type)
+    private static function createValidator($name, $type)
     {
-        return call_user_func_array([$this->validator, ValidatorType::getMethod($type)], [$name]);
+        return call_user_func_array([Validator::create(), ValidatorType::getMethod($type)], [$name]);
     }
 
     /**
@@ -71,7 +59,7 @@ class ValidatorFactory
      *
      * @return AbstractValidator
      */
-    private function applyValidatorRules($validator, array &$rules)
+    private static function applyValidatorRules($validator, array &$rules)
     {
         $validatorRule = ValidatorRule::getInstance();
         foreach ($rules as $rule) {

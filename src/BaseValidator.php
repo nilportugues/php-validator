@@ -48,7 +48,7 @@ abstract class BaseValidator
         $this->errors = [];
 
         if (null === $this->validator) {
-            $this->validator  = Validator::create($name, $this->type, $this->rules);
+            $this->validator  = ValidatorFactory::create($name, $this->type, $this->rules);
         }
 
         $isValid = $this->validator->validate($value, $stopOnError);

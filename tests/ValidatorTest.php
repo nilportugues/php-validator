@@ -20,7 +20,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->validator = new Validator();
+        $this->validator = Validator::create();
     }
 
     /**
@@ -75,16 +75,6 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function itShouldReturnPropertyName()
-    {
-        $this->assertEmpty($this->validator->getPropertyName());
-
-        $this->validator->isArray('propertyName');
-        $this->assertSame('propertyName', $this->validator->getPropertyName());
-    }
 
     /**
      * @test
@@ -92,7 +82,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     public function itShouldThrowExceptionIfLanguageFileNotFound()
     {
         $this->setExpectedException('\InvalidArgumentException');
-        $validator = new Validator('locale.php');
+        $validator = Validator::create('locale.php');
 
         $stringValidator = $validator->isString('property');
         $stringValidator->isBetween(500, 1000)->validate('a');
@@ -103,7 +93,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldThrowRuntimeExceptionIfFunctionMapIsNotFound()
     {
-        $validator  = new Validator();
+        $validator  = Validator::create();
         $reflection = new \ReflectionObject($validator);
 
         $property = $reflection->getProperty("functionMapFile");

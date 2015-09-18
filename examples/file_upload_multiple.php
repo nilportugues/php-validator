@@ -1,5 +1,7 @@
 <?php
 
+use NilPortugues\Validator\Validator;
+
 include realpath(dirname(__FILE__)).'/../vendor/autoload.php';
 
 if (empty($_FILES)) {
@@ -13,7 +15,7 @@ if (empty($_FILES)) {
 <?php
 
 } else {
-    $validator     = new \NilPortugues\Validator\Validator();
+    $validator     = Validator::create();
     $fileValidator = $validator->isFileUpload('image');
 
     $isValid = $fileValidator

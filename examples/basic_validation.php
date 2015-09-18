@@ -1,4 +1,6 @@
 <?php
+use NilPortugues\Validator\Validator;
+
 include realpath(dirname(__FILE__)).'/../vendor/autoload.php';
 
 class Request
@@ -66,7 +68,7 @@ class UserValidator
     public function __construct()
     {
         if(!isset(self::$validator)) {
-            self::$validator = new \NilPortugues\Validator\Validator();
+            self::$validator = Validator::create();
         }
     }
 

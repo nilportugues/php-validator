@@ -24,7 +24,7 @@ class ObjectAttributeTest extends \PHPUnit_Framework_TestCase
      */
     protected function getValidator()
     {
-        $validator = new Validator();
+        $validator = Validator::create();
 
         return $validator->isObject('propertyName');
     }

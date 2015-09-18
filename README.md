@@ -138,9 +138,9 @@ NilPortugues\Validator supports up to 3 different styles to write validators: In
 <a name="block2.1.1"></a>
 #### 2.1.1. Instantiation of Validator class
 ```php
-$validator = new \NilPortugues\Validator\Validator();
+use \NilPortugues\Validator\Validator;
 
-$ageValidator = $validator->isInteger('age');
+$ageValidator = Validator::create()->isInteger('age');
 $result = $ageValidator->isPositive()->isBetween(18, 100, true)->validate(28);
 $errors = $ageValidator->getErrors();
 ```
@@ -154,10 +154,10 @@ This style fits best when validating lots of fields one after another or inside 
 
 
 ```php
-use \NilPortugues\Validator\Validator;
+use \NilPortugues\Validator\ValidatorFactory;
 
 $rules = ['positive', 'between:18:100:true'];
-$ageValidator = Validator::create('age', 'integer', $rules);
+$ageValidator = ValidatorFactory::create('age', 'integer', $rules);
 
 $result = $ageValidator->validate(28);
 $errors = $ageValidator->getErrors();
@@ -216,7 +216,6 @@ class AgeValidator extends BaseValidator
     public function __construct(array $rules)
     {
         $this->rules = array_merge($this->rules, $rules);
-        parent::__construct();
     }
 }
 
@@ -234,9 +233,9 @@ Sometimes, fast validation checks are needed when validating input data. This is
 For instance, in the following code `isBetween`is never executed.
 
 ```php
-$validator = new \NilPortugues\Validator\Validator();
+use \NilPortugues\Validator\Validator;
 
-$age = $validator->isInteger('age');
+$age = Validator::create()->isInteger('age');
 $result = $age->isPositive()->isBetween(0, 100, true)->validate(-10, true);
 ```
 <a name="block3"></a>
@@ -276,7 +275,7 @@ All data type validators share 2 basic methods:
 Its usage is fairly simple:
 
 ```php
-$validator = new \NilPortugues\Validator\Validator();
+$validator = Validator::create();
 
 $username = $validator->isString('username');
 
@@ -292,7 +291,7 @@ For optional data, wrap the validator function within an if with an `isset($valu
 For instance, suppose gender is a value from 0 to 2 (male, female, other) and is a non-mandatory value:
 
 ```php
-$validator = new \NilPortugues\Validator\Validator();
+$validator = Validator::create();
 
 $genderValue = $validator->isInteger('gender');
 $result = true;
@@ -309,9 +308,7 @@ return $result;
 String validation starts when creating a string field in the validator using the `isString` method.
 
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-
-$username = $validator->isString('username');
+$username = Validator::create()->isString('username');
 ```
 The following chainable validation options are available for string data:
 
@@ -322,8 +319,7 @@ The following chainable validation options are available for string data:
 ```php
 use \NilPortugues\Validator\Validator;
 
-$validator = new Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->isAlphanumeric()->validate('28a'); // true
 $string->isAlphanumeric()->validate('hello@example.com'); // false
@@ -365,8 +361,7 @@ $fieldValidator->validate('propertyName', 'hello@example.com');
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->isAlpha()->validate('Hello World'); // true
 $string->isAlpha()->validate('28a'); // false
@@ -377,8 +372,7 @@ $string->isAlpha()->validate('hello@example.com'); // false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->isBetween(2, 4)->validate('Nilo'); //false
 $string->isBetween(2, 4, true)->validate('Nilo'); //true
@@ -388,8 +382,7 @@ $string->isBetween(2, 4, true)->validate('Nilo'); //true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->isCharset(['UTF-8'])->validate('Portugués'); //true
 ```
@@ -398,8 +391,7 @@ $string->isCharset(['UTF-8'])->validate('Portugués'); //true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->isAllConsonants()->validate('a'); //false
 $string->isAllConsonants()->validate('bs'); //true
@@ -409,8 +401,7 @@ $string->isAllConsonants()->validate('bs'); //true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->contains(123)->validate('AAAAAAA123A'); //true
 $string->contains(123, true)->validate('AAAAAAA123A'); //false
@@ -420,8 +411,7 @@ $string->contains(123, true)->validate('AAAAAAA123A'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->isControlCharacters()->validate("\n\t"); //true
 $string->isControlCharacters()->validate("\nHello\tWorld"); //false
@@ -431,8 +421,7 @@ $string->isControlCharacters()->validate("\nHello\tWorld"); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->isDigit()->validate('10'); //true
 
@@ -444,8 +433,7 @@ $string->isDigit()->validate(145.6); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->endsWith('aaaA')->validate('AAAAAAAaaaA'); //true
 $string->endsWith(123, true)->validate('AAAAAAA123'); //false
@@ -455,8 +443,7 @@ $string->endsWith(123, true)->validate('AAAAAAA123'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->equals('hello')->validate('hello'); //true
 
@@ -468,8 +455,7 @@ $string->equals(1, true)->validate('1'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->in('a12245 asdhsjasd 63-211', true)->validate('5 asd'); //true
 $string->in(122, true)->validate('a12245 asdhsjasd 63-211'); //false
@@ -479,8 +465,7 @@ $string->in(122, true)->validate('a12245 asdhsjasd 63-211'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->hasGraphicalCharsOnly()->validate('arf12'); //true
 $string->hasGraphicalCharsOnly()->validate("asdf\n\r\t"); //false
@@ -490,8 +475,7 @@ $string->hasGraphicalCharsOnly()->validate("asdf\n\r\t"); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->hasLength(5)->validate('abcdefgh'); //false
 $string->hasLength(8)->validate('abcdefgh'); //true
@@ -501,8 +485,7 @@ $string->hasLength(8)->validate('abcdefgh'); //true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->isLowercase()->validate('strtolower'); //true
 $string->isLowercase()->validate('strtolOwer'); //false
@@ -512,8 +495,7 @@ $string->isLowercase()->validate('strtolOwer'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->notEmpty()->validate('a'); //true
 $string->notEmpty()->validate(''); //false
@@ -523,8 +505,7 @@ $string->notEmpty()->validate(''); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->noWhitespace()->validate('aaaaa'); //true
 $string->noWhitespace()->validate('lorem ipsum'); //false
@@ -534,8 +515,7 @@ $string->noWhitespace()->validate('lorem ipsum'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->hasPrintableCharsOnly()->validate("LMKA0$%_123"); //true
 $string->hasPrintableCharsOnly()->validate("LMKA0$%\t_123"); //false
@@ -545,8 +525,7 @@ $string->hasPrintableCharsOnly()->validate("LMKA0$%\t_123"); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->isPunctuation()->validate('&,.;'); //true
 $string->isPunctuation()->validate('a'); //false
@@ -556,8 +535,7 @@ $string->isPunctuation()->validate('a'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->matchesRegex('/[a-z]/')->validate('a'); //true
 $string->matchesRegex('/[a-z]/')->validate('A'); //false
@@ -567,8 +545,7 @@ $string->matchesRegex('/[a-z]/')->validate('A'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->isSlug()->validate('hello-world-yeah'); //true
 
@@ -581,8 +558,7 @@ $string->isSlug()->validate('hello-world----yeah'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->isSpace()->validate('    '); //true
 $string->isSpace()->validate('e e'); //false
@@ -592,8 +568,7 @@ $string->isSpace()->validate('e e'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->startsWith('aaaA')->validate('aaaAAAAAAAA'); //true
 $string->startsWith(123, true)->validate('123AAAAAAA'); //false
@@ -603,8 +578,7 @@ $string->startsWith(123, true)->validate('123AAAAAAA'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->isUppercase()->validate('AAAAAA'); //true
 $string->isUppercase()->validate('aaaa'); //false
@@ -614,8 +588,7 @@ $string->isUppercase()->validate('aaaa'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->isVersion()->validate('1.0.2'); //true
 $string->isVersion()->validate('1.0.2-beta'); //true
@@ -627,8 +600,7 @@ $string->isVersion()->validate('1.0.2 beta'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->isVowel()->validate('aeA'); //true
 $string->isVowel()->validate('cds'); //false
@@ -638,8 +610,7 @@ $string->isVowel()->validate('cds'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->isHexDigit()->validate(100); //true
 $string->isHexDigit()->validate('h0000'); //false
@@ -649,8 +620,7 @@ $string->isHexDigit()->validate('h0000'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->hasLowercase()->validate('HELLOWOrLD'); //true
 $string->hasLowercase(3)->validate('HeLLoWOrLD'); //true
@@ -663,8 +633,7 @@ $string->hasLowercase(3)->validate('el'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->hasUppercase()->validate('hello World'); //true
 $string->hasUppercase(2)->validate('Hello World'); //true
@@ -677,8 +646,7 @@ $string->hasUppercase(2)->validate('helloWorld'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->hasNumeric()->validate('hell0 W0rld'); //true
 $string->hasNumeric(3)->validate('H3ll0 W0rld'); //true
@@ -691,8 +659,7 @@ $string->hasNumeric(2)->validate('h3lloWorld'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->hasSpecialCharacters()->validate('hell0@W0rld'); //true
 $string->hasSpecialCharacters(2)->validate('H3ll0@W0@rld'); //true
@@ -705,8 +672,7 @@ $string->hasSpecialCharacters(2)->validate('h3llo@World'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->isEmail()->validate('hello@world.com'); //true
 $string->isEmail()->validate('hello.earth@world.com'); //true
@@ -723,8 +689,7 @@ $string->isEmail()->validate('hello.earth+moon@localhost'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->->isUrl()->validate('http://google.com'); //true
 $string->->isUrl()->validate('http://google.com/robots.txt'); //true
@@ -738,8 +703,7 @@ $string->->isUrl()->validate('//google.com/robots.txt'); //true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$string = $validator->isString('propertyName');
+$string = Validator::create()->isString('propertyName');
 
 $string->isUUID()->validate('6ba7b810-9dad-11d1-80b4-00c04fd430c8'); //true
 $string->isUUID()->validate('6ba7b811-9dad-11d1-80b4-00c04fd430c8'); //true
@@ -772,9 +736,7 @@ Number validation comes in two flavours, `Integers` and `Floats`. Both validator
 To use these validators, do as follows:
 
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-
-$integer = $validator->isInteger('propertyName');
+$integer = Validator::create()->isInteger('propertyName');
 
 $float = $validator->isFloat('propertyName');
 ```
@@ -783,8 +745,7 @@ $float = $validator->isFloat('propertyName');
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$integer = $validator->isInteger('propertyName');
+$integer = Validator::create()->isInteger('propertyName');
 
 $integer->isNotZero()->validate(1); //true
 $integer->isNotZero()->validate(0); //false
@@ -794,8 +755,7 @@ $integer->isNotZero()->validate(0); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$integer = $validator->isInteger('propertyName');
+$integer = Validator::create()->isInteger('propertyName');
 
 $integer->isPositive()->validate(1); //true
 $integer->isPositive()->validate(-10); //false
@@ -806,8 +766,7 @@ $integer->isPositive()->validate(0); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$integer = $validator->isInteger('propertyName');
+$integer = Validator::create()->isInteger('propertyName');
 
 $integer->isPositiveOrZero()->validate(1); //true
 $integer->isPositiveOrZero()->validate(-10); //false
@@ -818,8 +777,7 @@ $integer->isPositiveOrZero()->validate(0); //true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$integer = $validator->isInteger('propertyName');
+$integer = Validator::create()->isInteger('propertyName');
 
 $integer->isNegative()->validate(-10); //true
 $integer->isNegative()->validate(1); //false
@@ -830,8 +788,7 @@ $integer->isNegative()->validate(0); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$integer = $validator->isInteger('propertyName');
+$integer = Validator::create()->isInteger('propertyName');
 
 $integer->isNegativeOrZero()->validate(-10); //true
 $integer->isNegativeOrZero()->validate(1); //false
@@ -842,8 +799,7 @@ $integer->isNegativeOrZero()->validate(0); //true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$integer = $validator->isInteger('propertyName');
+$integer = Validator::create()->isInteger('propertyName');
 
 $integer->isBetween(10,20, false)->validate(13); //true
 $integer->isBetween(10, 20, true)->validate(10); //false
@@ -853,8 +809,7 @@ $integer->isBetween(10, 20, true)->validate(10); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$integer = $validator->isInteger('propertyName');
+$integer = Validator::create()->isInteger('propertyName');
 
 $integer->isOdd()->validate(3); //true
 $integer->isOdd()->validate(2); //false
@@ -864,8 +819,7 @@ $integer->isOdd()->validate(2); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$integer = $validator->isInteger('propertyName');
+$integer = Validator::create()->isInteger('propertyName');
 
 $integer->isEven()->validate(2); //true
 $integer->isEven()->validate(3); //false
@@ -875,8 +829,7 @@ $integer->isEven()->validate(3); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$integer = $validator->isInteger('propertyName');
+$integer = Validator::create()->isInteger('propertyName');
 
 $integer->isMultiple(2)->validate(4); //true
 $integer->isMultiple(2)->validate(3); //false
@@ -890,8 +843,7 @@ $integer->isMultiple(2)->validate(3); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$object = $validator->isObject('propertyName');
+$object = Validator::create()->isObject('propertyName');
 
 $object->isInstanceOf('DateTime')->validate(new \DateTime()); //true
 
@@ -903,8 +855,7 @@ $object->isInstanceOf('DateTime')->validate('a'); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$object = $validator->isObject('propertyName');
+$object = Validator::create()->isObject('propertyName');
 
 $dummy = new Dummy();
 
@@ -916,8 +867,7 @@ $object->hasProperty('password')->validate($dummy); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$object = $validator->isObject('propertyName');
+$object = Validator::create()->isObject('propertyName');
 
 $dummy = new Dummy();
 
@@ -929,8 +879,7 @@ $object->hasMethod('getPassword')->validate($dummy); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$object = $validator->isObject('propertyName');
+$object = Validator::create()->isObject('propertyName');
 
 $object->hasParentClass()->validate(new Dummy()); //true
 $object->hasParentClass()->validate(new \stdClass()); //false
@@ -940,8 +889,7 @@ $object->hasParentClass()->validate(new \stdClass()); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$object = $validator->isObject('propertyName');
+$object = Validator::create()->isObject('propertyName');
 
 $dummy = new Dummy(); // class Dummy extends \DateTime
 
@@ -953,8 +901,7 @@ $object->isChildOf('DateTimeZone')->validate($dummy); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$object = $validator->isObject('propertyName');
+$object = Validator::create()->isObject('propertyName');
 
 $dummy = new Dummy(); // class Dummy extends \DateTime
 
@@ -966,8 +913,7 @@ $object->inheritsFrom('DateTimeZone')->validate($dummy); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$object = $validator->isObject('propertyName');
+$object = Validator::create()->isObject('propertyName');
 
 $object->hasInterface('Tests\NilPortugues\Validator\Resources\DummyInterface')->validate($dummy); //true
 $object->inheritsFrom('DateTimeZone')->validate($dummy); //false
@@ -984,9 +930,7 @@ As you will see in the following examples, either two are allowed as parameters 
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-
-$datetime = $validator->isDateTime('propertyName');
+$datetime = Validator::create()->isDateTime('propertyName');
 $date1 = '2014-01-01 00:00:00';
 $date2 = new \DateTime($date1);
 
@@ -1008,9 +952,7 @@ $datetime->isAfter($limit2)->validate($date2); // false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-
-$datetime = $validator->isDateTime('propertyName');
+$datetime = Validator::create()->isDateTime('propertyName');
 $date1 = '2012-01-01 00:00:00';
 $date2 = new \DateTime($date1);
 
@@ -1032,9 +974,7 @@ $datetime->isBefore($limit2)->validate($date2); // false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-
-$datetime = $validator->isDateTime('propertyName');
+$datetime = Validator::create()->isDateTime('propertyName');
 $date1 = '2014-01-01 00:00:00';
 $date2 = new \DateTime($date1);
 
@@ -1058,8 +998,7 @@ $datetime->isBetween($minDate, $maxDate, true)->validate($date1); // false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$datetime = $validator->isDateTime('propertyName');
+$datetime = Validator::create()->isDateTime('propertyName');
 
 $datetime->isWeekend()->validate('2014-09-20'); // true
 $datetime->isWeekend()->validate('2014-09-22'); // false
@@ -1068,8 +1007,7 @@ $datetime->isWeekend()->validate('2014-09-22'); // false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$datetime = $validator->isDateTime('propertyName');
+$datetime = Validator::create()->isDateTime('propertyName');
 
 $datetime->isWeekday()->validate('2014-09-20'); // false
 $datetime->isWeekday()->validate('2014-09-22'); // true
@@ -1078,8 +1016,7 @@ $datetime->isWeekday()->validate('2014-09-22'); // true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$datetime = $validator->isDateTime('propertyName');
+$datetime = Validator::create()->isDateTime('propertyName');
 
 $datetime->isMonday()->validate('2014-09-22'); // true
 ```
@@ -1087,8 +1024,7 @@ $datetime->isMonday()->validate('2014-09-22'); // true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$datetime = $validator->isDateTime('propertyName');
+$datetime = Validator::create()->isDateTime('propertyName');
 
 $datetime->isTuesday()->validate('2014-09-23'); // true
 ```
@@ -1096,7 +1032,7 @@ $datetime->isTuesday()->validate('2014-09-23'); // true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
+$validator = Validator::create();
 $datetime = $validator->isDateTime('propertyName');
 
 $datetime->isWednesday()->validate('2014-09-24'); // true
@@ -1105,8 +1041,7 @@ $datetime->isWednesday()->validate('2014-09-24'); // true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$datetime = $validator->isDateTime('propertyName');
+$datetime = Validator::create()->isDateTime('propertyName');
 
 $datetime->isThursday()->validate('2014-09-25'); // true
 ```
@@ -1114,8 +1049,7 @@ $datetime->isThursday()->validate('2014-09-25'); // true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$datetime = $validator->isDateTime('propertyName');
+$datetime = Validator::create()->isDateTime('propertyName');
 
 $datetime->isFriday()->validate('2014-09-26'); // true
 ```
@@ -1123,8 +1057,7 @@ $datetime->isFriday()->validate('2014-09-26'); // true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$datetime = $validator->isDateTime('propertyName');
+$datetime = Validator::create()->isDateTime('propertyName');
 
 $datetime->isSaturday()->validate('2014-09-27'); // true
 ```
@@ -1132,8 +1065,7 @@ $datetime->isSaturday()->validate('2014-09-27'); // true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$datetime = $validator->isDateTime('propertyName');
+$datetime = Validator::create()->isDateTime('propertyName');
 
 $datetime->isSunday()->validate('2014-09-28'); // true
 ```
@@ -1141,8 +1073,7 @@ $datetime->isSunday()->validate('2014-09-28'); // true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$datetime = $validator->isDateTime('propertyName');
+$datetime = Validator::create()->isDateTime('propertyName');
 
 $date = new \DateTime('now');
 
@@ -1152,8 +1083,7 @@ $datetime->isToday()->validate($date); // true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$datetime = $validator->isDateTime('propertyName');
+$datetime = Validator::create()->isDateTime('propertyName');
 
 $date = new \DateTime('now -1 day');
 
@@ -1163,8 +1093,7 @@ $datetime->isYesterday()->validate($date); // true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$datetime = $validator->isDateTime('propertyName');
+$datetime = Validator::create()->isDateTime('propertyName');
 
 $date = new \DateTime('now +1 day');
 
@@ -1174,8 +1103,7 @@ $datetime->isTomorrow()->validate($date); // true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$datetime = $validator->isDateTime('propertyName');
+$datetime = Validator::create()->isDateTime('propertyName');
 
 $date = new \DateTime('2016-01-01');
 
@@ -1187,8 +1115,7 @@ $datetime->isLeapYear()->validate($date); // true
 ##### Example
 
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$datetime = $validator->isDateTime('propertyName');
+$datetime = Validator::create()->isDateTime('propertyName');
 ```
 
 #### 4.4.18. isAftenoon <a name="block4.4.18"></a> [↑](#index_block)
@@ -1196,8 +1123,7 @@ $datetime = $validator->isDateTime('propertyName');
 ##### Example
 
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$datetime = $validator->isDateTime('propertyName');
+$datetime = Validator::create()->isDateTime('propertyName');
 ```
 
 #### 4.4.19. isEvening <a name="block4.4.19"></a> [↑](#index_block)
@@ -1205,8 +1131,7 @@ $datetime = $validator->isDateTime('propertyName');
 ##### Example
 
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$datetime = $validator->isDateTime('propertyName');
+$datetime = Validator::create()->isDateTime('propertyName');
 ```
 
 #### 4.4.20. isNight <a name="block4.4.20"></a> [↑](#index_block)
@@ -1214,8 +1139,7 @@ $datetime = $validator->isDateTime('propertyName');
 ##### Example
 
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$datetime = $validator->isDateTime('propertyName');
+$datetime = Validator::create()->isDateTime('propertyName');
 ```
 
 <a name="block4.5"></a>
@@ -1232,7 +1156,7 @@ Supported PHP data structures for the Collection validator are:
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
+$validator = Validator::create();
 $collection = $validator->isArray('propertyName');
 
 $valueIsString = $validator->isString('value')->isAlpha();
@@ -1256,14 +1180,13 @@ $collection->each($valueIsString, $keyIsInteger)->validate($fixedArray); //true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
+$validator = Validator::create();
 $collection = $validator->isArray('propertyName');
 
 $array = ['one' => 'hello', 'two' => 'world'];
 $arrayObject = new \ArrayObject($array);
 $fixedArray = (new \SplFixedArray())->fromArray(array_values($array));
 
-$validator = new Validator();
 $keyIsString = $validator->isString('key')->isAlpha();
 $keyIsInteger = $validator->isInteger('key')->isPositive();
 
@@ -1277,8 +1200,7 @@ $collection->hasKeyFormat($keyIsInteger)->validate($fixedArray); //true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$collection = $validator->isArray('propertyName');
+$collection = Validator::create()->isArray('propertyName');
 
 $array = ['one' => 'hello', 'two' => 1];
 $arrayObject = new \ArrayObject($array);
@@ -1298,8 +1220,7 @@ $collection->endsWith('1', true)->validate($fixedArray); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$collection = $validator->isArray('propertyName');
+$collection = Validator::create()->isArray('propertyName');
 
 $array = ['one' => 'hello', 'two' => 1];
 $arrayObject = new \ArrayObject($array);
@@ -1319,8 +1240,7 @@ $collection->contains(1, true)->validate($fixedArray); //true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$collection = $validator->isArray('propertyName');
+$collection = Validator::create()->isArray('propertyName');
 
 $array = ['one' => 'hello', 'two' => 1];
 $arrayObject = new \ArrayObject($array);
@@ -1344,8 +1264,7 @@ $collection->hasKey(0)->validate($fixedArray)); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$collection = $validator->isArray('propertyName');
+$collection = Validator::create()->isArray('propertyName');
 
 $array = ['one' => 'hello', 'two' => 1];
 $arrayObject = new \ArrayObject($array);
@@ -1370,8 +1289,7 @@ $collection->hasLength(0)->validate($fixedArray)); //true
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$collection = $validator->isArray('propertyName');
+$collection = Validator::create()->isArray('propertyName');
 
 $array = ['one' => 'hello', 'two' => 1];
 $arrayObject = new \ArrayObject($array);
@@ -1395,8 +1313,7 @@ $collection->isNotEmpty()->validate($fixedArray)); //false
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$collection = $validator->isArray('propertyName');
+$collection = Validator::create()->isArray('propertyName');
 
 $array = [1, 2, 3];
 $arrayObject = new \ArrayObject($array);
@@ -1428,8 +1345,7 @@ Using FileUpload validator alone, you can validate single file uploads.
 On the server side, validation is done as follows:
 
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$fileValidator = $validator->isFileUpload('image');
+$fileValidator = Validator::create()->isFileUpload('image');
 
 $fileValidator
      ->isBetween(0, 3, 'MB', true)
@@ -1457,8 +1373,7 @@ On the server side it is done exactly the same as before! Easy, right? :)
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$file = $validator->isFileUpload('image');
+$file = Validator::create()->isFileUpload('image');
 
 $file->isBetween(1, 3, 'MB', true)->validate('image');
 ```
@@ -1467,8 +1382,7 @@ $file->isBetween(1, 3, 'MB', true)->validate('image');
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$file = $validator->isFileUpload('image');
+$file = Validator::create()->isFileUpload('image');
 
 $file->isMimeType(['image/png', 'image/gif', 'image/jpeg'])->validate('image');
 ```
@@ -1477,7 +1391,7 @@ $file->isMimeType(['image/png', 'image/gif', 'image/jpeg'])->validate('image');
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
+$validator = Validator::create();
 $file = $validator->isFileUpload('image');
 $stringValidator = $validator->isString('image')->isAlpha();
 
@@ -1488,8 +1402,7 @@ $file->hasFileNameFormat($stringValidator)->validate('image');
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$file = $validator->isFileUpload('image');
+$file = Validator::create()->isFileUpload('image');
 
 $file->hasValidUploadDirectory('./uploads/images')->validate('image');
 ```
@@ -1498,8 +1411,7 @@ $file->hasValidUploadDirectory('./uploads/images')->validate('image');
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$file = $validator->isFileUpload('image');
+$file = Validator::create()->isFileUpload('image');
 
 $file->notOverwritingExistingFile('./uploads/images')->validate('image');
 ```
@@ -1508,8 +1420,7 @@ $file->notOverwritingExistingFile('./uploads/images')->validate('image');
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$file = $validator->isFileUpload('image');
+$file = Validator::create()->isFileUpload('image');
 
 $file->hasLength(1)->validate('image');
 ```
@@ -1518,8 +1429,7 @@ $file->hasLength(1)->validate('image');
 
 ##### Example
 ```php
-$validator = new \NilPortugues\Validator\Validator();
-$file = $validator->isFileUpload('image');
+$file = Validator::create()->isFileUpload('image');
 
 $file->isImage()->validate('image');
 ```

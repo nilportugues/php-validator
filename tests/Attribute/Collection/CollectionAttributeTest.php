@@ -19,7 +19,7 @@ class CollectionAttributeTest extends \PHPUnit_Framework_TestCase
      */
     protected function getValidator()
     {
-        $validator = new Validator();
+        $validator = Validator::create();
 
         return $validator->isArray('propertyName');
     }
@@ -45,7 +45,7 @@ class CollectionAttributeTest extends \PHPUnit_Framework_TestCase
         $arrayObject = new \ArrayObject($array);
         $fixedArray  = (new \SplFixedArray())->fromArray($array);
 
-        $validator     = new Validator();
+        $validator     = Validator::create();
         $valueIsString = $validator->isString('value')->isAlpha();
         $keyIsInteger  = $validator->isInteger('key')->isPositiveOrZero();
 
@@ -70,7 +70,7 @@ class CollectionAttributeTest extends \PHPUnit_Framework_TestCase
         $arrayObject = new \ArrayObject($array);
         $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
 
-        $validator    = new Validator();
+        $validator    = Validator::create();
         $keyIsString  = $validator->isString('key')->isAlpha();
         $keyIsInteger = $validator->isInteger('key')->isPositiveOrZero();
 

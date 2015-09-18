@@ -20,13 +20,14 @@ use NilPortugues\Validator\Validator;
 class ObjectAttribute extends GenericAttribute
 {
     /**
+     * @param string    $propertyName
      * @param Validator $validator
      * @param array     $errorMessages
      * @param array     $functionMap
      */
-    public function __construct(Validator $validator, array &$errorMessages, array &$functionMap)
+    public function __construct($propertyName, Validator $validator, array &$errorMessages, array &$functionMap)
     {
-        parent::__construct($validator, $errorMessages, $functionMap);
+        parent::__construct($propertyName, $validator, $errorMessages, $functionMap);
 
         $this->addCondition(__METHOD__);
     }

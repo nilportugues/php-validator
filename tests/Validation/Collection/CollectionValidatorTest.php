@@ -40,7 +40,7 @@ class CollectionValidatorTest extends \PHPUnit_Framework_TestCase
         $arrayObject = new \ArrayObject($array);
         $fixedArray  = (new \SplFixedArray())->fromArray($array);
 
-        $validator     = new Validator();
+        $validator     = Validator::create();
         $valueIsString = $validator->isString('value')->isAlpha();
         $keyIsInteger  = $validator->isInteger('key')->isPositiveOrZero();
 
@@ -63,7 +63,7 @@ class CollectionValidatorTest extends \PHPUnit_Framework_TestCase
         $arrayObject = new \ArrayObject($array);
         $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
 
-        $validator    = new Validator();
+        $validator    = Validator::create();
         $keyIsString  = $validator->isString('key')->isAlpha();
         $keyIsInteger = $validator->isInteger('key')->isPositiveOrZero();
 
