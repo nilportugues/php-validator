@@ -13,7 +13,7 @@ NilPortugues\Validator is a simple, powerful and elegant stand-alone validation 
 * [2. Usage](#block2)
   * [2.1. Validation made for everyone](#block2.1)
     * [2.1.1. Instantiation of Validator class](#block2.1.1)
-    * [2.1.2. Factory using Validator::create](#block2.1.2)
+    * [2.1.2. Factory using ValidatorFactory::create](#block2.1.2)
     * [2.1.3. Extending from the BaseValidator](#block2.1.3)
   * [2.2. Stop on first error](#block2.2)
 * [3. Validation Message Translation](#block3)  
@@ -146,7 +146,7 @@ $errors = $ageValidator->getErrors();
 ```
 
 <a name="block2.1.2"></a>
-#### 2.1.2. Factory using Validator::create
+#### 2.1.2. Factory using ValidatorFactory::create
 
 Using the Validator as a factory will provide a Validator object each time the `::create` method is used.
 
