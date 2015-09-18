@@ -253,7 +253,7 @@ Language can be changed anytime by providing a file following the same structure
 ```php
 $translationFile = 'full/path/to/alternate-translation.php';
 
-$validator = new \NilPortugues\Validator\Validator($translationFile);
+$validator = Validator::create($translationFile);
 
 $stringValidator = $validator->isString('username');
 $errors = $stringValidator->getErrors(); //error array in the provided language.
