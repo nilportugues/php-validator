@@ -120,7 +120,8 @@ abstract class AbstractValidator
                 }
 
                 if (true === $stopOnError) {
-                    return false;
+                    $isValid = false;
+                    break;
                 }
             }
         }
