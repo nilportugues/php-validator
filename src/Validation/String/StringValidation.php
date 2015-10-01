@@ -466,7 +466,7 @@ class StringValidation
      */
     public static function isUrl($value)
     {
-        if ($value[0] == $value[1] && $value[0] == "/") {
+        if (strlen($value) > 0 && $value[0] == $value[1] && $value[0] == "/") {
             $value = 'http:'.$value;
         }
 
