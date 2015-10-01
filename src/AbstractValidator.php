@@ -163,4 +163,13 @@ abstract class AbstractValidator
     {
         return $this->errors;
     }
+    
+    /**
+     * Removes errors and conditions. Useful to use the library as an Assertion library.
+     */
+    public function reset()
+    {
+        $this->errors = [];
+        $this->conditions = [];
+    }    
 }
