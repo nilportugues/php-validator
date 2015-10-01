@@ -77,7 +77,7 @@ abstract class AbstractValidator
         $classMethod = explode("\\", $classMethod);
         $classMethod = array_pop($classMethod);
 
-        $this->conditions[] = [
+        $this->conditions[$classMethod] = [
             'key'          => $classMethod,
             'arguments'    => $arguments,
             'values'       => $errorMessageValues,
