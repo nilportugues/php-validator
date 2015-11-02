@@ -32,7 +32,7 @@ class ValidatorFactory
     {
         if (false === ValidatorType::isSupported($type)) {
             throw new ValidatorFactoryException(
-                sprintf('The provided validator type \'%s\' is not supported.', $type)
+                \sprintf('The provided validator type \'%s\' is not supported.', $type)
             );
         }
 
@@ -50,7 +50,7 @@ class ValidatorFactory
      */
     private static function createValidator($name, $type)
     {
-        return call_user_func_array([Validator::create(), ValidatorType::getMethod($type)], [$name]);
+        return \call_user_func_array([Validator::create(), ValidatorType::getMethod($type)], [$name]);
     }
 
     /**
@@ -64,7 +64,7 @@ class ValidatorFactory
         $validatorRule = ValidatorRule::getInstance();
         foreach ($rules as $rule) {
             list($functionName, $arguments) = $validatorRule->parseRule($validator, $rule);
-            $validator = call_user_func_array([$validator, $functionName], $arguments);
+            $validator = \call_user_func_array([$validator, $functionName], $arguments);
         }
 
         return $validator;

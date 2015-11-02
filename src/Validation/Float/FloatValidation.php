@@ -23,7 +23,7 @@ class FloatValidation
      */
     public static function isFloat($value)
     {
-        return is_float($value);
+        return \is_float($value);
     }
 
     /**
@@ -33,7 +33,7 @@ class FloatValidation
      */
     public static function isNotZero($value)
     {
-        settype($value, 'float');
+        \settype($value, 'float');
 
         return 0 != $value;
     }
@@ -45,7 +45,7 @@ class FloatValidation
      */
     public static function isPositiveOrZero($value)
     {
-        settype($value, 'float');
+        \settype($value, 'float');
 
         return 0 <= $value;
     }
@@ -57,7 +57,7 @@ class FloatValidation
      */
     public static function isPositive($value)
     {
-        settype($value, 'float');
+        \settype($value, 'float');
 
         return 0 < $value;
     }
@@ -69,7 +69,7 @@ class FloatValidation
      */
     public static function isNegativeOrZero($value)
     {
-        settype($value, 'float');
+        \settype($value, 'float');
 
         return 0 >= $value;
     }
@@ -81,7 +81,7 @@ class FloatValidation
      */
     public static function isNegative($value)
     {
-        settype($value, 'float');
+        \settype($value, 'float');
 
         return 0 > $value;
     }
@@ -97,9 +97,9 @@ class FloatValidation
      */
     public static function isBetween($value, $min, $max, $inclusive = false)
     {
-        settype($value, 'float');
-        settype($min, 'float');
-        settype($max, 'float');
+        \settype($value, 'float');
+        \settype($min, 'float');
+        \settype($max, 'float');
 
         if ($min > $max) {
             throw new \InvalidArgumentException(sprintf('%s cannot be less than  %s for validation', $min, $max));
@@ -119,7 +119,7 @@ class FloatValidation
      */
     public static function isOdd($value)
     {
-        settype($value, 'int');
+        \settype($value, 'int');
 
         return 1 == ($value % 2);
     }
@@ -131,7 +131,7 @@ class FloatValidation
      */
     public static function isEven($value)
     {
-        settype($value, 'int');
+        \settype($value, 'int');
 
         return 0 == ($value % 2);
     }
@@ -144,9 +144,9 @@ class FloatValidation
      */
     public static function isMultiple($value, $multiple)
     {
-        settype($value, 'float');
-        settype($multiple, 'float');
+        \settype($value, 'float');
+        \settype($multiple, 'float');
 
-        return (float) 0 == fmod($value, $multiple);
+        return (float) 0 == \fmod($value, $multiple);
     }
 }

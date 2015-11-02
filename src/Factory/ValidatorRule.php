@@ -46,17 +46,17 @@ class ValidatorRule
      */
     public static function parseRule($validatorType, $rule)
     {
-        $className = get_class($validatorType);
+        $className = \get_class($validatorType);
 
         if (empty(self::$rules[$className])) {
             self::buildRules($validatorType, $className);
         }
 
-        $ruleName   = explode(":", $rule);
+        $ruleName   = \explode(":", $rule);
         $methodName = self::getMethodName($className, $ruleName[0]);
 
-        $arguments = substr($rule, strlen($ruleName[0]) + 1, strlen($rule));
-        $arguments = explode(":", $arguments);
+        $arguments = \substr($rule, \strlen($ruleName[0]) + 1, \strlen($rule));
+        $arguments = \explode(":", $arguments);
         $arguments = self::convertStringBooleanToBoolean($arguments);
 
         return [$methodName, $arguments];
@@ -77,7 +77,7 @@ class ValidatorRule
             $funcMethods[$camelCase] = $method;
 
             if (self::startsWith($camelCase, 'is_')) {
-                $methodAlias               = str_replace('is_', '', $camelCase);
+                $methodAlias               = \str_replace('is_', '', $camelCase);
                 $funcMethods[$methodAlias] = $method;
             }
         }
@@ -92,7 +92,7 @@ class ValidatorRule
      */
     private static function extractValidatorMethods($validatorType)
     {
-        $classMethods = get_class_methods($validatorType);
+        $classMethods = \get_class_methods($validatorType);
         $remove       = ['__construct', 'validate', 'setError', 'getErrors'];
 
         return self::unsetValues($classMethods, $remove);
@@ -107,7 +107,7 @@ class ValidatorRule
     private static function unsetValues(array &$data, array &$removeValues)
     {
         foreach ($removeValues as $value) {
-            $position = array_search($value, $data);
+            $position = \array_search($value, $data);
             if ($position !== false) {
                 unset($data[$position]);
             }
@@ -123,13 +123,13 @@ class ValidatorRule
      */
     private static function camelCaseToUnderscore($camel, $splitter = "_")
     {
-        $camel = preg_replace(
+        $camel = \preg_replace(
             '/(?!^)[[:upper:]][[:lower:]]/',
             '$0',
-            preg_replace('/(?!^)[[:upper:]]+/', $splitter . '$0', $camel)
+            \preg_replace('/(?!^)[[:upper:]]+/', $splitter . '$0', $camel)
         );
 
-        return strtolower($camel);
+        return \strtolower($camel);
     }
 
     /**
@@ -140,7 +140,7 @@ class ValidatorRule
      */
     private static function startsWith($haystack, $needle)
     {
-        return substr($haystack, 0, strlen($needle)) === $needle;
+        return \substr($haystack, 0, \strlen($needle)) === $needle;
     }
 
     /**
@@ -164,7 +164,7 @@ class ValidatorRule
         $toBoolean = ['true' => true, 'false' => false];
 
         foreach ($arguments as &$argument) {
-            $toLower = strtolower($argument);
+            $toLower = \strtolower($argument);
             if (array_key_exists($toLower, $toBoolean)) {
                 $argument = $toBoolean[$toLower];
             }

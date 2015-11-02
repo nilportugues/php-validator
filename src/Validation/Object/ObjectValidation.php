@@ -23,7 +23,7 @@ class ObjectValidation
      */
     public static function isObject($value)
     {
-        return is_object($value);
+        return \is_object($value);
     }
 
     /**
@@ -45,7 +45,7 @@ class ObjectValidation
      */
     public static function hasProperty($value, $property)
     {
-        return is_object($value) && property_exists(get_class($value), $property);
+        return \is_object($value) && \property_exists(get_class($value), $property);
     }
 
     /**
@@ -56,7 +56,7 @@ class ObjectValidation
      */
     public static function hasMethod($value, $method)
     {
-        return is_object($value) && method_exists(get_class($value), $method);
+        return \is_object($value) && \method_exists(get_class($value), $method);
     }
 
     /**
@@ -66,7 +66,7 @@ class ObjectValidation
      */
     public static function hasParentClass($value)
     {
-        return is_object($value) && get_parent_class($value) !== false;
+        return \is_object($value) && \get_parent_class($value) !== false;
     }
 
     /**
@@ -77,7 +77,7 @@ class ObjectValidation
      */
     public static function isChildOf($value, $parentClass)
     {
-        return is_object($value) && get_parent_class($value) === $parentClass;
+        return \is_object($value) && \get_parent_class($value) === $parentClass;
     }
 
     /**
@@ -88,7 +88,7 @@ class ObjectValidation
      */
     public static function inheritsFrom($value, $inheritsClass)
     {
-        return is_object($value) && is_subclass_of($value, $inheritsClass);
+        return \is_object($value) && \is_subclass_of($value, $inheritsClass);
     }
 
     /**
@@ -99,6 +99,6 @@ class ObjectValidation
      */
     public static function hasInterface($value, $interface)
     {
-        return is_object($value) && in_array($interface, class_implements($value));
+        return \is_object($value) && \in_array($interface, \class_implements($value));
     }
 }

@@ -74,8 +74,8 @@ abstract class AbstractValidator
         array $errorMessageValues = [],
         $fetchValidatorErrors = false
     ) {
-        $classMethod = explode("\\", $classMethod);
-        $classMethod = array_pop($classMethod);
+        $classMethod = \explode("\\", $classMethod);
+        $classMethod = \array_pop($classMethod);
 
         $this->conditions[$classMethod] = [
             'key'          => $classMethod,
@@ -97,13 +97,13 @@ abstract class AbstractValidator
     {
         $isValid          = true;
         $this->errors     = [];
-        $this->conditions = array_filter($this->conditions);
+        $this->conditions = \array_filter($this->conditions);
 
         foreach ($this->conditions as $condition) {
             $arguments = $condition['arguments'];
 
-            if (false === strpos('FileUpload::isUploaded', $condition['key'])) {
-                $arguments = array_merge([$value], $condition['arguments']);
+            if (false === \strpos('FileUpload::isUploaded', $condition['key'])) {
+                $arguments = \array_merge([$value], $condition['arguments']);
             }
 
             $isValid = $isValid && $this->functionMap->get(
@@ -138,7 +138,7 @@ abstract class AbstractValidator
     {
         foreach ($arguments as $argument) {
             if ($argument instanceof AbstractValidator) {
-                $this->errors = array_merge($this->errors, $argument->getErrors());
+                $this->errors = \array_merge($this->errors, $argument->getErrors());
             }
         }
     }

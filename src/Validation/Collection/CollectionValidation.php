@@ -25,7 +25,7 @@ class CollectionValidation
      */
     public static function isArray($value)
     {
-        return is_array($value)
+        return \is_array($value)
         || (is_object($value) && $value instanceof \ArrayObject)
         || (is_object($value) && $value instanceof \SplFixedArray);
     }
@@ -68,7 +68,7 @@ class CollectionValidation
             $value = $value->toArray();
         }
 
-        $arrayKeys = array_keys($value);
+        $arrayKeys = \array_keys($value);
         $isValid   = true;
 
         foreach ($arrayKeys as $key) {
@@ -87,8 +87,8 @@ class CollectionValidation
      */
     public static function endsWith($haystack, $needle, $strict = false)
     {
-        $last = end($haystack);
-        settype($strict, 'bool');
+        $last = \end($haystack);
+        \settype($strict, 'bool');
 
         if (false === $strict) {
             return $last == $needle;
@@ -114,13 +114,13 @@ class CollectionValidation
             $haystack = $haystack->toArray();
         }
 
-        settype($strict, 'bool');
+        \settype($strict, 'bool');
 
         if (false === $strict) {
-            return in_array($needle, $haystack, false);
+            return \in_array($needle, $haystack, false);
         }
 
-        return in_array($needle, $haystack, true);
+        return \in_array($needle, $haystack, true);
     }
 
     /**
@@ -131,7 +131,7 @@ class CollectionValidation
      */
     public static function hasKey($value, $keyName)
     {
-        return array_key_exists($keyName, $value);
+        return \array_key_exists($keyName, $value);
     }
 
     /**
@@ -142,9 +142,9 @@ class CollectionValidation
      */
     public static function hasLength($value, $length)
     {
-        settype($length, 'int');
+        \settype($length, 'int');
 
-        return count($value) === $length;
+        return \count($value) === $length;
     }
 
     /**
@@ -154,7 +154,7 @@ class CollectionValidation
      */
     public static function isNotEmpty($value)
     {
-        return count($value) > 0;
+        return \count($value) > 0;
     }
 
     /**
@@ -166,8 +166,8 @@ class CollectionValidation
      */
     public static function startsWith($haystack, $needle, $strict = false)
     {
-        $first = reset($haystack);
-        settype($strict, 'bool');
+        $first = \reset($haystack);
+        \settype($strict, 'bool');
 
         if (false === $strict) {
             return $first == $needle;

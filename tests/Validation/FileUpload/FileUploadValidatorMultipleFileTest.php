@@ -25,9 +25,9 @@ class FileUploadValidatorMultipleFileTest extends \PHPUnit_Framework_TestCase
                 'name'     => ['sample.png', 'sample.png', 'sample.png'],
                 'type'     => ['image/png', 'image/png', 'image/png'],
                 'tmp_name' => [
-                    realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
-                    realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
-                    realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
+                    \realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
+                    \realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
+                    \realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
                 ],
                 'error'    => [],
                 'size'     => [203868, 203868, 203868],
@@ -82,9 +82,9 @@ class FileUploadValidatorMultipleFileTest extends \PHPUnit_Framework_TestCase
     public function itShouldCheckIfHasValidUploadDirectory()
     {
         $this->assertTrue(
-            FileUploadValidation::hasValidUploadDirectory('image', realpath(dirname(__FILE__)).'/resources/')
+            FileUploadValidation::hasValidUploadDirectory('image', \realpath(dirname(__FILE__)).'/resources/')
         );
-        $this->assertFalse(FileUploadValidation::hasValidUploadDirectory('image', realpath(dirname(__FILE__)).'/not/'));
+        $this->assertFalse(FileUploadValidation::hasValidUploadDirectory('image', \realpath(dirname(__FILE__)).'/not/'));
     }
 
     /**
@@ -93,12 +93,12 @@ class FileUploadValidatorMultipleFileTest extends \PHPUnit_Framework_TestCase
     public function itShouldCheckIfNotOverwritingExistingFile()
     {
         $this->assertFalse(
-            FileUploadValidation::notOverwritingExistingFile('image', realpath(dirname(__FILE__)).'/resources')
+            FileUploadValidation::notOverwritingExistingFile('image', \realpath(dirname(__FILE__)).'/resources')
         );
 
         $_FILES['image']['name'] = 'a.png';
         $this->assertTrue(
-            FileUploadValidation::notOverwritingExistingFile('image', realpath(dirname(__FILE__)).'/resources')
+            FileUploadValidation::notOverwritingExistingFile('image', \realpath(dirname(__FILE__)).'/resources')
         );
     }
 }

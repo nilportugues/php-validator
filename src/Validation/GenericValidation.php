@@ -24,7 +24,7 @@ class GenericValidation
     public static function isRequired($value)
     {
         return isset($value) === true
-        && is_null($value) === false
+        && \is_null($value) === false
         && empty($value) === false;
     }
 

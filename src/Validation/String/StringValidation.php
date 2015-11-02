@@ -23,7 +23,7 @@ class StringValidation
      */
     public static function isString($value)
     {
-        return is_string($value);
+        return \is_string($value);
     }
 
     /**
@@ -33,7 +33,7 @@ class StringValidation
      */
     public static function isAlphanumeric($value)
     {
-        return preg_match('/^[a-z0-9]+$/i', $value) > 0;
+        return \preg_match('/^[a-z0-9]+$/i', $value) > 0;
     }
 
     /**
@@ -43,7 +43,7 @@ class StringValidation
      */
     public static function isAlpha($value)
     {
-        return preg_match('/^[a-z]+$/i', $value) > 0;
+        return \preg_match('/^[a-z]+$/i', $value) > 0;
     }
 
     /**
@@ -57,11 +57,11 @@ class StringValidation
      */
     public static function isBetween($value, $min, $max, $inclusive = false)
     {
-        settype($min, 'int');
-        settype($max, 'int');
-        settype($inclusive, 'bool');
+        \settype($min, 'int');
+        \settype($max, 'int');
+        \settype($inclusive, 'bool');
 
-        $length = mb_strlen($value, mb_detect_encoding($value));
+        $length = \mb_strlen($value, \mb_detect_encoding($value));
 
         if ($min > $max) {
             throw new \InvalidArgumentException(sprintf('%s cannot be less than  %s for validation', $min, $max));
@@ -82,20 +82,20 @@ class StringValidation
      */
     public static function isCharset($value, $charset)
     {
-        $available = mb_list_encodings();
+        $available = \mb_list_encodings();
 
-        $charset = is_array($charset) ? $charset : array($charset);
+        $charset = \is_array($charset) ? $charset : array($charset);
 
-        $charsetList = array_filter(
+        $charsetList = \array_filter(
             $charset,
             function ($charsetName) use ($available) {
-                return in_array($charsetName, $available, true);
+                return \in_array($charsetName, $available, true);
             }
         );
 
-        $detectedEncoding = mb_detect_encoding($value, $charset, true);
+        $detectedEncoding = \mb_detect_encoding($value, $charset, true);
 
-        return in_array($detectedEncoding, $charsetList, true);
+        return \in_array($detectedEncoding, $charsetList, true);
     }
 
     /**
@@ -105,7 +105,7 @@ class StringValidation
      */
     public static function isAllConsonants($value)
     {
-        return preg_match('/^(\s|[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z])+$/', $value) > 0;
+        return \preg_match('/^(\s|[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z])+$/', $value) > 0;
     }
 
     /**
@@ -118,10 +118,10 @@ class StringValidation
     public static function contains($value, $contains, $identical = false)
     {
         if (false === $identical) {
-            return false !== mb_stripos($value, $contains, 0, mb_detect_encoding($value));
+            return false !== \mb_stripos($value, $contains, 0, \mb_detect_encoding($value));
         }
 
-        return false !== mb_strpos($value, $contains, 0, mb_detect_encoding($value));
+        return false !== \mb_strpos($value, $contains, 0, \mb_detect_encoding($value));
     }
 
     /**
@@ -131,7 +131,7 @@ class StringValidation
      */
     public static function isControlCharacters($value)
     {
-        return ctype_cntrl($value);
+        return \ctype_cntrl($value);
     }
 
     /**
@@ -141,7 +141,7 @@ class StringValidation
      */
     public static function isDigit($value)
     {
-        return ctype_digit($value);
+        return \ctype_digit($value);
     }
 
     /**
@@ -153,13 +153,13 @@ class StringValidation
      */
     public static function endsWith($value, $contains, $identical = false)
     {
-        $enc = mb_detect_encoding($value);
+        $enc = \mb_detect_encoding($value);
 
         if (false === $identical) {
-            return mb_strripos($value, $contains, -1, $enc) === (mb_strlen($value, $enc) - mb_strlen($contains, $enc));
+            return \mb_strripos($value, $contains, -1, $enc) === (mb_strlen($value, $enc) - \mb_strlen($contains, $enc));
         }
 
-        return mb_strrpos($value, $contains, 0, $enc) === (mb_strlen($value, $enc) - mb_strlen($contains, $enc));
+        return \mb_strrpos($value, $contains, 0, $enc) === (mb_strlen($value, $enc) - \mb_strlen($contains, $enc));
     }
 
     /**
@@ -190,13 +190,13 @@ class StringValidation
     public static function in($value, $haystack, $identical = false)
     {
         $haystack = (string) $haystack;
-        $enc      = mb_detect_encoding($value);
+        $enc      = \mb_detect_encoding($value);
 
         if (false === $identical) {
-            return (false !== mb_stripos($haystack, $value, 0, $enc));
+            return (false !== \mb_stripos($haystack, $value, 0, $enc));
         }
 
-        return (false !== mb_strpos($haystack, $value, 0, $enc));
+        return (false !== \mb_strpos($haystack, $value, 0, $enc));
     }
 
     /**
@@ -206,7 +206,7 @@ class StringValidation
      */
     public static function hasGraphicalCharsOnly($value)
     {
-        return ctype_graph($value);
+        return \ctype_graph($value);
     }
 
     /**
@@ -217,9 +217,9 @@ class StringValidation
      */
     public static function hasLength($value, $length)
     {
-        settype($length, 'int');
+        \settype($length, 'int');
 
-        return mb_strlen($value, mb_detect_encoding($value)) === $length;
+        return \mb_strlen($value, \mb_detect_encoding($value)) === $length;
     }
 
     /**
@@ -229,7 +229,7 @@ class StringValidation
      */
     public static function isLowercase($value)
     {
-        return $value === mb_strtolower($value, mb_detect_encoding($value));
+        return $value === \mb_strtolower($value, \mb_detect_encoding($value));
     }
 
     /**
@@ -239,7 +239,7 @@ class StringValidation
      */
     public static function notEmpty($value)
     {
-        $value = trim($value);
+        $value = \trim($value);
 
         return !empty($value);
     }
@@ -251,7 +251,7 @@ class StringValidation
      */
     public static function noWhitespace($value)
     {
-        return 0 === preg_match('/\s/', $value);
+        return 0 === \preg_match('/\s/', $value);
     }
 
     /**
@@ -261,7 +261,7 @@ class StringValidation
      */
     public static function hasPrintableCharsOnly($value)
     {
-        return ctype_print($value);
+        return \ctype_print($value);
     }
 
     /**
@@ -271,7 +271,7 @@ class StringValidation
      */
     public static function isPunctuation($value)
     {
-        return ctype_punct($value);
+        return \ctype_punct($value);
     }
 
     /**
@@ -282,7 +282,7 @@ class StringValidation
      */
     public static function matchesRegex($value, $regex)
     {
-        return preg_match($regex, $value) > 0;
+        return \preg_match($regex, $value) > 0;
     }
 
     /**
@@ -292,7 +292,7 @@ class StringValidation
      */
     public static function isSlug($value)
     {
-        if ((false !== strstr($value, '--'))
+        if ((false !== \strstr($value, '--'))
             || (!preg_match('@^[0-9a-z\-]+$@', $value))
             || (preg_match('@^-|-$@', $value))
         ) {
@@ -309,7 +309,7 @@ class StringValidation
      */
     public static function isSpace($value)
     {
-        return ctype_space($value);
+        return \ctype_space($value);
     }
 
     /**
@@ -321,13 +321,13 @@ class StringValidation
      */
     public static function startsWith($value, $contains, $identical = false)
     {
-        $enc = mb_detect_encoding($value);
+        $enc = \mb_detect_encoding($value);
 
         if (false === $identical) {
-            return 0 === mb_stripos($value, $contains, 0, $enc);
+            return 0 === \mb_stripos($value, $contains, 0, $enc);
         }
 
-        return 0 === mb_strpos($value, $contains, 0, $enc);
+        return 0 === \mb_strpos($value, $contains, 0, $enc);
     }
 
     /**
@@ -337,7 +337,7 @@ class StringValidation
      */
     public static function isUppercase($value)
     {
-        return $value === mb_strtoupper($value, mb_detect_encoding($value));
+        return $value === \mb_strtoupper($value, \mb_detect_encoding($value));
     }
 
     /**
@@ -347,7 +347,7 @@ class StringValidation
      */
     public static function isVersion($value)
     {
-        return preg_match('/^[0-9]+\.[0-9]+(\.[0-9]*)?([+-][^+-][0-9A-Za-z-.]*)?$/', $value) > 0;
+        return \preg_match('/^[0-9]+\.[0-9]+(\.[0-9]*)?([+-][^+-][0-9A-Za-z-.]*)?$/', $value) > 0;
     }
 
     /**
@@ -357,7 +357,7 @@ class StringValidation
      */
     public static function isVowel($value)
     {
-        return preg_match('/^(\s|[aeiouAEIOU])*$/', $value) > 0;
+        return \preg_match('/^(\s|[aeiouAEIOU])*$/', $value) > 0;
     }
 
     /**
@@ -367,7 +367,7 @@ class StringValidation
      */
     public static function isHexDigit($value)
     {
-        return ctype_xdigit($value);
+        return \ctype_xdigit($value);
     }
 
     /**
@@ -390,15 +390,15 @@ class StringValidation
      */
     private static function hasStringSubset($value, $amount, $regex)
     {
-        settype($value, 'string');
+        \settype($value, 'string');
 
         $minMatches = 1;
         if (!empty($amount)) {
             $minMatches = $amount;
         }
 
-        $value  = preg_replace('/\s+/', '', $value);
-        $length = strlen($value);
+        $value  = \preg_replace('/\s+/', '', $value);
+        $length = \strlen($value);
 
         $counter = 0;
         for ($i = 0; $i < $length; $i++) {
@@ -454,9 +454,9 @@ class StringValidation
      */
     public static function isEmail($value)
     {
-        settype($value, 'string');
+        \settype($value, 'string');
 
-        return preg_match('/^[A-Z0-9._%\-+]+@(?:[A-Z0-9\-]+\.)+(?:[A-Z0-9\-]+)$/i', $value) > 0;
+        return \preg_match('/^[A-Z0-9._%\-+]+@(?:[A-Z0-9\-]+\.)+(?:[A-Z0-9\-]+)$/i', $value) > 0;
     }
 
     /**
@@ -470,7 +470,7 @@ class StringValidation
             $value = 'http:'.$value;
         }
 
-        return false !== filter_var($value, FILTER_VALIDATE_URL, ['options' => ['flags' => FILTER_FLAG_PATH_REQUIRED]]);
+        return false !== \filter_var($value, FILTER_VALIDATE_URL, ['options' => ['flags' => FILTER_FLAG_PATH_REQUIRED]]);
     }
 
     /**
@@ -481,14 +481,14 @@ class StringValidation
      */
     public static function isUUID($value, $strict = true)
     {
-        settype($value, 'string');
+        \settype($value, 'string');
 
         $pattern = '/^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$/i';
         if (true !== $strict) {
-            $value   = trim($value, '[]{}');
+            $value   = \trim($value, '[]{}');
             $pattern = '/^[a-f0-9]{4}(?:-?[a-f0-9]{4}){7}$/i';
         }
 
-        return preg_match($pattern, $value) > 0;
+        return \preg_match($pattern, $value) > 0;
     }
 }

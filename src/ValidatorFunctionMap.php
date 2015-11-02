@@ -72,23 +72,23 @@ class ValidatorFunctionMap
      */
     public function get($propertyName, $funcName, array $arguments = [], array &$errorValues = [], array &$errors)
     {
-        if (false === array_key_exists($funcName, $this->functionMap)) {
+        if (false === \array_key_exists($funcName, $this->functionMap)) {
             throw new \InvalidArgumentException(
-                sprintf('Validator key \'%s\' not found', $funcName)
+                \sprintf('Validator key \'%s\' not found', $funcName)
             );
         }
 
         $function = $this->functionMap[$funcName];
-        $class    = explode("::", $function);
+        $class    = \explode("::", $function);
 
         try {
-            $result = call_user_func_array([$class[0], $class[1]], $arguments);
+            $result = \call_user_func_array([$class[0], $class[1]], $arguments);
 
             if (false === $result) {
                 $funcName = $this->funcNameToUnderscore($funcName);
-                if (false === array_key_exists($funcName, $errors)) {
+                if (false === \array_key_exists($funcName, $errors)) {
                     throw new \InvalidArgumentException(
-                        sprintf('Validator key \'%s\' not found in error file', $funcName)
+                        \sprintf('Validator key \'%s\' not found in error file', $funcName)
                     );
                 }
 
@@ -122,10 +122,10 @@ class ValidatorFunctionMap
      */
     private function buildErrorMessage(array $errorValues, array &$errors, $funcName, $propertyName)
     {
-        $message = str_replace(':attribute', "'".$propertyName."'", $errors[$funcName]);
+        $message = \str_replace(':attribute', "'".$propertyName."'", $errors[$funcName]);
 
         foreach ($errorValues as $key => $value) {
-            $message = str_replace(":{$key}", $value, $message);
+            $message = \str_replace(":{$key}", $value, $message);
         }
 
         return $message;
@@ -138,15 +138,15 @@ class ValidatorFunctionMap
      */
     private function funcNameToUnderscore($funcName)
     {
-        $camel = preg_replace(
+        $camel = \preg_replace(
             '/(?!^)[[:upper:]][[:lower:]]/',
             '$0',
-            preg_replace(
+            \preg_replace(
                 '/(?!^)[[:upper:]]+/', "_" . '$0',
-                str_replace(['::__construct', '::'], ['', '.'], $funcName)
+                \str_replace(['::__construct', '::'], ['', '.'], $funcName)
             )
         );
 
-        return str_replace('_attribute', '', strtolower($camel));
+        return \str_replace('_attribute', '', \strtolower($camel));
     }
 }

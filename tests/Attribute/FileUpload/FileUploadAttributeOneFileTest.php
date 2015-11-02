@@ -27,7 +27,7 @@ class FileUploadAttributeOneFileTest extends \PHPUnit_Framework_TestCase
             'image' => [
                 'name'     => 'sample.png',
                 'type'     => 'image/png',
-                'tmp_name' => realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
+                'tmp_name' => \realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
                 'error'    => '0',
                 'size'     => '203868',
             ],

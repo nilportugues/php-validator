@@ -42,7 +42,7 @@ class FileUploadValidation
      */
     public static function isUploaded($uploadName)
     {
-        return array_key_exists($uploadName, $_FILES);
+        return \array_key_exists($uploadName, $_FILES);
     }
 
     /**
@@ -50,13 +50,13 @@ class FileUploadValidation
      */
     private static function getMaxServerFileSize()
     {
-        $maxFileSize     = min(ini_get('post_max_size'), ini_get('upload_max_filesize'));
-        $maxFileSizeUnit = preg_replace('/\d/', '', $maxFileSize);
+        $maxFileSize     = \min(ini_get('post_max_size'), \ini_get('upload_max_filesize'));
+        $maxFileSizeUnit = \preg_replace('/\d/', '', $maxFileSize);
 
         $finalMaxFileSize = 0;
         if (array_key_exists(strtoupper($maxFileSizeUnit), self::$byte)) {
             $multiplier       = self::$byte[$maxFileSizeUnit];
-            $finalMaxFileSize = preg_replace("/[^0-9,.]/", "", $maxFileSize);
+            $finalMaxFileSize = \preg_replace("/[^0-9,.]/", "", $maxFileSize);
             $finalMaxFileSize = $finalMaxFileSize * $multiplier;
         }
 
@@ -82,9 +82,9 @@ class FileUploadValidation
 
         $minSize = $minSize * $multiplier;
         $maxSize = $maxSize * $multiplier;
-        $maxSize = min(self::getMaxServerFileSize(), $maxSize);
+        $maxSize = \min(self::getMaxServerFileSize(), $maxSize);
 
-        if (isset($_FILES[$uploadName]['size']) && is_array($_FILES[$uploadName]['size'])) {
+        if (isset($_FILES[$uploadName]['size']) && \is_array($_FILES[$uploadName]['size'])) {
             $isValid = true;
             foreach ($_FILES[$uploadName]['size'] as $size) {
                 self::checkIfMaximumUploadFileSizeHasBeenExceeded($uploadName, $maxSize, $size);
@@ -124,16 +124,16 @@ class FileUploadValidation
      */
     private static function getMimeType($filePath)
     {
-        $currentErrorReporting = error_reporting();
-        error_reporting(0);
+        $currentErrorReporting = \error_reporting();
+        \error_reporting(0);
 
         $mimeType = '';
-        $fileInfo = finfo_open(FILEINFO_MIME_TYPE);
+        $fileInfo = \finfo_open(FILEINFO_MIME_TYPE);
         if (false !== $fileInfo) {
-            $mimeType = (string) finfo_file($fileInfo, $filePath);
-            finfo_close($fileInfo);
+            $mimeType = (string) \finfo_file($fileInfo, $filePath);
+            \finfo_close($fileInfo);
         }
-        error_reporting($currentErrorReporting);
+        \error_reporting($currentErrorReporting);
 
         return $mimeType;
     }
@@ -146,12 +146,12 @@ class FileUploadValidation
      */
     public static function isMimeType($uploadName, array $allowedTypes)
     {
-        if (isset($_FILES[$uploadName]['tmp_name']) && is_array($_FILES[$uploadName]['tmp_name'])) {
+        if (isset($_FILES[$uploadName]['tmp_name']) && \is_array($_FILES[$uploadName]['tmp_name'])) {
             $isValid = true;
 
-            array_filter($_FILES[$uploadName]['tmp_name']);
+            \array_filter($_FILES[$uploadName]['tmp_name']);
             foreach ($_FILES[$uploadName]['tmp_name'] as $name) {
-                $isValid = $isValid && in_array(self::getMimeType($name), $allowedTypes, true);
+                $isValid = $isValid && \in_array(self::getMimeType($name), $allowedTypes, true);
             }
 
             return $isValid;
@@ -161,7 +161,7 @@ class FileUploadValidation
             return false;
         }
 
-        return in_array(self::getMimeType($_FILES[$uploadName]['tmp_name']), $allowedTypes, true);
+        return \in_array(self::getMimeType($_FILES[$uploadName]['tmp_name']), $allowedTypes, true);
     }
 
     /**
@@ -172,7 +172,7 @@ class FileUploadValidation
      */
     public static function hasFileNameFormat($uploadName, AbstractValidator $validator)
     {
-        if (isset($_FILES[$uploadName]['name']) && is_array($_FILES[$uploadName]['name'])) {
+        if (isset($_FILES[$uploadName]['name']) && \is_array($_FILES[$uploadName]['name'])) {
             $isValid = true;
             foreach ($_FILES[$uploadName]['name'] as $name) {
                 $isValid = $isValid && $validator->validate($name);
@@ -196,9 +196,9 @@ class FileUploadValidation
             return false;
         }
 
-        return file_exists($uploadDir)
-        && is_dir($uploadDir)
-        && is_writable($uploadDir);
+        return \file_exists($uploadDir)
+        && \is_dir($uploadDir)
+        && \is_writable($uploadDir);
     }
 
     /**
@@ -209,7 +209,7 @@ class FileUploadValidation
      */
     public static function notOverwritingExistingFile($uploadName, $uploadDir)
     {
-        if (isset($_FILES[$uploadName]['name']) && is_array($_FILES[$uploadName]['name'])) {
+        if (isset($_FILES[$uploadName]['name']) && \is_array($_FILES[$uploadName]['name'])) {
             $isValid = true;
             foreach ($_FILES[$uploadName]['name'] as $name) {
                 $isValid = $isValid && !file_exists($uploadDir.DIRECTORY_SEPARATOR.$name);
@@ -233,10 +233,10 @@ class FileUploadValidation
      */
     public static function hasLength($uploadName, $size)
     {
-        settype($size, 'int');
+        \settype($size, 'int');
 
-        if (isset($_FILES[$uploadName]['name']) && is_array($_FILES[$uploadName]['name']) && $size >= 0) {
-            return $size == count($_FILES[$uploadName]['name']);
+        if (isset($_FILES[$uploadName]['name']) && \is_array($_FILES[$uploadName]['name']) && $size >= 0) {
+            return $size == \count($_FILES[$uploadName]['name']);
         }
 
         return 1 == $size && isset($_FILES[$uploadName]['name']);

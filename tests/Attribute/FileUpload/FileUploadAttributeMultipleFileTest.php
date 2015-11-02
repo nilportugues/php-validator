@@ -28,9 +28,9 @@ class FileUploadAttributeMultipleFileTest extends \PHPUnit_Framework_TestCase
                 'name'     => ['sample.png', 'sample.png', 'sample.png'],
                 'type'     => ['image/png', 'image/png', 'image/png'],
                 'tmp_name' => [
-                    realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
-                    realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
-                    realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
+                    \realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
+                    \realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
+                    \realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
                 ],
                 'error'    => [0, 0, 0],
                 'size'     => [203868, 203868, 203868],

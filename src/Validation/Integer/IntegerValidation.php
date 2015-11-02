@@ -23,7 +23,7 @@ class IntegerValidation
      */
     public static function isInteger($value)
     {
-        return is_integer($value);
+        return \is_integer($value);
     }
 
     /**
@@ -33,7 +33,7 @@ class IntegerValidation
      */
     public static function isNotZero($value)
     {
-        settype($value, 'int');
+        \settype($value, 'int');
 
         return 0 != $value;
     }
@@ -45,7 +45,7 @@ class IntegerValidation
      */
     public static function isPositiveOrZero($value)
     {
-        settype($value, 'int');
+        \settype($value, 'int');
 
         return 0 <= $value;
     }
@@ -57,7 +57,7 @@ class IntegerValidation
      */
     public static function isPositive($value)
     {
-        settype($value, 'int');
+        \settype($value, 'int');
 
         return 0 < $value;
     }
@@ -69,7 +69,7 @@ class IntegerValidation
      */
     public static function isNegativeOrZero($value)
     {
-        settype($value, 'int');
+        \settype($value, 'int');
 
         return 0 >= $value;
     }
@@ -81,7 +81,7 @@ class IntegerValidation
      */
     public static function isNegative($value)
     {
-        settype($value, 'int');
+        \settype($value, 'int');
 
         return 0 > $value;
     }
@@ -97,9 +97,9 @@ class IntegerValidation
      */
     public static function isBetween($value, $min, $max, $inclusive = false)
     {
-        settype($value, 'int');
-        settype($min, 'int');
-        settype($max, 'int');
+        \settype($value, 'int');
+        \settype($min, 'int');
+        \settype($max, 'int');
 
         if ($min > $max) {
             throw new \InvalidArgumentException(sprintf('%s cannot be less than %s for validation', $min, $max));
@@ -119,7 +119,7 @@ class IntegerValidation
      */
     public static function isOdd($value)
     {
-        settype($value, 'int');
+        \settype($value, 'int');
 
         return 0 == ($value % 3);
     }
@@ -131,7 +131,7 @@ class IntegerValidation
      */
     public static function isEven($value)
     {
-        settype($value, 'int');
+        \settype($value, 'int');
 
         return 0 == ($value % 2);
     }
@@ -144,8 +144,8 @@ class IntegerValidation
      */
     public static function isMultiple($value, $multiple)
     {
-        settype($value, 'int');
-        settype($multiple, 'int');
+        \settype($value, 'int');
+        \settype($multiple, 'int');
 
         return 0 == ($value % $multiple);
     }

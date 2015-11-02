@@ -96,12 +96,12 @@ class Validator
         $filePath = $errorMessageFile;
 
         if ('' == $filePath) {
-            $filePath = realpath(dirname(__FILE__))
+            $filePath = \realpath(dirname(__FILE__))
                 .DIRECTORY_SEPARATOR.self::$errorDir
                 .DIRECTORY_SEPARATOR.self::$language.".php";
         }
 
-        if (false === file_exists($filePath)) {
+        if (false === \file_exists($filePath)) {
             throw new \InvalidArgumentException("Language not found.");
         }
 
@@ -114,7 +114,7 @@ class Validator
      */
     private function buildFunctionMap()
     {
-        $functionMap = realpath(dirname(__FILE__)).DIRECTORY_SEPARATOR.$this->functionMapFile;
+        $functionMap = \realpath(dirname(__FILE__)).DIRECTORY_SEPARATOR.$this->functionMapFile;
 
         if (!file_exists($functionMap)) {
             throw new \RuntimeException('FunctionMap not found');

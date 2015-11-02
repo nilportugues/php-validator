@@ -36,15 +36,15 @@ class FileUploadException extends \Exception
     {
         $error = 4;
 
-        if (!empty($_FILES[$uploadName]['error']) && is_int($_FILES[$uploadName]['error'])) {
+        if (!empty($_FILES[$uploadName]['error']) && \is_int($_FILES[$uploadName]['error'])) {
             $error = $_FILES[$uploadName]['error'];
         }
 
         if (!empty($_FILES[$uploadName]['error'])
-            && is_array($_FILES[$uploadName]['error'])
-            && is_int($_FILES[$uploadName]['error'][0])
+            && \is_array($_FILES[$uploadName]['error'])
+            && \is_int($_FILES[$uploadName]['error'][0])
         ) {
-            $error = reset($_FILES[$uploadName]['error']);
+            $error = \reset($_FILES[$uploadName]['error']);
         }
 
         $this->message = $this->errorMessages[$error];
