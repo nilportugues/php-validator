@@ -45,7 +45,7 @@ class ObjectValidation
      */
     public static function hasProperty($value, $property)
     {
-        return \is_object($value) && \property_exists(get_class($value), $property);
+        return \is_object($value) && \property_exists(\get_class($value), $property);
     }
 
     /**
@@ -56,7 +56,7 @@ class ObjectValidation
      */
     public static function hasMethod($value, $method)
     {
-        return \is_object($value) && \method_exists(get_class($value), $method);
+        return \is_object($value) && \method_exists(\get_class($value), $method);
     }
 
     /**

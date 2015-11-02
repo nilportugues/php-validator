@@ -68,7 +68,7 @@ class CollectionAttributeTest extends \PHPUnit_Framework_TestCase
     {
         $array       = ['one' => 'hello', 'two' => 'world'];
         $arrayObject = new \ArrayObject($array);
-        $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
+        $fixedArray  = (new \SplFixedArray())->fromArray(\array_values($array));
 
         $validator    = Validator::create();
         $keyIsString  = $validator->isString('key')->isAlpha();
@@ -90,7 +90,7 @@ class CollectionAttributeTest extends \PHPUnit_Framework_TestCase
     {
         $array       = ['one' => 'hello', 'two' => 1];
         $arrayObject = new \ArrayObject($array);
-        $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
+        $fixedArray  = (new \SplFixedArray())->fromArray(\array_values($array));
 
         $this->assertTrue($this->getValidator()->endsWith('1', false)->validate($array));
         $this->assertTrue($this->getValidator()->endsWith('1', false)->validate($arrayObject));
@@ -116,7 +116,7 @@ class CollectionAttributeTest extends \PHPUnit_Framework_TestCase
     {
         $array       = ['one' => 'hello', 'two' => 1];
         $arrayObject = new \ArrayObject($array);
-        $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
+        $fixedArray  = (new \SplFixedArray())->fromArray(\array_values($array));
 
         $this->assertTrue($this->getValidator()->contains('hello', false)->validate($array));
         $this->assertTrue($this->getValidator()->contains('hello', false)->validate($arrayObject));
@@ -134,7 +134,7 @@ class CollectionAttributeTest extends \PHPUnit_Framework_TestCase
     {
         $array       = ['one' => 'hello', 'two' => 1];
         $arrayObject = new \ArrayObject($array);
-        $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
+        $fixedArray  = (new \SplFixedArray())->fromArray(\array_values($array));
 
         $this->assertTrue($this->getValidator()->hasKey('one')->validate($array));
         $this->assertTrue($this->getValidator()->hasKey('one')->validate($arrayObject));
@@ -142,7 +142,7 @@ class CollectionAttributeTest extends \PHPUnit_Framework_TestCase
 
         $array       = [];
         $arrayObject = new \ArrayObject($array);
-        $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
+        $fixedArray  = (new \SplFixedArray())->fromArray(\array_values($array));
 
         $this->assertFalse($this->getValidator()->hasKey(0)->validate($array));
         $this->assertFalse($this->getValidator()->hasKey(0)->validate($arrayObject));
@@ -156,7 +156,7 @@ class CollectionAttributeTest extends \PHPUnit_Framework_TestCase
     {
         $array       = ['one' => 'hello', 'two' => 1];
         $arrayObject = new \ArrayObject($array);
-        $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
+        $fixedArray  = (new \SplFixedArray())->fromArray(\array_values($array));
 
         $this->assertTrue($this->getValidator()->hasLength(2)->validate($array));
         $this->assertTrue($this->getValidator()->hasLength(2)->validate($arrayObject));
@@ -164,7 +164,7 @@ class CollectionAttributeTest extends \PHPUnit_Framework_TestCase
 
         $array       = [];
         $arrayObject = new \ArrayObject($array);
-        $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
+        $fixedArray  = (new \SplFixedArray())->fromArray(\array_values($array));
 
         $this->assertTrue($this->getValidator()->hasLength(0)->validate($array));
         $this->assertTrue($this->getValidator()->hasLength(0)->validate($arrayObject));
@@ -178,7 +178,7 @@ class CollectionAttributeTest extends \PHPUnit_Framework_TestCase
     {
         $array       = ['one' => 'hello', 'two' => 1];
         $arrayObject = new \ArrayObject($array);
-        $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
+        $fixedArray  = (new \SplFixedArray())->fromArray(\array_values($array));
 
         $this->assertTrue($this->getValidator()->isNotEmpty()->validate($array));
         $this->assertTrue($this->getValidator()->isNotEmpty()->validate($arrayObject));
@@ -186,7 +186,7 @@ class CollectionAttributeTest extends \PHPUnit_Framework_TestCase
 
         $array       = [];
         $arrayObject = new \ArrayObject($array);
-        $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
+        $fixedArray  = (new \SplFixedArray())->fromArray(\array_values($array));
 
         $this->assertFalse($this->getValidator()->isNotEmpty()->validate($array));
         $this->assertFalse($this->getValidator()->isNotEmpty()->validate($arrayObject));
@@ -200,7 +200,7 @@ class CollectionAttributeTest extends \PHPUnit_Framework_TestCase
     {
         $array       = ['one' => 'hello', 'two' => 1];
         $arrayObject = new \ArrayObject($array);
-        $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
+        $fixedArray  = (new \SplFixedArray())->fromArray(\array_values($array));
 
         $this->assertTrue($this->getValidator()->startsWith('hello', false)->validate($array));
         $this->assertTrue($this->getValidator()->startsWith('hello', false)->validate($arrayObject));

@@ -165,7 +165,7 @@ class ValidatorRule
 
         foreach ($arguments as &$argument) {
             $toLower = \strtolower($argument);
-            if (array_key_exists($toLower, $toBoolean)) {
+            if (\array_key_exists($toLower, $toBoolean)) {
                 $argument = $toBoolean[$toLower];
             }
         }

@@ -50,11 +50,11 @@ class FileUploadValidation
      */
     private static function getMaxServerFileSize()
     {
-        $maxFileSize     = \min(ini_get('post_max_size'), \ini_get('upload_max_filesize'));
+        $maxFileSize     = \min(\ini_get('post_max_size'), \ini_get('upload_max_filesize'));
         $maxFileSizeUnit = \preg_replace('/\d/', '', $maxFileSize);
 
         $finalMaxFileSize = 0;
-        if (array_key_exists(strtoupper($maxFileSizeUnit), self::$byte)) {
+        if (\array_key_exists(\strtoupper($maxFileSizeUnit), self::$byte)) {
             $multiplier       = self::$byte[$maxFileSizeUnit];
             $finalMaxFileSize = \preg_replace("/[^0-9,.]/", "", $maxFileSize);
             $finalMaxFileSize = $finalMaxFileSize * $multiplier;
@@ -76,7 +76,7 @@ class FileUploadValidation
     public static function isBetween($uploadName, $minSize, $maxSize, $format = 'B', $inclusive = false)
     {
         $multiplier = 1;
-        if (array_key_exists(strtoupper($format), self::$byte)) {
+        if (\array_key_exists(\strtoupper($format), self::$byte)) {
             $multiplier = self::$byte[$format];
         }
 

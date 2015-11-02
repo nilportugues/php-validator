@@ -48,7 +48,7 @@ class FileUploadAttribute extends AbstractValidator
             [
                 'min'    => $minSize,
                 'max'    => $maxSize,
-                'format' => (strtoupper($format[0]) == 'B') ? '' : \strtoupper($format[0])
+                'format' => (\strtoupper($format[0]) == 'B') ? '' : \strtoupper($format[0])
             ]
         );
 

@@ -27,7 +27,7 @@ class FileUploadExceptionTest extends \PHPUnit_Framework_TestCase
             'image' => [
                 'name'     => 'sample.png',
                 'type'     => 'image/png',
-                'tmp_name' => \realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
+                'tmp_name' => \realpath(\dirname(__FILE__)).'/resources/phpGpKMlf',
                 'error'    => 1,
                 'size'     => '203868',
             ],
@@ -50,9 +50,9 @@ class FileUploadExceptionTest extends \PHPUnit_Framework_TestCase
                 'name'     => ['sample.png', 'sample.png', 'sample.png'],
                 'type'     => ['image/png', 'image/png', 'image/png'],
                 'tmp_name' => [
-                    \realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
-                    \realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
-                    \realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
+                    \realpath(\dirname(__FILE__)).'/resources/phpGpKMlf',
+                    \realpath(\dirname(__FILE__)).'/resources/phpGpKMlf',
+                    \realpath(\dirname(__FILE__)).'/resources/phpGpKMlf',
                 ],
                 'error'    => [1, 1, 1],
                 'size'     => [203868, 203868, 203868],

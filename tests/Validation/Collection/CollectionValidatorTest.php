@@ -61,7 +61,7 @@ class CollectionValidatorTest extends \PHPUnit_Framework_TestCase
     {
         $array       = ['one' => 'hello', 'two' => 'world'];
         $arrayObject = new \ArrayObject($array);
-        $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
+        $fixedArray  = (new \SplFixedArray())->fromArray(\array_values($array));
 
         $validator    = Validator::create();
         $keyIsString  = $validator->isString('key')->isAlpha();
@@ -81,7 +81,7 @@ class CollectionValidatorTest extends \PHPUnit_Framework_TestCase
     {
         $array       = ['one' => 'hello', 'two' => 1];
         $arrayObject = new \ArrayObject($array);
-        $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
+        $fixedArray  = (new \SplFixedArray())->fromArray(\array_values($array));
 
         $this->assertTrue(CollectionValidation::endsWith($array, '1', false));
         $this->assertTrue(CollectionValidation::endsWith($arrayObject, '1', false));
@@ -107,7 +107,7 @@ class CollectionValidatorTest extends \PHPUnit_Framework_TestCase
     {
         $array       = ['one' => 'hello', 'two' => 1];
         $arrayObject = new \ArrayObject($array);
-        $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
+        $fixedArray  = (new \SplFixedArray())->fromArray(\array_values($array));
 
         $this->assertTrue(CollectionValidation::contains($array, 'hello', false));
         $this->assertTrue(CollectionValidation::contains($arrayObject, 'hello', false));
@@ -125,7 +125,7 @@ class CollectionValidatorTest extends \PHPUnit_Framework_TestCase
     {
         $array       = ['one' => 'hello', 'two' => 1];
         $arrayObject = new \ArrayObject($array);
-        $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
+        $fixedArray  = (new \SplFixedArray())->fromArray(\array_values($array));
 
         $this->assertTrue(CollectionValidation::hasKey($array, 'one'));
         $this->assertTrue(CollectionValidation::hasKey($arrayObject, 'one'));
@@ -133,7 +133,7 @@ class CollectionValidatorTest extends \PHPUnit_Framework_TestCase
 
         $array       = [];
         $arrayObject = new \ArrayObject($array);
-        $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
+        $fixedArray  = (new \SplFixedArray())->fromArray(\array_values($array));
 
         $this->assertFalse(CollectionValidation::hasKey($array, 0));
         $this->assertFalse(CollectionValidation::hasKey($arrayObject, 0));
@@ -147,7 +147,7 @@ class CollectionValidatorTest extends \PHPUnit_Framework_TestCase
     {
         $array       = ['one' => 'hello', 'two' => 1];
         $arrayObject = new \ArrayObject($array);
-        $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
+        $fixedArray  = (new \SplFixedArray())->fromArray(\array_values($array));
 
         $this->assertTrue(CollectionValidation::hasLength($array, 2));
         $this->assertTrue(CollectionValidation::hasLength($arrayObject, 2));
@@ -155,7 +155,7 @@ class CollectionValidatorTest extends \PHPUnit_Framework_TestCase
 
         $array       = [];
         $arrayObject = new \ArrayObject($array);
-        $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
+        $fixedArray  = (new \SplFixedArray())->fromArray(\array_values($array));
 
         $this->assertTrue(CollectionValidation::hasLength($array, 0));
         $this->assertTrue(CollectionValidation::hasLength($arrayObject, 0));
@@ -169,7 +169,7 @@ class CollectionValidatorTest extends \PHPUnit_Framework_TestCase
     {
         $array       = ['one' => 'hello', 'two' => 1];
         $arrayObject = new \ArrayObject($array);
-        $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
+        $fixedArray  = (new \SplFixedArray())->fromArray(\array_values($array));
 
         $this->assertTrue(CollectionValidation::isNotEmpty($array));
         $this->assertTrue(CollectionValidation::isNotEmpty($arrayObject));
@@ -177,7 +177,7 @@ class CollectionValidatorTest extends \PHPUnit_Framework_TestCase
 
         $array       = [];
         $arrayObject = new \ArrayObject($array);
-        $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
+        $fixedArray  = (new \SplFixedArray())->fromArray(\array_values($array));
 
         $this->assertFalse(CollectionValidation::isNotEmpty($array));
         $this->assertFalse(CollectionValidation::isNotEmpty($arrayObject));
@@ -191,7 +191,7 @@ class CollectionValidatorTest extends \PHPUnit_Framework_TestCase
     {
         $array       = ['one' => 'hello', 'two' => 1];
         $arrayObject = new \ArrayObject($array);
-        $fixedArray  = (new \SplFixedArray())->fromArray(array_values($array));
+        $fixedArray  = (new \SplFixedArray())->fromArray(\array_values($array));
 
         $this->assertTrue(CollectionValidation::startsWith($array, 'hello', false));
         $this->assertTrue(CollectionValidation::startsWith($arrayObject, 'hello', false));

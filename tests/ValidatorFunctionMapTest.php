@@ -71,7 +71,7 @@ class ValidatorFunctionMapTest extends \PHPUnit_Framework_TestCase
             'image' => [
                 'name'     => 'sample.png',
                 'type'     => 'image/png',
-                'tmp_name' => \realpath(dirname(__FILE__)).'/Traits/FileUpload/resources/phpGpKMlf',
+                'tmp_name' => \realpath(\dirname(__FILE__)).'/Traits/FileUpload/resources/phpGpKMlf',
                 'error'    => 1,
                 'size'     => '200003868',
             ],

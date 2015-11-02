@@ -92,7 +92,7 @@ class ValidatorFunctionMap
                     );
                 }
 
-                if (strlen($errors[$funcName]) > 0) {
+                if (\strlen($errors[$funcName]) > 0) {
                     $this->validator->setError(
                         $this->buildErrorMessage($errorValues, $errors, $funcName, $propertyName),
                         $funcName

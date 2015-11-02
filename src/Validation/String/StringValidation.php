@@ -64,7 +64,7 @@ class StringValidation
         $length = \mb_strlen($value, \mb_detect_encoding($value));
 
         if ($min > $max) {
-            throw new \InvalidArgumentException(sprintf('%s cannot be less than  %s for validation', $min, $max));
+            throw new \InvalidArgumentException(\sprintf('%s cannot be less than  %s for validation', $min, $max));
         }
 
         if (false === $inclusive) {
@@ -156,10 +156,10 @@ class StringValidation
         $enc = \mb_detect_encoding($value);
 
         if (false === $identical) {
-            return \mb_strripos($value, $contains, -1, $enc) === (mb_strlen($value, $enc) - \mb_strlen($contains, $enc));
+            return \mb_strripos($value, $contains, -1, $enc) === (\mb_strlen($value, $enc) - \mb_strlen($contains, $enc));
         }
 
-        return \mb_strrpos($value, $contains, 0, $enc) === (mb_strlen($value, $enc) - \mb_strlen($contains, $enc));
+        return \mb_strrpos($value, $contains, 0, $enc) === (\mb_strlen($value, $enc) - \mb_strlen($contains, $enc));
     }
 
     /**
@@ -294,7 +294,7 @@ class StringValidation
     {
         if ((false !== \strstr($value, '--'))
             || (!preg_match('@^[0-9a-z\-]+$@', $value))
-            || (preg_match('@^-|-$@', $value))
+            || (\preg_match('@^-|-$@', $value))
         ) {
             return false;
         }
@@ -402,7 +402,7 @@ class StringValidation
 
         $counter = 0;
         for ($i = 0; $i < $length; $i++) {
-            if (preg_match($regex, $value[$i]) > 0) {
+            if (\preg_match($regex, $value[$i]) > 0) {
                 $counter++;
             }
 
@@ -466,7 +466,7 @@ class StringValidation
      */
     public static function isUrl($value)
     {
-        if (strlen($value) > 0 && $value[0] == $value[1] && $value[0] == "/") {
+        if (\strlen($value) > 0 && $value[0] == $value[1] && $value[0] == "/") {
             $value = 'http:'.$value;
         }
 

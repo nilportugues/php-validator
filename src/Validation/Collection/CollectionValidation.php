@@ -26,8 +26,8 @@ class CollectionValidation
     public static function isArray($value)
     {
         return \is_array($value)
-        || (is_object($value) && $value instanceof \ArrayObject)
-        || (is_object($value) && $value instanceof \SplFixedArray);
+        || (\is_object($value) && $value instanceof \ArrayObject)
+        || (\is_object($value) && $value instanceof \SplFixedArray);
     }
 
     /**

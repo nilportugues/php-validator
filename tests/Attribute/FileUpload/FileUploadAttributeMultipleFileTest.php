@@ -28,9 +28,9 @@ class FileUploadAttributeMultipleFileTest extends \PHPUnit_Framework_TestCase
                 'name'     => ['sample.png', 'sample.png', 'sample.png'],
                 'type'     => ['image/png', 'image/png', 'image/png'],
                 'tmp_name' => [
-                    \realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
-                    \realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
-                    \realpath(dirname(__FILE__)).'/resources/phpGpKMlf',
+                    \realpath(\dirname(__FILE__)).'/resources/phpGpKMlf',
+                    \realpath(\dirname(__FILE__)).'/resources/phpGpKMlf',
+                    \realpath(\dirname(__FILE__)).'/resources/phpGpKMlf',
                 ],
                 'error'    => [0, 0, 0],
                 'size'     => [203868, 203868, 203868],
@@ -105,12 +105,12 @@ class FileUploadAttributeMultipleFileTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertTrue(
             $this->getValidator()
-                ->hasValidUploadDirectory(realpath(dirname(__FILE__)).'/resources/')
+                ->hasValidUploadDirectory(\realpath(\dirname(__FILE__)).'/resources/')
                 ->validate('image')
         );
         $this->assertFalse(
             $this->getValidator()
-                ->hasValidUploadDirectory(realpath(dirname(__FILE__)).'/not/')
+                ->hasValidUploadDirectory(\realpath(\dirname(__FILE__)).'/not/')
                 ->validate('image')
         );
     }
@@ -122,14 +122,14 @@ class FileUploadAttributeMultipleFileTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertFalse(
             $this->getValidator()
-                ->notOverwritingExistingFile(realpath(dirname(__FILE__)).'/resources')
+                ->notOverwritingExistingFile(\realpath(\dirname(__FILE__)).'/resources')
                 ->validate('image')
         );
 
         $_FILES['image']['name'] = 'a.png';
         $this->assertTrue(
             $this->getValidator()
-                ->notOverwritingExistingFile(realpath(dirname(__FILE__)).'/resources')
+                ->notOverwritingExistingFile(\realpath(\dirname(__FILE__)).'/resources')
                 ->validate('image')
         );
     }

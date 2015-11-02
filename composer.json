@@ -15,7 +15,7 @@
         "phpunit/phpunit": "~4.2",
         "fiunchinho/phpunit-randomizer": "1.0.*@dev",
         "fabpot/php-cs-fixer": "dev-master",
-        "nilportugues/php_backslasher": "~0.1"
+        "nilportugues/php_backslasher": "~0.2"
     },
     "suggest": {
         "ext-mbstring": "Multibyte String Functions"

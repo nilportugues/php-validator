@@ -171,5 +171,5 @@ abstract class AbstractValidator
     {
         $this->errors = [];
         $this->conditions = [];
-    }    
+    }
 }
